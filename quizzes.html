@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes - LearnAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/quizzes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <nav class="dash-navbar">
+        <div class="dash-nav-left">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i>
+                <span>LearnAI</span>
+            </a>
+        </div>
+        <div class="dash-nav-right">
+            <div class="plan-badge" id="planBadge">Free</div>
+            <div class="user-menu">
+                <div class="user-avatar" id="userAvatar">JD</div>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+                    <a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a>
+                    <a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dash-layout">
+        <aside class="dash-sidebar">
+            <ul class="dash-menu">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Overview</a></li>
+                <li><a href="dashboard.html#subjects"><i class="fas fa-book"></i> My Subjects</a></li>
+                <li><a href="dashboard.html#resources"><i class="fas fa-folder-open"></i> Resources</a></li>
+                <li class="active"><a href="quizzes.html"><i class="fas fa-question-circle"></i> Quizzes</a></li>
+                <li><a href="tutor.html"><i class="fas fa-robot"></i> AI Tutor</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+            </ul>
+        </aside>
+
+        <main class="dash-main">
+            <section class="dash-section" id="quizHub">
+                <h1 class="dash-title">Quizzes & Assessments</h1>
+                <p class="dash-welcome">Test your knowledge. Track your scores. Improve.</p>
+
+                <div class="quiz-stats-bar">
+                    <div class="quiz-stat">
+                        <span class="qs-value" id="totalQuizzes">0</span>
+                        <span class="qs-label">Quizzes Taken</span>
+                    </div>
+                    <div class="quiz-stat">
+                        <span class="qs-value" id="avgScore">0%</span>
+                        <span class="qs-label">Average Score</span>
+                    </div>
+                    <div class="quiz-stat">
+                        <span class="qs-value" id="bestStreak">0</span>
+                        <span class="qs-label">Best Streak</span>
+                    </div>
+                </div>
+
+                <div class="quiz-subjects-grid" id="quizSubjectsGrid"></div>
+            </section>
+
+            <section class="dash-section" id="quizArea" style="display:none">
+                <div class="quiz-header">
+                    <button class="btn btn-sm btn-outline" id="backToQuizzes"><i class="fas fa-arrow-left"></i> Back</button>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                    </div>
+                    <span class="quiz-counter" id="quizCounter">1 / 10</span>
+                </div>
+
+                <div class="quiz-card" id="quizCard">
+                    <div class="quiz-question" id="quizQuestion"></div>
+                    <div class="quiz-options" id="quizOptions"></div>
+                    <div class="quiz-explanation" id="quizExplanation"></div>
+                    <div class="quiz-nav" id="quizNav">
+                        <button class="btn btn-primary" id="nextQuestion" disabled>Next</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dash-section" id="quizResult" style="display:none">
+                <div class="result-card">
+                    <div class="result-icon" id="resultIcon"><i class="fas fa-trophy"></i></div>
+                    <h2 id="resultTitle">Quiz Complete!</h2>
+                    <div class="result-score" id="resultScore">8 / 10</div>
+                    <div class="result-percent" id="resultPercent">80%</div>
+                    <p id="resultMessage">Great work!</p>
+                    <div class="result-breakdown" id="resultBreakdown"></div>
+                    <div class="result-actions">
+                        <button class="btn btn-primary" id="retryQuiz"><i class="fas fa-redo"></i> Retry</button>
+                        <button class="btn btn-outline" id="backToHub"><i class="fas fa-th"></i> All Quizzes</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/quizzes.js"></script>
+</body>
+</html>

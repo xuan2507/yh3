@@ -60,8 +60,31 @@ const Auth = {
                 subjects: 0,
                 resources: 0,
                 hours: 0,
-                progress: 0
-            }
+                progress: 0,
+                quizzesTaken: 0,
+                avgScore: 0,
+                streak: 0,
+                lastStudyDate: null,
+                totalQuestions: 0
+            },
+            progress: {
+                physics: { completed: [], scores: [], timeSpent: 0 },
+                chemistry: { completed: [], scores: [], timeSpent: 0 },
+                biology: { completed: [], scores: [], timeSpent: 0 },
+                maths: { completed: [], scores: [], timeSpent: 0 },
+                addmaths: { completed: [], scores: [], timeSpent: 0 },
+                economics: { completed: [], scores: [], timeSpent: 0 },
+                business: { completed: [], scores: [], timeSpent: 0 },
+                accounting: { completed: [], scores: [], timeSpent: 0 },
+                english: { completed: [], scores: [], timeSpent: 0 },
+                chinese: { completed: [], scores: [], timeSpent: 0 },
+                psychology: { completed: [], scores: [], timeSpent: 0 },
+                ielts: { completed: [], scores: [], timeSpent: 0 }
+            },
+            bookmarks: [],
+            studyPlan: [],
+            tutorHistory: [],
+            achievements: []
         };
         
         users.push(newUser);
@@ -106,6 +129,107 @@ const Auth = {
         return true;
     },
     
+    // Save user data
+    saveUser(user) {
+        localStorage.setItem('learnai_user', JSON.stringify(user));
+        const users = JSON.parse(localStorage.getItem('learnai_users') || '[]');
+        const idx = users.findIndex(u => u.id === user.id);
+        if (idx !== -1) {
+            users[idx] = user;
+            localStorage.setItem('learnai_users', JSON.stringify(users));
+        }
+    },
+
+    // Add quiz result
+    addQuizResult(subject, score, total, topic) {
+        const user = this.getUser();
+        if (!user) return;
+        if (!user.progress) user.progress = {};
+        if (!user.progress[subject]) user.progress[subject] = { completed: [], scores: [], timeSpent: 0 };
+        user.progress[subject].scores.push({ score, total, topic, date: new Date().toISOString() });
+        user.stats.quizzesTaken = (user.stats.quizzesTaken || 0) + 1;
+        const allScores = Object.values(user.progress).flatMap(p => p.scores || []);
+        if (allScores.length > 0) {
+            const sum = allScores.reduce((a, s) => a + (s.score / s.total * 100), 0);
+            user.stats.avgScore = Math.round(sum / allScores.length);
+        }
+        this.saveUser(user);
+    },
+
+    // Track topic completion
+    completeTopic(subject, topic) {
+        const user = this.getUser();
+        if (!user) return;
+        if (!user.progress[subject]) user.progress[subject] = { completed: [], scores: [], timeSpent: 0 };
+        if (!user.progress[subject].completed.includes(topic)) {
+            user.progress[subject].completed.push(topic);
+        }
+        this.saveUser(user);
+    },
+
+    // Track study time
+    addStudyTime(subject, minutes) {
+        const user = this.getUser();
+        if (!user) return;
+        if (!user.progress[subject]) user.progress[subject] = { completed: [], scores: [], timeSpent: 0 };
+        user.progress[subject].timeSpent += minutes;
+        user.stats.hours = Math.round((user.stats.hours || 0) + minutes / 60);
+        this.saveUser(user);
+    },
+
+    // Update streak
+    updateStreak() {
+        const user = this.getUser();
+        if (!user) return;
+        const today = new Date().toDateString();
+        const last = user.stats.lastStudyDate;
+        if (last === today) return;
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        if (last === yesterday.toDateString()) {
+            user.stats.streak = (user.stats.streak || 0) + 1;
+        } else {
+            user.stats.streak = 1;
+        }
+        user.stats.lastStudyDate = today;
+        this.saveUser(user);
+    },
+
+    // Add bookmark
+    addBookmark(item) {
+        const user = this.getUser();
+        if (!user) return;
+        if (!user.bookmarks) user.bookmarks = [];
+        if (!user.bookmarks.find(b => b.id === item.id)) {
+            user.bookmarks.push({ ...item, addedAt: new Date().toISOString() });
+            this.saveUser(user);
+        }
+    },
+
+    // Remove bookmark
+    removeBookmark(id) {
+        const user = this.getUser();
+        if (!user || !user.bookmarks) return;
+        user.bookmarks = user.bookmarks.filter(b => b.id !== id);
+        this.saveUser(user);
+    },
+
+    // Add tutor message to history
+    addTutorMessage(role, content) {
+        const user = this.getUser();
+        if (!user) return;
+        if (!user.tutorHistory) user.tutorHistory = [];
+        user.tutorHistory.push({ role, content, time: new Date().toISOString() });
+        if (user.tutorHistory.length > 100) user.tutorHistory = user.tutorHistory.slice(-100);
+        this.saveUser(user);
+    },
+
+    // Get tutor history
+    getTutorHistory() {
+        const user = this.getUser();
+        return user && user.tutorHistory ? user.tutorHistory : [];
+    },
+
     // Update user display
     updateUserDisplay() {
         const user = this.getUser();

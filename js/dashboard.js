@@ -83,13 +83,13 @@ function loadSubjects() {
 // Load user stats
 function loadStats() {
     const user = Auth.getUser();
-    const stats = user.stats || { subjects: 0, resources: 0, hours: 0, progress: 0 };
-    
+    const stats = user.stats || { subjects: 0, resources: 0, hours: 0, progress: 0, quizzesTaken: 0, avgScore: 0, streak: 0 };
+
     // Animate counters
-    animateCounter('subjectsCount', stats.subjects, '');
-    animateCounter('resourcesCount', stats.resources, '');
-    animateCounter('hoursCount', stats.hours, '');
-    animateCounter('progressCount', stats.progress, '%');
+    animateCounter('streakCount', stats.streak || 0, '');
+    animateCounter('hoursCount', stats.hours || 0, '');
+    animateCounter('quizzesCount', stats.quizzesTaken || 0, '');
+    animateCounter('avgScoreCount', stats.avgScore || 0, '%');
 }
 
 // Counter animation

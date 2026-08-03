@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tutor - LearnAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/tutor.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <nav class="dash-navbar">
+        <div class="dash-nav-left">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i>
+                <span>LearnAI</span>
+            </a>
+        </div>
+        <div class="dash-nav-right">
+            <div class="plan-badge" id="planBadge">Free</div>
+            <div class="user-menu">
+                <div class="user-avatar" id="userAvatar">JD</div>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+                    <a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a>
+                    <a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dash-layout">
+        <aside class="dash-sidebar">
+            <ul class="dash-menu">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Overview</a></li>
+                <li><a href="dashboard.html#subjects"><i class="fas fa-book"></i> My Subjects</a></li>
+                <li><a href="dashboard.html#resources"><i class="fas fa-folder-open"></i> Resources</a></li>
+                <li><a href="quizzes.html"><i class="fas fa-question-circle"></i> Quizzes</a></li>
+                <li class="active"><a href="tutor.html"><i class="fas fa-robot"></i> AI Tutor</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+            </ul>
+        </aside>
+
+        <main class="dash-main">
+            <section class="dash-section">
+                <h1 class="dash-title">AI Tutor</h1>
+                <p class="dash-welcome">Ask any question. Upload an image of a problem. Get step-by-step help.</p>
+
+                <div class="tutor-container">
+                    <div class="tutor-chat" id="tutorChat">
+                        <div class="tutor-welcome">
+                            <div class="tutor-avatar-large"><i class="fas fa-robot"></i></div>
+                            <h2>How can I help you study today?</h2>
+                            <p>I can answer questions, explain concepts, solve problems from images, and guide you through any topic.</p>
+                            <div class="tutor-suggestions">
+                                <button class="suggestion-chip" data-q="Explain Newton's laws of motion with examples">Newton's Laws</button>
+                                <button class="suggestion-chip" data-q="How do I balance chemical equations?">Balance Equations</button>
+                                <button class="suggestion-chip" data-q="Explain integration by parts">Integration by Parts</button>
+                                <button class="suggestion-chip" data-q="What is opportunity cost in economics?">Opportunity Cost</button>
+                                <button class="suggestion-chip" data-q="How to structure an A-Level economics essay?">Essay Structure</button>
+                                <button class="suggestion-chip" data-q="Explain DNA replication step by step">DNA Replication</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tutor-input-area">
+                        <div class="tutor-input-wrapper">
+                            <div class="image-preview" id="imagePreview"></div>
+                            <textarea id="tutorInput" placeholder="Type your question or upload an image..." rows="1"></textarea>
+                            <div class="tutor-actions">
+                                <label for="imageUpload" class="tutor-btn-upload" title="Upload image">
+                                    <i class="fas fa-image"></i>
+                                    <input type="file" id="imageUpload" accept="image/*" hidden>
+                                </label>
+                                <button id="tutorSend" class="tutor-btn-send" title="Send">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="tutor-disclaimer">AI Tutor provides study guidance. Always verify critical facts with your textbooks.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/tutor.js"></script>
+</body>
+</html>
