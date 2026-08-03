@@ -852,6 +852,292 @@ Share your essay (Task 1 or Task 2) and I'll give you:
 2. Specific improvements with rewrites
 3. Vocabulary upgrades
 4. Grammar corrections`
+    },
+    business: {
+        'marketing': `**Business — Marketing Mix (7Ps)**
+
+**Product:** Design, features, branding, packaging, USP, product life cycle (introduction, growth, maturity, decline).
+
+**Price:** Penetration (low to gain share), skimming (high for early adopters), competitive, cost-plus, psychological, predatory, promotional.
+
+**Place:** Distribution channels — direct (online, own stores) vs indirect (retailers, wholesalers). Intensive (everywhere), selective (specific outlets), exclusive (luxury).
+
+**Promotion:** Above-the-line (TV, radio, cinema, print — mass media). Below-the-line (sales promotion, direct mail, PR, sponsorship, personal selling). Digital (social media, SEO, influencer).
+
+**People:** Customer service, staff training, corporate culture.
+
+**Process:** Delivery systems, queuing, after-sales service.
+
+**Physical evidence:** Store layout, website design, packaging, branding materials.`,
+        'finance': `**Business — Finance & Accounts**
+
+**Sources of finance:**
+- Internal: retained profit, sale of assets, working capital
+- External short-term: overdraft, trade credit, factoring
+- External long-term: bank loan, debentures, share capital, venture capital, leasing
+
+**Cash flow:**
+- Cash ≠ profit. A profitable business can fail from poor cash flow.
+- Cash flow forecast: inflows (sales, loans) minus outflows (purchases, wages, rent).
+- Solutions to cash flow problems: overdraft, chase debtors, delay payments, reduce stock, sale and leaseback.
+
+**Break-even:**
+- Contribution per unit = Price - Variable cost per unit
+- Break-even output = Fixed costs / Contribution per unit
+- Margin of safety = Actual output - Break-even output
+
+**Ratios:**
+- Gross profit margin = (Gross profit / Revenue) × 100
+- Net profit margin = (Net profit / Revenue) × 100
+- ROCE = (Operating profit / Capital employed) × 100
+- Current ratio = Current assets / Current liabilities`,
+        'hrm': `**Business — Human Resource Management**
+
+**Recruitment & selection:** Job analysis → job description → person specification → advertise → shortlist → interview → appoint.
+
+**Training:** Induction (new employees), on-the-job (shadowing, mentoring), off-the-job (courses, workshops). Benefits: higher productivity, lower turnover, better quality.
+
+**Motivation theories:**
+- Taylor: scientific management, piece rate, money motivates
+- Maslow: hierarchy of needs (physiological → safety → social → esteem → self-actualization)
+- Herzberg: two-factor theory — motivators (achievement, recognition, responsibility) and hygiene factors (salary, conditions, policy)
+- Mayo: Hawthorne effect — social factors and attention improve performance
+
+**Leadership styles:**
+- Autocratic: dictatorial, fast decisions, low morale
+- Democratic: consultative, higher morale, slower decisions
+- Laissez-faire: hands-off, high autonomy, risk of lack of direction
+- Paternalistic: parent-child relationship, decisions for "employee good"`,
+        'operations': `**Business — Operations Management**
+
+**Methods of production:**
+- Job: one-off, customized, high skilled labor, high unit cost (wedding cakes, bespoke suits)
+- Batch: groups of similar products, flexible, moderate cost (bakeries, clothing sizes)
+- Flow/line: continuous, standardized, high automation, low unit cost, inflexible (cars, soft drinks)
+- Cell: team-based, combines job and flow benefits, flexible manufacturing
+
+**Quality:**
+- Quality control: inspection at end (detect defects)
+- Quality assurance: systems throughout (prevent defects, e.g., ISO 9000)
+- TQM: total quality management — everyone responsible, continuous improvement, zero defects
+
+**Lean production:**
+- Just-in-time (JIT): stock arrives when needed, reduces waste, requires reliable suppliers
+- Kaizen: continuous small improvements
+- Kanban: visual signaling system for production flow`,
+        'strategy': `**Business — Strategy & Growth**
+
+**Ansoff Matrix:**
+- Market penetration: existing product, existing market (lower risk)
+- Market development: existing product, new market (export, new segments)
+- Product development: new product, existing market (innovation, R&D)
+- Diversification: new product, new market (highest risk)
+
+**SWOT Analysis:**
+- Strengths / Weaknesses = internal factors
+- Opportunities / Threats = external factors (PESTLE: Political, Economic, Social, Technological, Legal, Environmental)
+
+**Globalization:**
+- Methods: exporting, licensing, franchising, joint ventures, FDI
+- Benefits: larger markets, economies of scale, access to resources
+- Challenges: cultural differences, exchange rate risk, political instability, competition`,
+        'essay': `**A-Level Business Essay Structure**
+
+**Introduction:**
+- Define key terms
+- Show understanding of the context
+- State your line of argument (thesis)
+
+**Body paragraphs (PEEL):**
+- **Point:** Clear topic sentence
+- **Explanation:** Theory or concept with application
+- **Evidence:** Real business example (company name, date, data)
+- **Evaluation:** "However...", "This depends on...", "In contrast..."
+
+**Evaluation techniques:**
+1. Short-term vs long-term
+2. Size of business (SME vs multinational)
+3. Industry context
+4. Stakeholder perspective
+5. Country/economic context
+
+**Conclusion:**
+- Judgment based on evidence
+- Prioritize most important factor
+- Do not introduce new information`
+    },
+    psychology: {
+        'research methods': `**Psychology — Research Methods**
+
+**Experiments:**
+- Lab: high control, high internal validity, low ecological validity
+- Field: natural setting, higher ecological validity, less control
+- Natural/quasi: IV occurs naturally, no manipulation, ethical for harmful variables
+
+**Key terms:**
+- IV = manipulated; DV = measured
+- Extraneous variable = could affect DV (controlled)
+- Confounding variable = uncontrolled extraneous variable
+
+**Sampling:**
+- Random: everyone equal chance, unbiased but hard to achieve
+- Opportunity: convenient, quick but biased
+- Systematic: every nth person
+- Stratified: proportionate to subgroups
+
+**Ethics:**
+- Informed consent, right to withdraw, confidentiality, deception only when necessary + debriefing, protection from harm
+
+**Data:**
+- Quantitative: numerical, objective, statistical analysis
+- Qualitative: rich, in-depth, thematic analysis, harder to generalize`,
+        'memory': `**Psychology — Memory**
+
+**Multi-store model (Atkinson & Shiffrin):**
+- Sensory memory: iconic (~0.5s), echoic (~2-4s)
+- STM: limited capacity (7±2 items), limited duration (~18-30s), acoustic coding
+- LTM: unlimited capacity, potentially permanent, semantic coding
+- Flow: attention → STM; rehearsal → LTM
+
+**Working memory model (Baddeley & Hitch):**
+- Central executive: attention controller, no storage
+- Phonological loop: auditory/verbal (phonological store + articulatory control)
+- Visuospatial sketchpad: visual/spatial
+- Episodic buffer: integrates information, links to LTM
+
+**Forgetting:**
+- Decay theory: memory traces fade over time (STM)
+- Interference: proactive (old disrupts new), retroactive (new disrupts old)
+- Retrieval failure: lack of appropriate cues (encoding specificity principle)
+
+**Eyewitness testimony:**
+- Misleading information (Loftus & Palmer), post-event discussion, anxiety, age of witness
+- Cognitive interview: context reinstatement, report everything, reverse order, change perspective`,
+        'attachment': `**Psychology — Attachment**
+
+**Bowlby's theory:**
+- Evolutionary basis: attachment promotes survival
+- Critical period: ~6 months to 2.5 years for attachment formation
+- Internal working model: template for future relationships
+- Monotropy: primary attachment to one figure (usually mother)
+
+**Ainsworth's Strange Situation:**
+- Secure (65%): upset when left, happy on return, uses caregiver as secure base
+- Insecure-avoidant (22%): ignores caregiver, little distress, independent
+- Insecure-resistant (12%): very distressed, rejects caregiver on return, difficult to comfort
+- Disorganized: contradictory behavior, fearful, associated with abuse/neglect
+
+**Cultural variations (Van IJzendoorn & Kroonenberg):**
+- Secure attachment is most common globally
+- Avoidant more common in Germany; resistant more common in Japan (collectivist cultures)
+
+**Maternal deprivation:**
+- Bowlby: separation from mother in critical period leads to intellectual/social/emotional damage
+- 44 Thieves study: prolonged early separation linked to affectionless psychopathy`,
+        'stress': `**Psychology — Stress**
+
+**Physiological responses:**
+- SAM axis (acute): hypothalamus → sympathetic NS → adrenal medulla → adrenaline/noradrenaline → fight or flight (heart rate ↑, BP ↑, glucose ↑, pupils dilate)
+- HPA axis (chronic): hypothalamus → CRH → pituitary → ACTH → adrenal cortex → cortisol → maintains energy, suppresses immune system
+
+**Stress models:**
+- Selye's GAS: Alarm (fight or flight), Resistance (coping sustained), Exhaustion (resources depleted, illness)
+- Lazarus & Folkman: Primary appraisal (is it stressful?), Secondary appraisal (can I cope?)
+
+**Sources of stress:**
+- Life changes (Holmes & Rahe SRRS): major events require readjustment
+- Daily hassles (Kanner): minor irritants accumulate
+- Workplace: workload, control, support, role ambiguity
+
+**Stress management:**
+- Biological: drugs (benzodiazepines, beta-blockers)
+- Psychological: CBT, stress inoculation training (Meichenbaum), mindfulness
+- Physical: exercise reduces cortisol, increases endorphins`,
+        'social': `**Psychology — Social Influence**
+
+**Conformity:**
+- Normative social influence: conform to be liked/accepted (public compliance, private disagreement)
+- Informational social influence: conform because we believe others are correct (private acceptance, ambiguous situations)
+- Asch (1951): 75% conformed at least once, 37% overall conformity rate. Factors: group size (up to 3), unanimity, task difficulty, anonymity
+
+**Obedience:**
+- Milgram (1963): 65% went to 450V. Factors: proximity of authority, proximity of victim, location (Yale), gradual commitment, buffers
+- Agency theory: agentic state (following orders) vs autonomous state (taking responsibility)
+
+**Resistance:**
+- Social support (ally reduces conformity)
+- Locus of control (internals resist more)
+- Prior commitment (publicly stating own view)
+
+**Minority influence:**
+- Moscovici: consistency, flexibility, commitment
+- Snowball effect: minority gradually converts majority`,
+        'abnormal': `**Psychology — Abnormal Psychology**
+
+**Definitions of abnormality:**
+- Statistical infrequency: rare = abnormal (but high IQ is rare yet desirable)
+- Deviation from social norms: violates rules (but norms change culturally/temporally)
+- Failure to function adequately: cannot cope with daily life (but may be situational)
+- Deviation from ideal mental health (Jahoda): positive criteria (self-actualization, autonomy, etc.)
+
+**Depression:**
+- Cognitive explanation (Beck): negative triad (self, world, future), cognitive distortions
+- Biological: low serotonin/norepinephrine, genetic predisposition, enlarged amygdala
+- Treatment: CBT (challenge negative thoughts), antidepressants (SSRIs), ECT (severe cases)
+
+**Schizophrenia:**
+- Symptoms: positive (hallucinations, delusions, disorganized speech) and negative (flat affect, avolition, poverty of speech)
+- Biological: dopamine hypothesis (excess dopamine in mesolimbic pathway), genetic (twin/adoption studies), neurodevelopmental (obstetric complications)
+- Treatment: antipsychotics (typical = dopamine antagonists, atypical = serotonin-dopamine), CBT for psychosis, family therapy`,
+        'biological': `**Psychology — Biological Psychology**
+
+**Neuron structure:**
+- Dendrites (receive signals), cell body (soma), axon (transmits), myelin sheath (insulates, speeds conduction), terminal buttons (release neurotransmitters)
+
+**Synaptic transmission:**
+- Action potential → Ca²⁺ enters → vesicles fuse → neurotransmitter release → bind to receptors → EPSP/IPSP → reuptake/enzymatic breakdown
+
+**Neurotransmitters:**
+- Serotonin: mood, sleep, appetite (low = depression)
+- Dopamine: reward, motivation, motor control (excess = schizophrenia, low = Parkinson's)
+- Acetylcholine: learning, memory, muscle contraction (low = Alzheimer's)
+- GABA: inhibitory (low = anxiety, seizures)
+
+**Brain scanning:**
+- EEG: electrical activity, high temporal resolution
+- MRI: structure, high spatial resolution
+- fMRI: function (blood flow), correlates activity with tasks
+- PET: metabolism, uses radioactive tracers
+
+**Hemispheric lateralization:**
+- Left: language, logic, analytical
+- Right: spatial awareness, creativity, emotion
+- Split-brain research (Sperry): corpus callosum severed, each hemisphere processes independently`,
+        'essay': `**A-Level Psychology Essay Structure**
+
+**Introduction:**
+- Define key terms
+- Briefly outline what the essay will cover
+- Optional: state your thesis/judgment
+
+**Body paragraphs (AO1 + AO3):**
+- AO1 (Knowledge): Describe theory/study clearly with names, dates, procedures, findings
+- AO3 (Evaluation): Strengths, weaknesses, comparisons, real-world applications
+- Use PEEL: Point, Evidence, Explain, Link
+
+**Evaluation techniques:**
+1. Methodological critique (sample size, generalizability, ethics, validity)
+2. Comparison with alternative theory
+3. Supporting/contradicting evidence
+4. Real-world application
+5. Determinism vs free will
+6. Reductionism vs holism
+7. Nature vs nurture
+
+**Conclusion:**
+- Summarize main points
+- Make a judgment (which theory/explanation is most valid/complete)
+- Consider interactionist approaches`
     }
 };
 
@@ -901,7 +1187,9 @@ function generateResponse(text, image) {
     else if (/economic|demand|supply|market|monopoly|oligopoly|inflation|unemployment|gdp|growth|fiscal|monetary|trade|exchange|elastic/i.test(q)) subject = 'economics';
     else if (/biology|cell|photosynthesis|respiration|dna|gene|inherit|enzyme|protein|membrane|nervous|hormone|ecosystem|evolution|mitosis|meiosis/i.test(q)) subject = 'biology';
     else if (/ielts|band score|speaking part|writing task|academic|general training|listening section|reading passage|cue card|essay check|coherence|lexical|task response/i.test(q)) subject = 'ielts';
-    else if (/business|accounting|psychology|english|chinese/i.test(q)) subject = 'other';
+    else if (/business|marketing|hrm|human resource|operations|strategy|ansoff|swot|finance|break-even|cash flow|leadership|motivation|promotion|pricing|production method|stakeholder|entrepreneur/i.test(q)) subject = 'business';
+    else if (/psychology|attachment|memory|stress|conformity|obedience|neurotransmitter|synapse|neuron|research method|experiment|ethics|depression|schizophrenia|biological psychology|social influence|cognitive psychology|developmental|abnormal/i.test(q)) subject = 'psychology';
+    else if (/accounting|english|chinese/i.test(q)) subject = 'other';
 
     // Track subject for progress
     if (subject && subject !== 'other') {
@@ -983,10 +1271,14 @@ Share the exact problem and I'll work through it with you.`;
         if (subject === 'maths') return 'Mathematics topics include pure math (calculus, algebra, trigonometry, vectors, complex numbers), mechanics, and statistics. Which topic needs clarification? I have step-by-step guides for differentiation, integration, trigonometric identities, and vector geometry.';
         if (subject === 'economics') return 'Economics divides into microeconomics (demand/supply, market structures, market failure) and macroeconomics (growth, inflation, unemployment, BOP, development). Which would you like me to explain?';
         if (subject === 'biology') return 'Biology topics include cell biology, biochemistry, genetics, physiology, ecology, and evolution. I can explain photosynthesis, cellular respiration, DNA replication, genetics, and cell structure in detail.';
+        if (subject === 'business') return 'Business covers marketing, finance, HRM, operations, and strategy. I can explain the marketing mix, break-even, cash flow, motivation theories, Ansoff matrix, SWOT, and more. What topic do you need?';
+        if (subject === 'psychology') return 'Psychology topics include memory, attachment, stress, social influence, research methods, and abnormal psychology. I can explain experiments, theories, and evaluation points. Which area?';
     }
 
-    if (/essay|write|structure|argument|evaluation/i.test(q) && subject === 'economics') {
-        return KNOWLEDGE.economics.essay;
+    if (/essay|write|structure|argument|evaluation/i.test(q)) {
+        if (subject === 'economics') return KNOWLEDGE.economics.essay;
+        if (subject === 'business') return KNOWLEDGE.business.essay;
+        if (subject === 'psychology') return KNOWLEDGE.psychology.essay;
     }
 
     if (/exam|revision|revise|study|prepare|tips|advice/i.test(q)) {

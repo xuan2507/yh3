@@ -33,7 +33,7 @@ function loadDecayAlerts() {
 function loadExamPredictor() {
     const body = document.getElementById('predictorBody');
     if (!body) return;
-    const subjects = ['physics', 'chemistry', 'maths', 'biology', 'economics'];
+    const subjects = ['physics', 'chemistry', 'maths', 'biology', 'economics', 'accounting', 'business', 'psychology'];
     let predictions = [];
     subjects.forEach(sub => {
         const preds = Auth.getExamPredictions(sub);
@@ -147,6 +147,8 @@ const DASH_SUBJECTS = [
     { id: 'biology', name: 'Biology', icon: 'fa-dna', color: '#ec4899', desc: 'Cell biology, genetics, ecology & physiology' },
     { id: 'economics', name: 'Economics', icon: 'fa-chart-line', color: '#8b5cf6', desc: 'Micro & macroeconomics, trade & development' },
     { id: 'accounting', name: 'Accounting', icon: 'fa-calculator', color: '#f97316', desc: 'Financial statements, partnerships & company accounts' },
+    { id: 'business', name: 'Business', icon: 'fa-briefcase', color: '#3b82f6', desc: 'Marketing, HRM, operations, finance & strategy' },
+    { id: 'psychology', name: 'Psychology', icon: 'fa-brain', color: '#a855f7', desc: 'Cognitive, biological, social & developmental psychology' },
     { id: 'ielts', name: 'IELTS', icon: 'fa-language', color: '#06b6d4', desc: 'Speaking, writing, reading & listening prep' }
 ];
 
