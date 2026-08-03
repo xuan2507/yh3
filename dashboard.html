@@ -6,6 +6,7 @@
     <title>Dashboard - LearnAI</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/study-timer.css">
     <link rel="stylesheet" href="css/mascot.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -96,7 +97,12 @@
                     </div>
                 </div>
 
-                <div class="quick-actions">
+                <div class="dashboard-grid">
+                    <div class="dashboard-left">
+                        <div id="studyTimerWidget"></div>
+                    </div>
+                    <div class="dashboard-right">
+                        <div class="quick-actions">
                     <a href="tutor.html" class="qa-card">
                         <div class="qa-icon"><i class="fas fa-robot"></i></div>
                         <div class="qa-info">
@@ -118,6 +124,8 @@
                             <span class="qa-desc">Track your growth</span>
                         </div>
                     </a>
+                </div>
+                    </div>
                 </div>
             </section>
 
@@ -415,6 +423,7 @@
     <script src="js/auth.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/dashboard.js"></script>
+    <script src="js/study-timer.js"></script>
     <script src="js/mascot.js"></script>
 </body>
 </html>

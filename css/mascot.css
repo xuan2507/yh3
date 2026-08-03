@@ -4,12 +4,12 @@
 
 .study-mascot {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: 28px;
+    right: 28px;
     z-index: 9999;
     opacity: 0;
-    transform: translateY(40px) scale(0.8);
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: translateY(60px) scale(0.6);
+    transition: all 0.7s cubic-bezier(0.34, 1.8, 0.64, 1);
     cursor: pointer;
 }
 
@@ -20,38 +20,47 @@
 
 .mascot-body {
     position: relative;
-    width: 100px;
-    height: 120px;
+    width: 140px;
+    height: 170px;
+    transition: transform 0.3s ease;
+}
+
+.mascot-body:hover {
+    transform: scale(1.08) rotate(-2deg);
 }
 
 .mascot-body svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.3));
+    filter: drop-shadow(0 8px 20px rgba(59, 130, 246, 0.35));
     transition: filter 0.3s;
 }
 
 .study-mascot:hover .mascot-body svg {
-    filter: drop-shadow(0 6px 20px rgba(59, 130, 246, 0.5));
+    filter: drop-shadow(0 12px 30px rgba(59, 130, 246, 0.5));
 }
 
 .mascot-bubble {
     position: absolute;
-    bottom: calc(100% + 12px);
+    bottom: calc(100% + 14px);
     right: 0;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px 14px 2px 14px;
-    padding: 10px 16px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--text);
+    background: var(--bg-card, rgba(255,255,255,0.95));
+    border: 1px solid var(--border, rgba(99,102,241,0.15));
+    border-radius: 18px 18px 2px 18px;
+    padding: 12px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text, #0f172a);
     white-space: nowrap;
-    box-shadow: var(--shadow);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     opacity: 0;
-    transform: translateY(8px) scale(0.9);
-    transition: all 0.3s ease;
+    transform: translateY(12px) scale(0.85);
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     pointer-events: none;
+    max-width: 220px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
 }
 
 .study-mascot:hover .mascot-bubble,
@@ -61,14 +70,36 @@
 }
 
 .mascot-bounce {
-    animation: mascotBounce 0.6s ease;
+    animation: mascotBounce 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @keyframes mascotBounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    20% { transform: translateY(-18px) rotate(-4deg); }
+    40% { transform: translateY(6px) rotate(2deg); }
+    60% { transform: translateY(-10px) rotate(-2deg); }
+    80% { transform: translateY(3px) rotate(1deg); }
+}
+
+/* Idle gentle float */
+.mascot-body svg {
+    animation: mascotFloat 4s ease-in-out infinite;
+}
+
+@keyframes mascotFloat {
     0%, 100% { transform: translateY(0); }
-    30% { transform: translateY(-12px); }
-    50% { transform: translateY(4px); }
-    70% { transform: translateY(-6px); }
+    50% { transform: translateY(-6px); }
+}
+
+/* Ear wiggle on hover */
+.study-mascot:hover .mascot-body svg {
+    animation: mascotWiggle 0.5s ease;
+}
+
+@keyframes mascotWiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
 }
 
 @media (max-width: 768px) {
@@ -77,11 +108,12 @@
         right: 16px;
     }
     .mascot-body {
-        width: 72px;
-        height: 88px;
+        width: 100px;
+        height: 122px;
     }
     .mascot-bubble {
-        font-size: 0.7rem;
-        padding: 8px 12px;
+        font-size: 0.75rem;
+        padding: 8px 14px;
+        max-width: 160px;
     }
 }
