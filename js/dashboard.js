@@ -136,7 +136,43 @@ function loadDailyChallenge() {
     }
 }
 
+// ========================================
+// Subject Grid
+// ========================================
+
+const DASH_SUBJECTS = [
+    { id: 'physics', name: 'Physics', icon: 'fa-atom', color: '#6366f1', desc: 'Mechanics, waves, electricity, nuclear & quantum physics' },
+    { id: 'chemistry', name: 'Chemistry', icon: 'fa-flask', color: '#10b981', desc: 'Physical, organic, inorganic & analytical chemistry' },
+    { id: 'maths', name: 'Mathematics', icon: 'fa-square-root-alt', color: '#f59e0b', desc: 'Pure maths, statistics, mechanics & calculus' },
+    { id: 'biology', name: 'Biology', icon: 'fa-dna', color: '#ec4899', desc: 'Cell biology, genetics, ecology & physiology' },
+    { id: 'economics', name: 'Economics', icon: 'fa-chart-line', color: '#8b5cf6', desc: 'Micro & macroeconomics, trade & development' },
+    { id: 'accounting', name: 'Accounting', icon: 'fa-calculator', color: '#f97316', desc: 'Financial statements, partnerships & company accounts' },
+    { id: 'ielts', name: 'IELTS', icon: 'fa-language', color: '#06b6d4', desc: 'Speaking, writing, reading & listening prep' }
+];
+
+function renderSubjectGrid() {
+    const grid = document.getElementById('dashSubjectsGrid');
+    if (!grid) return;
+    grid.innerHTML = DASH_SUBJECTS.map(s => {
+        const progress = Auth.getUser()?.progress?.[s.id];
+        const completed = progress?.completed?.length || 0;
+        return `
+        <div class="subject-card" style="border-top: 3px solid ${s.color}">
+            <div class="subject-icon" style="background:${s.color}20;color:${s.color}">
+                <i class="fas ${s.icon}"></i>
+            </div>
+            <h3>${s.name}</h3>
+            <p>${s.desc}</p>
+            <div class="subject-progress">
+                <span>${completed} topics completed</span>
+                <a href="${s.id === 'ielts' ? 'ielts.html' : 'quizzes.html'}" class="btn btn-outline btn-sm">Study</a>
+            </div>
+        </div>`;
+    }).join('');
+}
+
 // Call on load
 document.addEventListener('DOMContentLoaded', () => {
     loadDailyChallenge();
+    renderSubjectGrid();
 });

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Prep - LearnAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ielts.css">
+    <link rel="stylesheet" href="css/mascot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <nav class="dash-navbar">
+        <div class="dash-nav-left">
+            <a href="index.html" class="logo"><i class="fas fa-brain"></i><span>LearnAI</span></a>
+        </div>
+        <div class="dash-nav-right">
+            <div class="plan-badge" id="planBadge">Free</div>
+            <div class="user-menu">
+                <div class="user-avatar" id="userAvatar">JD</div>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="dashboard.html"><i class="fas fa-user"></i> Profile</a>
+                    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dash-layout">
+        <aside class="dash-sidebar">
+            <ul class="dash-menu">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Overview</a></li>
+                <li><a href="quizzes.html"><i class="fas fa-question-circle"></i> Quizzes</a></li>
+                <li><a href="tutor.html"><i class="fas fa-robot"></i> AI Tutor</a></li>
+                <li><a href="papers.html"><i class="fas fa-file-alt"></i> Past Papers</a></li>
+                <li><a href="mock.html"><i class="fas fa-clipboard-check"></i> Mock Exams</a></li>
+                <li><a href="flashcards.html"><i class="fas fa-layer-group"></i> Flashcards</a></li>
+                <li><a href="mistakes.html"><i class="fas fa-exclamation-triangle"></i> Mistake Library</a></li>
+                <li><a href="heatmap.html"><i class="fas fa-th"></i> Weakness Heatmap</a></li>
+                <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="pro.html"><i class="fas fa-crown"></i> Pro</a></li>
+                <li class="active"><a href="ielts.html"><i class="fas fa-language"></i> IELTS</a></li>
+            </ul>
+        </aside>
+
+        <main class="dash-main">
+            <section class="dash-section">
+                <h1 class="dash-title">IELTS Preparation Center</h1>
+                <p class="dash-welcome">Target Band 7.5+ with AI-powered practice, essay feedback, and speaking drills.</p>
+
+                <div class="ielts-hero">
+                    <div class="ielts-score-widget">
+                        <h3><i class="fas fa-calculator"></i> Band Score Estimator</h3>
+                        <div class="band-inputs">
+                            <div class="band-field">
+                                <label>Listening</label>
+                                <input type="number" id="bandL" min="0" max="9" step="0.5" value="6.0">
+                            </div>
+                            <div class="band-field">
+                                <label>Reading</label>
+                                <input type="number" id="bandR" min="0" max="9" step="0.5" value="6.0">
+                            </div>
+                            <div class="band-field">
+                                <label>Writing</label>
+                                <input type="number" id="bandW" min="0" max="9" step="0.5" value="6.0">
+                            </div>
+                            <div class="band-field">
+                                <label>Speaking</label>
+                                <input type="number" id="bandS" min="0" max="9" step="0.5" value="6.0">
+                            </div>
+                        </div>
+                        <div class="band-result">
+                            <span>Overall Band:</span>
+                            <strong id="overallBand">6.0</strong>
+                        </div>
+                    </div>
+                    <div class="ielts-quick-actions">
+                        <a href="tutor.html?ielts=writing" class="qa-card">
+                            <i class="fas fa-pen"></i>
+                            <span>AI Essay Check</span>
+                        </a>
+                        <a href="#speaking" class="qa-card">
+                            <i class="fas fa-microphone"></i>
+                            <span>Speaking Topics</span>
+                        </a>
+                        <a href="#vocab" class="qa-card">
+                            <i class="fas fa-book"></i>
+                            <span>Vocabulary</span>
+                        </a>
+                        <a href="#strategies" class="qa-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Strategies</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ielts-tabs">
+                    <button class="ielts-tab active" data-tab="speaking"><i class="fas fa-microphone"></i> Speaking</button>
+                    <button class="ielts-tab" data-tab="writing"><i class="fas fa-pen"></i> Writing</button>
+                    <button class="ielts-tab" data-tab="reading"><i class="fas fa-book-open"></i> Reading</button>
+                    <button class="ielts-tab" data-tab="listening"><i class="fas fa-headphones"></i> Listening</button>
+                </div>
+
+                <div class="ielts-panel active" id="speakingPanel">
+                    <h2>Speaking Practice</h2>
+                    <div class="speaking-parts">
+                        <div class="speak-part">
+                            <h3>Part 1: Introduction & Interview (4-5 min)</h3>
+                            <p>Answer questions about yourself, your home, work, studies, interests.</p>
+                            <div class="topic-tags">
+                                <span class="topic-tag">Hometown</span>
+                                <span class="topic-tag">Work/Study</span>
+                                <span class="topic-tag">Hobbies</span>
+                                <span class="topic-tag">Daily Routine</span>
+                                <span class="topic-tag">Food</span>
+                                <span class="topic-tag">Transport</span>
+                            </div>
+                            <div class="sample-qa">
+                                <p><strong>Q:</strong> Do you work or are you a student?</p>
+                                <p><strong>A model:</strong> I'm currently a student preparing for my A-Level examinations. I study at a private college in Kuala Lumpur, where I'm taking Physics, Chemistry, and Mathematics. It's quite demanding, but I find the subjects fascinating, especially when we do practical experiments in the lab.</p>
+                            </div>
+                        </div>
+                        <div class="speak-part">
+                            <h3>Part 2: Long Turn (3-4 min)</h3>
+                            <p>Speak for 1-2 minutes on a given topic with 1 minute preparation time.</p>
+                            <div class="cue-card" id="cueCard">
+                                <div class="cue-header">Describe a skill you would like to learn in the future.</div>
+                                <ul>
+                                    <li>What the skill is</li>
+                                    <li>Why you want to learn it</li>
+                                    <li>How you would learn it</li>
+                                    <li>And explain how this skill would be useful to you</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-outline" id="newCueBtn"><i class="fas fa-sync"></i> New Cue Card</button>
+                        </div>
+                        <div class="speak-part">
+                            <h3>Part 3: Discussion (4-5 min)</h3>
+                            <p>Abstract questions related to the Part 2 topic — test opinions, comparisons, predictions.</p>
+                            <div class="sample-qa">
+                                <p><strong>Q:</strong> Why do you think some people find it difficult to learn new skills later in life?</p>
+                                <p><strong>Framework:</strong> Acknowledge → Reason 1 (time/commitments) → Reason 2 (fear of failure) → Contrast (others thrive) → Conclusion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ielts-panel" id="writingPanel">
+                    <h2>Writing Practice</h2>
+                    <div class="writing-sections">
+                        <div class="writing-task">
+                            <h3>Task 1: Report (Academic) / Letter (General)</h3>
+                            <div class="task-card">
+                                <div class="task-type">Academic</div>
+                                <p><strong>Question:</strong> The line graph shows the percentage of people aged 65 and over in three countries from 1940 to 2040. Summarize the information by selecting and reporting the main features.</p>
+                                <div class="task-tips">
+                                    <h4>Band 7+ Checklist</h4>
+                                    <ul>
+                                        <li>Introduction: paraphrase the question (no numbers)</li>
+                                        <li>Overview: 2 main trends (highest/lowest, increases/decreases)</li>
+                                        <li>Body 1: detailed comparison with data</li>
+                                        <li>Body 2: remaining features with data</li>
+                                        <li>No opinion, no conclusion, no bullet points</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="writing-task">
+                            <h3>Task 2: Essay (250 words, 40 min)</h3>
+                            <div class="task-card">
+                                <p><strong>Question:</strong> In many countries, traditional foods are being replaced by international fast food. This is having a negative effect on families and communities. To what extent do you agree or disagree?</p>
+                                <div class="essay-plan">
+                                    <h4>Essay Plan (Agree/Disagree)</h4>
+                                    <div class="plan-row"><strong>Intro:</strong> Paraphrase + thesis (strongly agree)</div>
+                                    <div class="plan-row"><strong>Body 1:</strong> Family impact — less home cooking → weaker family bonds, shared meals decline</div>
+                                    <div class="plan-row"><strong>Body 2:</strong> Community impact — local restaurants close, homogenization of high streets, loss of cultural identity</div>
+                                    <div class="plan-row"><strong>Body 3:</strong> Counter-argument + refutation — convenience valued, but health costs and social erosion outweigh</div>
+                                    <div class="plan-row"><strong>Conclusion:</strong> Restate position + summary of main points</div>
+                                </div>
+                                <div class="band-descriptors">
+                                    <h4>Band Descriptors — Task Response</h4>
+                                    <table class="band-table">
+                                        <tr><th>Band</th><th>Task Response</th></tr>
+                                        <tr><td>9</td><td>Fully addresses all parts; clear position throughout; ideas fully extended</td></tr>
+                                        <tr><td>8</td><td>Sufficiently addresses all parts; clear position; main ideas extended</td></tr>
+                                        <tr><td>7</td><td>Addresses all parts; clear position; ideas extended but may lack consistency</td></tr>
+                                        <tr><td>6</td><td>Addresses all parts; position may be unclear; ideas limited</td></tr>
+                                        <tr><td>5</td><td>Addresses the task only partially; position unclear; ideas irrelevant</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ielts-panel" id="readingPanel">
+                    <h2>Reading Strategies</h2>
+                    <div class="reading-grid">
+                        <div class="reading-card">
+                            <h3><i class="fas fa-tachometer-alt"></i> Skimming & Scanning</h3>
+                            <p><strong>Skimming:</strong> Read first & last sentence of each paragraph to grasp main idea (60 sec per passage).</p>
+                            <p><strong>Scanning:</strong> Use keywords from question to locate specific information quickly.</p>
+                        </div>
+                        <div class="reading-card">
+                            <h3><i class="fas fa-list-ul"></i> Question Types</h3>
+                            <ul class="qtype-list">
+                                <li><span class="qtype-label">TFNG</span> True / False / Not Given — exact match vs inference vs not mentioned</li>
+                                <li><span class="qtype-label">Matching</span> Headings / Features / Sentence endings — find synonyms</li>
+                                <li><span class="qtype-label">Gap-fill</span> Summary / Note / Table / Diagram — word limit crucial</li>
+                                <li><span class="qtype-label">Multiple Choice</span> Single or multiple — eliminate distractors</li>
+                            </ul>
+                        </div>
+                        <div class="reading-card">
+                            <h3><i class="fas fa-clock"></i> Time Management</h3>
+                            <p><strong>Passage 1 (easiest):</strong> 15 min</p>
+                            <p><strong>Passage 2:</strong> 20 min</p>
+                            <p><strong>Passage 3 (hardest):</strong> 25 min</p>
+                            <p>Never spend more than 90 seconds on a single question. Guess and move on.</p>
+                        </div>
+                        <div class="reading-card">
+                            <h3><i class="fas fa-exclamation-triangle"></i> Common Traps</h3>
+                            <ul>
+                                <li><strong>NG vs False:</strong> If the text doesn't mention it → NOT GIVEN. If it contradicts → FALSE.</li>
+                                <li><strong>Word limit:</strong> "NO MORE THAN TWO WORDS" — hyphenated words count as one.</li>
+                                <li><strong>Synonyms:</strong> The answer rarely uses the exact words from the question.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ielts-panel" id="listeningPanel">
+                    <h2>Listening Strategies</h2>
+                    <div class="listening-sections">
+                        <div class="listen-part">
+                            <h3>Section 1: Social/Transactional (2 speakers, everyday context)</h3>
+                            <p>Usually a phone conversation — booking, enquiry, application. Expect names, numbers, dates, prices.</p>
+                            <div class="listen-tip"><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Write numbers as digits. Dates can be said in multiple formats — write what you hear.</div>
+                        </div>
+                        <div class="listen-part">
+                            <h3>Section 2: Informational (1 speaker, social context)</h3>
+                            <p>A monologue — tour guide, introduction, announcement. Often includes a map or diagram labeling.</p>
+                            <div class="listen-tip"><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Look at the map/diagram before audio starts. Identify key landmarks and directions.</div>
+                        </div>
+                        <div class="listen-part">
+                            <h3>Section 3: Educational (2-4 speakers, academic discussion)</h3>
+                            <p>Students and tutor discussing a project, assignment, or course. Multiple-choice and matching common.</p>
+                            <div class="listen-tip"><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Note who agrees/disagrees. Speakers may change their minds — the final opinion is what matters.</div>
+                        </div>
+                        <div class="listen-part">
+                            <h3>Section 4: Academic Lecture (1 speaker)</h3>
+                            <p>A university lecture on an academic topic. Gap-fill (summary/note/table) most common.</p>
+                            <div class="listen-tip"><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Predict word type (noun/verb/adjective) from grammar. Listen for signpost words: "firstly", "however", "in conclusion".</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ielts-vocab" id="vocab">
+                    <h2><i class="fas fa-book"></i> Academic Vocabulary Builder</h2>
+                    <div class="vocab-categories">
+                        <div class="vocab-cat">
+                            <h4>Trend Verbs (Writing Task 1)</h4>
+                            <div class="vocab-words">
+                                <span class="vocab-word">increase</span>
+                                <span class="vocab-word">rise</span>
+                                <span class="vocab-word">grow</span>
+                                <span class="vocab-word">climb</span>
+                                <span class="vocab-word">surge</span>
+                                <span class="vocab-word">soar</span>
+                                <span class="vocab-word">decrease</span>
+                                <span class="vocab-word">fall</span>
+                                <span class="vocab-word">drop</span>
+                                <span class="vocab-word">decline</span>
+                                <span class="vocab-word">plunge</span>
+                                <span class="vocab-word">fluctuate</span>
+                                <span class="vocab-word">stabilize</span>
+                                <span class="vocab-word">remain steady</span>
+                            </div>
+                        </div>
+                        <div class="vocab-cat">
+                            <h4>Opinion Phrases (Writing Task 2)</h4>
+                            <div class="vocab-words">
+                                <span class="vocab-word">I strongly believe that</span>
+                                <span class="vocab-word">It is undeniable that</span>
+                                <span class="vocab-word">There is no doubt that</span>
+                                <span class="vocab-word">From my perspective</span>
+                                <span class="vocab-word">It could be argued that</span>
+                                <span class="vocab-word">Nevertheless</span>
+                                <span class="vocab-word">Conversely</span>
+                                <span class="vocab-word">Furthermore</span>
+                                <span class="vocab-word">Consequently</span>
+                                <span class="vocab-word">In light of this</span>
+                            </div>
+                        </div>
+                        <div class="vocab-cat">
+                            <h4>Discourse Markers (Speaking & Writing)</h4>
+                            <div class="vocab-words">
+                                <span class="vocab-word">To begin with</span>
+                                <span class="vocab-word">Moving on to</span>
+                                <span class="vocab-word">With regard to</span>
+                                <span class="vocab-word">On the other hand</span>
+                                <span class="vocab-word">Having said that</span>
+                                <span class="vocab-word">All in all</span>
+                                <span class="vocab-word">To sum up</span>
+                                <span class="vocab-word">That being said</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/api-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/ielts.js"></script>
+    <script src="js/mascot.js"></script>
+</body>
+</html>

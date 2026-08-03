@@ -1,0 +1,425 @@
+/* ========================================
+   IELTS Styles
+   ======================================== */
+
+.ielts-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.ielts-score-widget {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+.ielts-score-widget h3 {
+    font-size: 1rem;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.band-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.band-field label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.band-field input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.band-result {
+    text-align: center;
+    padding: 14px;
+    background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(6,182,212,0.1));
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+.band-result strong {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-left: 8px;
+}
+
+.ielts-quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.ielts-quick-actions .qa-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.ielts-quick-actions .qa-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+
+.ielts-quick-actions .qa-card i {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.ielts-quick-actions .qa-card span {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.ielts-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.ielts-tab {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.ielts-tab:hover {
+    border-color: var(--primary);
+}
+
+.ielts-tab.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+.ielts-panel {
+    display: none;
+}
+
+.ielts-panel.active {
+    display: block;
+}
+
+.ielts-panel h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.speaking-parts, .listening-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.speak-part, .listen-part {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+.speak-part h3, .listen-part h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.speak-part p, .listen-part p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.topic-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.topic-tag {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(99,102,241,0.1);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.sample-qa {
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.sample-qa strong {
+    color: var(--primary);
+}
+
+.cue-card {
+    background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(6,182,212,0.08));
+    border: 2px solid var(--primary);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 16px;
+}
+
+.cue-header {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+    color: var(--primary);
+}
+
+.cue-card ul {
+    padding-left: 20px;
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.listen-tip {
+    background: rgba(245,158,11,0.1);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    border-radius: 0 10px 10px 0;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.listen-tip i {
+    color: var(--accent);
+    margin-right: 6px;
+}
+
+.writing-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.writing-task {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+.writing-task h3 {
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+}
+
+.task-card {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.task-type {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.task-tips, .essay-plan {
+    margin-top: 16px;
+}
+
+.task-tips h4, .essay-plan h4 {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.task-tips ul, .essay-plan .plan-row {
+    font-size: 0.85rem;
+    line-height: 1.8;
+}
+
+.plan-row {
+    padding: 8px 12px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    margin-bottom: 6px;
+}
+
+.band-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-top: 12px;
+}
+
+.band-table th, .band-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.band-table th {
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.band-table td:first-child {
+    font-weight: 700;
+    color: var(--accent);
+    width: 60px;
+}
+
+.reading-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.reading-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+.reading-card h3 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.reading-card h3 i {
+    color: var(--primary);
+}
+
+.reading-card p, .reading-card ul {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+.qtype-list {
+    list-style: none;
+    padding: 0;
+}
+
+.qtype-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+}
+
+.qtype-label {
+    font-weight: 700;
+    color: var(--primary);
+    min-width: 90px;
+    font-size: 0.8rem;
+}
+
+.ielts-vocab {
+    margin-top: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+}
+
+.ielts-vocab h2 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.vocab-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.vocab-cat h4 {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    color: var(--text-muted);
+}
+
+.vocab-words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.vocab-word {
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.vocab-word:hover {
+    background: rgba(99,102,241,0.1);
+    border-color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .ielts-hero {
+        grid-template-columns: 1fr;
+    }
+    .band-inputs {
+        grid-template-columns: 1fr 1fr;
+    }
+    .ielts-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+}

@@ -689,6 +689,169 @@ PED = (%ΔQd) / (%ΔP)
 **Chi-squared test:**
 χ² = Σ((O-E)²/E)
 - Compare to critical value at appropriate df and p=0.05`
+    },
+    ielts: {
+        'writing task 1': `**IELTS Academic Writing Task 1 — Report Structure (Band 7+)**
+
+**Introduction (1 sentence):** Paraphrase the question. No numbers.
+Example: "The line graph illustrates changes in... over the period..."
+
+**Overview (2 sentences):** 2 main trends. No specific data.
+- Highest/lowest overall
+- General increase/decrease/fluctuation
+- "Overall, ... experienced an upward trend, while ... declined."
+
+**Body Paragraph 1:** Detailed comparison with data
+- Group similar trends
+- Use comparatives: significantly higher, marginally lower, roughly equal
+- Use approximations: approximately, just over, slightly under
+
+**Body Paragraph 2:** Remaining features
+- Any exceptions or anomalies
+- Second half of the time period
+- Contrasting features
+
+**Language for trends:**
+- Increase: rise, grow, climb, surge, soar, rocket
+- Decrease: fall, drop, decline, plunge, plummet
+- Stability: remain steady, level off, stabilize, plateau
+- Fluctuation: fluctuate, vary, inconsistent pattern
+
+**Grammar:** Mix simple past + present perfect for trends continuing to now.`,
+        'writing task 2': `**IELTS Writing Task 2 — Essay Structure (Band 7+)**
+
+**Introduction (40-60 words):**
+- Background sentence (paraphrase the topic)
+- Thesis statement (your position / what the essay will discuss)
+- Optional: outline sentence
+
+**Body Paragraphs (100-120 words each):**
+- Topic sentence (main idea)
+- Explanation + development
+- Specific example (country, company, statistic, personal)
+- Mini-conclusion or link to next paragraph
+
+**Evaluation/Concession paragraph (if needed):**
+- Counter-argument
+- Refutation ("However, this view fails to consider...")
+- Why your position still holds
+
+**Conclusion (30-40 words):**
+- Restate thesis (different words)
+- Summarize main points
+- No new information
+
+**Essay types:**
+- **Opinion:** Strong position throughout, defend with 2 reasons
+- **Discussion:** Both sides fairly, then state your view
+- **Problem/Solution:** Identify causes + propose solutions
+- **Advantage/Disadvantage:** Balance both, conclude which outweighs`,
+        'speaking': `**IELTS Speaking — Band 7+ Strategies**
+
+**Part 1 (4-5 min):**
+- Answer directly + 1-2 sentences of detail
+- Use present tenses for habits, past for specific memories
+- Show range: "I tend to...", "I'm quite keen on...", "I can't stand..."
+
+**Part 2 (3-4 min):**
+- Use the 1-minute prep: jot 3-4 keywords, not sentences
+- Structure: Introduction → Past/Present → Example → Opinion/Future
+- Speak for 90-120 seconds
+- Use discourse markers: "To begin with", "Moving on to", "Another thing is"
+
+**Part 3 (4-5 min):**
+- Give abstract answers, not personal
+- Compare: "In contrast to..., ..."
+- Speculate: "I suppose...", "It seems likely that..."
+- Evaluate: "On the one hand..., but on the other..."
+
+**Fluency tips:**
+- Don't pause to search for perfect words
+- Use fillers naturally: "Well, I think...", "That's an interesting question..."
+- Self-correct smoothly: "...or rather, I mean..."`,
+        'reading': `**IELTS Reading — Band 7+ Strategies**
+
+**Time allocation:**
+- Passage 1 (easiest): 15 min
+- Passage 2: 20 min
+- Passage 3 (hardest): 25 min
+
+**TFNG strategy:**
+- TRUE = same meaning, different words
+- FALSE = contradicts the text
+- NOT GIVEN = not mentioned at all (don't infer)
+
+**Matching headings:**
+- Read paragraph first, then look at headings
+- Look for the MAIN idea, not supporting detail
+- Eliminate obvious wrong answers first
+
+**Gap-fill:**
+- Check word limit (NO MORE THAN TWO WORDS)
+- Predict word type (noun/verb/adjective) from grammar
+- Copy exactly from text (spelling counts)
+
+**Skimming:** Read first+last sentence of each paragraph (60 sec)
+**Scanning:** Use question keywords to locate answers quickly`,
+        'listening': `**IELTS Listening — Band 7+ Strategies**
+
+**Before each section:**
+- Read questions, underline keywords
+- Predict answers (number? name? date?)
+- Note word limit
+
+**During audio:**
+- Answers come in order (usually)
+- Speakers may correct themselves — final answer counts
+- Numbers/letters said twice if important
+- Write answers in shorthand, transfer at end
+
+**Section 1:** Social conversation — names, numbers, dates, prices
+**Section 2:** Monologue — map/diagram labeling common
+**Section 3:** Academic discussion — opinions, agreements, decisions
+**Section 4:** Lecture — note completion, gap-fill
+
+**Common traps:**
+- Distractor: speaker mentions A, then changes to B
+- Spelling: British vs American (centre/center both accepted)
+- Units: write exactly what you hear ($, %, km, etc.)`,
+        'vocabulary': `**IELTS High-Score Vocabulary by Topic**
+
+**Education:** curriculum, syllabus, pedagogy, holistic, rote learning, critical thinking, vocational, academia, extracurricular, literacy
+**Environment:** sustainable, renewable, biodiversity, carbon footprint, deforestation, emissions, conservation, ecological, habitat degradation
+**Technology:** innovation, automation, digitalization, artificial intelligence, cybersecurity, algorithm, breakthrough, cutting-edge, obsolete
+**Health:** epidemic, preventative, holistic, sedentary, nutrition, well-being, healthcare infrastructure, mental health, chronic
+**Urbanization:** metropolitan, infrastructure, congestion, suburban, gentrification, cosmopolitan, overpopulation, amenities, commute
+**Economy:** entrepreneurship, globalization, outsourcing, recession, inflation, fiscal, startup, market share, merger`,
+        'essay check': `**IELTS Essay Self-Check Rubric**
+
+Paste your essay and I'll score it against these criteria:
+
+**Task Response (TR):**
+- Did you answer all parts of the question?
+- Is your position clear throughout?
+- Are ideas fully extended with examples?
+
+**Coherence & Cohesion (CC):**
+- Is there clear paragraphing?
+- Are ideas logically sequenced?
+- Do you use a range of cohesive devices?
+
+**Lexical Resource (LR):**
+- Is vocabulary natural and precise?
+- Do you avoid repetition?
+- Are collocations correct?
+
+**Grammatical Range & Accuracy (GRA):**
+- Do you use complex sentences?
+- Are there varied sentence structures?
+- Are errors rare and minor?
+
+Share your essay (Task 1 or Task 2) and I'll give you:
+1. Estimated band score per criterion
+2. Specific improvements with rewrites
+3. Vocabulary upgrades
+4. Grammar corrections`
     }
 };
 
@@ -702,7 +865,7 @@ const IMAGE_PATTERNS = {
     'molecule structure': 'This appears to be a molecular structure. Identify functional groups (OH=alcohol, COOH=acid, C=O=carbonyl), count carbons, name using IUPAC rules, predict reactions based on functional groups.',
     'circuit wire battery': 'This is an electric circuit diagram. Identify series/parallel arrangements, apply Kirchhoff\'s laws, use V=IR for each component. Calculate equivalent resistance and total current.',
     'formula math equation': 'I see a mathematical expression. Simplify using algebra rules, factor if quadratic, apply differentiation/integration rules as needed. Show each step clearly.',
-    'dna helix strand': 'This shows DNA structure. Remember: antiparallel strands (5\'-3'), A-T and G-C pairing, major/minor grooves. For replication: semi-conservative, enzymes (helicase, polymerase, ligase).',
+    'dna helix strand': "This shows DNA structure. Remember: antiparallel strands (5'-3'), A-T and G-C pairing, major/minor grooves. For replication: semi-conservative, enzymes (helicase, polymerase, ligase).",
     'periodic table element': 'Periodic table reference. Trends to remember: atomic radius decreases across period/increases down group, electronegativity increases across/decreases down, ionization energy follows similar pattern with dips at Groups 3 and 6.'
 };
 
@@ -737,11 +900,12 @@ function generateResponse(text, image) {
     else if (/math|differentiat|integrat|trig|vector|complex|calculus|algebra|logarithm|exponent|polynomial|binomial|series|probability|statistic|hypothesis/i.test(q)) subject = 'maths';
     else if (/economic|demand|supply|market|monopoly|oligopoly|inflation|unemployment|gdp|growth|fiscal|monetary|trade|exchange|elastic/i.test(q)) subject = 'economics';
     else if (/biology|cell|photosynthesis|respiration|dna|gene|inherit|enzyme|protein|membrane|nervous|hormone|ecosystem|evolution|mitosis|meiosis/i.test(q)) subject = 'biology';
-    else if (/business|accounting|psychology|english|chinese|ielts/i.test(q)) subject = 'other';
+    else if (/ielts|band score|speaking part|writing task|academic|general training|listening section|reading passage|cue card|essay check|coherence|lexical|task response/i.test(q)) subject = 'ielts';
+    else if (/business|accounting|psychology|english|chinese/i.test(q)) subject = 'other';
 
     // Track subject for progress
     if (subject && subject !== 'other') {
-        Auth.addStudyTime(subject, 5);
+        Auth.addStudyTime(subject === 'ielts' ? 'english' : subject, 5);
         Auth.updateStreak();
     }
 
@@ -750,7 +914,8 @@ function generateResponse(text, image) {
     if (kb) {
         for (const [key, response] of Object.entries(kb)) {
             if (q.includes(key)) {
-                return response + '\n\nNeed me to work through a specific problem on this topic?';
+                const suffix = subject === 'ielts' ? '\n\nWant me to review a practice essay or give you a speaking topic?' : '\n\nNeed me to work through a specific problem on this topic?';
+                return response + suffix;
             }
         }
     }
