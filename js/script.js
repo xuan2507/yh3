@@ -155,11 +155,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let isFlipped = false;
         const flashcardContent = {
             front: {
-                text: 'What causes demand-pull inflation?',
-                hint: 'Click to reveal answer'
+                text: 'Explain demand-pull inflation (4 marks)',
+                hint: 'Click to reveal model answer'
             },
             back: {
-                text: 'Demand-pull inflation occurs when aggregate demand increases faster than an economy\'s productive capacity, causing prices to rise.',
+                text: 'Demand-pull inflation occurs when AD rises faster than productive capacity. Causes: increased C/I/G/X, monetary expansion. Diagram: AD shifts right, higher price level. Evaluation: depends on spare capacity, may be temporary.',
                 hint: 'Click to see question'
             }
         };
