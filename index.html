@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnAI - AI-Powered Tutor & Personalized Learning Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-brain"></i>
+                <span>LearnAI</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact" class="btn btn-primary">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="badge">
+                    <i class="fas fa-sparkles"></i>
+                    AI-Powered Education
+                </div>
+                <h1>Your Personal <span class="gradient-text">AI Tutor</span> Available 24/7</h1>
+                <p class="hero-subtitle">An intelligent learning platform that adapts to your ability, learning speed, and goals. Get personalized study plans, AI-generated notes, and instant feedback.</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary btn-lg">
+                        Start Learning Free
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#how-it-works" class="btn btn-outline btn-lg">
+                        <i class="fas fa-play-circle"></i>
+                        See How It Works
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-label">Students</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1M+</span>
+                        <span class="stat-label">Study Hours</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Grade Improvement</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Homework graded instantly</span>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-brain"></i>
+                    <span>Personalized study plan created</span>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Weakness identified: Algebra</span>
+                </div>
+                <div class="hero-illustration">
+                    <div class="ai-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="chat-bubbles">
+                        <div class="chat-bubble">
+                            <p>"Let me explain this concept step by step..."</p>
+                        </div>
+                        <div class="chat-bubble user">
+                            <p>"I don't understand quadratic equations"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem" id="problem">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">The Problem</span>
+                <h2>Traditional Education Is Broken</h2>
+                <p>Every student learns differently, yet most receive the same materials and approach.</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <h3>One-Size-Fits-All</h3>
+                    <p>Same textbooks, homework, and exercises for every student, ignoring individual learning differences and pace.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Expensive Tutoring</h3>
+                    <p>Private tutors are costly and unavailable 24/7. Students need instant help when they're stuck.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Wasted Time</h3>
+                    <p>Hours spent making notes, creating flashcards, and searching for practice questions instead of learning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Features</span>
+                <h2>Everything You Need to Excel</h2>
+                <p>AI-powered tools that adapt to your unique learning style and goals.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card large">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h3>Upload & Analyze</h3>
+                    <p>Upload textbooks, lecture notes, worksheets, past papers, and syllabus documents. Our AI analyzes content to understand key concepts, important topics, exam requirements, and difficulty levels.</p>
+                    <div class="feature-preview">
+                        <div class="upload-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Drop files or click to upload</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sticky-note"></i>
+                    </div>
+                    <h3>AI-Generated Notes</h3>
+                    <p>Get chapter summaries, key definitions, formulas, concept explanations, and exam tips in your preferred format.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clone"></i>
+                    </div>
+                    <h3>Smart Flashcards</h3>
+                    <p>Convert materials into question-answer flashcards, definition cards, and concept comparisons with spaced repetition.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <h3>Auto Marking</h3>
+                    <p>Upload homework, essays, and calculations for instant AI grading with detailed feedback and improvement suggestions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Study Planner</h3>
+                    <p>Personalized revision schedules based on your exam dates, weaknesses, available time, and learning goals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Weakness Detector</h3>
+                    <p>AI identifies knowledge gaps and creates targeted practice to strengthen weak areas before exams.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>Practice Questions</h3>
+                    <p>Generate unlimited exam-style questions with varying difficulty levels and instant worked solutions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>AI Tutor Chat</h3>
+                    <p>Ask questions anytime. Get explanations, examples, and step-by-step guidance on any topic 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Process</span>
+                <h2>How LearnAI Works</h2>
+                <p>Three simple steps to personalized learning excellence.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h3>Upload Materials</h3>
+                        <p>Upload your textbooks, notes, past papers, and syllabus. The AI analyzes and understands your curriculum.</p>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3>AI Generates Resources</h3>
+                        <p>Get personalized notes, flashcards, practice questions, and study plans tailored to your needs.</p>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Learn & Improve</h3>
+                        <p>Study with AI guidance, get instant feedback, track progress, and watch your grades improve.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo">
+        <div class="container">
+            <div class="demo-grid">
+                <div class="demo-content">
+                    <span class="section-tag">Live Demo</span>
+                    <h2>See the AI in Action</h2>
+                    <p>Watch how LearnAI transforms your study materials into powerful learning resources in seconds.</p>
+                    <ul class="demo-list">
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Upload any PDF, image, or document</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>AI extracts key concepts automatically</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Generate notes, flashcards & questions</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Track progress with detailed analytics</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="demo-visual">
+                    <div class="demo-window">
+                        <div class="window-header">
+                            <div class="window-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span class="window-title">LearnAI Dashboard</span>
+                        </div>
+                        <div class="window-body">
+                            <div class="demo-sidebar">
+                                <div class="demo-nav-item active">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="demo-nav-item">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div class="demo-nav-item">
+                                    <i class="fas fa-clone"></i>
+                                </div>
+                                <div class="demo-nav-item">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                            </div>
+                            <div class="demo-main">
+                                <div class="demo-card">
+                                    <div class="demo-card-header">
+                                        <i class="fas fa-file-alt"></i>
+                                        <span>Economics - Chapter 5</span>
+                                    </div>
+                                    <div class="demo-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 75%"></div>
+                                        </div>
+                                        <span>75% Complete</span>
+                                    </div>
+                                </div>
+                                <div class="demo-card flashcard-demo">
+                                    <div class="flashcard">
+                                        <div class="flashcard-front">
+                                            <p>What causes demand-pull inflation?</p>
+                                            <span class="flashcard-hint">Click to reveal answer</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="demo-stats">
+                                    <div class="demo-stat">
+                                        <span class="demo-stat-value">24</span>
+                                        <span class="demo-stat-label">Flashcards</span>
+                                    </div>
+                                    <div class="demo-stat">
+                                        <span class="demo-stat-value">12</span>
+                                        <span class="demo-stat-label">Questions</span>
+                                    </div>
+                                    <div class="demo-stat">
+                                        <span class="demo-stat-value">A-</span>
+                                        <span class="demo-stat-label">Grade</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Testimonials</span>
+                <h2>Students Love LearnAI</h2>
+                <p>Join thousands of students improving their grades with AI-powered learning.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"My grades improved from C to A in just 2 months. The AI identified my weak areas in calculus and created targeted practice questions. Best study tool I've ever used."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <span class="author-name">Sarah Mitchell</span>
+                            <span class="author-detail">A-Level Student, Mathematics</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The flashcard generator saved me hours of work. I upload my biology notes and get perfect recall cards instantly. Spaced repetition actually works!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JC</div>
+                        <div class="author-info">
+                            <span class="author-name">James Chen</span>
+                            <span class="author-detail">University Student, Biology</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Having an AI tutor available at 2 AM before exams is a game-changer. It explains concepts in multiple ways until I understand them. Worth every penny."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">EO</div>
+                        <div class="author-info">
+                            <span class="author-name">Emma Osei</span>
+                            <span class="author-detail">High School Student, Sciences</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Pricing</span>
+                <h2>Simple, Affordable Plans</h2>
+                <p>Choose the plan that fits your learning goals.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Free</h3>
+                        <div class="pricing-price">
+                            <span class="currency">$</span>
+                            <span class="amount">0</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 5 uploads per month</li>
+                        <li><i class="fas fa-check"></i> Basic AI notes</li>
+                        <li><i class="fas fa-check"></i> 50 flashcards</li>
+                        <li><i class="fas fa-check"></i> Limited practice questions</li>
+                        <li><i class="fas fa-check"></i> AI tutor chat (10/day)</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline btn-full">Get Started</a>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Pro</h3>
+                        <div class="pricing-price">
+                            <span class="currency">$</span>
+                            <span class="amount">19</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited uploads</li>
+                        <li><i class="fas fa-check"></i> Advanced AI notes & mind maps</li>
+                        <li><i class="fas fa-check"></i> Unlimited flashcards</li>
+                        <li><i class="fas fa-check"></i> Auto-marking & feedback</li>
+                        <li><i class="fas fa-check"></i> Personalized study plans</li>
+                        <li><i class="fas fa-check"></i> Unlimited AI tutor chat</li>
+                        <li><i class="fas fa-check"></i> Progress analytics</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-full">Start Pro Trial</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Team</h3>
+                        <div class="pricing-price">
+                            <span class="currency">$</span>
+                            <span class="amount">49</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Everything in Pro</li>
+                        <li><i class="fas fa-check"></i> Up to 5 student accounts</li>
+                        <li><i class="fas fa-check"></i> Parent dashboard</li>
+                        <li><i class="fas fa-check"></i> Teacher collaboration</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline btn-full">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Start Your Personalized Learning Journey Today</h2>
+                <p>Join 50,000+ students using AI to study smarter, not harder. Free plan available - no credit card required.</p>
+                <form class="cta-form" id="signupForm">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-white btn-lg">
+                        Get Started Free
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+                <p class="cta-note">
+                    <i class="fas fa-shield-alt"></i>
+                    No credit card required. Cancel anytime.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <i class="fas fa-brain"></i>
+                        <span>LearnAI</span>
+                    </a>
+                    <p>AI-powered personalized learning platform. Study smarter, achieve more.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Study Guides</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LearnAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
