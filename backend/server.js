@@ -28,6 +28,8 @@ app.use('/api/study', require('./routes/study'));
 app.use('/api/tutor', require('./routes/tutor'));
 app.use('/api/predictions', require('./routes/predictions'));
 app.use('/api/bookmarks', require('./routes/bookmarks'));
+app.use('/api/payments', require('./routes/payments'));
+app.use('/api/flashcards', require('./routes/flashcards'));
 
 // Error handler
 app.use((err, req, res, next) => {

@@ -114,6 +114,25 @@ const ApiClient = {
     getBookmarks() { return this.request('GET', '/api/bookmarks'); },
     removeBookmark(id) { return this.request('DELETE', `/api/bookmarks/${id}`); },
 
+    // Payments
+    createPayment(plan, amount, method, reference) {
+        return this.request('POST', '/api/payments', { plan, amount, method, reference });
+    },
+    getMyPayments() { return this.request('GET', '/api/payments/my'); },
+    getProStatus() { return this.request('GET', '/api/payments/status'); },
+
+    // Flashcards
+    createFlashcard(deckName, front, back, subject) {
+        return this.request('POST', '/api/flashcards', { deck_name: deckName, front, back, subject });
+    },
+    getFlashcards(deck) {
+        const q = deck ? `?deck=${encodeURIComponent(deck)}` : '';
+        return this.request('GET', `/api/flashcards${q}`);
+    },
+    getFlashcardDecks() { return this.request('GET', '/api/flashcards/decks'); },
+    updateFlashcard(id, updates) { return this.request('PATCH', `/api/flashcards/${id}`, updates); },
+    deleteFlashcard(id) { return this.request('DELETE', `/api/flashcards/${id}`); },
+
     // Config
     setBaseUrl(url) {
         localStorage.setItem('api_base', url);

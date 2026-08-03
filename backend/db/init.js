@@ -110,7 +110,35 @@ CREATE INDEX IF NOT EXISTS idx_mistakes_user ON mistakes(user_id);
 CREATE INDEX IF NOT EXISTS idx_topic_mastery_user ON topic_mastery(user_id);
 CREATE INDEX IF NOT EXISTS idx_goals_user ON goals(user_id);
 CREATE INDEX IF NOT EXISTS idx_study_sessions_user ON study_sessions(user_id);
+CREATE TABLE IF NOT EXISTS payments (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    plan VARCHAR(20) DEFAULT 'pro',
+    amount DECIMAL(10,2) NOT NULL,
+    method VARCHAR(50) NOT NULL,
+    status VARCHAR(20) DEFAULT 'pending',
+    reference TEXT,
+    receipt_url TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    verified_at TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS flashcards (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    deck_name VARCHAR(100) NOT NULL,
+    front TEXT NOT NULL,
+    back TEXT NOT NULL,
+    subject VARCHAR(50) DEFAULT 'general',
+    mastered BOOLEAN DEFAULT FALSE,
+    review_count INTEGER DEFAULT 0,
+    last_reviewed TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE INDEX IF NOT EXISTS idx_tutor_messages_user ON tutor_messages(user_id);
+CREATE INDEX IF NOT EXISTS idx_payments_user ON payments(user_id);
+CREATE INDEX IF NOT EXISTS idx_flashcards_user ON flashcards(user_id);
 `;
 
 async function init() {

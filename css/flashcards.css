@@ -1,0 +1,283 @@
+/* ========================================
+   Flashcards Styles
+   ======================================== */
+
+.flashcards-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+}
+
+.decks-sidebar {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.decks-sidebar h3 {
+    font-size: 1rem;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.deck-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+}
+
+.deck-item {
+    padding: 12px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+}
+
+.deck-item:hover {
+    background: rgba(99,102,241,0.08);
+}
+
+.deck-item.active {
+    background: rgba(99,102,241,0.15);
+    font-weight: 600;
+}
+
+.deck-item .deck-count {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: var(--bg);
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+.create-deck-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.create-deck-form input {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.85rem;
+}
+
+.flash-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add-card-form {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+.add-card-form h3 {
+    font-size: 1rem;
+    margin-bottom: 16px;
+}
+
+.card-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.card-inputs textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.9rem;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.study-area {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flashcard {
+    width: 100%;
+    max-width: 520px;
+    min-height: 220px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin-bottom: 24px;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    min-height: 220px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    min-height: 220px;
+    backface-visibility: hidden;
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    background: var(--bg);
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+    background: rgba(99,102,241,0.08);
+    border-color: var(--primary);
+}
+
+.flashcard-hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+.study-controls {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.study-controls .btn {
+    min-width: 110px;
+}
+
+.study-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.study-progress-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--bg);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.study-progress-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 3px;
+    transition: width 0.3s;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+}
+
+.card-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    position: relative;
+}
+
+.card-item.mastered {
+    border-color: #10b981;
+    background: rgba(16,185,129,0.05);
+}
+
+.card-item .card-front {
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.card-item .card-back {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.card-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.card-actions button {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .flashcards-layout {
+        grid-template-columns: 1fr;
+    }
+    .decks-sidebar {
+        position: static;
+    }
+    .card-inputs {
+        grid-template-columns: 1fr;
+    }
+    .flashcard {
+        max-width: 100%;
+    }
+}

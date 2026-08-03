@@ -87,3 +87,56 @@ function loadActiveGoals() {
 function capitalize(s) {
     return s.charAt(0).toUpperCase() + s.slice(1);
 }
+
+// ========================================
+// Daily Challenge
+// ========================================
+
+function loadDailyChallenge() {
+    const card = document.getElementById('challengeCard');
+    const text = document.getElementById('challengeText');
+    const streakEl = document.getElementById('challengeStreak');
+    const btn = document.getElementById('challengeBtn');
+    if (!card) return;
+
+    const today = new Date().toDateString();
+    const user = Auth.getUser();
+    const challenge = user?.dailyChallenge || { lastDate: null, streak: 0, completed: false };
+
+    // Check if new day
+    if (challenge.lastDate !== today) {
+        challenge.completed = false;
+        challenge.lastDate = today;
+    }
+
+    streakEl.innerHTML = `<i class="fas fa-fire"></i> <span>${challenge.streak}</span> day${challenge.streak !== 1 ? 's' : ''}`;
+
+    if (challenge.completed) {
+        card.classList.add('challenge-completed');
+        text.textContent = "Today's challenge completed! Come back tomorrow.";
+        btn.textContent = 'Completed';
+        btn.classList.add('btn-success');
+        btn.classList.remove('btn-primary');
+        btn.href = '#';
+        btn.onclick = (e) => e.preventDefault();
+    } else {
+        card.classList.remove('challenge-completed');
+        text.textContent = "Complete today's quick quiz to keep your streak alive!";
+        btn.textContent = 'Start Challenge';
+        btn.classList.remove('btn-success');
+        btn.classList.add('btn-primary');
+        btn.href = 'quizzes.html?mode=daily';
+    }
+
+    // Save back
+    if (user) {
+        if (!user.dailyChallenge) user.dailyChallenge = challenge;
+        else Object.assign(user.dailyChallenge, challenge);
+        Auth.saveUser(user);
+    }
+}
+
+// Call on load
+document.addEventListener('DOMContentLoaded', () => {
+    loadDailyChallenge();
+});

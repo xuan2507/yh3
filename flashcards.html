@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - LearnAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/flashcards.css">
+    <link rel="stylesheet" href="css/mascot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <nav class="dash-navbar">
+        <div class="dash-nav-left">
+            <a href="index.html" class="logo"><i class="fas fa-brain"></i><span>LearnAI</span></a>
+        </div>
+        <div class="dash-nav-right">
+            <div class="plan-badge" id="planBadge">Free</div>
+            <div class="user-menu">
+                <div class="user-avatar" id="userAvatar">JD</div>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="dashboard.html"><i class="fas fa-user"></i> Profile</a>
+                    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dash-layout">
+        <aside class="dash-sidebar">
+            <ul class="dash-menu">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Overview</a></li>
+                <li><a href="quizzes.html"><i class="fas fa-question-circle"></i> Quizzes</a></li>
+                <li><a href="tutor.html"><i class="fas fa-robot"></i> AI Tutor</a></li>
+                <li><a href="papers.html"><i class="fas fa-file-alt"></i> Past Papers</a></li>
+                <li><a href="mock.html"><i class="fas fa-clipboard-check"></i> Mock Exams</a></li>
+                <li class="active"><a href="flashcards.html"><i class="fas fa-layer-group"></i> Flashcards</a></li>
+                <li><a href="mistakes.html"><i class="fas fa-exclamation-triangle"></i> Mistake Library</a></li>
+                <li><a href="heatmap.html"><i class="fas fa-th"></i> Weakness Heatmap</a></li>
+                <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="pro.html"><i class="fas fa-crown"></i> Pro</a></li>
+            </ul>
+        </aside>
+
+        <main class="dash-main">
+            <section class="dash-section">
+                <h1 class="dash-title">Flashcards</h1>
+                <p class="dash-welcome">Create decks and master concepts with active recall.</p>
+
+                <div class="flashcards-layout">
+                    <div class="decks-sidebar">
+                        <h3><i class="fas fa-folder"></i> Decks</h3>
+                        <ul class="deck-list" id="deckList">
+                            <li class="deck-item active" data-deck="all">
+                                <span>All Cards</span>
+                                <span class="deck-count" id="allCount">0</span>
+                            </li>
+                        </ul>
+                        <div class="create-deck-form">
+                            <input type="text" id="newDeckName" placeholder="New deck name">
+                            <button class="btn btn-sm btn-primary" id="createDeckBtn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="flash-main">
+                        <div class="add-card-form" id="addCardForm">
+                            <h3><i class="fas fa-plus-circle"></i> Add Card</h3>
+                            <div class="form-group" style="margin-bottom:10px">
+                                <label>Deck</label>
+                                <select id="cardDeckSelect" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)"></select>
+                            </div>
+                            <div class="card-inputs">
+                                <textarea id="cardFront" placeholder="Front (question / term)"></textarea>
+                                <textarea id="cardBack" placeholder="Back (answer / definition)"></textarea>
+                            </div>
+                            <button class="btn btn-primary" id="addCardBtn"><i class="fas fa-plus"></i> Add Card</button>
+                        </div>
+
+                        <div class="study-area" id="studyArea" style="display:none">
+                            <div class="study-progress">
+                                <span id="studyCounter">1 / 5</span>
+                                <div class="study-progress-bar"><div class="study-progress-fill" id="studyProgressFill"></div></div>
+                            </div>
+                            <div class="flashcard" id="flashcard">
+                                <div class="flashcard-inner">
+                                    <div class="flashcard-front" id="cardFrontDisplay">Question</div>
+                                    <div class="flashcard-back" id="cardBackDisplay">Answer</div>
+                                </div>
+                            </div>
+                            <p class="flashcard-hint">Click card to flip</p>
+                            <div class="study-controls">
+                                <button class="btn btn-danger" id="btnHard"><i class="fas fa-times"></i> Hard</button>
+                                <button class="btn btn-warning" id="btnMedium"><i class="fas fa-minus"></i> Medium</button>
+                                <button class="btn btn-success" id="btnEasy"><i class="fas fa-check"></i> Easy</button>
+                            </div>
+                        </div>
+
+                        <div class="card-grid" id="cardGrid"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/api-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/flashcards.js"></script>
+    <script src="js/mascot.js"></script>
+</body>
+</html>

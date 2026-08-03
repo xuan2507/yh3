@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade to Pro - LearnAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pro.css">
+    <link rel="stylesheet" href="css/mascot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <nav class="dash-navbar">
+        <div class="dash-nav-left">
+            <a href="index.html" class="logo"><i class="fas fa-brain"></i><span>LearnAI</span></a>
+        </div>
+        <div class="dash-nav-right">
+            <div class="plan-badge" id="planBadge">Free</div>
+            <div class="user-menu">
+                <div class="user-avatar" id="userAvatar">JD</div>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="dashboard.html"><i class="fas fa-user"></i> Profile</a>
+                    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dash-layout">
+        <aside class="dash-sidebar">
+            <ul class="dash-menu">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Overview</a></li>
+                <li><a href="quizzes.html"><i class="fas fa-question-circle"></i> Quizzes</a></li>
+                <li><a href="tutor.html"><i class="fas fa-robot"></i> AI Tutor</a></li>
+                <li><a href="papers.html"><i class="fas fa-file-alt"></i> Past Papers</a></li>
+                <li><a href="mock.html"><i class="fas fa-clipboard-check"></i> Mock Exams</a></li>
+                <li><a href="flashcards.html"><i class="fas fa-layer-group"></i> Flashcards</a></li>
+                <li><a href="mistakes.html"><i class="fas fa-exclamation-triangle"></i> Mistake Library</a></li>
+                <li><a href="heatmap.html"><i class="fas fa-th"></i> Weakness Heatmap</a></li>
+                <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                <li class="active"><a href="pro.html"><i class="fas fa-crown"></i> Pro</a></li>
+            </ul>
+        </aside>
+
+        <main class="dash-main">
+            <section class="dash-section">
+                <h1 class="dash-title">Upgrade to Pro</h1>
+                <p class="dash-welcome">Unlock the full power of AI-powered learning.</p>
+
+                <div class="pro-comparison">
+                    <div class="pro-plan-card free">
+                        <h3><i class="fas fa-user"></i> Free</h3>
+                        <div class="pro-price">RM0<span>/month</span></div>
+                        <ul class="pro-features">
+                            <li><i class="fas fa-check"></i> Basic quizzes</li>
+                            <li><i class="fas fa-check"></i> AI Tutor (text)</li>
+                            <li><i class="fas fa-check"></i> Progress tracking</li>
+                            <li><i class="fas fa-check"></i> 3 mock exams/month</li>
+                            <li class="no"><i class="fas fa-times"></i> Unlimited mocks</li>
+                            <li class="no"><i class="fas fa-times"></i> AI Digital Twin</li>
+                            <li class="no"><i class="fas fa-times"></i> Advanced analytics</li>
+                            <li class="no"><i class="fas fa-times"></i> Priority support</li>
+                        </ul>
+                    </div>
+
+                    <div class="pro-plan-card pro-popular">
+                        <div class="popular-badge">Best Value</div>
+                        <h3><i class="fas fa-crown"></i> Pro</h3>
+                        <div class="pro-price">RM19<span>/month</span></div>
+                        <ul class="pro-features">
+                            <li><i class="fas fa-check"></i> Everything in Free</li>
+                            <li><i class="fas fa-check"></i> Unlimited mock exams</li>
+                            <li><i class="fas fa-check"></i> AI Digital Twin</li>
+                            <li><i class="fas fa-check"></i> Advanced weakness analytics</li>
+                            <li><i class="fas fa-check"></i> Study group access</li>
+                            <li><i class="fas fa-check"></i> Priority AI responses</li>
+                            <li><i class="fas fa-check"></i> Export study reports</li>
+                            <li><i class="fas fa-check"></i> Early access to new features</li>
+                        </ul>
+                        <button class="btn btn-primary btn-lg" id="chooseProBtn">Choose Pro</button>
+                    </div>
+                </div>
+
+                <div class="payment-portal" id="paymentPortal" style="display:none">
+                    <h2><i class="fas fa-credit-card"></i> Complete Payment</h2>
+
+                    <div class="payment-methods">
+                        <div class="pay-method active" data-method="tng">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Touch_%27n_Go_eWallet_logo.svg/120px-Touch_%27n_Go_eWallet_logo.svg.png" alt="TNG" onerror="this.style.display='none'">
+                            <span><i class="fas fa-mobile-alt"></i> TNG eWallet</span>
+                        </div>
+                        <div class="pay-method" data-method="bank">
+                            <i class="fas fa-university"></i>
+                            <span>Bank Transfer</span>
+                        </div>
+                        <div class="pay-method" data-method="card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Debit / Credit Card</span>
+                        </div>
+                    </div>
+
+                    <div class="pay-form" id="tngForm">
+                        <div class="pay-instructions">
+                            <h4><i class="fas fa-qrcode"></i> TNG eWallet Payment</h4>
+                            <ol>
+                                <li>Open your TNG eWallet app</li>
+                                <li>Scan the QR code below or search for merchant <strong>LEARNAI EDU</strong></li>
+                                <li>Enter amount: <strong>RM19.00</strong></li>
+                                <li>Complete payment and copy the Transaction Reference</li>
+                            </ol>
+                            <div class="qr-placeholder">
+                                <i class="fas fa-qrcode"></i>
+                                <p>QR Code will be generated after submission</p>
+                            </div>
+                            <div class="form-group">
+                                <label>TNG Transaction Reference</label>
+                                <input type="text" id="tngRef" placeholder="e.g. TNG123456789">
+                            </div>
+                            <button class="btn btn-primary" id="submitTngBtn"><i class="fas fa-paper-plane"></i> Submit Payment Request</button>
+                        </div>
+                    </div>
+
+                    <div class="pay-form" id="bankForm" style="display:none">
+                        <div class="pay-instructions">
+                            <h4><i class="fas fa-university"></i> Bank Transfer</h4>
+                            <div class="bank-details">
+                                <div class="bank-row"><span>Bank</span><strong>Maybank</strong></div>
+                                <div class="bank-row"><span>Account Name</span><strong>LEARNAI EDUCATION SDN BHD</strong></div>
+                                <div class="bank-row"><span>Account Number</span><strong>1123 4567 8910</strong></div>
+                                <div class="bank-row"><span>Amount</span><strong>RM19.00</strong></div>
+                            </div>
+                            <ol>
+                                <li>Transfer RM19.00 to the account above</li>
+                                <li>Keep the receipt screenshot</li>
+                                <li>Enter transaction reference below</li>
+                            </ol>
+                            <div class="form-group">
+                                <label>Bank Transaction Reference</label>
+                                <input type="text" id="bankRef" placeholder="e.g. IB123456789">
+                            </div>
+                            <button class="btn btn-primary" id="submitBankBtn"><i class="fas fa-paper-plane"></i> Submit Payment Request</button>
+                        </div>
+                    </div>
+
+                    <div class="pay-form" id="cardForm" style="display:none">
+                        <div class="pay-instructions">
+                            <h4><i class="fas fa-credit-card"></i> Card Payment</h4>
+                            <p class="form-hint">Secure card processing powered by Stripe (coming soon). For now, use TNG or Bank Transfer.</p>
+                            <div class="form-group">
+                                <label>Card Number</label>
+                                <input type="text" placeholder="4242 4242 4242 4242" disabled>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Expiry</label>
+                                    <input type="text" placeholder="MM/YY" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>CVC</label>
+                                    <input type="text" placeholder="123" disabled>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" disabled><i class="fas fa-lock"></i> Pay RM19.00</button>
+                            <p class="form-hint" style="margin-top:12px">Card payments will be available soon. Please use TNG eWallet or Bank Transfer.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-history" id="paymentHistory" style="display:none">
+                    <h3><i class="fas fa-history"></i> Payment History</h3>
+                    <div class="history-list" id="historyList"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/api-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/pro.js"></script>
+    <script src="js/mascot.js"></script>
+</body>
+</html>

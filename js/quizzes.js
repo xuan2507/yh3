@@ -253,16 +253,29 @@ function assignTopics() {
 }
 assignTopics();
 
-function startQuiz(subjectId) {
+function startQuiz(subjectId, dailyMode = false) {
     currentSubject = subjectId;
-    const pool = QUESTIONS[subjectId] || [];
-    // Adaptive: filter by difficulty level if user has history
-    const level = Auth.getAdaptiveLevel(subjectId);
-    let filtered = pool;
-    if (level === 0) filtered = pool.filter((_, i) => i % 3 !== 0); // easier subset
-    if (level === 2) filtered = pool.filter((q, i) => i % 2 === 0 || q.exp.length > 80); // harder subset
-    if (filtered.length < 10) filtered = pool;
-    currentQuestions = [...filtered].sort(() => Math.random() - 0.5).slice(0, 15);
+    let pool = [];
+    if (dailyMode) {
+        // Daily challenge: pick random questions from all subjects
+        const subjects = Object.keys(QUESTIONS);
+        subjects.forEach(sub => {
+            const subQ = QUESTIONS[sub] || [];
+            const picked = [...subQ].sort(() => Math.random() - 0.5).slice(0, 2);
+            picked.forEach(q => { q._dailySubject = sub; });
+            pool.push(...picked);
+        });
+        pool = pool.sort(() => Math.random() - 0.5).slice(0, 5);
+    } else {
+        pool = QUESTIONS[subjectId] || [];
+        const level = Auth.getAdaptiveLevel(subjectId);
+        let filtered = pool;
+        if (level === 0) filtered = pool.filter((_, i) => i % 3 !== 0);
+        if (level === 2) filtered = pool.filter((q, i) => i % 2 === 0 || q.exp.length > 80);
+        if (filtered.length < 10) filtered = pool;
+        pool = filtered;
+    }
+    currentQuestions = [...pool].sort(() => Math.random() - 0.5).slice(0, dailyMode ? 5 : 15);
     currentQIndex = 0;
     score = 0;
     answers = [];
@@ -271,14 +284,15 @@ function startQuiz(subjectId) {
     quizResult.style.display = 'none';
     quizArea.style.display = 'block';
 
-    showQuestion();
+    showQuestion(dailyMode);
 }
 
-function showQuestion() {
+function showQuestion(dailyMode = false) {
     const q = currentQuestions[currentQIndex];
     document.getElementById('quizCounter').textContent = `${currentQIndex + 1} / ${currentQuestions.length}`;
     document.getElementById('quizProgressFill').style.width = `${((currentQIndex) / currentQuestions.length) * 100}%`;
-    document.getElementById('quizQuestion').textContent = q.q;
+    const subjectLabel = dailyMode && q._dailySubject ? `<span style="font-size:0.8rem;color:var(--accent);display:block;margin-bottom:6px">${capitalize(q._dailySubject)}</span>` : '';
+    document.getElementById('quizQuestion').innerHTML = subjectLabel + q.q;
 
     const opts = document.getElementById('quizOptions');
     opts.innerHTML = q.options.map((opt, i) =>
@@ -291,22 +305,22 @@ function showQuestion() {
     document.getElementById('nextQuestion').textContent = currentQIndex === currentQuestions.length - 1 ? 'Finish' : 'Next';
 
     opts.querySelectorAll('.quiz-option').forEach(btn => {
-        btn.addEventListener('click', () => selectAnswer(parseInt(btn.dataset.index)));
+        btn.addEventListener('click', () => selectAnswer(parseInt(btn.dataset.index), dailyMode));
     });
 }
 
-function selectAnswer(index) {
+function selectAnswer(index, dailyMode = false) {
     const q = currentQuestions[currentQIndex];
     const isCorrect = index === q.a;
     if (isCorrect) score++;
     answers.push({ q: q.q, selected: index, correctIndex: q.a, correct: isCorrect });
 
-    // Track mistakes and mastery
+    const subj = dailyMode && q._dailySubject ? q._dailySubject : currentSubject;
     if (!isCorrect) {
-        Auth.addMistake(currentSubject, q.q, q.options[q.a], q.options[index], q.exp, q.topic);
+        Auth.addMistake(subj, q.q, q.options[q.a], q.options[index], q.exp, q.topic);
     }
-    Auth.updateTopicMastery(currentSubject, q.topic, isCorrect);
-    Auth.updateAdaptiveLevel(currentSubject, isCorrect);
+    Auth.updateTopicMastery(subj, q.topic, isCorrect);
+    Auth.updateAdaptiveLevel(subj, isCorrect);
 
     const opts = document.querySelectorAll('.quiz-option');
     opts.forEach((btn, i) => {
@@ -365,13 +379,38 @@ function finishQuiz() {
     ).join('');
 
     // Save
-    Auth.addQuizResult(currentSubject, score, total, 'General');
+    const subj = currentQuestions[0]?._dailySubject ? 'daily' : currentSubject;
+    Auth.addQuizResult(subj, score, total, 'General');
     Auth.updateStreak();
     loadStats();
+
+    // Mark daily challenge complete
+    if (subj === 'daily') {
+        const user = Auth.getUser();
+        if (user) {
+            if (!user.dailyChallenge) user.dailyChallenge = {};
+            user.dailyChallenge.completed = true;
+            user.dailyChallenge.streak = (user.dailyChallenge.streak || 0) + 1;
+            user.dailyChallenge.lastDate = new Date().toDateString();
+            Auth.saveUser(user);
+        }
+    }
 }
 
 document.getElementById('retryQuiz').addEventListener('click', () => startQuiz(currentSubject));
 document.getElementById('backToHub').addEventListener('click', () => {
     quizResult.style.display = 'none';
     hub.style.display = 'block';
+});
+
+function capitalize(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+// Auto-start daily challenge if URL has ?mode=daily
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('mode') === 'daily') {
+        startQuiz('physics', true);
+    }
 });
