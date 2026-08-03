@@ -523,6 +523,66 @@ img {
 }
 
 /* ========================================
+   Subjects Section
+   ======================================== */
+.subjects {
+    padding: 100px 0;
+    background: var(--bg-light);
+}
+
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.subject-card {
+    padding: 32px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: var(--shadow-glow);
+}
+
+.subject-card.ielts {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(6, 182, 212, 0.1));
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.subject-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.subject-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.subject-card p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* ========================================
    Features Section
    ======================================== */
 .features {
@@ -1375,6 +1435,14 @@ img {
     
     .nav-toggle {
         display: flex;
+    }
+    
+    .subjects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .subject-card.ielts {
+        grid-column: span 2;
     }
     
     .problem-grid,
