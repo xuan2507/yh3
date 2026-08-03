@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - LearnAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <!-- Dashboard Navbar -->
+    <nav class="dash-navbar">
+        <div class="dash-nav-left">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i>
+                <span>LearnAI</span>
+            </a>
+        </div>
+        <div class="dash-nav-right">
+            <div class="plan-badge" id="planBadge">Free</div>
+            <div class="user-menu">
+                <div class="user-avatar" id="userAvatar">JD</div>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="#" id="profileLink"><i class="fas fa-user"></i> Profile</a>
+                    <a href="#" id="billingLink"><i class="fas fa-credit-card"></i> Billing</a>
+                    <a href="#" id="settingsLink"><i class="fas fa-cog"></i> Settings</a>
+                    <hr>
+                    <a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="dash-layout">
+        <!-- Sidebar -->
+        <aside class="dash-sidebar">
+            <ul class="dash-menu">
+                <li class="active">
+                    <a href="#overview"><i class="fas fa-home"></i> Overview</a>
+                </li>
+                <li>
+                    <a href="#subjects"><i class="fas fa-book"></i> My Subjects</a>
+                </li>
+                <li>
+                    <a href="#resources"><i class="fas fa-folder-open"></i> Resources</a>
+                </li>
+                <li>
+                    <a href="#papers"><i class="fas fa-file-alt"></i> Past Papers</a>
+                </li>
+                <li>
+                    <a href="#flashcards"><i class="fas fa-clone"></i> Flashcards</a>
+                </li>
+                <li>
+                    <a href="#tutor"><i class="fas fa-robot"></i> AI Tutor</a>
+                </li>
+                <li>
+                    <a href="#planner"><i class="fas fa-calendar"></i> Study Planner</a>
+                </li>
+                <li>
+                    <a href="#progress"><i class="fas fa-chart-line"></i> Progress</a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-cta" id="sidebarCta">
+                <div class="sidebar-cta-content">
+                    <i class="fas fa-crown"></i>
+                    <p>Upgrade to Pro for unlimited access</p>
+                    <a href="#upgrade" class="btn btn-primary btn-sm">Upgrade</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dash-main">
+            <!-- Overview Section -->
+            <section class="dash-section" id="overview">
+                <h1 class="dash-title">Dashboard</h1>
+                <p class="dash-welcome">Welcome back, <span id="userName">Student</span>! Ready to ace your exams?</p>
+                
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-book"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="subjectsCount">0</span>
+                            <span class="stat-label">Subjects</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="resourcesCount">0</span>
+                            <span class="stat-label">Resources</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="hoursCount">0</span>
+                            <span class="stat-label">Study Hours</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-percentage"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="progressCount">0%</span>
+                            <span class="stat-label">Progress</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subjects Section -->
+            <section class="dash-section" id="subjects">
+                <div class="section-header-row">
+                    <h2>My Subjects</h2>
+                    <a href="#" class="btn btn-outline btn-sm" id="addSubjectBtn"><i class="fas fa-plus"></i> Add Subject</a>
+                </div>
+                <div class="dash-subjects-grid" id="dashSubjectsGrid">
+                    <!-- Filled by JS -->
+                </div>
+            </section>
+
+            <!-- Resources Section -->
+            <section class="dash-section" id="resources">
+                <div class="section-header-row">
+                    <h2>Study Resources</h2>
+                    <div class="section-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="notes">Notes</button>
+                        <button class="filter-btn" data-filter="papers">Papers</button>
+                        <button class="filter-btn" data-filter="flashcards">Flashcards</button>
+                    </div>
+                </div>
+                
+                <div class="resources-grid" id="resourcesGrid">
+                    <!-- Free resources -->
+                    <div class="resource-card" data-type="notes">
+                        <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>CAIE Physics Formula Sheet</h3>
+                        <p>Complete formula compilation for A-Level Physics (9702)</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag">Free</span>
+                            <span class="resource-size">PDF, 2MB</span>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-sm btn-full">Download</a>
+                    </div>
+                    
+                    <div class="resource-card" data-type="notes">
+                        <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>IGCSE Chemistry Revision Guide</h3>
+                        <p>Key concepts and reactions for IGCSE Chemistry (0620)</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag">Free</span>
+                            <span class="resource-size">PDF, 5MB</span>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-sm btn-full">Download</a>
+                    </div>
+                    
+                    <!-- Locked resources -->
+                    <div class="resource-card locked" data-type="papers">
+                        <div class="resource-lock"><i class="fas fa-lock"></i></div>
+                        <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>CAIE Maths Past Papers 2015-2024</h3>
+                        <p>Complete collection with marking schemes (9709)</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag premium">Pro</span>
+                            <span class="resource-size">PDF, 45MB</span>
+                        </div>
+                        <button class="btn btn-outline btn-sm btn-full unlock-btn" data-resource="maths-papers">
+                            <i class="fas fa-lock"></i> Unlock with Pro
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card locked" data-type="papers">
+                        <div class="resource-lock"><i class="fas fa-lock"></i></div>
+                        <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>Economics Essay Model Answers</h3>
+                        <p>Band 5/6 responses with examiner commentary (9708)</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag premium">Pro</span>
+                            <span class="resource-size">PDF, 12MB</span>
+                        </div>
+                        <button class="btn btn-outline btn-sm btn-full unlock-btn" data-resource="econ-essays">
+                            <i class="fas fa-lock"></i> Unlock with Pro
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card locked" data-type="flashcards">
+                        <div class="resource-lock"><i class="fas fa-lock"></i></div>
+                        <div class="resource-icon"><i class="fas fa-clone"></i></div>
+                        <h3>Biology Key Terms Flashcards</h3>
+                        <p>500+ definition cards for IGCSE Biology (0610)</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag premium">Pro</span>
+                            <span class="resource-size">Interactive</span>
+                        </div>
+                        <button class="btn btn-outline btn-sm btn-full unlock-btn" data-resource="bio-flashcards">
+                            <i class="fas fa-lock"></i> Unlock with Pro
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card locked" data-type="papers">
+                        <div class="resource-lock"><i class="fas fa-lock"></i></div>
+                        <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>IELTS Writing Band 9 Samples</h3>
+                        <p>Task 1 & 2 model answers with vocabulary analysis</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag premium">Pro</span>
+                            <span class="resource-size">PDF, 8MB</span>
+                        </div>
+                        <button class="btn btn-outline btn-sm btn-full unlock-btn" data-resource="ielts-writing">
+                            <i class="fas fa-lock"></i> Unlock with Pro
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card locked" data-type="notes">
+                        <div class="resource-lock"><i class="fas fa-lock"></i></div>
+                        <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>Psychology Research Methods Guide</h3>
+                        <p>Complete methodology guide for A-Level Psychology (9990)</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag premium">Pro</span>
+                            <span class="resource-size">PDF, 6MB</span>
+                        </div>
+                        <button class="btn btn-outline btn-sm btn-full unlock-btn" data-resource="psych-guide">
+                            <i class="fas fa-lock"></i> Unlock with Pro
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card locked" data-type="papers">
+                        <div class="resource-lock"><i class="fas fa-lock"></i></div>
+                        <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>Add Maths Topical Questions</h3>
+                        <p>Categorized by topic with worked solutions (0606)</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag premium">Pro</span>
+                            <span class="resource-size">PDF, 18MB</span>
+                        </div>
+                        <button class="btn btn-outline btn-sm btn-full unlock-btn" data-resource="addmath-topical">
+                            <i class="fas fa-lock"></i> Unlock with Pro
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card locked" data-type="notes">
+                        <div class="resource-lock"><i class="fas fa-lock"></i></div>
+                        <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>Business Studies Case Studies</h3>
+                        <p>Real-world cases with analysis framework (0450/9609)</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag premium">Pro</span>
+                            <span class="resource-size">PDF, 10MB</span>
+                        </div>
+                        <button class="btn btn-outline btn-sm btn-full unlock-btn" data-resource="business-cases">
+                            <i class="fas fa-lock"></i> Unlock with Pro
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card locked" data-type="flashcards">
+                        <div class="resource-lock"><i class="fas fa-lock"></i></div>
+                        <div class="resource-icon"><i class="fas fa-clone"></i></div>
+                        <h3>Chinese Vocabulary Builder</h3>
+                        <p>HSK-aligned vocabulary with example sentences</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag premium">Pro</span>
+                            <span class="resource-size">Interactive</span>
+                        </div>
+                        <button class="btn btn-outline btn-sm btn-full unlock-btn" data-resource="chinese-vocab">
+                            <i class="fas fa-lock"></i> Unlock with Pro
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card locked" data-type="papers">
+                        <div class="resource-lock"><i class="fas fa-lock"></i></div>
+                        <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>Accounting Practice Questions</h3>
+                        <p>Journal entries, financial statements, ratios (0452/9706)</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag premium">Pro</span>
+                            <span class="resource-size">PDF, 15MB</span>
+                        </div>
+                        <button class="btn btn-outline btn-sm btn-full unlock-btn" data-resource="accounting-practice">
+                            <i class="fas fa-lock"></i> Unlock with Pro
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card locked" data-type="notes">
+                        <div class="resource-lock"><i class="fas fa-lock"></i></div>
+                        <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>English Literature Analysis Pack</h3>
+                        <p>Character analysis, themes, and essay structures (0475/9695)</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag premium">Pro</span>
+                            <span class="resource-size">PDF, 9MB</span>
+                        </div>
+                        <button class="btn btn-outline btn-sm btn-full unlock-btn" data-resource="english-lit">
+                            <i class="fas fa-lock"></i> Unlock with Pro
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Upgrade Modal -->
+    <div class="modal" id="upgradeModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <i class="fas fa-crown"></i>
+                <h2>Upgrade to Pro</h2>
+                <p>Unlock all resources and premium features</p>
+            </div>
+            <div class="modal-body">
+                <ul class="upgrade-features">
+                    <li><i class="fas fa-check"></i> All 11 subjects + IELTS</li>
+                    <li><i class="fas fa-check"></i> Unlimited past papers & marking schemes</li>
+                    <li><i class="fas fa-check"></i> AI essay marking & feedback</li>
+                    <li><i class="fas fa-check"></i> Exam countdown study planner</li>
+                    <li><i class="fas fa-check"></i> IELTS speaking & writing feedback</li>
+                    <li><i class="fas fa-check"></i> Unlimited flashcards & notes</li>
+                </ul>
+                <div class="upgrade-price">
+                    <span class="price">$19</span>
+                    <span class="period">/month</span>
+                </div>
+                <button class="btn btn-primary btn-lg btn-full" id="upgradeBtn">
+                    Upgrade Now
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <p class="upgrade-note">Cancel anytime. No hidden fees.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
