@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics 9702 - CAIE A-Level Notes | LearnAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/notes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="notes-page">
+    <nav class="notes-navbar">
+        <a href="../dashboard.html" class="logo">
+            <i class="fas fa-brain"></i>
+            <span>LearnAI</span>
+        </a>
+        <div class="notes-nav-right">
+            <a href="../dashboard.html" class="btn btn-outline btn-sm"><i class="fas fa-arrow-left"></i> Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="notes-layout">
+        <aside class="notes-sidebar">
+            <h3>Physics 9702</h3>
+            <ul class="notes-toc">
+                <li><a href="#unit1" class="active">Unit 1: Physical Quantities & Units</a></li>
+                <li><a href="#unit2">Unit 2: Kinematics</a></li>
+                <li><a href="#unit3">Unit 3: Dynamics</a></li>
+                <li><a href="#unit4">Unit 4: Forces & Equilibrium</a></li>
+                <li><a href="#unit5">Unit 5: Work, Energy & Power</a></li>
+                <li><a href="#unit6">Unit 6: Deformation of Solids</a></li>
+                <li><a href="#unit7">Unit 7: Waves</a></li>
+                <li><a href="#unit8">Unit 8: Superposition</a></li>
+                <li><a href="#unit9">Unit 9: Electricity</a></li>
+                <li><a href="#unit10">Unit 10: D.C. Circuits</a></li>
+                <li><a href="#unit11">Unit 11: Particle Physics</a></li>
+            </ul>
+            <div class="notes-sources">
+                <h4>References</h4>
+                <p><i class="fas fa-book"></i> CAIE Syllabus 9702 (2025-2027)</p>
+                <p><i class="fas fa-globe"></i> ZNotes.org</p>
+                <p><i class="fas fa-globe"></i> SaveMyExams.com</p>
+                <p><i class="fas fa-globe"></i> PhysicsAndMathsTutor.com</p>
+            </div>
+        </aside>
+
+        <main class="notes-content">
+            <header class="notes-header">
+                <span class="notes-subject-tag"><i class="fas fa-atom"></i> Physics</span>
+                <h1>CAIE A-Level Physics (9702) Complete Notes</h1>
+                <p class="notes-meta">Aligned to CAIE 9702 syllabus | AS & A-Level | 2025-2027</p>
+            </header>
+
+            <section class="notes-section" id="unit1">
+                <h2>Unit 1: Physical Quantities & Units</h2>
+                
+                <div class="note-card">
+                    <h3>Base SI Units</h3>
+                    <table class="notes-table">
+                        <tr><th>Quantity</th><th>Unit</th><th>Symbol</th></tr>
+                        <tr><td>Mass</td><td>kilogram</td><td>kg</td></tr>
+                        <tr><td>Length</td><td>metre</td><td>m</td></tr>
+                        <tr><td>Time</td><td>second</td><td>s</td></tr>
+                        <tr><td>Current</td><td>ampere</td><td>A</td></tr>
+                        <tr><td>Temperature</td><td>kelvin</td><td>K</td></tr>
+                        <tr><td>Amount</td><td>mole</td><td>mol</td></tr>
+                    </table>
+                </div>
+
+                <div class="note-card">
+                    <h3>Derived Units</h3>
+                    <table class="notes-table">
+                        <tr><th>Quantity</th><th>Unit</th><th>Base Units</th></tr>
+                        <tr><td>Force</td><td>newton (N)</td><td>kg m s^-2</td></tr>
+                        <tr><td>Work/Energy</td><td>joule (J)</td><td>kg m^2 s^-2</td></tr>
+                        <tr><td>Power</td><td>watt (W)</td><td>kg m^2 s^-3</td></tr>
+                        <tr><td>Pressure</td><td>pascal (Pa)</td><td>kg m^-1 s^-2</td></tr>
+                        <tr><td>Frequency</td><td>hertz (Hz)</td><td>s^-1</td></tr>
+                    </table>
+                </div>
+
+                <div class="note-card important">
+                    <h3><i class="fas fa-star"></i> Homogeneity of Equations</h3>
+                    <p>An equation is <strong>homogeneous</strong> if the units on both sides are the same. This does NOT prove the equation is correct, but if NOT homogeneous, the equation IS wrong.</p>
+                    <div class="example-box">
+                        <p><strong>Example:</strong> Check v^2 = u^2 + 2as is homogeneous.</p>
+                        <p>LHS: [v^2] = (m/s)^2 = m^2 s^-2</p>
+                        <p>RHS: [u^2] = m^2 s^-2, [2as] = (m/s^2)(m) = m^2 s^-2</p>
+                        <p>Both sides = m^2 s^-2. Homogeneous.</p>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <h3>Scalars vs Vectors</h3>
+                    <div class="two-col">
+                        <div>
+                            <h4>Scalars</h4>
+                            <ul>
+                                <li>Distance, speed</li>
+                                <li>Mass, density</li>
+                                <li>Energy, power</li>
+                                <li>Temperature, time</li>
+                                <li>Pressure, volume</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Vectors</h4>
+                            <ul>
+                                <li>Displacement, velocity</li>
+                                <li>Acceleration, force</li>
+                                <li>Momentum, impulse</li>
+                                <li>Weight, field strength</li>
+                                <li>Current (sometimes)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <h3>Prefixes</h3>
+                    <table class="notes-table">
+                        <tr><th>Prefix</th><th>Symbol</th><th>Factor</th></tr>
+                        <tr><td>tera</td><td>T</td><td>10^12</td></tr>
+                        <tr><td>giga</td><td>G</td><td>10^9</td></tr>
+                        <tr><td>mega</td><td>M</td><td>10^6</td></tr>
+                        <tr><td>kilo</td><td>k</td><td>10^3</td></tr>
+                        <tr><td>centi</td><td>c</td><td>10^-2</td></tr>
+                        <tr><td>milli</td><td>m</td><td>10^-3</td></tr>
+                        <tr><td>micro</td><td>u</td><td>10^-6</td></tr>
+                        <tr><td>nano</td><td>n</td><td>10^-9</td></tr>
+                        <tr><td>pico</td><td>p</td><td>10^-12</td></tr>
+                    </table>
+                </div>
+            </section>
+
+            <section class="notes-section" id="unit2">
+                <h2>Unit 2: Kinematics</h2>
+                
+                <div class="note-card important">
+                    <h3><i class="fas fa-star"></i> SUVAT Equations (Constant Acceleration)</h3>
+                    <div class="formula-grid">
+                        <div class="formula">v = u + at</div>
+                        <div class="formula">s = ut + (1/2)at^2</div>
+                        <div class="formula">s = vt - (1/2)at^2</div>
+                        <div class="formula">v^2 = u^2 + 2as</div>
+                        <div class="formula">s = (u + v)t / 2</div>
+                    </div>
+                    <p><strong>s</strong> = displacement, <strong>u</strong> = initial velocity, <strong>v</strong> = final velocity, <strong>a</strong> = acceleration, <strong>t</strong> = time</p>
+                </div>
+
+                <div class="note-card">
+                    <h3>Displacement-Time Graphs</h3>
+                    <ul>
+                        <li><strong>Gradient</strong> = velocity</li>
+                        <li>Horizontal line = stationary</li>
+                        <li>Straight line = constant velocity</li>
+                        <li>Curved line = acceleration</li>
+                    </ul>
+                </div>
+
+                <div class="note-card">
+                    <h3>Velocity-Time Graphs</h3>
+                    <ul>
+                        <li><strong>Gradient</strong> = acceleration</li>
+                        <li><strong>Area under curve</strong> = displacement</li>
+                        <li>Horizontal line = constant velocity</li>
+                        <li>Straight sloping line = constant acceleration</li>
+                    </ul>
+                </div>
+
+                <div class="note-card">
+                    <h3>Acceleration due to Gravity (g)</h3>
+                    <p>g = 9.81 m/s^2 (downwards, so use a = -9.81 or a = +9.81 depending on sign convention)</p>
+                    <div class="example-box">
+                        <p><strong>Free fall:</strong> u = 0, a = g. Time to fall distance h: h = (1/2)gt^2</p>
+                        <p><strong>Vertical projection:</strong> At max height, v = 0. Use v = u - gt to find time.</p>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <h3>Projectile Motion</h3>
+                    <p>Resolve into horizontal and vertical components:</p>
+                    <ul>
+                        <li><strong>Horizontal:</strong> u_x = u cos(theta), a_x = 0, v_x = constant</li>
+                        <li><strong>Vertical:</strong> u_y = u sin(theta), a_y = -g</li>
+                        <li><strong>Time of flight:</strong> Use vertical motion, s_y = 0 for landing at same level</li>
+                        <li><strong>Range:</strong> R = u_x * T (where T = time of flight)</li>
+                        <li><strong>Max height:</strong> At max height, v_y = 0. Use v_y^2 = u_y^2 - 2gs_y</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="notes-section" id="unit3">
+                <h2>Unit 3: Dynamics</h2>
+                
+                <div class="note-card important">
+                    <h3><i class="fas fa-star"></i> Newton's Laws of Motion</h3>
+                    <div class="law-box">
+                        <h4>First Law</h4>
+                        <p>A body remains at rest or in uniform motion unless acted upon by a resultant force.</p>
+                    </div>
+                    <div class="law-box">
+                        <h4>Second Law</h4>
+                        <p>F = ma. Resultant force = mass x acceleration.</p>
+                        <p>For varying mass: F = d(mv)/dt = rate of change of momentum</p>
+                    </div>
+                    <div class="law-box">
+                        <h4>Third Law</h4>
+                        <p>If body A exerts a force on body B, then B exerts an equal and opposite force on A.</p>
+                        <p>Action and reaction forces act on <strong>different bodies</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <h3>Linear Momentum</h3>
+                    <div class="formula">p = mv</div>
+                    <p>Unit: kg m/s or Ns. Vector quantity.</p>
+                </div>
+
+                <div class="note-card important">
+                    <h3><i class="fas fa-star"></i> Principle of Conservation of Momentum</h3>
+                    <p>For a system with no external resultant force:</p>
+                    <div class="formula">Total momentum before = Total momentum after</div>
+                    <div class="example-box">
+                        <p><strong>Collision:</strong> m1u1 + m2u2 = m1v1 + m2v2</p>
+                        <p><strong>Explosion:</strong> 0 = m1v1 + m2v2 (initially at rest)</p>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <h3>Elastic and Inelastic Collisions</h3>
+                    <table class="notes-table">
+                        <tr><th>Type</th><th>Momentum</th><th>Kinetic Energy</th></tr>
+                        <tr><td>Elastic</td><td>Conserved</td><td>Conserved</td></tr>
+                        <tr><td>Inelastic</td><td>Conserved</td><td>NOT conserved</td></tr>
+                        <tr><td>Perfectly inelastic</td><td>Conserved</td><td>Maximum loss (bodies stick)</td></tr>
+                    </table>
+                    <p>For elastic collision: relative speed of approach = relative speed of separation</p>
+                </div>
+
+                <div class="note-card">
+                    <h3>Impulse</h3>
+                    <div class="formula">Impulse = F * t = change in momentum = mv - mu</div>
+                    <p>Impulse = area under force-time graph</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="unit4">
+                <h2>Unit 4: Forces, Density & Pressure</h2>
+                
+                <div class="note-card">
+                    <h3>Types of Forces</h3>
+                    <ul>
+                        <li><strong>Gravitational (Weight):</strong> W = mg (acts downwards)</li>
+                        <li><strong>Normal contact force:</strong> Perpendicular to surface</li>
+                        <li><strong>Tension:</strong> In strings/rods (pulls)</li>
+                        <li><strong>Friction:</strong> Opposes motion/attempted motion</li>
+                        <li><strong>Drag/Air resistance:</strong> Opposes motion through fluid</li>
+                        <li><strong>Upthrust:</strong> Upwards force in fluid (Archimedes)</li>
+                        <li><strong>Electrostatic:</strong> Between charges</li>
+                    </ul>
+                </div>
+
+                <div class="note-card">
+                    <h3>Moments</h3>
+                    <div class="formula">Moment = F * d (force x perpendicular distance from pivot)</div>
+                    <p>Unit: Nm. Principle of moments: sum of clockwise moments = sum of anticlockwise moments</p>
+                </div>
+
+                <div class="note-card">
+                    <h3>Centre of Gravity</h3>
+                    <p>The point where the entire weight of an object appears to act. For uniform objects, it's at the geometric centre.</p>
+                </div>
+
+                <div class="note-card">
+                    <h3>Density & Pressure</h3>
+                    <div class="formula">Density: rho = m/V (kg/m^3)</div>
+                    <div class="formula">Pressure: P = F/A (Pa or N/m^2)</div>
+                    <div class="formula">Fluid pressure: P = rho * g * h</div>
+                    <p>For a liquid column: pressure increases with depth</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="unit5">
+                <h2>Unit 5: Work, Energy & Power</h2>
+                
+                <div class="note-card important">
+                    <h3><i class="fas fa-star"></i> Key Equations</h3>
+                    <div class="formula-grid">
+                        <div class="formula">Work: W = F * s * cos(theta)</div>
+                        <div class="formula">KE = (1/2)mv^2</div>
+                        <div class="formula">GPE = mgh</div>
+                        <div class="formula">Power: P = W/t = Fv</div>
+                        <div class="formula">Efficiency = (useful output / total input) x 100%</div>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <h3>Principle of Conservation of Energy</h3>
+                    <p>Energy cannot be created or destroyed, only transferred from one form to another.</p>
+                    <p>Total energy in an isolated system is constant.</p>
+                </div>
+
+                <div class="note-card">
+                    <h3>Work Done by a Gas</h3>
+                    <div class="formula">W = p * delta(V)</div>
+                    <p>Work done BY gas = area under p-V graph</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="unit6">
+                <h2>Unit 6: Deformation of Solids</h2>
+                
+                <div class="note-card important">
+                    <h3><i class="fas fa-star"></i> Hooke's Law</h3>
+                    <div class="formula">F = kx (up to limit of proportionality)</div>
+                    <p>k = spring constant (N/m), x = extension (m)</p>
+                </div>
+
+                <div class="note-card">
+                    <h3>Stress, Strain & Young Modulus</h3>
+                    <div class="formula">Stress = F/A (Pa)</div>
+                    <div class="formula">Strain = extension / original length (no units)</div>
+                    <div class="formula">Young Modulus E = stress/strain = (F/A)/(e/L) = FL/Ae</div>
+                </div>
+
+                <div class="note-card">
+                    <h3>Stress-Strain Graph Features</h3>
+                    <ul>
+                        <li><strong>Limit of proportionality:</strong> End of straight-line region (Hooke's law)</li>
+                        <li><strong>Elastic limit:</strong> Beyond this, permanent deformation occurs</li>
+                        <li><strong>Yield point:</strong> Large strain for small increase in stress</li>
+                        <li><strong>Ultimate tensile stress (UTS):</strong> Maximum stress before breaking</li>
+                        <li><strong>Breaking stress:</strong> Stress at fracture</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="notes-section" id="unit7">
+                <h2>Unit 7: Waves</h2>
+                
+                <div class="note-card important">
+                    <h3><i class="fas fa-star"></i> Wave Equations</h3>
+                    <div class="formula-grid">
+                        <div class="formula">v = f * lambda</div>
+                        <div class="formula">f = 1/T</div>
+                        <div class="formula">Intensity = Power / Area</div>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <h3>Progressive Waves</h3>
+                    <p>Transfer energy without transferring matter.</p>
+                    <ul>
+                        <li><strong>Amplitude (A):</strong> Maximum displacement from equilibrium</li>
+                        <li><strong>Wavelength (lambda):</strong> Distance between identical points</li>
+                        <li><strong>Frequency (f):</strong> Number of oscillations per second</li>
+                        <li><strong>Period (T):</strong> Time for one complete oscillation</li>
+                        <li><strong>Phase difference:</strong> phi = 2pi * (x/lambda) or phi = 2pi * (t/T)</li>
+                    </ul>
+                </div>
+
+                <div class="note-card">
+                    <h3>Transverse vs Longitudinal</h3>
+                    <table class="notes-table">
+                        <tr><th>Transverse</th><th>Longitudinal</th></tr>
+                        <tr><td>Displacement perpendicular to direction of travel</td><td>Displacement parallel to direction of travel</td></tr>
+                        <tr><td>Peaks and troughs</td><td>Compressions and rarefactions</td></tr>
+                        <tr><td>EM waves, waves on string</td><td>Sound waves, slinky</td></tr>
+                    </table>
+                </div>
+
+                <div class="note-card">
+                    <h3>Electromagnetic Spectrum</h3>
+                    <table class="notes-table">
+                        <tr><th>Type</th><th>Wavelength</th><th>Source/Use</th></tr>
+                        <tr><td>Radio</td><td>> 10 cm</td><td>Radio transmitters</td></tr>
+                        <tr><td>Microwave</td><td>1 mm - 10 cm</td><td>Ovens, mobile phones</td></tr>
+                        <tr><td>Infrared</td><td>700 nm - 1 mm</td><td>Heat, remote controls</td></tr>
+                        <tr><td>Visible</td><td>400-700 nm</td><td>Human eye</td></tr>
+                        <tr><td>Ultraviolet</td><td>10-400 nm</td><td>Sun, fluorescent</td></tr>
+                        <tr><td>X-rays</td><td>0.01-10 nm</td><td>Medical imaging</td></tr>
+                        <tr><td>Gamma</td><td>< 0.01 nm</td><td>Radioactive decay</td></tr>
+                    </table>
+                    <p><strong>All EM waves:</strong> travel at c = 3.0 x 10^8 m/s in vacuum, transverse, can travel through vacuum</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="unit8">
+                <h2>Unit 8: Superposition</h2>
+                
+                <div class="note-card">
+                    <h3>Principle of Superposition</h3>
+                    <p>When two or more waves meet, the resultant displacement is the vector sum of the individual displacements.</p>
+                </div>
+
+                <div class="note-card">
+                    <h3>Stationary (Standing) Waves</h3>
+                    <ul>
+                        <li>Formed by superposition of two progressive waves of same frequency traveling in opposite directions</li>
+                        <li><strong>Nodes:</strong> Points of zero amplitude (destructive interference)</li>
+                        <li><strong>Antinodes:</strong> Points of maximum amplitude (constructive interference)</li>
+                        <li>Distance between adjacent nodes = lambda/2</li>
+                        <li>Distance between node and antinode = lambda/4</li>
+                    </ul>
+                    <div class="example-box">
+                        <p><strong>String fixed at both ends:</strong> L = n(lambda/2) where n = 1, 2, 3...</p>
+                        <p><strong>Pipe open at both ends:</strong> L = n(lambda/2)</p>
+                        <p><strong>Pipe closed at one end:</strong> L = n(lambda/4) where n = 1, 3, 5...</p>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <h3>Diffraction</h3>
+                    <p>Spreading of waves when passing through a gap or around an obstacle.</p>
+                    <ul>
+                        <li>Maximum diffraction when gap width ~ wavelength</li>
+                        <li>Diffraction is most significant when obstacle/gap is comparable to wavelength</li>
+                    </ul>
+                </div>
+
+                <div class="note-card important">
+                    <h3><i class="fas fa-star"></i> Double-Slit Interference</h3>
+                    <div class="formula">Fringe spacing: w = lambda * D / a</div>
+                    <p><strong>w</strong> = fringe spacing, <strong>lambda</strong> = wavelength, <strong>D</strong> = slit-screen distance, <strong>a</strong> = slit separation</p>
+                    <ul>
+                        <li>Bright fringes: path difference = n*lambda</li>
+                        <li>Dark fringes: path difference = (n + 1/2)*lambda</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="notes-section" id="unit9">
+                <h2>Unit 9: Electricity</h2>
+                
+                <div class="note-card important">
+                    <h3><i class="fas fa-star"></i> Key Equations</h3>
+                    <div class="formula-grid">
+                        <div class="formula">Q = It (Charge = current x time)</div>
+                        <div class="formula">V = W/Q (Potential difference = work/charge)</div>
+                        <div class="formula">V = IR (Ohm's Law)</div>
+                        <div class="formula">P = VI = I^2R = V^2/R</div>
+                        <div class="formula">R = rho * L / A</div>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <h3>Ohm's Law & Resistance</h3>
+                    <p>For an ohmic conductor at constant temperature: V proportional to I.</p>
+                    <p><strong>Resistivity (rho):</strong> Material property. Unit: ohm-metre.</p>
+                </div>
+
+                <div class="note-card">
+                    <h3>I-V Characteristics</h3>
+                    <table class="notes-table">
+                        <tr><th>Component</th><th>Graph Shape</th><th>Reason</th></tr>
+                        <tr><td>Ohmic resistor</td><td>Straight line through origin</td><td>R constant</td></tr>
+                        <tr><td>Filament lamp</td><td>Curve, gradient decreases</td><td>R increases with temp</td></tr>
+                        <tr><td>Thermistor (NTC)</td><td>Curve, gradient increases</td><td>R decreases with temp</td></tr>
+                        <tr><td>Diode</td><td>Zero current until threshold</td><td>One-way conductor</td></tr>
+                    </table>
+                </div>
+
+                <div class="note-card">
+                    <h3>Power & Energy</h3>
+                    <div class="formula">Energy = Power x time = VIt = I^2Rt = V^2t/R</div>
+                    <p>For electrical heating: E = mc(delta T) = IVt</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="unit10">
+                <h2>Unit 10: D.C. Circuits</h2>
+                
+                <div class="note-card important">
+                    <h3><i class="fas fa-star"></i> Kirchhoff's Laws</h3>
+                    <div class="law-box">
+                        <h4>First Law (Junction/Current Law)</h4>
+                        <p>Sum of currents entering a junction = Sum of currents leaving</p>
+                        <div class="formula">I1 + I2 = I3 + I4</div>
+                    </div>
+                    <div class="law-box">
+                        <h4>Second Law (Loop/Voltage Law)</h4>
+                        <p>Sum of EMFs around any closed loop = Sum of p.d.s around the loop</p>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <h3>Resistor Combinations</h3>
+                    <div class="formula">Series: R_total = R1 + R2 + R3</div>
+                    <div class="formula">Parallel: 1/R_total = 1/R1 + 1/R2 + 1/R3</div>
+                    <p>For two in parallel: R_total = (R1 * R2)/(R1 + R2)</p>
+                </div>
+
+                <div class="note-card">
+                    <h3>Potential Divider</h3>
+                    <div class="formula">V_out = V_in * (R2 / (R1 + R2))</div>
+                    <p>Used with thermistors and LDRs in sensor circuits.</p>
+                </div>
+
+                <div class="note-card">
+                    <h3>EMF and Internal Resistance</h3>
+                    <div class="formula">E = I(R + r) = V + Ir</div>
+                    <p><strong>E</strong> = EMF, <strong>r</strong> = internal resistance, <strong>V</strong> = terminal p.d.</p>
+                    <p>Terminal p.d. = EMF - lost volts (Ir)</p>
+                    <p>Short circuit current: I = E/r</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="unit11">
+                <h2>Unit 11: Particle Physics</h2>
+                
+                <div class="note-card important">
+                    <h3><i class="fas fa-star"></i> Fundamental Particles</h3>
+                    <table class="notes-table">
+                        <tr><th>Particle</th><th>Symbol</th><th>Charge</th><th>Mass (u)</th></tr>
+                        <tr><td>Proton</td><td>p</td><td>+e</td><td>1</td></tr>
+                        <tr><td>Neutron</td><td>n</td><td>0</td><td>1</td></tr>
+                        <tr><td>Electron</td><td>e^-</td><td>-e</td><td>1/1836</td></tr>
+                        <tr><td>Positron</td><td>e^+</td><td>+e</td><td>1/1836</td></tr>
+                        <tr><td>Neutrino</td><td>v</td><td>0</td><td>~0</td></tr>
+                        <tr><td>Antineutrino</td><td>v-bar</td><td>0</td><td>~0</td></tr>
+                    </table>
+                </div>
+
+                <div class="note-card">
+                    <h3>Nuclear Notation</h3>
+                    <div class="formula">^A_Z X where A = nucleon number, Z = proton number</div>
+                    <p>Neutrons = A - Z</p>
+                </div>
+
+                <div class="note-card">
+                    <h3>Quarks</h3>
+                    <table class="notes-table">
+                        <tr><th>Quark</th><th>Charge</th><th>Baryon number</th></tr>
+                        <tr><td>Up (u)</td><td>+2/3 e</td><td>1/3</td></tr>
+                        <tr><td>Down (d)</td><td>-1/3 e</td><td>1/3</td></tr>
+                        <tr><td>Strange (s)</td><td>-1/3 e</td><td>1/3</td></tr>
+                    </table>
+                    <p><strong>Proton:</strong> uud. Charge = +2/3 + 2/3 - 1/3 = +1</p>
+                    <p><strong>Neutron:</strong> udd. Charge = +2/3 - 1/3 - 1/3 = 0</p>
+                </div>
+
+                <div class="note-card">
+                    <h3>Radioactive Decay</h3>
+                    <div class="formula">Activity: A = lambda * N</div>
+                    <div class="formula">Decay constant: lambda = ln(2) / t_1/2</div>
+                    <div class="formula">N = N0 * e^(-lambda*t)</div>
+                    <div class="formula">A = A0 * e^(-lambda*t)</div>
+                    <table class="notes-table">
+                        <tr><th>Decay</th><th>Particle</th><th>Effect on A, Z</th></tr>
+                        <tr><td>Alpha</td><td>^4_2 He</td><td>A-4, Z-2</td></tr>
+                        <tr><td>Beta-</td><td>e^- + v-bar</td><td>A same, Z+1</td></tr>
+                        <tr><td>Beta+</td><td>e^+ + v</td><td>A same, Z-1</td></tr>
+                        <tr><td>Gamma</td><td>photon</td><td>No change</td></tr>
+                    </table>
+                </div>
+
+                <div class="note-card">
+                    <h3>Mass-Energy Equivalence</h3>
+                    <div class="formula">E = mc^2 or E = delta(m) * c^2</div>
+                    <p>1 u = 931.5 MeV/c^2</p>
+                    <p><strong>Binding energy:</strong> Energy required to separate nucleus into nucleons</p>
+                    <p><strong>Binding energy per nucleon:</strong> Max at Fe-56 (~8.8 MeV)</p>
+                </div>
+            </section>
+
+            <footer class="notes-footer">
+                <p><i class="fas fa-info-circle"></i> These notes are aligned to the CAIE 9702 syllabus (2025-2027). References: Cambridge International Official Syllabus, ZNotes.org, SaveMyExams.com, PhysicsAndMathsTutor.com, Khan Academy.</p>
+                <p><strong>Tip:</strong> Always cross-reference with the official CAIE syllabus and past papers for exam preparation.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.notes-toc a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('.notes-toc a').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

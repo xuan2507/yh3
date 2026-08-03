@@ -1,0 +1,415 @@
+/* ========================================
+   Study Notes Pages
+   ======================================== */
+
+.notes-page {
+    background: var(--bg);
+    min-height: 100vh;
+}
+
+/* Notes Navbar */
+.notes-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 1000;
+}
+
+.notes-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Layout */
+.notes-layout {
+    display: flex;
+    padding-top: 60px;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.notes-sidebar {
+    width: 300px;
+    background: var(--bg-light);
+    border-right: 1px solid var(--border);
+    padding: 32px 20px;
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+.notes-sidebar h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.notes-toc {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 32px;
+}
+
+.notes-toc a {
+    display: block;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: var(--transition);
+    border-left: 3px solid transparent;
+}
+
+.notes-toc a:hover {
+    background: rgba(99, 102, 241, 0.08);
+    color: var(--text);
+}
+
+.notes-toc a.active {
+    background: rgba(99, 102, 241, 0.12);
+    color: var(--primary-light);
+    border-left-color: var(--primary);
+}
+
+.notes-sources {
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.notes-sources h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.notes-sources p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.notes-sources i {
+    color: var(--primary-light);
+    font-size: 0.75rem;
+}
+
+/* Content */
+.notes-content {
+    flex: 1;
+    margin-left: 300px;
+    padding: 40px 48px;
+    max-width: calc(100% - 300px);
+}
+
+.notes-header {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+}
+
+.notes-subject-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.05));
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary-light);
+    margin-bottom: 16px;
+}
+
+.notes-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.notes-meta {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Paper section */
+.paper-section {
+    margin-bottom: 48px;
+}
+
+.paper-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-light);
+    margin-bottom: 24px;
+    padding: 12px 20px;
+    background: rgba(99, 102, 241, 0.08);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--primary);
+}
+
+/* Sections */
+.notes-section {
+    margin-bottom: 48px;
+}
+
+.notes-section h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+}
+
+/* Note Cards */
+.note-card {
+    padding: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 20px;
+    transition: var(--transition);
+}
+
+.note-card:hover {
+    border-color: rgba(99, 102, 241, 0.2);
+}
+
+.note-card.important {
+    border-color: rgba(99, 102, 241, 0.3);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), transparent);
+}
+
+.note-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.note-card h3 i {
+    color: var(--primary-light);
+}
+
+.note-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 16px 0 8px;
+    color: var(--primary-light);
+}
+
+.note-card p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.note-card ul {
+    margin: 12px 0;
+    padding-left: 20px;
+}
+
+.note-card ul li {
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    line-height: 1.6;
+    position: relative;
+}
+
+.note-card ul li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    background: var(--primary);
+    border-radius: 50%;
+}
+
+.note-card ol {
+    margin: 12px 0;
+    padding-left: 24px;
+}
+
+.note-card ol li {
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+/* Tables */
+.notes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.9rem;
+}
+
+.notes-table th {
+    background: rgba(99, 102, 241, 0.1);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border);
+}
+
+.notes-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+}
+
+.notes-table tr:hover td {
+    background: rgba(99, 102, 241, 0.03);
+}
+
+/* Formulas */
+.formula {
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgba(99, 102, 241, 0.08);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: var(--radius-sm);
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: var(--primary-light);
+    margin: 8px 0;
+}
+
+.formula-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.formula-grid .formula {
+    display: block;
+}
+
+/* Example boxes */
+.example-box {
+    padding: 20px;
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.15);
+    border-radius: var(--radius-sm);
+    margin: 16px 0;
+}
+
+.example-box p {
+    margin-bottom: 8px;
+}
+
+.example-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Law boxes */
+.law-box {
+    padding: 20px;
+    background: rgba(99, 102, 241, 0.05);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin: 16px 0;
+}
+
+.law-box h4 {
+    margin-top: 0;
+}
+
+/* Two column */
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+/* Notes footer */
+.notes-footer {
+    margin-top: 64px;
+    padding: 32px;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.notes-footer p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.notes-footer p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .notes-sidebar {
+        transform: translateX(-100%);
+        z-index: 999;
+        transition: var(--transition);
+    }
+    
+    .notes-sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .notes-content {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 24px;
+    }
+    
+    .two-col {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .notes-navbar {
+        padding: 0 16px;
+    }
+    
+    .notes-header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .note-card {
+        padding: 20px;
+    }
+    
+    .notes-table {
+        font-size: 0.8rem;
+    }
+    
+    .notes-table th,
+    .notes-table td {
+        padding: 8px 10px;
+    }
+}

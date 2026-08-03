@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics 9709 - CAIE A-Level Notes | LearnAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/notes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="notes-page">
+    <nav class="notes-navbar">
+        <a href="../dashboard.html" class="logo">
+            <i class="fas fa-brain"></i>
+            <span>LearnAI</span>
+        </a>
+        <div class="notes-nav-right">
+            <a href="../dashboard.html" class="btn btn-outline btn-sm"><i class="fas fa-arrow-left"></i> Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="notes-layout">
+        <aside class="notes-sidebar">
+            <h3>Maths 9709</h3>
+            <ul class="notes-toc">
+                <li><a href="#p1" class="active">P1: Quadratics & Functions</a></li>
+                <li><a href="#p2">P1: Coordinate Geometry</a></li>
+                <li><a href="#p3">P1: Circular Measure</a></li>
+                <li><a href="#p4">P1: Trigonometry</a></li>
+                <li><a href="#p5">P1: Series</a></li>
+                <li><a href="#p6">P1: Differentiation</a></li>
+                <li><a href="#p7">P1: Integration</a></li>
+                <li><a href="#p3-1">P3: Algebra</a></li>
+                <li><a href="#p3-2">P3: Logarithmic & Exp</a></li>
+                <li><a href="#p3-3">P3: Trigonometry</a></li>
+                <li><a href="#p3-4">P3: Differentiation</a></li>
+                <li><a href="#p3-5">P3: Integration</a></li>
+                <li><a href="#p3-6">P3: Differential Equations</a></li>
+                <li><a href="#p3-7">P3: Vectors</a></li>
+                <li><a href="#p3-8">P3: Complex Numbers</a></li>
+            </ul>
+            <div class="notes-sources">
+                <h4>References</h4>
+                <p><i class="fas fa-book"></i> CAIE Syllabus 9709 (2025-2027)</p>
+                <p><i class="fas fa-globe"></i> ExamSolutions.co.uk</p>
+                <p><i class="fas fa-globe"></i> PhysicsAndMathsTutor.com</p>
+                <p><i class="fas fa-globe"></i> ZNotes.org</p>
+            </div>
+        </aside>
+
+        <main class="notes-content">
+            <header class="notes-header">
+                <span class="notes-subject-tag"><i class="fas fa-square-root-alt"></i> Mathematics</span>
+                <h1>CAIE A-Level Mathematics (9709) Complete Notes</h1>
+                <p class="notes-meta">Aligned to CAIE 9709 syllabus | Pure Mathematics 1, 2 & 3 | 2025-2027</p>
+            </header>
+
+            <div class="paper-section">
+                <h2 class="paper-title">Pure Mathematics 1 (P1)</h2>
+
+                <section class="notes-section" id="p1">
+                    <h2>Quadratics & Functions</h2>
+
+                    <div class="note-card important">
+                        <h3><i class="fas fa-star"></i> Completing the Square</h3>
+                        <div class="formula">ax^2 + bx + c = a(x + b/2a)^2 - (b^2/4a) + c</div>
+                        <p>Useful for: finding vertex, solving equations, sketching curves</p>
+                        <div class="example-box">
+                            <p><strong>Example:</strong> x^2 + 6x + 5 = (x + 3)^2 - 9 + 5 = (x + 3)^2 - 4</p>
+                            <p>Vertex at (-3, -4)</p>
+                        </div>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Quadratic Formula</h3>
+                        <div class="formula">x = [-b +/- sqrt(b^2 - 4ac)] / 2a</div>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Discriminant (b^2 - 4ac)</h3>
+                        <table class="notes-table">
+                            <tr><th>Value</th><th>Roots</th><th>Graph</th></tr>
+                            <tr><td>> 0</td><td>2 distinct real roots</td><td>Crosses x-axis twice</td></tr>
+                            <tr><td>= 0</td><td>1 repeated real root</td><td>Touches x-axis</td></tr>
+                            <tr><td>< 0</td><td>No real roots</td><td>Doesn't cross x-axis</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Functions</h3>
+                        <ul>
+                            <li><strong>Domain:</strong> Set of input values</li>
+                            <li><strong>Range:</strong> Set of output values</li>
+                            <li><strong>One-one function:</strong> Each output from exactly one input (passes horizontal line test)</li>
+                            <li><strong>Inverse function f^-1:</strong> Swap x and y, solve for y</li>
+                            <li><strong>Composite function fg(x):</strong> g first, then f. So fg(x) = f(g(x))</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="notes-section" id="p2">
+                    <h2>Coordinate Geometry</h2>
+
+                    <div class="note-card important">
+                        <h3><i class="fas fa-star"></i> Key Formulas</h3>
+                        <div class="formula">Distance: d = sqrt[(x2-x1)^2 + (y2-y1)^2]</div>
+                        <div class="formula">Midpoint: [(x1+x2)/2, (y1+y2)/2]</div>
+                        <div class="formula">Gradient: m = (y2-y1)/(x2-x1)</div>
+                        <div class="formula">Equation of line: y - y1 = m(x - x1)</div>
+                        <div class="formula">Perpendicular gradient: m1 * m2 = -1</div>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Circle Equations</h3>
+                        <div class="formula">Centre (a,b), radius r: (x-a)^2 + (y-b)^2 = r^2</div>
+                        <div class="formula">General form: x^2 + y^2 + 2gx + 2fy + c = 0</div>
+                        <p>Centre = (-g, -f), Radius = sqrt(g^2 + f^2 - c)</p>
+                    </div>
+                </section>
+
+                <section class="notes-section" id="p3">
+                    <h2>Circular Measure</h2>
+
+                    <div class="note-card important">
+                        <h3><i class="fas fa-star"></i> Radians</h3>
+                        <div class="formula">1 radian = 180/pi degrees</div>
+                        <div class="formula">pi rad = 180 degrees</div>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Arc Length & Sector Area</h3>
+                        <div class="formula">Arc length: s = r * theta (theta in radians)</div>
+                        <div class="formula">Sector area: A = (1/2) * r^2 * theta</div>
+                        <div class="formula">Segment area: A = (1/2) * r^2 * (theta - sin(theta))</div>
+                    </div>
+                </section>
+
+                <section class="notes-section" id="p4">
+                    <h2>Trigonometry</h2>
+
+                    <div class="note-card important">
+                        <h3><i class="fas fa-star"></i> Exact Values</h3>
+                        <table class="notes-table">
+                            <tr><th>Angle</th><th>sin</th><th>cos</th><th>tan</th></tr>
+                            <tr><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+                            <tr><td>30 (pi/6)</td><td>1/2</td><td>sqrt(3)/2</td><td>1/sqrt(3)</td></tr>
+                            <tr><td>45 (pi/4)</td><td>sqrt(2)/2</td><td>sqrt(2)/2</td><td>1</td></tr>
+                            <tr><td>60 (pi/3)</td><td>sqrt(3)/2</td><td>1/2</td><td>sqrt(3)</td></tr>
+                            <tr><td>90 (pi/2)</td><td>1</td><td>0</td><td>undefined</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Identities</h3>
+                        <div class="formula">tan(x) = sin(x)/cos(x)</div>
+                        <div class="formula">sin^2(x) + cos^2(x) = 1</div>
+                        <div class="formula">1 + tan^2(x) = sec^2(x)</div>
+                        <div class="formula">1 + cot^2(x) = cosec^2(x)</div>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Small Angle Approximations (in radians)</h3>
+                        <div class="formula">sin(theta) approximately theta</div>
+                        <div class="formula">tan(theta) approximately theta</div>
+                        <div class="formula">cos(theta) approximately 1 - theta^2/2</div>
+                    </div>
+                </section>
+
+                <section class="notes-section" id="p5">
+                    <h2>Series</h2>
+
+                    <div class="note-card important">
+                        <h3><i class="fas fa-star"></i> Binomial Expansion</h3>
+                        <div class="formula">(1 + x)^n = 1 + nx + [n(n-1)/2!]x^2 + [n(n-1)(n-2)/3!]x^3 + ...</div>
+                        <p>Valid for |x| < 1 and n is negative or fractional.</p>
+                        <p>For (a + bx)^n, factor out a^n first: a^n(1 + bx/a)^n</p>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Arithmetic Progression (AP)</h3>
+                        <div class="formula">nth term: a + (n-1)d</div>
+                        <div class="formula">Sum of n terms: S_n = n/2 [2a + (n-1)d] = n/2(a + l)</div>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Geometric Progression (GP)</h3>
+                        <div class="formula">nth term: ar^(n-1)</div>
+                        <div class="formula">Sum of n terms: S_n = a(1-r^n)/(1-r) or a(r^n-1)/(r-1)</div>
+                        <div class="formula">Sum to infinity: S = a/(1-r) for |r| < 1</div>
+                    </div>
+                </section>
+
+                <section class="notes-section" id="p6">
+                    <h2>Differentiation</h2>
+
+                    <div class="note-card important">
+                        <h3><i class="fas fa-star"></i> Standard Derivatives</h3>
+                        <table class="notes-table">
+                            <tr><th>y</th><th>dy/dx</th></tr>
+                            <tr><td>x^n</td><td>nx^(n-1)</td></tr>
+                            <tr><td>e^x</td><td>e^x</td></tr>
+                            <tr><td>ln(x)</td><td>1/x</td></tr>
+                            <tr><td>sin(x)</td><td>cos(x)</td></tr>
+                            <tr><td>cos(x)</td><td>-sin(x)</td></tr>
+                            <tr><td>tan(x)</td><td>sec^2(x)</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Rules</h3>
+                        <div class="formula">Product rule: d(uv)/dx = u(dv/dx) + v(du/dx)</div>
+                        <div class="formula">Quotient rule: d(u/v)/dx = [v(du/dx) - u(dv/dx)] / v^2</div>
+                        <div class="formula">Chain rule: dy/dx = dy/du * du/dx</div>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Applications</h3>
+                        <ul>
+                            <li><strong>Increasing function:</strong> dy/dx > 0</li>
+                            <li><strong>Decreasing function:</strong> dy/dx < 0</li>
+                            <li><strong>Stationary points:</strong> dy/dx = 0</li>
+                            <li><strong>Maximum:</strong> dy/dx = 0, d^2y/dx^2 < 0</li>
+                            <li><strong>Minimum:</strong> dy/dx = 0, d^2y/dx^2 > 0</li>
+                            <li><strong>Point of inflection:</strong> d^2y/dx^2 = 0 (and changes sign)</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="notes-section" id="p7">
+                    <h2>Integration</h2>
+
+                    <div class="note-card important">
+                        <h3><i class="fas fa-star"></i> Standard Integrals</h3>
+                        <table class="notes-table">
+                            <tr><th>Function</th><th>Integral</th></tr>
+                            <tr><td>x^n (n != -1)</td><td>x^(n+1)/(n+1) + c</td></tr>
+                            <tr><td>1/x</td><td>ln|x| + c</td></tr>
+                            <tr><td>e^x</td><td>e^x + c</td></tr>
+                            <tr><td>sin(x)</td><td>-cos(x) + c</td></tr>
+                            <tr><td>cos(x)</td><td>sin(x) + c</td></tr>
+                            <tr><td>sec^2(x)</td><td>tan(x) + c</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Definite Integration</h3>
+                        <div class="formula">Area = integral from a to b of y dx</div>
+                        <div class="formula">Volume of revolution = pi * integral from a to b of y^2 dx</div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="paper-section">
+                <h2 class="paper-title">Pure Mathematics 3 (P3)</h2>
+
+                <section class="notes-section" id="p3-1">
+                    <h2>Algebra</h2>
+
+                    <div class="note-card">
+                        <h3>Polynomial Division</h3>
+                        <p>Factor theorem: If f(a) = 0, then (x-a) is a factor.</p>
+                        <p>Remainder theorem: f(a) = remainder when f(x) divided by (x-a).</p>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Partial Fractions</h3>
+                        <p><strong>Linear factors:</strong> (3x+5)/[(x-1)(x+2)] = A/(x-1) + B/(x+2)</p>
+                        <p><strong>Repeated factor:</strong> Add B/(x-a)^2 term</p>
+                        <p><strong>Irreducible quadratic:</strong> (Ax+B)/(quadratic)</p>
+                    </div>
+                </section>
+
+                <section class="notes-section" id="p3-2">
+                    <h2>Logarithmic & Exponential Functions</h2>
+
+                    <div class="note-card important">
+                        <h3><i class="fas fa-star"></i> Laws of Logarithms</h3>
+                        <div class="formula">log(a) + log(b) = log(ab)</div>
+                        <div class="formula">log(a) - log(b) = log(a/b)</div>
+                        <div class="formula">n*log(a) = log(a^n)</div>
+                        <div class="formula">log(a)/log(b) = log_b(a) (change of base)</div>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Solving Exponential Equations</h3>
+                        <div class="example-box">
+                            <p>2^x = 5 => x = log(5)/log(2) = ln(5)/ln(2)</p>
+                            <p>5^(2x) - 5^x - 6 = 0. Let y = 5^x: y^2 - y - 6 = 0</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="notes-section" id="p3-3">
+                    <h2>Trigonometry (P3)</h2>
+
+                    <div class="note-card important">
+                        <h3><i class="fas fa-star"></i> Compound Angle Formulas</h3>
+                        <div class="formula">sin(A+B) = sinAcosB + cosAsinB</div>
+                        <div class="formula">sin(A-B) = sinAcosB - cosAsinB</div>
+                        <div class="formula">cos(A+B) = cosAcosB - sinAsinB</div>
+                        <div class="formula">cos(A-B) = cosAcosB + sinAsinB</div>
+                        <div class="formula">tan(A+B) = (tanA + tanB)/(1 - tanAtanB)</div>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Double Angle Formulas</h3>
+                        <div class="formula">sin(2A) = 2sinAcosA</div>
+                        <div class="formula">cos(2A) = cos^2A - sin^2A = 2cos^2A - 1 = 1 - 2sin^2A</div>
+                        <div class="formula">tan(2A) = 2tanA/(1 - tan^2A)</div>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>R-Formula (a cos(x) + b sin(x))</h3>
+                        <div class="formula">a cos(x) + b sin(x) = R cos(x - alpha)</div>
+                        <p>where R = sqrt(a^2 + b^2), tan(alpha) = b/a</p>
+                        <p>OR: R sin(x + alpha) where tan(alpha) = a/b</p>
+                    </div>
+                </section>
+
+                <section class="notes-section" id="p3-4">
+                    <h2>Differentiation (P3)</h2>
+
+                    <div class="note-card">
+                        <h3>Implicit Differentiation</h3>
+                        <p>Differentiate both sides with respect to x.</p>
+                        <p>For y terms: d(y^2)/dx = 2y(dy/dx)</p>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Parametric Differentiation</h3>
+                        <div class="formula">dy/dx = (dy/dt)/(dx/dt)</div>
+                    </div>
+                </section>
+
+                <section class="notes-section" id="p3-5">
+                    <h2>Integration (P3)</h2>
+
+                    <div class="note-card important">
+                        <h3><i class="fas fa-star"></i> Advanced Techniques</h3>
+                        <div class="formula">Integration by parts: integral u dv = uv - integral v du</div>
+                        <p>LIATE rule for choosing u: Log, Inverse trig, Algebraic, Trig, Exponential</p>
+                        <div class="formula">Substitution: Change variable to simplify integral</div>
+                    </div>
+                </section>
+
+                <section class="notes-section" id="p3-6">
+                    <h2>Differential Equations</h2>
+
+                    <div class="note-card">
+                        <h3>Variables Separable</h3>
+                        <div class="formula">dy/dx = f(x)g(y) => integral (1/g(y)) dy = integral f(x) dx</div>
+                        <p>Use initial conditions to find constant of integration.</p>
+                    </div>
+                </section>
+
+                <section class="notes-section" id="p3-7">
+                    <h2>Vectors</h2>
+
+                    <div class="note-card important">
+                        <h3><i class="fas fa-star"></i> Key Formulas</h3>
+                        <div class="formula">Magnitude: |ai + bj + ck| = sqrt(a^2 + b^2 + c^2)</div>
+                        <div class="formula">Dot product: a.b = |a||b|cos(theta) = a1b1 + a2b2 + a3b3</div>
+                        <div class="formula">Angle: cos(theta) = (a.b)/(|a||b|)</div>
+                        <div class="formula">Line: r = a + tb (point a, direction b, parameter t)</div>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Plane Equation</h3>
+                        <div class="formula">r.n = d where n is normal vector</div>
+                        <div class="formula">ax + by + cz = d</div>
+                    </div>
+                </section>
+
+                <section class="notes-section" id="p3-8">
+                    <h2>Complex Numbers</h2>
+
+                    <div class="note-card important">
+                        <h3><i class="fas fa-star"></i> Forms</h3>
+                        <div class="formula">Cartesian: z = x + iy</div>
+                        <div class="formula">Polar: z = r(cos(theta) + i sin(theta)) = r * e^(i*theta)</div>
+                        <div class="formula">Modulus: |z| = r = sqrt(x^2 + y^2)</div>
+                        <div class="formula">Argument: arg(z) = theta = arctan(y/x)</div>
+                    </div>
+
+                    <div class="note-card">
+                        <h3>Operations</h3>
+                        <div class="formula">Multiply: multiply moduli, add arguments</div>
+                        <div class="formula">Divide: divide moduli, subtract arguments</div>
+                        <div class="formula">De Moivre's: [r(cos(theta) + i sin(theta))]^n = r^n(cos(n*theta) + i sin(n*theta))</div>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="notes-footer">
+                <p><i class="fas fa-info-circle"></i> These notes are aligned to the CAIE 9709 syllabus (2025-2027). References: Cambridge International Official Syllabus, ExamSolutions.co.uk, PhysicsAndMathsTutor.com, ZNotes.org.</p>
+                <p><strong>Tip:</strong> Practice is essential for Mathematics. Work through past papers and check your answers carefully.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        document.querySelectorAll('.notes-toc a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('.notes-toc a').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
