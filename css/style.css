@@ -3,7 +3,7 @@
    Modern, Attractive, Customer-Friendly
    ======================================== */
 
-/* CSS Variables */
+/* CSS Variables - Dark (default) */
 :root {
     --primary: #6366f1;
     --primary-dark: #4f46e5;
@@ -13,32 +13,53 @@
     --success: #22c55e;
     --warning: #f59e0b;
     --danger: #ef4444;
-    
+
     --bg: #0a0e27;
     --bg-light: #111936;
     --bg-lighter: #1a2342;
     --bg-card: rgba(17, 25, 54, 0.7);
     --bg-glass: rgba(255, 255, 255, 0.03);
-    
+
     --text: #f0f4ff;
     --text-muted: #8892b0;
     --text-dim: #5a6482;
-    
+
     --border: rgba(99, 102, 241, 0.1);
     --border-light: rgba(99, 102, 241, 0.2);
-    
+
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
     --shadow-glow: 0 0 60px rgba(99, 102, 241, 0.2);
     --shadow-glow-strong: 0 0 80px rgba(99, 102, 241, 0.3);
-    
+
     --radius: 16px;
     --radius-lg: 24px;
     --radius-sm: 12px;
     --radius-xl: 32px;
-    
+
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Light Mode */
+[data-theme="light"] {
+    --bg: #f8fafc;
+    --bg-light: #ffffff;
+    --bg-lighter: #f1f5f9;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-glass: rgba(255, 255, 255, 0.5);
+
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --text-dim: #94a3b8;
+
+    --border: rgba(99, 102, 241, 0.15);
+    --border-light: rgba(99, 102, 241, 0.25);
+
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 0 60px rgba(99, 102, 241, 0.1);
+    --shadow-glow-strong: 0 0 80px rgba(99, 102, 241, 0.15);
 }
 
 /* Reset & Base */
@@ -74,6 +95,33 @@ img { max-width: 100%; height: auto; }
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 32px;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg-glass);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    margin-right: 8px;
+}
+
+.theme-toggle:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.dash-nav-right .theme-toggle {
+    margin-right: 12px;
 }
 
 /* ========================================

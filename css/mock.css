@@ -1,0 +1,141 @@
+/* ========================================
+   Mock Exam Styles (extends quizzes.css)
+   ======================================== */
+
+.mock-intro {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.mock-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    font-size: 0.9rem;
+}
+
+.mock-feature i {
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.mock-subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.mock-subject-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+}
+
+.mock-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin: 0 auto 14px;
+}
+
+.mock-subject-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.mock-subject-card p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.mock-mode-btns {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.mock-timer {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    min-width: 80px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+
+.mock-section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary);
+    margin-bottom: 10px;
+    padding: 4px 10px;
+    background: rgba(99,102,241,0.1);
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.mock-structured-answer textarea {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    background: var(--bg);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+    min-height: 100px;
+    margin-bottom: 12px;
+}
+
+.mock-structured-answer textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.mark-scheme {
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 12px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.ms-title {
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.mock-grade {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 12px 0 20px;
+}
+
+@media (max-width: 768px) {
+    .mock-intro {
+        flex-direction: column;
+    }
+    .mock-mode-btns {
+        flex-direction: column;
+    }
+}

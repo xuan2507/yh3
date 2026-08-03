@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Papers - LearnAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/papers.css">
+    <link rel="stylesheet" href="css/mascot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <nav class="dash-navbar">
+        <div class="dash-nav-left">
+            <a href="index.html" class="logo"><i class="fas fa-brain"></i><span>LearnAI</span></a>
+        </div>
+        <div class="dash-nav-right">
+            <div class="plan-badge" id="planBadge">Free</div>
+            <div class="user-menu">
+                <div class="user-avatar" id="userAvatar">JD</div>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+                    <a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a>
+                    <a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dash-layout">
+        <aside class="dash-sidebar">
+            <ul class="dash-menu">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Overview</a></li>
+                <li><a href="dashboard.html#subjects"><i class="fas fa-book"></i> My Subjects</a></li>
+                <li><a href="dashboard.html#resources"><i class="fas fa-folder-open"></i> Resources</a></li>
+                <li><a href="quizzes.html"><i class="fas fa-question-circle"></i> Quizzes</a></li>
+                <li><a href="tutor.html"><i class="fas fa-robot"></i> AI Tutor</a></li>
+                <li class="active"><a href="papers.html"><i class="fas fa-file-alt"></i> Past Papers</a></li>
+                <li><a href="mock.html"><i class="fas fa-clipboard-check"></i> Mock Exams</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+            </ul>
+        </aside>
+
+        <main class="dash-main">
+            <section class="dash-section">
+                <h1 class="dash-title">Past Year Papers</h1>
+                <p class="dash-welcome">Access the latest CAIE past papers from 2022–2026. Links to trusted free sources.</p>
+
+                <div class="papers-intro">
+                    <div class="paper-source-card">
+                        <div class="source-icon" style="background:#ef444420;color:#ef4444"><i class="fas fa-external-link-alt"></i></div>
+                        <div class="source-info">
+                            <h3>PapaCambridge</h3>
+                            <p>Comprehensive CAIE past papers, mark schemes &amp; grade thresholds</p>
+                            <a href="https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers.html" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Visit PapaCambridge <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="paper-source-card">
+                        <div class="source-icon" style="background:#3b82f620;color:#3b82f6"><i class="fas fa-external-link-alt"></i></div>
+                        <div class="source-info">
+                            <h3>GCE Guide</h3>
+                            <p>CAIE IGCSE, O-Level &amp; A-Level papers organized by subject</p>
+                            <a href="https://gceguide.com/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Visit GCE Guide <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="paper-source-card">
+                        <div class="source-icon" style="background:#10b98120;color:#10b981"><i class="fas fa-external-link-alt"></i></div>
+                        <div class="source-info">
+                            <h3>XtremePapers</h3>
+                            <p>Large archive of CAIE papers with marking schemes</p>
+                            <a href="https://papers.xtremepape.rs/CAIE/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Visit XtremePapers <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="papers-filters">
+                    <button class="filter-btn active" data-filter="all">All Subjects</button>
+                    <button class="filter-btn" data-filter="physics">Physics</button>
+                    <button class="filter-btn" data-filter="chemistry">Chemistry</button>
+                    <button class="filter-btn" data-filter="maths">Mathematics</button>
+                    <button class="filter-btn" data-filter="biology">Biology</button>
+                    <button class="filter-btn" data-filter="economics">Economics</button>
+                </div>
+
+                <div class="papers-grid" id="papersGrid"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/mascot.js"></script>
+    <script src="js/papers.js"></script>
+</body>
+</html>

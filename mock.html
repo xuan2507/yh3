@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Exams - LearnAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/quizzes.css">
+    <link rel="stylesheet" href="css/mascot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <nav class="dash-navbar">
+        <div class="dash-nav-left">
+            <a href="index.html" class="logo"><i class="fas fa-brain"></i><span>LearnAI</span></a>
+        </div>
+        <div class="dash-nav-right">
+            <div class="plan-badge" id="planBadge">Free</div>
+            <div class="user-menu">
+                <div class="user-avatar" id="userAvatar">JD</div>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+                    <a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a>
+                    <a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dash-layout">
+        <aside class="dash-sidebar">
+            <ul class="dash-menu">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Overview</a></li>
+                <li><a href="dashboard.html#subjects"><i class="fas fa-book"></i> My Subjects</a></li>
+                <li><a href="dashboard.html#resources"><i class="fas fa-folder-open"></i> Resources</a></li>
+                <li><a href="quizzes.html"><i class="fas fa-question-circle"></i> Quizzes</a></li>
+                <li><a href="tutor.html"><i class="fas fa-robot"></i> AI Tutor</a></li>
+                <li><a href="papers.html"><i class="fas fa-file-alt"></i> Past Papers</a></li>
+                <li class="active"><a href="mock.html"><i class="fas fa-clipboard-check"></i> Mock Exams</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+            </ul>
+        </aside>
+
+        <main class="dash-main">
+            <section class="dash-section" id="mockHub">
+                <h1 class="dash-title">Mock Exams</h1>
+                <p class="dash-welcome">Full-length CAIE-style practice papers. Timed or untimed.</p>
+
+                <div class="mock-intro">
+                    <div class="mock-feature">
+                        <i class="fas fa-clock"></i>
+                        <span>Timed mode available</span>
+                    </div>
+                    <div class="mock-feature">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Full mark schemes</span>
+                    </div>
+                    <div class="mock-feature">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Detailed performance analysis</span>
+                    </div>
+                </div>
+
+                <div class="mock-subjects-grid" id="mockSubjectsGrid"></div>
+            </section>
+
+            <section class="dash-section" id="mockExamArea" style="display:none">
+                <div class="quiz-header">
+                    <button class="btn btn-sm btn-outline" id="backToMocks"><i class="fas fa-arrow-left"></i> Exit</button>
+                    <div class="mock-timer" id="mockTimer">--:--</div>
+                    <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="mockProgressFill"></div></div>
+                    <span class="quiz-counter" id="mockCounter">1 / 20</span>
+                </div>
+
+                <div class="quiz-card" id="mockCard">
+                    <div class="mock-section-label" id="mockSectionLabel">Section A</div>
+                    <div class="quiz-question" id="mockQuestion"></div>
+                    <div class="quiz-options" id="mockOptions"></div>
+                    <div class="mock-structured-answer" id="mockStructured" style="display:none">
+                        <textarea placeholder="Type your answer here..." rows="4"></textarea>
+                        <button class="btn btn-outline btn-sm" id="showMarkScheme">Show Mark Scheme</button>
+                        <div class="mark-scheme" id="markSchemeBox" style="display:none"></div>
+                    </div>
+                    <div class="quiz-explanation" id="mockExplanation"></div>
+                    <div class="quiz-nav" id="mockNav">
+                        <button class="btn btn-primary" id="nextMock" disabled>Next</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dash-section" id="mockResult" style="display:none">
+                <div class="result-card">
+                    <div class="result-icon" id="mockResultIcon"><i class="fas fa-award"></i></div>
+                    <h2 id="mockResultTitle">Mock Exam Complete</h2>
+                    <div class="result-score" id="mockResultScore">--</div>
+                    <div class="result-percent" id="mockResultPercent">--%</div>
+                    <p id="mockResultMessage"></p>
+                    <div class="mock-grade" id="mockGrade">Grade: --</div>
+                    <div class="result-actions">
+                        <button class="btn btn-primary" id="retryMock"><i class="fas fa-redo"></i> Retake</button>
+                        <button class="btn btn-outline" id="backToMockHub"><i class="fas fa-th"></i> All Mocks</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/mascot.js"></script>
+    <script src="js/mock.js"></script>
+</body>
+</html>

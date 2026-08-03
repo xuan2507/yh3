@@ -1,0 +1,142 @@
+/* ========================================
+   Past Papers Styles
+   ======================================== */
+
+.papers-intro {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.paper-source-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.source-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.source-info h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.source-info p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.papers-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.papers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.paper-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.paper-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.paper-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.paper-title-info h3 {
+    font-size: 0.95rem;
+}
+
+.paper-code {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.paper-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.paper-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px;
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.paper-link:hover {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.paper-link i {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.pl-year {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.pl-season {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+@media (max-width: 1024px) {
+    .papers-intro {
+        grid-template-columns: 1fr;
+    }
+    .papers-grid {
+        grid-template-columns: 1fr;
+    }
+}
