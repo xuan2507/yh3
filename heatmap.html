@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weakness Heatmap - LearnAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/heatmap.css">
+    <link rel="stylesheet" href="css/mascot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <nav class="dash-navbar">
+        <div class="dash-nav-left">
+            <a href="index.html" class="logo"><i class="fas fa-brain"></i><span>LearnAI</span></a>
+        </div>
+        <div class="dash-nav-right">
+            <div class="plan-badge" id="planBadge">Free</div>
+            <div class="user-menu">
+                <div class="user-avatar" id="userAvatar">JD</div>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="dashboard.html"><i class="fas fa-user"></i> Profile</a>
+                    <a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dash-layout">
+        <aside class="dash-sidebar">
+            <ul class="dash-menu">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Overview</a></li>
+                <li><a href="quizzes.html"><i class="fas fa-question-circle"></i> Quizzes</a></li>
+                <li><a href="tutor.html"><i class="fas fa-robot"></i> AI Tutor</a></li>
+                <li><a href="papers.html"><i class="fas fa-file-alt"></i> Past Papers</a></li>
+                <li><a href="mock.html"><i class="fas fa-clipboard-check"></i> Mock Exams</a></li>
+                <li><a href="mistakes.html"><i class="fas fa-exclamation-triangle"></i> Mistake Library</a></li>
+                <li class="active"><a href="heatmap.html"><i class="fas fa-th"></i> Weakness Heatmap</a></li>
+                <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+            </ul>
+        </aside>
+
+        <main class="dash-main">
+            <section class="dash-section">
+                <h1 class="dash-title">Weakness Heatmap</h1>
+                <p class="dash-welcome">Visualise your mastery across every syllabus topic. Red = needs work, Green = confident.</p>
+
+                <div class="heatmap-legend">
+                    <div class="legend-item"><span class="legend-color" style="background:#ef4444"></span> Weak (&lt;50%)</div>
+                    <div class="legend-item"><span class="legend-color" style="background:#f59e0b"></span> Moderate (50-75%)</div>
+                    <div class="legend-item"><span class="legend-color" style="background:#10b981"></span> Strong (&gt;75%)</div>
+                    <div class="legend-item"><span class="legend-color" style="background:var(--border)"></span> Not attempted</div>
+                </div>
+
+                <div class="heatmap-subject-tabs" id="heatmapTabs">
+                    <button class="heatmap-tab active" data-subject="physics">Physics</button>
+                    <button class="heatmap-tab" data-subject="chemistry">Chemistry</button>
+                    <button class="heatmap-tab" data-subject="maths">Maths</button>
+                    <button class="heatmap-tab" data-subject="biology">Biology</button>
+                    <button class="heatmap-tab" data-subject="economics">Economics</button>
+                </div>
+
+                <div class="heatmap-grid" id="heatmapGrid">
+                    <!-- Filled by JS -->
+                </div>
+
+                <div class="heatmap-summary" id="heatmapSummary">
+                    <!-- Filled by JS -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/heatmap.js"></script>
+    <script src="js/mascot.js"></script>
+</body>
+</html>

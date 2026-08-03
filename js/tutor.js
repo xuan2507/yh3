@@ -59,6 +59,26 @@ imageUpload.addEventListener('change', e => {
     reader.readAsDataURL(file);
 });
 
+// Explain at Any Level
+let explainLevel = 'alevel';
+document.querySelectorAll('.level-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        explainLevel = btn.dataset.level;
+    });
+});
+
+function wrapByLevel(response, level) {
+    if (level === 'primary') {
+        return `**[Primary School Level]**\n\n${response}\n\n---\n*Think of it like this: imagine you're building with blocks or playing a game — the same idea applies here, just with bigger numbers!*`;
+    }
+    if (level === 'university') {
+        return `**[University Level]**\n\n${response}\n\n---\n*For a deeper treatment, consult standard texts on this topic. The underlying assumptions and boundary conditions should be verified for your specific problem set.*`;
+    }
+    return response;
+}
+
 // Send message
 function sendMessage() {
     const text = input.value.trim();
@@ -73,7 +93,12 @@ function sendMessage() {
     // Analyze and respond
     setTimeout(() => {
         typing.remove();
-        const response = generateResponse(text, currentImage);
+        let response = generateResponse(text, currentImage);
+        if (typeof response === 'string') {
+            response = wrapByLevel(response, explainLevel);
+        } else if (response && response.html) {
+            response.html = wrapByLevel(response.html, explainLevel);
+        }
         addBotMessage(response);
         Auth.addTutorMessage('user', text);
         Auth.addTutorMessage('assistant', typeof response === 'string' ? response : response.text || '[Image analysis]');

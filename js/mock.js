@@ -5,6 +5,24 @@
 if (!Auth.isLoggedIn()) window.location.href = 'login.html';
 Auth.updateUserDisplay();
 
+const MOCK_SYLLABUS = {
+    physics: ['Forces & Motion', 'Work & Energy', 'Thermal Physics', 'Waves', 'Electricity', 'Magnetism', 'Nuclear Physics', 'Astrophysics', 'Quantum Physics', 'Oscillations'],
+    chemistry: ['Atomic Structure', 'Chemical Bonding', 'Energetics', 'Kinetics', 'Equilibrium', 'Redox', 'Inorganic Chemistry', 'Organic Chemistry', 'Analytical Chemistry', 'Transition Metals'],
+    maths: ['Algebra', 'Coordinate Geometry', 'Trigonometry', 'Calculus', 'Vectors', 'Complex Numbers', 'Matrices', 'Probability', 'Statistics', 'Mechanics'],
+    biology: ['Cell Biology', 'Biochemistry', 'DNA & Genetics', 'Ecology', 'Physiology', 'Evolution', 'Biotechnology', 'Plant Biology', 'Immunology', 'Neurobiology'],
+    economics: ['Microeconomics', 'Macroeconomics', 'International Trade', 'Development', 'Labour Markets', 'Market Structures', 'Market Failure', 'Fiscal Policy', 'Monetary Policy', 'Exchange Rates']
+};
+
+function assignMockTopics() {
+    Object.keys(MOCK_QUESTIONS).forEach(subject => {
+        const topics = MOCK_SYLLABUS[subject] || [];
+        MOCK_QUESTIONS[subject].forEach((q, i) => {
+            q.topic = topics[i % topics.length] || 'General';
+        });
+    });
+}
+assignMockTopics();
+
 const MOCK_SUBJECTS = [
     { id: 'physics', name: 'Physics', icon: 'fa-atom', color: '#6366f1', time: 45 },
     { id: 'chemistry', name: 'Chemistry', icon: 'fa-flask', color: '#10b981', time: 45 },
@@ -239,18 +257,25 @@ function showQuestion() {
 
 function selectMcq(index) {
     const q = currentQuestions[currentIdx];
-    const correct = index === q.a;
-    if (correct) score += (q.marks || 1);
+    const isCorrect = index === q.a;
+    if (isCorrect) score += (q.marks || 1);
+
+    // Track mistakes and mastery
+    if (!isCorrect) {
+        Auth.addMistake(currentSubject, q.q, q.options[q.a], q.options[index], q.exp, q.topic);
+    }
+    Auth.updateTopicMastery(currentSubject, q.topic, isCorrect);
+    Auth.updateAdaptiveLevel(currentSubject, isCorrect);
 
     const opts = document.querySelectorAll('.quiz-option');
     opts.forEach((btn, i) => {
         btn.disabled = true;
         if (i === q.a) btn.classList.add('correct');
-        else if (i === index && !correct) btn.classList.add('wrong');
+        else if (i === index && !isCorrect) btn.classList.add('wrong');
     });
 
     const exp = document.getElementById('mockExplanation');
-    exp.innerHTML = `<div class="exp-header ${correct ? 'exp-correct' : 'exp-wrong'}"><i class="fas ${correct ? 'fa-check-circle' : 'fa-times-circle'}"></i> ${correct ? 'Correct!' : 'Incorrect'} (${q.marks || 1} mark${(q.marks||1)>1?'s':''})</div><div class="exp-body">${q.exp}</div>`;
+    exp.innerHTML = `<div class="exp-header ${isCorrect ? 'exp-correct' : 'exp-wrong'}"><i class="fas ${isCorrect ? 'fa-check-circle' : 'fa-times-circle'}"></i> ${isCorrect ? 'Correct!' : 'Incorrect'} (${q.marks || 1} mark${(q.marks||1)>1?'s':''})</div><div class="exp-body">${q.exp}</div>`;
     exp.classList.add('show');
 
     document.getElementById('nextMock').disabled = false;

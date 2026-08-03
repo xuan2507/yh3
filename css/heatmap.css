@@ -1,0 +1,130 @@
+/* ========================================
+   Weakness Heatmap Styles
+   ======================================== */
+
+.heatmap-legend {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+.heatmap-subject-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.heatmap-tab {
+    padding: 10px 20px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.heatmap-tab:hover {
+    border-color: var(--primary-light);
+    color: var(--text);
+}
+
+.heatmap-tab.active {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border-color: transparent;
+}
+
+.heatmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.heatmap-cell {
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    border: 2px solid transparent;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: default;
+    position: relative;
+}
+
+.heatmap-cell:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.heatmap-topic {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.heatmap-score {
+    font-size: 0.75rem;
+    opacity: 0.85;
+}
+
+.heatmap-streak {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #f97316;
+}
+
+.heatmap-summary {
+    margin-top: 8px;
+}
+
+.summary-card {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+}
+
+.summary-item {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.summary-item b {
+    color: var(--text);
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .heatmap-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .summary-card {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

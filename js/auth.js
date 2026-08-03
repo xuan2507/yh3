@@ -84,7 +84,12 @@ const Auth = {
             bookmarks: [],
             studyPlan: [],
             tutorHistory: [],
-            achievements: []
+            achievements: [],
+            mistakes: [],
+            goals: [],
+            topicMastery: {},
+            adaptiveLevel: {},
+            memoryDecay: {}
         };
         
         users.push(newUser);
@@ -153,6 +158,11 @@ const Auth = {
             const sum = allScores.reduce((a, s) => a + (s.score / s.total * 100), 0);
             user.stats.avgScore = Math.round(sum / allScores.length);
         }
+        // Update goal progress if any
+        const pct = Math.round((score / total) * 100);
+        (user.goals || []).filter(g => g.subject === subject && !g.completed).forEach(g => {
+            this.updateGoalProgress(g.id, pct);
+        });
         this.saveUser(user);
     },
 
@@ -228,6 +238,261 @@ const Auth = {
     getTutorHistory() {
         const user = this.getUser();
         return user && user.tutorHistory ? user.tutorHistory : [];
+    },
+
+    // ========================================
+    // Mistake Library
+    // ========================================
+    addMistake(subject, question, correctAnswer, userAnswer, explanation, topic) {
+        const user = this.getUser();
+        if (!user) return;
+        if (!user.mistakes) user.mistakes = [];
+        user.mistakes.push({
+            id: Date.now().toString() + Math.random().toString(36).substr(2, 5),
+            subject,
+            question,
+            correctAnswer,
+            userAnswer,
+            explanation,
+            topic: topic || 'General',
+            timestamp: new Date().toISOString(),
+            attempts: 1,
+            mastered: false
+        });
+        this.saveUser(user);
+    },
+
+    getMistakes(subject, topic) {
+        const user = this.getUser();
+        if (!user || !user.mistakes) return [];
+        let list = user.mistakes;
+        if (subject) list = list.filter(m => m.subject === subject);
+        if (topic) list = list.filter(m => m.topic === topic);
+        return list.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    },
+
+    removeMistake(id) {
+        const user = this.getUser();
+        if (!user || !user.mistakes) return;
+        user.mistakes = user.mistakes.filter(m => m.id !== id);
+        this.saveUser(user);
+    },
+
+    markMistakeMastered(id) {
+        const user = this.getUser();
+        if (!user || !user.mistakes) return;
+        const m = user.mistakes.find(x => x.id === id);
+        if (m) { m.mastered = true; this.saveUser(user); }
+    },
+
+    getMistakePatterns() {
+        const user = this.getUser();
+        if (!user || !user.mistakes || user.mistakes.length === 0) return [];
+        const topics = {};
+        user.mistakes.filter(m => !m.mastered).forEach(m => {
+            topics[m.topic] = (topics[m.topic] || 0) + 1;
+        });
+        return Object.entries(topics).sort((a, b) => b[1] - a[1]);
+    },
+
+    generateRevisionQuiz(count = 10) {
+        const mistakes = this.getMistakes().filter(m => !m.mastered);
+        if (mistakes.length === 0) return [];
+        const shuffled = mistakes.sort(() => Math.random() - 0.5);
+        return shuffled.slice(0, count).map(m => {
+            const options = this._shuffleOptions(m.correctAnswer, m.userAnswer);
+            return {
+                question: m.question,
+                options: options,
+                correct: m.correctAnswer,
+                explanation: m.explanation,
+                subject: m.subject,
+                topic: m.topic,
+                fromMistake: true,
+                mistakeId: m.id
+            };
+        });
+    },
+
+    _shuffleOptions(correct, wrong) {
+        const opts = [correct, wrong, 'Not sure', 'Skip'];
+        return opts.sort(() => Math.random() - 0.5);
+    },
+
+    // ========================================
+    // Topic Mastery & Weakness Heatmap
+    // ========================================
+    updateTopicMastery(subject, topic, correct) {
+        const user = this.getUser();
+        if (!user) return;
+        if (!user.topicMastery) user.topicMastery = {};
+        if (!user.topicMastery[subject]) user.topicMastery[subject] = {};
+        if (!user.topicMastery[subject][topic]) {
+            user.topicMastery[subject][topic] = { score: 0, attempts: 0, lastSeen: null, correctStreak: 0 };
+        }
+        const t = user.topicMastery[subject][topic];
+        t.attempts += 1;
+        t.lastSeen = new Date().toISOString();
+        if (correct) {
+            t.correctStreak += 1;
+            t.score = Math.min(100, t.score + 15);
+        } else {
+            t.correctStreak = 0;
+            t.score = Math.max(0, t.score - 10);
+        }
+        // Update memory decay
+        if (!user.memoryDecay) user.memoryDecay = {};
+        if (!user.memoryDecay[subject]) user.memoryDecay[subject] = {};
+        user.memoryDecay[subject][topic] = {
+            lastRevised: new Date().toISOString(),
+            revisionCount: (user.memoryDecay[subject][topic]?.revisionCount || 0) + 1
+        };
+        this.saveUser(user);
+    },
+
+    getTopicMastery(subject) {
+        const user = this.getUser();
+        if (!user || !user.topicMastery) return {};
+        return subject ? (user.topicMastery[subject] || {}) : user.topicMastery;
+    },
+
+    getWeakTopics(subject, threshold = 50) {
+        const mastery = this.getTopicMastery(subject);
+        const weak = [];
+        Object.entries(mastery).forEach(([topic, data]) => {
+            if (data.score < threshold && data.attempts >= 2) {
+                weak.push({ topic, ...data });
+            }
+        });
+        return weak.sort((a, b) => a.score - b.score);
+    },
+
+    // ========================================
+    // Adaptive Difficulty
+    // ========================================
+    getAdaptiveLevel(subject) {
+        const user = this.getUser();
+        if (!user || !user.adaptiveLevel) return 1;
+        return user.adaptiveLevel[subject] !== undefined ? user.adaptiveLevel[subject] : 1;
+    },
+
+    updateAdaptiveLevel(subject, correct) {
+        const user = this.getUser();
+        if (!user) return;
+        if (!user.adaptiveLevel) user.adaptiveLevel = {};
+        const current = user.adaptiveLevel[subject] !== undefined ? user.adaptiveLevel[subject] : 1;
+        if (correct && current < 2) {
+            const scores = (user.progress[subject]?.scores || []).slice(-5);
+            const avg = scores.length ? scores.reduce((a, s) => a + (s.score / s.total), 0) / scores.length : 0;
+            if (avg >= 0.8) user.adaptiveLevel[subject] = current + 1;
+        } else if (!correct && current > 0) {
+            user.adaptiveLevel[subject] = current - 1;
+        }
+        this.saveUser(user);
+    },
+
+    // ========================================
+    // Memory Decay Engine
+    // ========================================
+    getMemoryDecayAlerts() {
+        const user = this.getUser();
+        if (!user || !user.memoryDecay) return [];
+        const alerts = [];
+        const now = new Date();
+        Object.entries(user.memoryDecay).forEach(([subject, topics]) => {
+            Object.entries(topics).forEach(([topic, data]) => {
+                const daysSince = Math.floor((now - new Date(data.lastRevised)) / (1000 * 60 * 60 * 24));
+                const decayDays = Math.max(1, 7 - (data.revisionCount || 0));
+                if (daysSince >= decayDays) {
+                    const mastery = user.topicMastery?.[subject]?.[topic]?.score || 0;
+                    alerts.push({ subject, topic, daysSince, revisionCount: data.revisionCount, mastery, urgency: daysSince >= decayDays * 2 ? 'high' : 'medium' });
+                }
+            });
+        });
+        return alerts.sort((a, b) => b.daysSince - a.daysSince);
+    },
+
+    // ========================================
+    // Exam Predictor
+    // ========================================
+    getExamPredictions(subject) {
+        const weak = this.getWeakTopics(subject, 60);
+        const mistakes = this.getMistakes(subject).filter(m => !m.mastered);
+        const combined = {};
+        weak.forEach(w => { combined[w.topic] = { topic: w.topic, score: w.score, source: 'weak' }; });
+        mistakes.forEach(m => {
+            if (combined[m.topic]) {
+                combined[m.topic].source = 'both';
+                combined[m.topic].score = Math.min(combined[m.topic].score, 40);
+            } else {
+                combined[m.topic] = { topic: m.topic, score: 40, source: 'mistake' };
+            }
+        });
+        return Object.values(combined).sort((a, b) => a.score - b.score);
+    },
+
+    // ========================================
+    // Goal Engine
+    // ========================================
+    addGoal(subject, targetGrade, deadline) {
+        const user = this.getUser();
+        if (!user) return;
+        if (!user.goals) user.goals = [];
+        // Map target grade to percentage
+        const gradeMap = { 'A*': 95, 'A': 85, 'B': 75, 'C': 65, 'D': 55, 'E': 45 };
+        const targetPct = gradeMap[targetGrade] || 80;
+        const currentPct = user.stats.avgScore || 0;
+        const gap = Math.max(0, targetPct - currentPct);
+        const daysLeft = Math.max(1, Math.ceil((new Date(deadline) - new Date()) / (1000 * 60 * 60 * 24)));
+        const dailyTarget = Math.ceil((gap / daysLeft) * 60); // minutes per day
+        user.goals.push({
+            id: Date.now().toString(),
+            subject,
+            targetGrade,
+            currentGrade: this._scoreToGrade(currentPct),
+            deadline,
+            dailyTargetHours: Math.round(dailyTarget / 60 * 10) / 10,
+            gap,
+            daysLeft,
+            created: new Date().toISOString(),
+            completed: false
+        });
+        this.saveUser(user);
+    },
+
+    updateGoalProgress(goalId, currentScore) {
+        const user = this.getUser();
+        if (!user || !user.goals) return;
+        const goal = user.goals.find(g => g.id === goalId);
+        if (!goal) return;
+        goal.currentGrade = this._scoreToGrade(currentScore);
+        if (currentScore >= ({ 'A*': 95, 'A': 85, 'B': 75, 'C': 65, 'D': 55, 'E': 45 }[goal.targetGrade] || 80)) {
+            goal.completed = true;
+        }
+        this.saveUser(user);
+    },
+
+    getGoals() {
+        const user = this.getUser();
+        if (!user || !user.goals) return [];
+        return user.goals.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+    },
+
+    removeGoal(id) {
+        const user = this.getUser();
+        if (!user || !user.goals) return;
+        user.goals = user.goals.filter(g => g.id !== id);
+        this.saveUser(user);
+    },
+
+    _scoreToGrade(score) {
+        if (score >= 95) return 'A*';
+        if (score >= 85) return 'A';
+        if (score >= 75) return 'B';
+        if (score >= 65) return 'C';
+        if (score >= 55) return 'D';
+        if (score >= 45) return 'E';
+        return 'U';
     },
 
     // Update user display

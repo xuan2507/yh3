@@ -235,11 +235,34 @@ document.querySelectorAll('.quiz-subject-card').forEach(card => {
     card.addEventListener('click', () => startQuiz(card.dataset.subject));
 });
 
+const SYLLABUS_TOPICS = {
+    physics: ['Forces & Motion', 'Work & Energy', 'Thermal Physics', 'Waves', 'Electricity', 'Magnetism', 'Nuclear Physics', 'Astrophysics', 'Quantum Physics', 'Oscillations', 'Gravitation', 'Electric Fields', 'Capacitors', 'Electromagnetism', 'Particle Physics'],
+    chemistry: ['Atomic Structure', 'Chemical Bonding', 'Energetics', 'Kinetics', 'Equilibrium', 'Redox', 'Inorganic Chemistry', 'Organic Chemistry', 'Analytical Chemistry', 'Transition Metals', 'Electrochemistry', 'Acids & Bases', 'Group Chemistry', 'Polymers', 'Biochemistry'],
+    maths: ['Algebra', 'Coordinate Geometry', 'Trigonometry', 'Calculus', 'Vectors', 'Complex Numbers', 'Matrices', 'Probability', 'Statistics', 'Mechanics', 'Differential Equations', 'Numerical Methods', 'Proof', 'Sequences', 'Transformations'],
+    biology: ['Cell Biology', 'Biochemistry', 'DNA & Genetics', 'Ecology', 'Physiology', 'Evolution', 'Biotechnology', 'Plant Biology', 'Immunology', 'Neurobiology', 'Reproduction', 'Homeostasis', 'Respiration', 'Photosynthesis', 'Microbiology'],
+    economics: ['Microeconomics', 'Macroeconomics', 'International Trade', 'Development', 'Labour Markets', 'Market Structures', 'Market Failure', 'Fiscal Policy', 'Monetary Policy', 'Exchange Rates', 'Balance of Payments', 'Inflation', 'Unemployment', 'Economic Growth', 'Behavioural Economics']
+};
+
+function assignTopics() {
+    Object.keys(QUESTIONS).forEach(subject => {
+        const topics = SYLLABUS_TOPICS[subject] || [];
+        QUESTIONS[subject].forEach((q, i) => {
+            q.topic = topics[i % topics.length] || 'General';
+        });
+    });
+}
+assignTopics();
+
 function startQuiz(subjectId) {
     currentSubject = subjectId;
     const pool = QUESTIONS[subjectId] || [];
-    // Shuffle and pick 15 for a more thorough assessment
-    currentQuestions = [...pool].sort(() => Math.random() - 0.5).slice(0, 15);
+    // Adaptive: filter by difficulty level if user has history
+    const level = Auth.getAdaptiveLevel(subjectId);
+    let filtered = pool;
+    if (level === 0) filtered = pool.filter((_, i) => i % 3 !== 0); // easier subset
+    if (level === 2) filtered = pool.filter((q, i) => i % 2 === 0 || q.exp.length > 80); // harder subset
+    if (filtered.length < 10) filtered = pool;
+    currentQuestions = [...filtered].sort(() => Math.random() - 0.5).slice(0, 15);
     currentQIndex = 0;
     score = 0;
     answers = [];
@@ -274,19 +297,26 @@ function showQuestion() {
 
 function selectAnswer(index) {
     const q = currentQuestions[currentQIndex];
-    const correct = index === q.a;
-    if (correct) score++;
-    answers.push({ q: q.q, selected: index, correct: q.a, correct: correct });
+    const isCorrect = index === q.a;
+    if (isCorrect) score++;
+    answers.push({ q: q.q, selected: index, correctIndex: q.a, correct: isCorrect });
+
+    // Track mistakes and mastery
+    if (!isCorrect) {
+        Auth.addMistake(currentSubject, q.q, q.options[q.a], q.options[index], q.exp, q.topic);
+    }
+    Auth.updateTopicMastery(currentSubject, q.topic, isCorrect);
+    Auth.updateAdaptiveLevel(currentSubject, isCorrect);
 
     const opts = document.querySelectorAll('.quiz-option');
     opts.forEach((btn, i) => {
         btn.disabled = true;
         if (i === q.a) btn.classList.add('correct');
-        else if (i === index && !correct) btn.classList.add('wrong');
+        else if (i === index && !isCorrect) btn.classList.add('wrong');
     });
 
     const exp = document.getElementById('quizExplanation');
-    exp.innerHTML = `<div class="exp-header ${correct ? 'exp-correct' : 'exp-wrong'}"><i class="fas ${correct ? 'fa-check-circle' : 'fa-times-circle'}"></i> ${correct ? 'Correct!' : 'Incorrect'}</div><div class="exp-body">${q.exp}</div>`;
+    exp.innerHTML = `<div class="exp-header ${isCorrect ? 'exp-correct' : 'exp-wrong'}"><i class="fas ${isCorrect ? 'fa-check-circle' : 'fa-times-circle'}"></i> ${isCorrect ? 'Correct!' : 'Incorrect'}</div><div class="exp-body">${q.exp}</div>`;
     exp.classList.add('show');
 
     document.getElementById('nextQuestion').disabled = false;
