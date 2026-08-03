@@ -6,11 +6,16 @@
 const Auth = {
     // Check if user is logged in
     isLoggedIn() {
+        if (typeof ApiClient !== 'undefined' && ApiClient.token) return true;
         return localStorage.getItem('learnai_user') !== null;
     },
-    
+
     // Get current user
     getUser() {
+        if (typeof ApiClient !== 'undefined' && ApiClient.token) {
+            const cached = localStorage.getItem('learnai_user');
+            return cached ? JSON.parse(cached) : null;
+        }
         const user = localStorage.getItem('learnai_user');
         return user ? JSON.parse(user) : null;
     },
@@ -22,35 +27,58 @@ const Auth = {
     },
     
     // Login user
-    login(email, password) {
-        // In a real app, this would call an API
-        // For demo, we'll check against registered users
+    async login(email, password) {
+        if (typeof ApiClient !== 'undefined' && localStorage.getItem('api_base')) {
+            const data = await ApiClient.login(email, password);
+            if (data?.token) {
+                const userObj = {
+                    id: data.user.id,
+                    email: data.user.email,
+                    firstName: data.user.firstName,
+                    lastName: data.user.lastName,
+                    examType: data.user.examType,
+                    plan: data.user.plan,
+                    stats: { subjects: 0, resources: 0, hours: 0, progress: 0, quizzesTaken: 0, avgScore: 0, streak: 0, lastStudyDate: null, totalQuestions: 0 },
+                    progress: {}, bookmarks: [], studyPlan: [], tutorHistory: [], achievements: [],
+                    mistakes: [], goals: [], topicMastery: {}, adaptiveLevel: {}, memoryDecay: {}
+                };
+                localStorage.setItem('learnai_user', JSON.stringify(userObj));
+                return { success: true, user: userObj };
+            }
+            return { success: false, error: 'Invalid credentials' };
+        }
+        // Fallback localStorage
         const users = JSON.parse(localStorage.getItem('learnai_users') || '[]');
         const user = users.find(u => u.email === email);
-        
-        if (!user) {
-            return { success: false, error: 'Account not found. Please sign up first.' };
-        }
-        
-        if (user.password !== password) {
-            return { success: false, error: 'Incorrect password.' };
-        }
-        
-        // Set session
+        if (!user) return { success: false, error: 'Account not found. Please sign up first.' };
+        if (user.password !== password) return { success: false, error: 'Incorrect password.' };
         localStorage.setItem('learnai_user', JSON.stringify(user));
         return { success: true, user };
     },
-    
+
     // Register user
-    register(userData) {
+    async register(userData) {
+        if (typeof ApiClient !== 'undefined' && localStorage.getItem('api_base')) {
+            const data = await ApiClient.register(userData);
+            if (data?.token) {
+                const userObj = {
+                    id: data.user.id, email: data.user.email,
+                    firstName: data.user.firstName, lastName: data.user.lastName,
+                    examType: data.user.examType, plan: data.user.plan,
+                    stats: { subjects: 0, resources: 0, hours: 0, progress: 0, quizzesTaken: 0, avgScore: 0, streak: 0, lastStudyDate: null, totalQuestions: 0 },
+                    progress: {}, bookmarks: [], studyPlan: [], tutorHistory: [], achievements: [],
+                    mistakes: [], goals: [], topicMastery: {}, adaptiveLevel: {}, memoryDecay: {}
+                };
+                localStorage.setItem('learnai_user', JSON.stringify(userObj));
+                return { success: true, user: userObj };
+            }
+            return { success: false, error: data?.error || 'Registration failed' };
+        }
+        // Fallback localStorage
         const users = JSON.parse(localStorage.getItem('learnai_users') || '[]');
-        
-        // Check if email exists
         if (users.find(u => u.email === userData.email)) {
             return { success: false, error: 'An account with this email already exists.' };
         }
-        
-        // Create user
         const newUser = {
             id: Date.now().toString(),
             ...userData,
@@ -102,6 +130,8 @@ const Auth = {
     // Logout
     logout() {
         localStorage.removeItem('learnai_user');
+        localStorage.removeItem('learnai_token');
+        if (typeof ApiClient !== 'undefined') ApiClient.token = null;
         window.location.href = 'index.html';
     },
     
@@ -158,12 +188,14 @@ const Auth = {
             const sum = allScores.reduce((a, s) => a + (s.score / s.total * 100), 0);
             user.stats.avgScore = Math.round(sum / allScores.length);
         }
-        // Update goal progress if any
         const pct = Math.round((score / total) * 100);
         (user.goals || []).filter(g => g.subject === subject && !g.completed).forEach(g => {
             this.updateGoalProgress(g.id, pct);
         });
         this.saveUser(user);
+        if (typeof ApiClient !== 'undefined' && ApiClient.token) {
+            ApiClient.saveQuizResult(subject, score, total, topic).catch(() => {});
+        }
     },
 
     // Track topic completion
@@ -185,6 +217,9 @@ const Auth = {
         user.progress[subject].timeSpent += minutes;
         user.stats.hours = Math.round((user.stats.hours || 0) + minutes / 60);
         this.saveUser(user);
+        if (typeof ApiClient !== 'undefined' && ApiClient.token) {
+            ApiClient.addStudyTime(subject, minutes).catch(() => {});
+        }
     },
 
     // Update streak
@@ -232,6 +267,9 @@ const Auth = {
         user.tutorHistory.push({ role, content, time: new Date().toISOString() });
         if (user.tutorHistory.length > 100) user.tutorHistory = user.tutorHistory.slice(-100);
         this.saveUser(user);
+        if (typeof ApiClient !== 'undefined' && ApiClient.token) {
+            ApiClient.addTutorMessage(role, content).catch(() => {});
+        }
     },
 
     // Get tutor history
@@ -260,6 +298,9 @@ const Auth = {
             mastered: false
         });
         this.saveUser(user);
+        if (typeof ApiClient !== 'undefined' && ApiClient.token) {
+            ApiClient.addMistake(subject, question, correctAnswer, userAnswer, explanation, topic).catch(() => {});
+        }
     },
 
     getMistakes(subject, topic) {
@@ -340,7 +381,6 @@ const Auth = {
             t.correctStreak = 0;
             t.score = Math.max(0, t.score - 10);
         }
-        // Update memory decay
         if (!user.memoryDecay) user.memoryDecay = {};
         if (!user.memoryDecay[subject]) user.memoryDecay[subject] = {};
         user.memoryDecay[subject][topic] = {
@@ -348,6 +388,9 @@ const Auth = {
             revisionCount: (user.memoryDecay[subject][topic]?.revisionCount || 0) + 1
         };
         this.saveUser(user);
+        if (typeof ApiClient !== 'undefined' && ApiClient.token) {
+            ApiClient.updateTopicMastery(subject, topic, correct).catch(() => {});
+        }
     },
 
     getTopicMastery(subject) {
@@ -438,13 +481,12 @@ const Auth = {
         const user = this.getUser();
         if (!user) return;
         if (!user.goals) user.goals = [];
-        // Map target grade to percentage
         const gradeMap = { 'A*': 95, 'A': 85, 'B': 75, 'C': 65, 'D': 55, 'E': 45 };
         const targetPct = gradeMap[targetGrade] || 80;
         const currentPct = user.stats.avgScore || 0;
         const gap = Math.max(0, targetPct - currentPct);
         const daysLeft = Math.max(1, Math.ceil((new Date(deadline) - new Date()) / (1000 * 60 * 60 * 24)));
-        const dailyTarget = Math.ceil((gap / daysLeft) * 60); // minutes per day
+        const dailyTarget = Math.ceil((gap / daysLeft) * 60);
         user.goals.push({
             id: Date.now().toString(),
             subject,
@@ -458,6 +500,9 @@ const Auth = {
             completed: false
         });
         this.saveUser(user);
+        if (typeof ApiClient !== 'undefined' && ApiClient.token) {
+            ApiClient.addGoal(subject, targetGrade, deadline).catch(() => {});
+        }
     },
 
     updateGoalProgress(goalId, currentScore) {
@@ -533,36 +578,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle Login Form
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
-        loginForm.addEventListener('submit', function(e) {
+        loginForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const btn = document.getElementById('loginBtn');
-            
             btn.classList.add('btn-loading');
             btn.disabled = true;
-            
-            setTimeout(() => {
-                const result = Auth.login(email, password);
-                
-                if (result.success) {
-                    window.location.href = 'dashboard.html';
-                } else {
-                    showAlert(result.error, 'error');
-                    btn.classList.remove('btn-loading');
-                    btn.disabled = false;
-                }
-            }, 800);
+            const result = await Auth.login(email, password);
+            if (result.success) {
+                window.location.href = 'dashboard.html';
+            } else {
+                showAlert(result.error, 'error');
+                btn.classList.remove('btn-loading');
+                btn.disabled = false;
+            }
         });
     }
-    
+
     // Handle Register Form
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
-        registerForm.addEventListener('submit', function(e) {
+        registerForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
             const userData = {
                 firstName: document.getElementById('firstName').value,
                 lastName: document.getElementById('lastName').value,
@@ -570,25 +608,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 examType: document.getElementById('examType').value,
                 password: document.getElementById('password').value
             };
-            
             const btn = document.getElementById('registerBtn');
             btn.classList.add('btn-loading');
             btn.disabled = true;
-            
-            setTimeout(() => {
-                const result = Auth.register(userData);
-                
-                if (result.success) {
-                    showAlert('Account created successfully! Redirecting...', 'success');
-                    setTimeout(() => {
-                        window.location.href = 'dashboard.html';
-                    }, 1000);
-                } else {
-                    showAlert(result.error, 'error');
-                    btn.classList.remove('btn-loading');
-                    btn.disabled = false;
-                }
-            }, 800);
+            const result = await Auth.register(userData);
+            if (result.success) {
+                showAlert('Account created successfully! Redirecting...', 'success');
+                setTimeout(() => { window.location.href = 'dashboard.html'; }, 1000);
+            } else {
+                showAlert(result.error, 'error');
+                btn.classList.remove('btn-loading');
+                btn.disabled = false;
+            }
         });
     }
     
