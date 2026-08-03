@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maths Quick Revision - LearnAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/notes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .revision-card { background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(6,182,212,0.04)); border: 1px solid rgba(99,102,241,0.2); }
+        .must-know { border-left: 4px solid var(--success); }
+        .formula-box { background: rgba(0,0,0,0.3); padding: 8px 16px; border-radius: 8px; font-family: monospace; display: inline-block; margin: 4px 0; }
+    </style>
+</head>
+<body class="notes-page">
+    <nav class="notes-navbar">
+        <a href="../dashboard.html" class="logo"><i class="fas fa-brain"></i><span>LearnAI</span></a>
+        <div class="notes-nav-right">
+            <a href="maths-9709.html" class="btn btn-outline btn-sm">Full Notes</a>
+            <a href="../dashboard.html" class="btn btn-outline btn-sm"><i class="fas fa-arrow-left"></i> Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="notes-layout">
+        <aside class="notes-sidebar">
+            <h3>Maths Quick Rev</h3>
+            <ul class="notes-toc">
+                <li><a href="#must" class="active">Must-Know</a></li>
+                <li><a href="#algebra">Algebra</a></li>
+                <li><a href="#trig">Trigonometry</a></li>
+                <li><a href="#calc">Calculus</a></li>
+                <li><a href="#series">Series</a></li>
+                <li><a href="#p3">P3 Topics</a></li>
+            </ul>
+        </aside>
+
+        <main class="notes-content">
+            <header class="notes-header">
+                <span class="notes-subject-tag"><i class="fas fa-bolt"></i> Quick Revision</span>
+                <h1>Mathematics 9709 - Last Minute Revision</h1>
+                <p class="notes-meta">Condensed essentials for exam day. For full notes, click "Full Notes" above.</p>
+            </header>
+
+            <section class="notes-section" id="must">
+                <h2>Must-Know Formulas</h2>
+                <div class="note-card revision-card must-know">
+                    <h4>Quadratics</h4>
+                    <div class="formula-box">x = [-b +/- sqrt(b^2 - 4ac)] / 2a</div>
+                    <div class="formula-box">Discriminant = b^2 - 4ac</div>
+
+                    <h4>Binomial</h4>
+                    <div class="formula-box">(1+x)^n = 1 + nx + n(n-1)x^2/2! + ... (|x|<1)</div>
+
+                    <h4>Trigonometry</h4>
+                    <div class="formula-box">sin^2(x) + cos^2(x) = 1</div>
+                    <div class="formula-box">1 + tan^2(x) = sec^2(x)</div>
+                    <div class="formula-box">sin(2x) = 2sin(x)cos(x)</div>
+                    <div class="formula-box">cos(2x) = cos^2(x) - sin^2(x) = 2cos^2(x) - 1 = 1 - 2sin^2(x)</div>
+
+                    <h4>Differentiation</h4>
+                    <div class="formula-box">d(x^n)/dx = nx^(n-1)</div>
+                    <div class="formula-box">d(e^x)/dx = e^x</div>
+                    <div class="formula-box">d(ln x)/dx = 1/x</div>
+                    <div class="formula-box">d(sin x)/dx = cos x</div>
+                    <div class="formula-box">d(cos x)/dx = -sin x</div>
+                    <div class="formula-box">Chain: dy/dx = dy/du * du/dx</div>
+                    <div class="formula-box">Product: d(uv)/dx = u(dv/dx) + v(du/dx)</div>
+                    <div class="formula-box">Quotient: d(u/v)/dx = [v(du/dx) - u(dv/dx)]/v^2</div>
+
+                    <h4>Integration</h4>
+                    <div class="formula-box">integral x^n dx = x^(n+1)/(n+1) + c (n != -1)</div>
+                    <div class="formula-box">integral 1/x dx = ln|x| + c</div>
+                    <div class="formula-box">integral e^x dx = e^x + c</div>
+                    <div class="formula-box">integral sin x dx = -cos x + c</div>
+                    <div class="formula-box">integral cos x dx = sin x + c</div>
+                    <div class="formula-box">By parts: integral u dv = uv - integral v du</div>
+
+                    <h4>Series</h4>
+                    <div class="formula-box">AP: nth term = a + (n-1)d, Sn = n/2[2a + (n-1)d]</div>
+                    <div class="formula-box">GP: nth term = ar^(n-1), Sn = a(1-r^n)/(1-r), S_inf = a/(1-r) for |r|<1</div>
+
+                    <h4>Coordinate Geometry</h4>
+                    <div class="formula-box">Distance = sqrt[(x2-x1)^2 + (y2-y1)^2]</div>
+                    <div class="formula-box">Midpoint = [(x1+x2)/2, (y1+y2)/2]</div>
+                    <div class="formula-box">Gradient = (y2-y1)/(x2-x1)</div>
+                    <div class="formula-box">Perpendicular: m1 * m2 = -1</div>
+                    <div class="formula-box">Circle: (x-a)^2 + (y-b)^2 = r^2</div>
+                </div>
+            </section>
+
+            <section class="notes-section" id="algebra">
+                <h2>Algebra - Quick Tips</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Completing the square:</strong> x^2 + bx + c = (x + b/2)^2 - (b/2)^2 + c</p>
+                    <p><strong>Polynomial division:</strong> If f(a) = 0, then (x-a) is a factor.</p>
+                    <p><strong>Partial fractions:</strong> Linear -> A/(x-a) + B/(x-b). Repeated -> add C/(x-a)^2. Quadratic -> (Ax+B)/(quadratic)</p>
+                    <p><strong>Log laws:</strong> log(ab) = log a + log b, log(a/b) = log a - log b, log(a^n) = n log a</p>
+                    <p><strong>Change base:</strong> log_b(a) = log(a)/log(b)</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="trig">
+                <h2>Trigonometry</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Exact values:</strong></p>
+                    <table class="notes-table quick-table">
+                        <tr><th></th><th>0</th><th>30</th><th>45</th><th>60</th><th>90</th></tr>
+                        <tr><td>sin</td><td>0</td><td>1/2</td><td>sqrt(2)/2</td><td>sqrt(3)/2</td><td>1</td></tr>
+                        <tr><td>cos</td><td>1</td><td>sqrt(3)/2</td><td>sqrt(2)/2</td><td>1/2</td><td>0</td></tr>
+                        <tr><td>tan</td><td>0</td><td>1/sqrt(3)</td><td>1</td><td>sqrt(3)</td><td>-</td></tr>
+                    </table>
+                    <p><strong>R-formula:</strong> a cos x + b sin x = R cos(x - alpha), R = sqrt(a^2+b^2), tan alpha = b/a</p>
+                    <p><strong>Small angles (radians):</strong> sin(theta) ~ theta, tan(theta) ~ theta, cos(theta) ~ 1 - theta^2/2</p>
+                    <p><strong> CAST diagram:</strong> All positive in 1st, Sin in 2nd, Tan in 3rd, Cos in 4th</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="calc">
+                <h2>Calculus</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Stationary points:</strong> dy/dx = 0</p>
+                    <ul>
+                        <li>Max: d^2y/dx^2 < 0</li>
+                        <li>Min: d^2y/dx^2 > 0</li>
+                        <li>Point of inflection: d^2y/dx^2 = 0 AND changes sign</li>
+                    </ul>
+                    <p><strong>Increasing:</strong> dy/dx > 0. <strong>Decreasing:</strong> dy/dx < 0</p>
+                    <p><strong>Area:</strong> integral from a to b of y dx. If curve below axis, area = |integral|</p>
+                    <p><strong>Volume:</strong> pi * integral of y^2 dx</p>
+                    <p><strong>Parametric:</strong> dy/dx = (dy/dt)/(dx/dt)</p>
+                    <p><strong>Implicit:</strong> Differentiate y terms and multiply by dy/dx</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="series">
+                <h2>Series</h2>
+                <div class="note-card revision-card">
+                    <p><strong>AP:</strong> a, a+d, a+2d... Add common difference.</p>
+                    <p><strong>GP:</strong> a, ar, ar^2... Multiply by common ratio.</p>
+                    <p><strong>Sum to infinity:</strong> Only when |r| < 1. Formula: a/(1-r)</p>
+                    <p><strong>Binomial valid:</strong> |x| < 1 for (1+x)^n where n is negative/fractional</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="p3">
+                <h2>P3 Quick Topics</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Vectors:</strong></p>
+                    <ul>
+                        <li>|ai+bj+ck| = sqrt(a^2+b^2+c^2)</li>
+                        <li>a.b = |a||b|cos(theta) = a1b1+a2b2+a3b3</li>
+                        <li>Line: r = a + tb</li>
+                        <li>Plane: r.n = d or ax+by+cz=d</li>
+                    </ul>
+                    <p><strong>Differential equations:</strong> Separate variables then integrate both sides.</p>
+                    <p><strong>Complex numbers:</strong></p>
+                    <ul>
+                        <li>z = x + iy = r(cos theta + i sin theta)</li>
+                        <li>|z| = r = sqrt(x^2+y^2)</li>
+                        <li>arg(z) = theta = arctan(y/x)</li>
+                        <li>De Moivre: [r(cis theta)]^n = r^n cis(n theta)</li>
+                        <li>Multiply: multiply moduli, add arguments</li>
+                    </ul>
+                </div>
+            </section>
+
+            <footer class="notes-footer">
+                <p><strong>Exam Tips:</strong> Show ALL working. Check answers by substitution. Watch for exact value questions. Sketch graphs when asked. For integration, don't forget +c (indefinite). In trig, check if answer should be in degrees or radians.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        document.querySelectorAll('.notes-toc a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('.notes-toc a').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

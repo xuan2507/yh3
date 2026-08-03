@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Quick Revision - LearnAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/notes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .revision-card { background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(6,182,212,0.04)); border: 1px solid rgba(99,102,241,0.2); }
+        .must-know { border-left: 4px solid var(--success); }
+        .formula-box { background: rgba(0,0,0,0.3); padding: 8px 16px; border-radius: 8px; font-family: monospace; display: inline-block; margin: 4px 0; }
+        .quick-table { font-size: 0.85rem; }
+        .quick-table td, .quick-table th { padding: 6px 10px; }
+        .org-highlight { background: rgba(34,197,94,0.1); padding: 4px 8px; border-radius: 4px; }
+    </style>
+</head>
+<body class="notes-page">
+    <nav class="notes-navbar">
+        <a href="../dashboard.html" class="logo"><i class="fas fa-brain"></i><span>LearnAI</span></a>
+        <div class="notes-nav-right">
+            <a href="chemistry-9701.html" class="btn btn-outline btn-sm">Full Notes</a>
+            <a href="../dashboard.html" class="btn btn-outline btn-sm"><i class="fas fa-arrow-left"></i> Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="notes-layout">
+        <aside class="notes-sidebar">
+            <h3>Chem Quick Rev</h3>
+            <ul class="notes-toc">
+                <li><a href="#must" class="active">Must-Know</a></li>
+                <li><a href="#atomic">Atomic Structure</a></li>
+                <li><a href="#bonding">Bonding</a></li>
+                <li><a href="#energetics">Energetics</a></li>
+                <li><a href="#equilibria">Equilibria</a></li>
+                <li><a href="#kinetics">Kinetics</a></li>
+                <li><a href="#inorganic">Inorganic</a></li>
+                <li><a href="#organic">Organic</a></li>
+                <li><a href="#tests">Tests</a></li>
+            </ul>
+        </aside>
+
+        <main class="notes-content">
+            <header class="notes-header">
+                <span class="notes-subject-tag"><i class="fas fa-bolt"></i> Quick Revision</span>
+                <h1>Chemistry 9701 - Last Minute Revision</h1>
+                <p class="notes-meta">Condensed essentials for exam day. For full notes, click "Full Notes" above.</p>
+            </header>
+
+            <section class="notes-section" id="must">
+                <h2>Must-Know Formulas & Constants</h2>
+                <div class="note-card revision-card must-know">
+                    <div class="formula-box">moles = mass / Mr</div>
+                    <div class="formula-box">moles = concentration x volume (dm^3)</div>
+                    <div class="formula-box">PV = nRT (R = 8.314 J K^-1 mol^-1)</div>
+                    <div class="formula-box">Kc = [products]^coeff / [reactants]^coeff</div>
+                    <div class="formula-box">pH = -log[H+]</div>
+                    <div class="formula-box">pKa = -log(Ka)</div>
+                    <div class="formula-box">rate = k[A]^m[B]^n</div>
+                    <div class="formula-box">k = Ae^(-Ea/RT)</div>
+                    <div class="formula-box">E = mc^2 (mass-energy)</div>
+                    <p><strong>At STP:</strong> 1 mole gas = 24 dm^3. At RTP: 1 mole = 24 dm^3.</p>
+                    <p><strong>Avogadro:</strong> 6.02 x 10^23 particles per mole</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="atomic">
+                <h2>Atomic Structure - Quick Facts</h2>
+                <div class="note-card revision-card">
+                    <p><strong>IE trend:</strong> Increases across period (more nuclear charge). Decreases down group (more shielding).</p>
+                    <p><strong>Drops:</strong> G2 to G3 (p orbital, more shielded). G5 to G6 (pairing repulsion).</p>
+                    <p><strong>Electronic config order:</strong> 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p...</p>
+                    <p><strong>Exceptions:</strong> Cr = [Ar] 3d^5 4s^1, Cu = [Ar] 3d^10 4s^1</p>
+                    <p><strong>Isotopes:</strong> Same protons, different neutrons. Same chemical properties, different physical.</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="bonding">
+                <h2>Bonding - Quick Reference</h2>
+                <div class="note-card revision-card">
+                    <table class="notes-table quick-table">
+                        <tr><th>Bond</th><th>Type</th><th>Properties</th></tr>
+                        <tr><td>Ionic</td><td>Metal + Non-metal</td><td>High MP, soluble, conduct molten/aq</td></tr>
+                        <tr><td>Covalent (simple)</td><td>Non-metal</td><td>Low MP, volatile</td></tr>
+                        <tr><td>Covalent (giant)</td><td>C, SiO2</td><td>Very high MP, hard</td></tr>
+                        <tr><td>Metallic</td><td>Metals</td><td>Conduct, malleable, variable MP</td></tr>
+                    </table>
+                    <p><strong>H-bond:</strong> H bonded to N, O, or F. Strongest IMF. Explains high BP of H2O, NH3.</p>
+                    <p><strong>VSEPR shapes:</strong> 2BP=linear(180), 3BP=trigonal(120), 4BP=tetrahedral(109.5), 3BP+1LP=pyramidal(~107), 2BP+2LP=bent(104.5)</p>
+                    <p><strong>Lone pairs repel MORE than bonding pairs</strong> - reduces bond angles</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="energetics">
+                <h2>Energetics</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Hess's Law:</strong> delta H = sum(delta Hf products) - sum(delta Hf reactants)</p>
+                    <p><strong>Bond enthalpy:</strong> delta H = bonds broken - bonds formed</p>
+                    <p><strong>Exothermic:</strong> delta H < 0 (products lower energy). Endothermic: delta H > 0.</p>
+                    <p><strong>Lattice energy:</strong> Higher charge and smaller ions = higher LE</p>
+                    <p><strong>LE proportional to:</strong> (q+ x q-) / (r+ + r-)</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="equilibria">
+                <h2>Equilibria</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Kc:</strong> Products over reactants, raised to coefficients. Omit pure solids/liquids.</p>
+                    <p><strong>Le Chatelier:</strong> System opposes changes</p>
+                    <ul>
+                        <li>Increase concentration reactant -> shifts to products</li>
+                        <li>Increase pressure -> shifts to fewer moles</li>
+                        <li>Increase temp -> shifts in endothermic direction</li>
+                        <li>Catalyst -> no shift, speeds both equally</li>
+                    </ul>
+                    <p><strong>Only temperature changes K value.</strong> Concentration/pressure changes position but K stays same.</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="kinetics">
+                <h2>Reaction Kinetics</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Rate equation:</strong> rate = k[A]^m[B]^n</p>
+                    <p><strong>Order from graphs:</strong></p>
+                    <ul>
+                        <li>Zero order: [A] vs t = straight line</li>
+                        <li>First order: half-life constant</li>
+                        <li>Second order: half-life increases</li>
+                    </ul>
+                    <p><strong>Arrhenius:</strong> ln k = ln A - Ea/RT. Plot ln k vs 1/T, gradient = -Ea/R</p>
+                    <p><strong>Catalyst:</strong> Lowers Ea. Equal effect on forward and reverse. Does NOT change K or equilibrium position.</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="inorganic">
+                <h2>Inorganic Chemistry</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Group 2 trend:</strong> Down group: more reactive, hydroxides MORE soluble, sulfates LESS soluble</p>
+                    <p><strong>Group 17 trend:</strong> Down group: less reactive (oxidising power decreases), BP increases, colour darkens</p>
+                    <p><strong>Halogen displacement:</strong> More reactive displaces less reactive from halide solution</p>
+                    <p><strong>Transition metals:</strong> Variable oxidation states, coloured compounds (d-d transitions), catalytic activity, complex ions</p>
+                    <p><strong>Ligand substitution:</strong> NH3 or Cl- replace H2O ligands. Colour changes.</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="organic">
+                <h2>Organic - Key Reactions</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Alkene reactions:</strong></p>
+                    <ul>
+                        <li>H2/Ni -> alkane (hydrogenation)</li>
+                        <li>Br2/CCl4 -> dibromoalkane (decolourises - test for C=C)</li>
+                        <li>H2O/H+ -> alcohol (hydration)</li>
+                        <li>HBr -> bromoalkane (Markovnikov: H to C with more H)</li>
+                        <li>Cold KMnO4 -> diol</li>
+                        <li>Hot KMnO4 -> cleavage to carbonyls/acids</li>
+                    </ul>
+                    <p><strong>Alcohol reactions:</strong></p>
+                    <ul>
+                        <li>Primary: oxidises to aldehyde (with distillation) then carboxylic acid</li>
+                        <li>Secondary: oxidises to ketone</li>
+                        <li>Tertiary: resistant to oxidation</li>
+                        <li>Conc H2SO4, 170C -> alkene (elimination)</li>
+                        <li>PCl5/PCl3/SOCl2 -> halogenoalkane</li>
+                    </ul>
+                    <p><strong>Carbonyl tests:</strong></p>
+                    <ul>
+                        <li>2,4-DNP -> orange ppt (both aldehyde & ketone)</li>
+                        <li>Tollens' -> silver mirror (aldehyde only)</li>
+                        <li>Fehling's -> brick red ppt (aldehyde only)</li>
+                        <li>Iodoform -> yellow ppt (methyl ketone or ethanol)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="notes-section" id="tests">
+                <h2>Analytical Tests</h2>
+                <div class="note-card revision-card">
+                    <p><strong>IR peaks:</strong></p>
+                    <ul>
+                        <li>O-H (alcohol): 3230-3550 cm^-1, broad</li>
+                        <li>O-H (acid): 2500-3300, very broad</li>
+                        <li>C=O: 1640-1750, strong</li>
+                        <li>C=C: 1620-1680</li>
+                        <li>C-H: 2850-3100</li>
+                    </ul>
+                    <p><strong>Mass spec:</strong> M+ = molecular ion (highest m/z). Base peak = most abundant.</p>
+                    <p><strong>NMR:</strong> n+1 rule for splitting. TMS at 0. CHO ~9-10 ppm, COOH ~10-12 ppm.</p>
+                </div>
+            </section>
+
+            <footer class="notes-footer">
+                <p><strong>Quick Tips:</strong> Always show curly arrows in mechanisms. Remember reagents AND conditions. For calculations: show working, watch units, use SF correctly. In organic: identify functional groups first.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        document.querySelectorAll('.notes-toc a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('.notes-toc a').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

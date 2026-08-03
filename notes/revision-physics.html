@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Quick Revision - LearnAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/notes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .revision-card { background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(6,182,212,0.04)); border: 1px solid rgba(99,102,241,0.2); }
+        .must-know { border-left: 4px solid var(--success); }
+        .formula-box { background: rgba(0,0,0,0.3); padding: 8px 16px; border-radius: 8px; font-family: monospace; display: inline-block; margin: 4px 0; }
+        .quick-table { font-size: 0.85rem; }
+        .quick-table td, .quick-table th { padding: 6px 10px; }
+    </style>
+</head>
+<body class="notes-page">
+    <nav class="notes-navbar">
+        <a href="../dashboard.html" class="logo"><i class="fas fa-brain"></i><span>LearnAI</span></a>
+        <div class="notes-nav-right">
+            <a href="physics-9702.html" class="btn btn-outline btn-sm">Full Notes</a>
+            <a href="../dashboard.html" class="btn btn-outline btn-sm"><i class="fas fa-arrow-left"></i> Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="notes-layout">
+        <aside class="notes-sidebar">
+            <h3>Physics Quick Rev</h3>
+            <ul class="notes-toc">
+                <li><a href="#must" class="active">Must-Know Formulas</a></li>
+                <li><a href="#units">Units & Prefixes</a></li>
+                <li><a href="#suvat">SUVAT</a></li>
+                <li><a href="#forces">Forces & Motion</a></li>
+                <li><a href="#energy">Energy & Power</a></li>
+                <li><a href="#waves">Waves</a></li>
+                <li><a href="#electricity">Electricity</a></li>
+                <li><a href="#particles">Particle Physics</a></li>
+            </ul>
+        </aside>
+
+        <main class="notes-content">
+            <header class="notes-header">
+                <span class="notes-subject-tag"><i class="fas fa-bolt"></i> Quick Revision</span>
+                <h1>Physics 9702 - Last Minute Revision</h1>
+                <p class="notes-meta">Condensed essentials for exam day. For full notes, click "Full Notes" above.</p>
+            </header>
+
+            <section class="notes-section" id="must">
+                <h2>Must-Know Formulas</h2>
+                <div class="note-card revision-card must-know">
+                    <div class="formula-box">v = u + at</div>
+                    <div class="formula-box">s = ut + 1/2 at^2</div>
+                    <div class="formula-box">v^2 = u^2 + 2as</div>
+                    <div class="formula-box">F = ma</div>
+                    <div class="formula-box">W = mg</div>
+                    <div class="formula-box">p = mv</div>
+                    <div class="formula-box">KE = 1/2 mv^2</div>
+                    <div class="formula-box">GPE = mgh</div>
+                    <div class="formula-box">P = W/t = Fv</div>
+                    <div class="formula-box">efficiency = (useful out / total in) x 100%</div>
+                    <div class="formula-box">v = f x lambda</div>
+                    <div class="formula-box">I = V/R (Ohm's Law)</div>
+                    <div class="formula-box">P = VI = I^2R = V^2/R</div>
+                    <div class="formula-box">R = rho L / A</div>
+                    <div class="formula-box">E = mc^2</div>
+                </div>
+            </section>
+
+            <section class="notes-section" id="units">
+                <h2>Base Units & Prefixes</h2>
+                <div class="note-card revision-card">
+                    <table class="notes-table quick-table">
+                        <tr><th>Quantity</th><th>Unit</th></tr>
+                        <tr><td>Mass</td><td>kg</td></tr>
+                        <tr><td>Length</td><td>m</td></tr>
+                        <tr><td>Time</td><td>s</td></tr>
+                        <tr><td>Current</td><td>A</td></tr>
+                        <tr><td>Temperature</td><td>K</td></tr>
+                    </table>
+                    <p><strong>Prefixes:</strong> nano (n, 10^-9), micro (u, 10^-6), milli (m, 10^-3), kilo (k, 10^3), mega (M, 10^6), giga (G, 10^9)</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="suvat">
+                <h2>Kinematics (SUVAT)</h2>
+                <div class="note-card revision-card">
+                    <p><strong>When to use each formula:</strong></p>
+                    <ul>
+                        <li><strong>v = u + at</strong> - No displacement</li>
+                        <li><strong>s = (u+v)t/2</strong> - No acceleration</li>
+                        <li><strong>s = ut + 1/2 at^2</strong> - No final velocity</li>
+                        <li><strong>v^2 = u^2 + 2as</strong> - No time</li>
+                    </ul>
+                    <p><strong>Projectile:</strong> Resolve into horizontal (constant v) and vertical (a = g = 9.81 m/s^2)</p>
+                    <p><strong>At max height:</strong> v_vertical = 0</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="forces">
+                <h2>Forces, Momentum & Dynamics</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Newton's 2nd:</strong> F = ma</p>
+                    <p><strong>Newton's 3rd:</strong> Action-reaction pairs act on DIFFERENT bodies</p>
+                    <p><strong>Momentum:</strong> p = mv. Conserved in collisions if no external force.</p>
+                    <p><strong>Elastic collision:</strong> KE conserved. Relative speed of approach = separation.</p>
+                    <p><strong>Impulse:</strong> Ft = change in momentum. Area under F-t graph.</p>
+                    <p><strong>Moment:</strong> F x d (perpendicular distance). Sum clockwise = sum anticlockwise.</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="energy">
+                <h2>Work, Energy & Power</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Work:</strong> W = Fs cos(theta)</p>
+                    <p><strong>Conservation of energy:</strong> Total energy constant. Lost GPE = gained KE (if no friction).</p>
+                    <p><strong>Power:</strong> Rate of doing work. P = W/t = Fv</p>
+                    <p><strong>Efficiency:</strong> Always < 100%. Heat/sound losses.</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="waves">
+                <h2>Waves & Optics</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Wave equation:</strong> v = f x lambda</p>
+                    <p><strong>EM spectrum order:</strong> Radio -> Microwave -> IR -> Visible -> UV -> X-ray -> Gamma</p>
+                    <p><strong>All EM:</strong> c = 3 x 10^8 m/s in vacuum, transverse, no medium needed</p>
+                    <p><strong>Double slit:</strong> w = lambda D / a (fringe spacing)</p>
+                    <p><strong>Stationary waves:</strong> Node spacing = lambda/2. String fixed both ends: L = n(lambda/2)</p>
+                    <p><strong>Diffraction:</strong> Most when gap ~ wavelength</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="electricity">
+                <h2>Electricity</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Ohm's Law:</strong> V = IR</p>
+                    <p><strong>Series:</strong> R_total = R1 + R2 + R3</p>
+                    <p><strong>Parallel:</strong> 1/R = 1/R1 + 1/R2</p>
+                    <p><strong>Potential divider:</strong> V_out = V_in x R2/(R1+R2)</p>
+                    <p><strong>EMF:</strong> E = V + Ir (terminal p.d. + lost volts)</p>
+                    <p><strong>Kirchhoff 1:</strong> Sum currents in = sum currents out</p>
+                    <p><strong>Kirchhoff 2:</strong> Sum EMFs = sum p.d.s around loop</p>
+                    <p><strong>I-V characteristics:</strong> Ohmic = straight line, Filament = curve (R increases), Thermistor = R decreases with temp, Diode = one way only</p>
+                </div>
+            </section>
+
+            <section class="notes-section" id="particles">
+                <h2>Particle Physics</h2>
+                <div class="note-card revision-card">
+                    <p><strong>Proton:</strong> uud, charge +1</p>
+                    <p><strong>Neutron:</strong> udd, charge 0</p>
+                    <p><strong>Quark charges:</strong> Up = +2/3, Down = -1/3, Strange = -1/3</p>
+                    <p><strong>Alpha decay:</strong> A-4, Z-2</p>
+                    <p><strong>Beta- decay:</strong> A same, Z+1 (neutron -> proton + electron + antineutrino)</p>
+                    <p><strong>Activity:</strong> A = lambda N. lambda = ln(2)/t_1/2</p>
+                    <p><strong>Half-life:</strong> Time for activity/count to halve. Constant for a given isotope.</p>
+                    <p><strong>1 u = 931.5 MeV/c^2</strong></p>
+                </div>
+            </section>
+
+            <footer class="notes-footer">
+                <p><strong>Quick Tips:</strong> Always check units. Draw diagrams. Show working. Use significant figures appropriately. In mechanics, draw force diagrams. In electricity, redraw circuit diagrams clearly.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        document.querySelectorAll('.notes-toc a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('.notes-toc a').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
