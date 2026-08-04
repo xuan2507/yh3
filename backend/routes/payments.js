@@ -2,10 +2,9 @@ const express = require('express');
 const router = express.Router();
 const { pool } = require('../db/config');
 const { authMiddleware } = require('../middleware/auth');
-const { paymentRules, handleValidationErrors } = require('../middleware/validation');
 
 // Create payment request
-router.post('/', authMiddleware, paymentRules, handleValidationErrors, async (req, res) => {
+router.post('/', authMiddleware, async (req, res) => {
     try {
         const { plan, amount, method, reference } = req.body;
         const result = await pool.query(
@@ -15,8 +14,7 @@ router.post('/', authMiddleware, paymentRules, handleValidationErrors, async (re
         );
         res.json({ success: true, payment: result.rows[0] });
     } catch (err) {
-        console.error('Payment create error:', err);
-        res.status(500).json({ error: 'Internal server error. Please try again.' });
+        res.status(500).json({ error: err.message });
     }
 });
 
@@ -29,8 +27,7 @@ router.get('/my', authMiddleware, async (req, res) => {
         );
         res.json({ payments: result.rows });
     } catch (err) {
-        console.error('Payment list error:', err);
-        res.status(500).json({ error: 'Internal server error. Please try again.' });
+        res.status(500).json({ error: err.message });
     }
 });
 
@@ -49,8 +46,7 @@ router.get('/admin/all', authMiddleware, async (req, res) => {
         );
         res.json({ payments: result.rows });
     } catch (err) {
-        console.error('Admin payments error:', err);
-        res.status(500).json({ error: 'Internal server error. Please try again.' });
+        res.status(500).json({ error: err.message });
     }
 });
 
@@ -69,24 +65,29 @@ router.post('/admin/verify/:id', authMiddleware, async (req, res) => {
         );
         const payRes = await pool.query('SELECT user_id FROM payments WHERE id = $1', [id]);
         if (payRes.rows[0]) {
-            await pool.query(`UPDATE users SET plan = 'pro' WHERE id = $1`, [payRes.rows[0].user_id]);
+            await pool.query(
+                `UPDATE users SET plan = 'pro' WHERE id = $1`,
+                [payRes.rows[0].user_id]
+            );
         }
         res.json({ success: true });
     } catch (err) {
-        console.error('Payment verify error:', err);
-        res.status(500).json({ error: 'Internal server error. Please try again.' });
+        res.status(500).json({ error: err.message });
     }
 });
 
 // Check if user is pro
 router.get('/status', authMiddleware, async (req, res) => {
     try {
-        const result = await pool.query('SELECT plan FROM users WHERE id = $1', [req.user.id]);
+        const result = await pool.query(
+            'SELECT plan FROM users WHERE id = $1',
+            [req.user.id]
+        );
         res.json({ pro: result.rows[0]?.plan === 'pro' });
     } catch (err) {
-        console.error('Pro status error:', err);
-        res.status(500).json({ error: 'Internal server error. Please try again.' });
+        res.status(500).json({ error: err.message });
     }
 });
 
 module.exports = router;
+
