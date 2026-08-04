@@ -26,6 +26,9 @@
             <h1>Welcome Back</h1>
             <p class="auth-subtitle">Sign in to access your Cambridge & IELTS study resources</p>
             
+            <!-- Inline error message -->
+            <div class="auth-alert" id="loginError" role="alert" aria-live="assertive"></div>
+
             <form class="auth-form" id="loginForm">
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -56,16 +59,21 @@
                     <i class="fas fa-arrow-right"></i>
                 </button>
             </form>
-            
+
             <div class="auth-divider">
                 <span>or</span>
             </div>
-            
+
             <button class="btn btn-outline btn-full social-btn" id="googleSignIn">
                 <i class="fab fa-google"></i>
                 Continue with Google
             </button>
-            
+
+            <button class="btn btn-ghost btn-full" id="guestSignIn" style="margin-top:12px;color:var(--text-muted);">
+                <i class="fas fa-user-secret"></i>
+                Continue as Guest
+            </button>
+
             <p class="auth-switch">
                 Don't have an account? <a href="register.html">Sign up</a>
             </p>
@@ -118,15 +126,25 @@
             });
         }
 
+        const errorBox = document.getElementById('loginError');
+        function showError(msg) {
+            if (errorBox) { errorBox.textContent = msg; errorBox.className = 'auth-alert error'; }
+            UI.toast(msg, 'error');
+        }
+        function clearError() {
+            if (errorBox) { errorBox.textContent = ''; errorBox.className = 'auth-alert'; }
+        }
+
         // Form submission
         if (form) {
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                clearError();
                 const email = document.getElementById('email').value.trim();
                 const password = pwInput.value;
 
                 if (!email || !password) {
-                    UI.toast('Please enter both email and password.', 'warning');
+                    showError('Please enter both email and password.');
                     return;
                 }
 
@@ -136,12 +154,12 @@
                     const result = await Auth.login(email, password);
                     if (result.success) {
                         UI.toast('Signed in successfully!', 'success');
-                        setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);
+                        window.location.href = 'dashboard.html';
                     } else {
-                        UI.toast(result.error || 'Sign in failed. Please check your credentials.', 'error');
+                        showError(result.error || 'Sign in failed. Please check your credentials.');
                     }
                 } catch (err) {
-                    UI.toast('Network error. Please try again.', 'error');
+                    showError('Network error. Please try again.');
                 } finally {
                     loginBtn.classList.remove('loading');
                     loginBtn.disabled = false;
@@ -152,6 +170,7 @@
         // Google sign-in
         if (googleBtn) {
             googleBtn.addEventListener('click', () => {
+                clearError();
                 googleBtn.classList.add('loading');
                 googleBtn.disabled = true;
                 setTimeout(() => {
@@ -167,9 +186,31 @@
                         mistakes:[], goals:[], topicMastery:{}, adaptiveLevel:{}, memoryDecay:{}
                     };
                     localStorage.setItem('learnai_user', JSON.stringify(mockUser));
-                    UI.toast('Signed in with Google!', 'success');
-                    setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);
-                }, 1200);
+                    window.location.href = 'dashboard.html';
+                }, 800);
+            });
+        }
+
+        // Guest sign-in
+        const guestBtn = document.getElementById('guestSignIn');
+        if (guestBtn) {
+            guestBtn.addEventListener('click', () => {
+                clearError();
+                guestBtn.classList.add('loading');
+                guestBtn.disabled = true;
+                const guestUser = {
+                    id: 'guest_' + Date.now(),
+                    email: 'guest@learnai.app',
+                    firstName: 'Guest',
+                    lastName: 'User',
+                    examType: 'alevel',
+                    plan: 'free',
+                    stats: { subjects:0, resources:0, hours:0, progress:0, quizzesTaken:0, avgScore:0, streak:0, lastStudyDate:null, totalQuestions:0 },
+                    progress: {}, bookmarks:[], studyPlan:[], tutorHistory:[], achievements:[],
+                    mistakes:[], goals:[], topicMastery:{}, adaptiveLevel:{}, memoryDecay:{}
+                };
+                localStorage.setItem('learnai_user', JSON.stringify(guestUser));
+                window.location.href = 'dashboard.html';
             });
         }
     });
