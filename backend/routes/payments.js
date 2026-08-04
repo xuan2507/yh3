@@ -11,7 +11,7 @@ router.post('/', authMiddleware, paymentRules, handleValidationErrors, async (re
         const result = await pool.query(
             `INSERT INTO payments (user_id, plan, amount, method, reference, status)
              VALUES ($1, $2, $3, $4, $5, 'pending') RETURNING *`,
-            [req.userId, plan || 'pro', amount, method, reference]
+            [req.user.id, plan || 'pro', amount, method, reference]
         );
         res.json({ success: true, payment: result.rows[0] });
     } catch (err) {
@@ -25,7 +25,7 @@ router.get('/my', authMiddleware, async (req, res) => {
     try {
         const result = await pool.query(
             `SELECT * FROM payments WHERE user_id = $1 ORDER BY created_at DESC`,
-            [req.userId]
+            [req.user.id]
         );
         res.json({ payments: result.rows });
     } catch (err) {
@@ -37,7 +37,7 @@ router.get('/my', authMiddleware, async (req, res) => {
 // Admin: list all pending payments
 router.get('/admin/all', authMiddleware, async (req, res) => {
     try {
-        const userRes = await pool.query('SELECT email FROM users WHERE id = $1', [req.userId]);
+        const userRes = await pool.query('SELECT email FROM users WHERE id = $1', [req.user.id]);
         const email = userRes.rows[0]?.email;
         if (email !== 'admin@learnai.com') {
             return res.status(403).json({ error: 'Admin only' });
@@ -57,7 +57,7 @@ router.get('/admin/all', authMiddleware, async (req, res) => {
 // Admin: verify payment and upgrade user
 router.post('/admin/verify/:id', authMiddleware, async (req, res) => {
     try {
-        const userRes = await pool.query('SELECT email FROM users WHERE id = $1', [req.userId]);
+        const userRes = await pool.query('SELECT email FROM users WHERE id = $1', [req.user.id]);
         const email = userRes.rows[0]?.email;
         if (email !== 'admin@learnai.com') {
             return res.status(403).json({ error: 'Admin only' });
@@ -81,7 +81,7 @@ router.post('/admin/verify/:id', authMiddleware, async (req, res) => {
 // Check if user is pro
 router.get('/status', authMiddleware, async (req, res) => {
     try {
-        const result = await pool.query('SELECT plan FROM users WHERE id = $1', [req.userId]);
+        const result = await pool.query('SELECT plan FROM users WHERE id = $1', [req.user.id]);
         res.json({ pro: result.rows[0]?.plan === 'pro' });
     } catch (err) {
         console.error('Pro status error:', err);
