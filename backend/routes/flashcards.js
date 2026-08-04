@@ -14,7 +14,8 @@ router.post('/', auth, async (req, res) => {
         );
         res.json({ success: true, card: result.rows[0] });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 
@@ -32,7 +33,8 @@ router.get('/', auth, async (req, res) => {
         const result = await pool.query(query, params);
         res.json({ cards: result.rows });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 
@@ -48,7 +50,8 @@ router.get('/decks', auth, async (req, res) => {
         );
         res.json({ decks: result.rows });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 
@@ -82,7 +85,8 @@ router.patch('/:id', auth, async (req, res) => {
         );
         res.json({ success: true, card: result.rows[0] });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 
@@ -95,7 +99,8 @@ router.delete('/:id', auth, async (req, res) => {
         );
         res.json({ success: true });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 

@@ -14,7 +14,8 @@ router.post('/results', async (req, res) => {
         );
         res.status(201).json(result.rows[0]);
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 
@@ -31,7 +32,8 @@ router.get('/results', async (req, res) => {
         const result = await pool.query(sql, params);
         res.json(result.rows);
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 
@@ -50,7 +52,8 @@ router.get('/stats', async (req, res) => {
             overall: total.rows[0]
         });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 

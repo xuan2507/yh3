@@ -34,7 +34,8 @@ router.post('/', async (req, res) => {
         );
         res.json(result.rows[0]);
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 
@@ -46,7 +47,8 @@ router.get('/:subject', async (req, res) => {
         );
         res.json(result.rows);
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 
@@ -58,7 +60,8 @@ router.get('/', async (req, res) => {
         );
         res.json(result.rows);
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 
@@ -70,7 +73,8 @@ router.get('/weak/:subject', async (req, res) => {
         );
         res.json(result.rows);
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 

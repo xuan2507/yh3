@@ -28,7 +28,8 @@ router.get('/memory-decay', async (req, res) => {
         }));
         res.json(alerts);
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 
@@ -58,7 +59,8 @@ router.get('/exam/:subject', async (req, res) => {
 
         res.json(Object.values(combined).sort((a, b) => a.score - b.score));
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 

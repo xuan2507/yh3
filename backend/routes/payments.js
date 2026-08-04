@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { pool } = require('../db/config');
-const auth = require('../middleware/auth');
+const { authMiddleware } = require('../middleware/auth');
 
 // Create payment request
-router.post('/', auth, async (req, res) => {
+router.post('/', authMiddleware, async (req, res) => {
     try {
         const { plan, amount, method, reference } = req.body;
         const result = await pool.query(
@@ -14,12 +14,13 @@ router.post('/', auth, async (req, res) => {
         );
         res.json({ success: true, payment: result.rows[0] });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error('Payment create error:', err);
+        res.status(500).json({ error: 'Internal server error. Please try again.' });
     }
 });
 
 // Get my payments
-router.get('/my', auth, async (req, res) => {
+router.get('/my', authMiddleware, async (req, res) => {
     try {
         const result = await pool.query(
             `SELECT * FROM payments WHERE user_id = $1 ORDER BY created_at DESC`,
@@ -27,14 +28,14 @@ router.get('/my', auth, async (req, res) => {
         );
         res.json({ payments: result.rows });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error('Payment list error:', err);
+        res.status(500).json({ error: 'Internal server error. Please try again.' });
     }
 });
 
 // Admin: list all pending payments
-router.get('/admin/all', auth, async (req, res) => {
+router.get('/admin/all', authMiddleware, async (req, res) => {
     try {
-        // Simple admin check: first user or specific email
         const userRes = await pool.query('SELECT email FROM users WHERE id = $1', [req.userId]);
         const email = userRes.rows[0]?.email;
         if (email !== 'admin@learnai.com') {
@@ -47,12 +48,13 @@ router.get('/admin/all', auth, async (req, res) => {
         );
         res.json({ payments: result.rows });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error('Admin payments error:', err);
+        res.status(500).json({ error: 'Internal server error. Please try again.' });
     }
 });
 
 // Admin: verify payment and upgrade user
-router.post('/admin/verify/:id', auth, async (req, res) => {
+router.post('/admin/verify/:id', authMiddleware, async (req, res) => {
     try {
         const userRes = await pool.query('SELECT email FROM users WHERE id = $1', [req.userId]);
         const email = userRes.rows[0]?.email;
@@ -66,27 +68,23 @@ router.post('/admin/verify/:id', auth, async (req, res) => {
         );
         const payRes = await pool.query('SELECT user_id FROM payments WHERE id = $1', [id]);
         if (payRes.rows[0]) {
-            await pool.query(
-                `UPDATE users SET plan = 'pro' WHERE id = $1`,
-                [payRes.rows[0].user_id]
-            );
+            await pool.query(`UPDATE users SET plan = 'pro' WHERE id = $1`, [payRes.rows[0].user_id]);
         }
         res.json({ success: true });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error('Payment verify error:', err);
+        res.status(500).json({ error: 'Internal server error. Please try again.' });
     }
 });
 
 // Check if user is pro
-router.get('/status', auth, async (req, res) => {
+router.get('/status', authMiddleware, async (req, res) => {
     try {
-        const result = await pool.query(
-            'SELECT plan FROM users WHERE id = $1',
-            [req.userId]
-        );
+        const result = await pool.query('SELECT plan FROM users WHERE id = $1', [req.userId]);
         res.json({ pro: result.rows[0]?.plan === 'pro' });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error('Pro status error:', err);
+        res.status(500).json({ error: 'Internal server error. Please try again.' });
     }
 });
 

@@ -14,7 +14,8 @@ router.post('/messages', async (req, res) => {
         );
         res.status(201).json(result.rows[0]);
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 
@@ -26,7 +27,8 @@ router.get('/messages', async (req, res) => {
         );
         res.json(result.rows.reverse());
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Error in " + __filename + ":", err);
+        res.status(500).json({ error: "Internal server error. Please try again." });
     }
 });
 
