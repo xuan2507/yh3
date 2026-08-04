@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
     <title>Upgrade to Pro - LearnAI</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/pro.css">
@@ -127,22 +132,20 @@
                     <div class="pay-form" id="bankForm" style="display:none">
                         <div class="pay-instructions">
                             <h4><i class="fas fa-university"></i> Bank Transfer</h4>
-                            <div class="bank-details">
-                                <div class="bank-row"><span>Bank</span><strong>Maybank</strong></div>
-                                <div class="bank-row"><span>Account Name</span><strong>LEARNAI EDUCATION SDN BHD</strong></div>
-                                <div class="bank-row"><span>Account Number</span><strong>1123 4567 8910</strong></div>
-                                <div class="bank-row"><span>Amount</span><strong>RM19.00</strong></div>
+                            <div class="bank-details" style="background:#fff3cd;border:1px solid #ffc107;padding:16px;border-radius:8px;margin-bottom:16px;">
+                                <p><i class="fas fa-info-circle" style="color:#856404;"></i> <strong>Bank details will be provided after you submit a payment request.</strong></p>
+                                <p style="font-size:14px;color:#856404;margin-top:8px;">Our team will review your request and send you the official bank account details via email within 24 hours.</p>
                             </div>
                             <ol>
-                                <li>Transfer RM19.00 to the account above</li>
-                                <li>Keep the receipt screenshot</li>
-                                <li>Enter transaction reference below</li>
+                                <li>Submit your payment request below</li>
+                                <li>Receive bank details via email</li>
+                                <li>Complete transfer and enter reference</li>
                             </ol>
                             <div class="form-group">
-                                <label>Bank Transaction Reference</label>
-                                <input type="text" id="bankRef" placeholder="e.g. IB123456789">
+                                <label>Your Email (for bank details)</label>
+                                <input type="email" id="bankEmail" placeholder="you@example.com">
                             </div>
-                            <button class="btn btn-primary" id="submitBankBtn"><i class="fas fa-paper-plane"></i> Submit Payment Request</button>
+                            <button class="btn btn-primary" id="submitBankBtn"><i class="fas fa-paper-plane"></i> Request Bank Details</button>
                         </div>
                     </div>
 
