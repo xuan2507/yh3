@@ -131,9 +131,91 @@
     <script src="js/theme.js" defer></script>
     <script src="js/mascot.js" defer></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            UI.initPasswordStrength('password', 'strengthBar', 'strengthText');
-        });
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('registerForm');
+        const googleBtn = document.getElementById('googleSignUp');
+        const togglePw = document.getElementById('togglePassword');
+        const pwInput = document.getElementById('password');
+        const registerBtn = document.getElementById('registerBtn');
+
+        UI.initPasswordStrength('password', 'strengthBar', 'strengthText');
+
+        // Toggle password visibility
+        if (togglePw && pwInput) {
+            togglePw.addEventListener('click', () => {
+                const showing = pwInput.type === 'text';
+                pwInput.type = showing ? 'password' : 'text';
+                togglePw.querySelector('i').className = showing ? 'fas fa-eye' : 'fas fa-eye-slash';
+            });
+        }
+
+        // Form submission
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const firstName = document.getElementById('firstName').value.trim();
+                const lastName = document.getElementById('lastName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const examType = document.getElementById('examType').value;
+                const password = pwInput.value;
+                const terms = document.getElementById('terms').checked;
+
+                if (!firstName || !lastName || !email || !examType || !password) {
+                    UI.toast('Please fill in all fields.', 'warning');
+                    return;
+                }
+                if (!terms) {
+                    UI.toast('You must agree to the Terms and Privacy Policy.', 'warning');
+                    return;
+                }
+                if (password.length < 8) {
+                    UI.toast('Password must be at least 8 characters.', 'warning');
+                    return;
+                }
+
+                registerBtn.classList.add('loading');
+                registerBtn.disabled = true;
+                try {
+                    const result = await Auth.register({ firstName, lastName, email, examType, password });
+                    if (result.success) {
+                        UI.toast('Account created successfully!', 'success');
+                        setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);
+                    } else {
+                        UI.toast(result.error || 'Registration failed.', 'error');
+                    }
+                } catch (err) {
+                    UI.toast('Network error. Please try again.', 'error');
+                } finally {
+                    registerBtn.classList.remove('loading');
+                    registerBtn.disabled = false;
+                }
+            });
+        }
+
+        // Google sign-up
+        if (googleBtn) {
+            googleBtn.addEventListener('click', () => {
+                googleBtn.classList.add('loading');
+                googleBtn.disabled = true;
+                setTimeout(() => {
+                    const mockUser = {
+                        id: 'google_' + Date.now(),
+                        email: 'user@gmail.com',
+                        firstName: 'Google',
+                        lastName: 'User',
+                        examType: 'alevel',
+                        plan: 'free',
+                        stats: { subjects:0, resources:0, hours:0, progress:0, quizzesTaken:0, avgScore:0, streak:0, lastStudyDate:null, totalQuestions:0 },
+                        progress: {}, bookmarks:[], studyPlan:[], tutorHistory:[], achievements:[],
+                        mistakes:[], goals:[], topicMastery:{}, adaptiveLevel:{}, memoryDecay:{}
+                    };
+                    localStorage.setItem('learnai_user', JSON.stringify(mockUser));
+                    UI.toast('Signed up with Google!', 'success');
+                    setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);
+                }, 1200);
+            });
+        }
+    });
     </script>
 </body>
 </html>

@@ -49,7 +49,7 @@
                         <input type="checkbox" id="remember">
                         <span>Remember me</span>
                     </label>
-                    <a href="#" class="forgot-link">Forgot password?</a>
+                    <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
                 </div>
                 <button type="submit" class="btn btn-primary btn-full btn-lg" id="loginBtn">
                     Sign In
@@ -98,5 +98,78 @@
     <script src="js/auth.js" defer></script>
     <script src="js/theme.js" defer></script>
     <script src="js/mascot.js" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('loginForm');
+        const googleBtn = document.getElementById('googleSignIn');
+        const togglePw = document.getElementById('togglePassword');
+        const pwInput = document.getElementById('password');
+        const loginBtn = document.getElementById('loginBtn');
+
+        // Toggle password visibility
+        if (togglePw && pwInput) {
+            togglePw.addEventListener('click', () => {
+                const showing = pwInput.type === 'text';
+                pwInput.type = showing ? 'password' : 'text';
+                togglePw.querySelector('i').className = showing ? 'fas fa-eye' : 'fas fa-eye-slash';
+            });
+        }
+
+        // Form submission
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value.trim();
+                const password = pwInput.value;
+
+                if (!email || !password) {
+                    UI.toast('Please enter both email and password.', 'warning');
+                    return;
+                }
+
+                loginBtn.classList.add('loading');
+                loginBtn.disabled = true;
+                try {
+                    const result = await Auth.login(email, password);
+                    if (result.success) {
+                        UI.toast('Signed in successfully!', 'success');
+                        setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);
+                    } else {
+                        UI.toast(result.error || 'Sign in failed. Please check your credentials.', 'error');
+                    }
+                } catch (err) {
+                    UI.toast('Network error. Please try again.', 'error');
+                } finally {
+                    loginBtn.classList.remove('loading');
+                    loginBtn.disabled = false;
+                }
+            });
+        }
+
+        // Google sign-in
+        if (googleBtn) {
+            googleBtn.addEventListener('click', () => {
+                googleBtn.classList.add('loading');
+                googleBtn.disabled = true;
+                setTimeout(() => {
+                    const mockUser = {
+                        id: 'google_' + Date.now(),
+                        email: 'user@gmail.com',
+                        firstName: 'Google',
+                        lastName: 'User',
+                        examType: 'alevel',
+                        plan: 'free',
+                        stats: { subjects:0, resources:0, hours:0, progress:0, quizzesTaken:0, avgScore:0, streak:0, lastStudyDate:null, totalQuestions:0 },
+                        progress: {}, bookmarks:[], studyPlan:[], tutorHistory:[], achievements:[],
+                        mistakes:[], goals:[], topicMastery:{}, adaptiveLevel:{}, memoryDecay:{}
+                    };
+                    localStorage.setItem('learnai_user', JSON.stringify(mockUser));
+                    UI.toast('Signed in with Google!', 'success');
+                    setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);
+                }, 1200);
+            });
+        }
+    });
+    </script>
 </body>
 </html>
