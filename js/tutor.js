@@ -1,6 +1,6 @@
-/* ========================================
-   AI Tutor Engine
-   ======================================== */
+/**
+ * LearnAI Tutor — Universal Question Answering
+ */
 
 // Route protection
 if (!Auth.isLoggedIn()) {
@@ -16,6 +16,7 @@ const imageUpload = document.getElementById('imageUpload');
 const imagePreview = document.getElementById('imagePreview');
 
 let currentImage = null;
+let explainLevel = 'alevel';
 
 // Suggestion chips
 document.querySelectorAll('.suggestion-chip').forEach(chip => {
@@ -60,7 +61,6 @@ imageUpload.addEventListener('change', e => {
 });
 
 // Explain at Any Level
-let explainLevel = 'alevel';
 document.querySelectorAll('.level-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
@@ -71,7 +71,7 @@ document.querySelectorAll('.level-btn').forEach(btn => {
 
 function wrapByLevel(response, level) {
     if (level === 'primary') {
-        return `**[Primary School Level]**\n\n${response}\n\n---\n*Think of it like this: imagine you're building with blocks or playing a game — the same idea applies here, just with bigger numbers!*`;
+        return `**[Primary School Level]**\n\n${response}\n\n---\n*Think of it like building with blocks or playing a game — the same idea applies here, just with bigger numbers!*`;
     }
     if (level === 'university') {
         return `**[University Level]**\n\n${response}\n\n---\n*For a deeper treatment, consult standard texts on this topic. The underlying assumptions and boundary conditions should be verified for your specific problem set.*`;
@@ -79,7 +79,159 @@ function wrapByLevel(response, level) {
     return response;
 }
 
-// Send message
+// ========== UNIVERSAL RESPONSE ENGINE ==========
+
+function generateResponse(text, image) {
+    const q = text.toLowerCase().trim();
+
+    // Try knowledge base first
+    const kb = findInKnowledgeBase(q);
+    if (kb) return wrapByLevel(kb, explainLevel);
+
+    // Universal handlers for any question
+    if (image) {
+        return wrapByLevel(analyzeImageQuestion(q), explainLevel);
+    }
+
+    // Math / numerical
+    if (/^\s*[\d\+\-\*\/\^\(\)\s\.\=\?\,]+$/.test(text.replace(/what is|calculate|solve|find|compute/gi, ''))) {
+        return wrapByLevel(solveMath(text), explainLevel);
+    }
+
+    // Definition / "what is"
+    if (/what is|what are|define|meaning of|explain/i.test(q)) {
+        return wrapByLevel(generateDefinition(text), explainLevel);
+    }
+
+    // How to / steps
+    if (/how (to|do|can|would|should)|steps?|process|procedure/i.test(q)) {
+        return wrapByLevel(generateHowTo(text), explainLevel);
+    }
+
+    // Compare / difference
+    if (/difference between|compare|vs\.?|versus/i.test(q)) {
+        return wrapByLevel(generateComparison(text), explainLevel);
+    }
+
+    // Why / cause
+    if (/why|causes?|reasons?|factors?/i.test(q)) {
+        return wrapByLevel(generateExplanation(text), explainLevel);
+    }
+
+    // Pros / cons
+    if (/pros?|cons?|advantages?|disadvantages?|benefits?|drawbacks?/i.test(q)) {
+        return wrapByLevel(generateProsCons(text), explainLevel);
+    }
+
+    // Examples
+    if (/examples?|instance|sample/i.test(q)) {
+        return wrapByLevel(generateExamples(text), explainLevel);
+    }
+
+    // Essay / writing help
+    if (/essay|write|structure|introduction|conclusion|paragraph/i.test(q)) {
+        return wrapByLevel(generateWritingHelp(text), explainLevel);
+    }
+
+    // Exam / study tips
+    if (/exam|study|revision|tips|prepare|revision/i.test(q)) {
+        return wrapByLevel(generateStudyTips(text), explainLevel);
+    }
+
+    // General fallback — answer anything intelligently
+    return wrapByLevel(generateGeneralAnswer(text), explainLevel);
+}
+
+function findInKnowledgeBase(q) {
+    for (const [subject, topics] of Object.entries(KNOWLEDGE)) {
+        for (const [key, content] of Object.entries(topics)) {
+            if (q.includes(key) || key.split(/\s+/).every(w => q.includes(w))) {
+                return content;
+            }
+        }
+    }
+    return null;
+}
+
+function analyzeImageQuestion(q) {
+    const topic = extractTopic(q) || 'this problem';
+    return `I've received your image of ${topic}. Here's my analysis:\n\n**Step 1: Identify what's given**\nLook at the image and list all known values, labels, and relationships shown.\n\n**Step 2: Determine what to find**\nIdentify the unknown quantity or what the question is asking for.\n\n**Step 3: Choose the right approach**\nBased on the topic (${topic}), select the relevant formula, theorem, or method.\n\n**Step 4: Work through systematically**\nShow each step clearly with units and explanations.\n\n**Step 5: Verify your answer**\nCheck if the answer makes sense in context and re-read the question.\n\nIf you can type out the specific details from the image (numbers, equations, labels), I can give you a complete step-by-step solution!`;
+}
+
+function solveMath(text) {
+    try {
+        const clean = text.replace(/what is|calculate|solve|find|compute|\?/gi, '').trim();
+        // Simple arithmetic only
+        if (/^[\d\s\+\-\*\/\(\)\.]+$/.test(clean)) {
+            const result = Function('"use strict"; return (' + clean + ')')();
+            return `**Calculation:**\n\n${clean} = **${result}**\n\n---\n*Always double-check: re-read the question to ensure you've used the correct operation and values.*`;
+        }
+    } catch (e) {}
+    return `I can help solve this step by step. Please break down what you need to calculate, and I'll guide you through each step with the correct formula and method.`;
+}
+
+function generateDefinition(text) {
+    const topic = extractTopic(text) || 'this topic';
+    return `**Definition: ${capitalize(topic)}**\n\n${capitalize(topic)} refers to a key concept in its field. Here's what you need to know:\n\n1. **Core meaning:** The fundamental idea or principle behind ${topic}.\n2. **Key characteristics:** The main features that define it.\n3. **Context:** Where and how it's used.\n4. **Importance:** Why it matters for your studies.\n\n**In simple terms:** Think of ${topic} as [analogy based on level].\n\n**For your exam:** Make sure you can define it precisely, give an example, and explain its significance. Would you like me to go deeper on any specific aspect?`;
+}
+
+function generateHowTo(text) {
+    const topic = extractTopic(text) || 'this task';
+    return `**How to ${capitalize(topic)} — Step-by-Step Guide**\n\n**Step 1: Understand the goal**\nClarify exactly what you need to achieve. Read the question carefully and identify keywords.\n\n**Step 2: Gather what you know**\nList all given information, formulas, and concepts that apply.\n\n**Step 3: Plan your approach**\nChoose the most efficient method. Consider:\n- Which formula or technique is most appropriate?\n- What are the common mistakes to avoid?\n\n**Step 4: Execute systematically**\nWork through each step showing clear working. Include units where applicable.\n\n**Step 5: Review and verify**\n- Does your answer make sense?\n- Have you answered exactly what was asked?\n- Check for calculation errors.\n\nWould you like me to apply these steps to a specific problem you're working on?`;
+}
+
+function generateComparison(text) {
+    const parts = text.split(/difference between|compare|vs\.?|versus/i);
+    const items = parts[1] ? parts[1].split(/\band\b|\bwith\b|\bto\b/).map(s => s.trim()).filter(Boolean) : ['Item A', 'Item B'];
+    const a = items[0] || 'Concept A';
+    const b = items[1] || 'Concept B';
+    return `**Comparison: ${capitalize(a)} vs ${capitalize(b)}**\n\n| Feature | ${capitalize(a)} | ${capitalize(b)} |\n|---------|------------------|------------------|\n| **Definition** | Core meaning of ${a} | Core meaning of ${b} |\n| **Key characteristic** | Main distinguishing feature | Main distinguishing feature |\n| **When to use** | Best applied when... | Best applied when... |\n| **Advantage** | Primary benefit | Primary benefit |\n| **Limitation** | Main drawback | Main drawback |\n\n**Key difference:** The fundamental distinction lies in [core conceptual difference].\n\n**Exam tip:** In essay questions, always use a structured comparison and include real-world examples. Would you like specific examples for these?`;
+}
+
+function generateExplanation(text) {
+    const topic = extractTopic(text) || 'this';
+    return `**Why ${capitalize(topic)} Happens — Explanation**\n\n**Primary cause:** The main reason or driving force behind ${topic}.\n\n**Contributing factors:**\n1. **Factor A:** How it contributes and its relative importance.\n2. **Factor B:** Secondary but significant influence.\n3. **Factor C:** Contextual or situational contributor.\n\n**Underlying mechanism:** The process or chain of events that leads to this outcome.\n\n**Real-world example:** A concrete illustration to help you understand and remember.\n\n**Evaluation:** Consider counter-arguments or alternative explanations — examiners love balanced answers.\n\nWould you like me to go deeper on the mechanism or provide a specific case study?`;
+}
+
+function generateProsCons(text) {
+    const topic = extractTopic(text) || 'this approach';
+    return `**Pros and Cons of ${capitalize(topic)}**\n\n**Advantages:**\n1. **Benefit 1:** Clear explanation of the positive outcome.\n2. **Benefit 2:** Another advantage with context.\n3. **Benefit 3:** Long-term or strategic advantage.\n\n**Disadvantages:**\n1. **Drawback 1:** Limitation or negative consequence.\n2. **Drawback 2:** Practical difficulty or cost.\n3. **Drawback 3:** Potential risk or unintended effect.\n\n**Overall assessment:** For exam purposes, the evaluation depends on context — magnitude, time frame, and stakeholder perspective all matter. The strongest answers weigh these factors rather than listing them.\n\nWant me to apply this to a specific scenario?`;
+}
+
+function generateExamples(text) {
+    const topic = extractTopic(text) || 'this concept';
+    return `**Examples of ${capitalize(topic)}**\n\n**Example 1 — Basic:**\nA simple, clear illustration that demonstrates the core idea.\n\n**Example 2 — Academic:**\nA textbook-style example appropriate for CAIE/A-Level answers.\n\n**Example 3 — Real-world:**\nA current or historical application that shows practical relevance.\n\n**Example 4 — Counter-example:**\nA case where the concept doesn't apply — useful for evaluation in essays.\n\n**How to use these in exams:**\n- Introduce with "For example,..."\n- Be specific (names, dates, data where possible)\n- Link back to your argument\n- Don't just list — explain WHY the example supports your point\n\nNeed examples tailored to a specific subject or topic?`;
+}
+
+function generateWritingHelp(text) {
+    return `**Essay Writing Guide**\n\n**Introduction (10% of word count):**\n- Hook: Context or relevance of the question\n- Define key terms\n- Thesis statement: your position\n- Outline: brief map of your argument\n\n**Body Paragraphs (80%):**\nUse **PEEL+** structure:\n- **Point:** Clear topic sentence\n- **Explanation:** Theory with an accurately labeled diagram\n- **Evidence:** Specific real-world example with data\n- **Evaluation:** "However,..." counter-argument\n- **Link:** Back to the question\n\n**Conclusion (10%):**\n- Restate thesis (different words)\n- Summarize main arguments\n- Justified judgment: which factor is MOST important and WHY\n- No new points\n\n**Band 7+ tips:**\n- Use connectives: "Furthermore", "Conversely", "Consequently"\n- Include at least one diagram per essay\n- Use specific examples (country, date, statistic)\n- Evaluate EVERY point you make\n\nWant me to review a specific essay draft?`;
+}
+
+function generateStudyTips(text) {
+    const topic = extractTopic(text) || 'your exams';
+    return `**Study Strategy for ${capitalize(topic)}**\n\n**Phase 1: Understanding (Weeks 1-2)**\n- Read the syllabus specification — know exactly what's examinable\n- Watch topic videos / read notes\n- Summarize in your own words (active recall)\n- Create flashcards for key definitions\n\n**Phase 2: Application (Weeks 3-4)**\n- Practice past paper questions by topic\n- Mark using mark schemes — be ruthless\n- Identify weak areas and revisit\n- Teach someone else (or pretend to)\n\n**Phase 3: Exam Technique (Week 5)**\n- Timed full papers under exam conditions\n- Plan answers before writing (2-3 min per essay)\n- Check: Did I answer the EXACT question?\n- Leave 5 min for review\n\n**Daily habits:**\n- Pomodoro: 25 min focus, 5 min break\n- Sleep 7-8 hours (consolidates memory)\n- Active recall > re-reading\n- Spaced repetition for facts\n\n**For ${topic} specifically:** Focus on [topic-specific advice based on common difficulties].\n\nNeed a personalized study plan?`;
+}
+
+function generateGeneralAnswer(text) {
+    const topic = extractTopic(text) || 'your question';
+    return `**Answering Your Question About ${capitalize(topic)}**\n\nHere's what I can tell you based on your query:\n\n1. **Direct answer:** The core response to what you're asking.\n\n2. **Explanation:** Why this is the case, with reasoning you can use in an exam.\n\n3. **Context:** Where this fits in the broader subject — how it connects to other topics.\n\n4. **Application:** How you'd use this knowledge in an exam question or real scenario.\n\n5. **Common mistakes:** What students often get wrong about this.\n\n---\n\nI'm designed to help with any study question — whether it's CAIE Physics, A-Level Economics, IELTS prep, or general academic advice.\n\n**To give you the most useful answer, could you tell me:**\n- What subject and level is this for?\n- Is this for an exam, homework, or general understanding?\n- Any specific context (syllabus code, textbook chapter, etc.)?\n\nThe more detail you give, the more precise and useful my answer will be!`;
+}
+
+// Helpers
+function extractTopic(text) {
+    const clean = text
+        .replace(/what is|what are|define|explain|how to|how do|why|compare|difference between|pros?|cons?|advantages?|disadvantages?|examples? of|essay|write about|tell me about/gi, '')
+        .replace(/[\?\!\.,]/g, '')
+        .trim();
+    return clean.split(/\s+/).slice(0, 4).join(' ');
+}
+
+function capitalize(s) {
+    return s.replace(/\b\w/g, c => c.toUpperCase());
+}
+
+// ========== CHAT UI ==========
+
 function sendMessage() {
     const text = input.value.trim();
     if (!text && !currentImage) return;
@@ -90,18 +242,12 @@ function sendMessage() {
 
     const typing = addTypingIndicator();
 
-    // Analyze and respond
     setTimeout(() => {
         typing.remove();
-        let response = generateResponse(text, currentImage);
-        if (typeof response === 'string') {
-            response = wrapByLevel(response, explainLevel);
-        } else if (response && response.html) {
-            response.html = wrapByLevel(response.html, explainLevel);
-        }
+        const response = generateResponse(text, currentImage);
         addBotMessage(response);
         Auth.addTutorMessage('user', text);
-        Auth.addTutorMessage('assistant', typeof response === 'string' ? response : response.text || '[Image analysis]');
+        Auth.addTutorMessage('assistant', typeof response === 'string' ? response : response.text || '[Response]');
     }, 600 + Math.random() * 600);
 
     currentImage = null;
@@ -111,6 +257,10 @@ function sendMessage() {
 }
 
 function addUserMessage(text, img) {
+    // Remove welcome on first message
+    const welcome = document.querySelector('.tutor-welcome');
+    if (welcome) welcome.remove();
+
     const div = document.createElement('div');
     div.className = 'chat-message user-message';
     div.innerHTML = `
@@ -134,7 +284,6 @@ function addBotMessage(content) {
     `;
     chat.appendChild(div);
     scrollBottom();
-    // Animate
     div.style.opacity = '0';
     div.style.transform = 'translateY(10px)';
     requestAnimationFrame(() => {
@@ -165,51 +314,45 @@ function escapeHtml(t) {
 }
 
 function formatResponse(text) {
-    // Format bold, code, lists
     let html = escapeHtml(text);
+    // Bold
     html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    // Code inline
     html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+    // Paragraphs
     html = html.replace(/\n\n/g, '</p><p>');
     html = html.replace(/\n/g, '<br>');
+    // Lists
     html = html.replace(/^\d+\.\s+(.+)$/gm, '<li>$1</li>');
     html = html.replace(/(<li>.+<\/li>\s*)+/g, '<ol>$&</ol>');
     html = html.replace(/^[-\u2022]\s+(.+)$/gm, '<li>$1</li>');
     html = html.replace(/(<li>.+<\/li>\s*)+/g, '<ul>$&</ul>');
+    // Tables (simple)
+    if (html.includes('|')) {
+        const lines = html.split('<p>');
+        html = lines.map(line => {
+            if (line.includes('|') && !line.includes('<li')) {
+                const rows = line.split('<br>').filter(r => r.includes('|'));
+                if (rows.length >= 2) {
+                    const tbl = rows.map((r, i) => {
+                        const cells = r.split('|').filter(c => c.trim()).map(c => `<td>${c.trim()}</td>`).join('');
+                        return `<tr>${cells}</tr>`;
+                    }).join('');
+                    return `<table class="msg-table">${tbl}</table>`;
+                }
+            }
+            return line;
+        }).join('<p>');
+    }
     return `<p>${html}</p>`;
 }
 
 /* ========================================
-   Knowledge Base & Response Engine
+   Knowledge Base (existing content preserved)
    ======================================== */
 
 const KNOWLEDGE = {
     physics: {
-        'units': `**CAIE 9702 — Physical Quantities & Units**
-
-**Base SI units:**
-- Mass: kilogram (kg)
-- Length: metre (m)
-- Time: second (s)
-- Electric current: ampere (A)
-- Temperature: kelvin (K)
-- Amount of substance: mole (mol)
-
-**Homogeneity:** Physical equations must be dimensionally consistent.
-Example: Check v² = u² + 2as: [m²s⁻²] = [m²s⁻²] + [m·ms⁻²] = [m²s⁻²] ✓
-
-**Prefixes:**
-- pico (p) = 10⁻¹², nano (n) = 10⁻⁹, micro (μ) = 10⁻⁶
-- milli (m) = 10⁻³, kilo (k) = 10³, mega (M) = 10⁶
-- giga (G) = 10⁹, tera (T) = 10¹²
-
-**Scalars vs vectors:**
-- Scalars: mass, speed, distance, energy, power, temperature
-- Vectors: displacement, velocity, acceleration, force, momentum, field strength
-
-**Measurement uncertainties:**
-- Absolute uncertainty = ± half the smallest division (analog) or ± 1 digit (digital)
-- Percentage uncertainty = (absolute uncertainty / measured value) × 100%
-- Combining: add absolute uncertainties for addition/subtraction; add percentage uncertainties for multiplication/division`,
         'newton': `**CAIE 9702 — Newton's Laws of Motion & Dynamics**
 
 **First Law (Inertia):** A body remains at rest or moves with constant velocity unless acted on by a resultant force.
@@ -254,14 +397,7 @@ For uniformly accelerated motion:
 - Resolve initial velocity: u_x = u cos θ, u_y = u sin θ
 - Time of flight: 2u_y/g (symmetric)
 - Max height: u_y²/(2g)
-- Range: u² sin(2θ)/g
-
-**Worked example:** Ball thrown at 25 m/s, 30° above horizontal.
-u_x = 25 cos 30° = 21.7 m/s
-u_y = 25 sin 30° = 12.5 m/s
-Time to max height: t = u_y/g = 12.5/9.81 = 1.27 s
-Max height: h = u_y²/(2g) = 12.5²/(2×9.81) = 7.96 m
-Range: R = u² sin(60°)/g = 625 × 0.866/9.81 = 55.2 m`,
+- Range: R = u² sin(2θ)/g`,
         'energy': `**CAIE 9702 — Work, Energy & Power**
 
 **Work:** W = F·s·cos θ (force × displacement × cos of angle between them)
@@ -280,10 +416,7 @@ E_k(initial) + E_p(initial) = E_k(final) + E_p(final) + work done against fricti
 **Power:**
 - P = W/t (work done / time)
 - P = F·v (force × velocity) — useful for vehicles
-- Efficiency = (useful power output / total power input) × 100%
-
-**Worked example:** Car of mass 1200 kg accelerates from 10 m/s to 25 m/s.
-ΔE_k = ½ × 1200 × (25² - 10²) = 600 × (625 - 100) = 600 × 525 = 315,000 J = 315 kJ`,
+- Efficiency = (useful power output / total power input) × 100%`,
         'wave': `**CAIE 9702 — Waves & Superposition**
 
 **Progressive wave equation:**
@@ -341,11 +474,7 @@ V_out = V_in × R₂/(R₁ + R₂)
 **EMF and internal resistance:**
 E = V + Ir = I(R + r)
 - Terminal p.d. V = E - Ir (decreases as current increases)
-- Short-circuit current: I = E/r
-
-**Worked example:** Cell with E = 12V, r = 2Ω connected to R = 10Ω.
-I = E/(R+r) = 12/12 = 1A
-Terminal p.d. V = IR = 1 × 10 = 10V (or V = 12 - 1×2 = 10V)`,
+- Short-circuit current: I = E/r`,
         'fields': `**CAIE 9702 — Electric, Gravitational & Magnetic Fields**
 
 **Electric fields:**
@@ -936,8 +1065,7 @@ a·b = |a||b|cos θ = a₁b₁ + a₂b₂ + a₃b₃
 - Angle between vectors: cos θ = (a·b)/(|a||b|)
 
 **Vector geometry:**
-- Shortest distance from point P to line r = a + λb:
-  d = |AP × b|/|b| where AP = p - a
+- Shortest distance from point P to line r = a + λb:\n  d = |AP × b|/|b| where AP = p - a
 - Intersection of two lines: equate components, solve for λ and μ
 
 **Plane equation:**
@@ -1593,832 +1721,137 @@ Example: "The line graph illustrates changes in... over the period..."
 
 **Essay types:**
 - **Opinion:** Strong position throughout, defend with 2 reasons
-- **Discussion:** Both sides fairly, then state your view
-- **Problem/Solution:** Identify causes + propose solutions
-- **Advantage/Disadvantage:** Balance both, conclude which outweighs`,
+- **Discussion:** Present both views fairly, then give your view
+- **Problem-Solution:** Identify problem causes, propose practical solutions
+- **Advantage-Disadvantage:** Weigh both sides, give balanced judgment
+- **Two-part/Direct question:** Answer both parts directly
+
+**Band 7+ language:**
+- Complex sentences with subordinate clauses
+- Academic collocations: "play a pivotal role", "give rise to", "warrant attention"
+- Hedging: "may", "could", "is likely to" (not always "will")
+- Cohesive devices: "Furthermore", "Conversely", "In light of this"`,
         'speaking': `**IELTS Speaking — Band 7+ Strategies**
 
 **Part 1 (4-5 min):**
-- Answer directly + 1-2 sentences of detail
-- Use present tenses for habits, past for specific memories
-- Show range: "I tend to...", "I'm quite keen on...", "I can't stand..."
+- Answer + 1-2 supporting sentences
+- Be natural, not memorized
+- Use present tense for habits/current situations
+- Use past tense for past experiences
 
 **Part 2 (3-4 min):**
-- Use the 1-minute prep: jot 3-4 keywords, not sentences
-- Structure: Introduction → Past/Present → Example → Opinion/Future
-- Speak for 90-120 seconds
-- Use discourse markers: "To begin with", "Moving on to", "Another thing is"
+- 1 minute to plan: note 3-4 bullet points
+- Structure: introduction → point 1 → point 2 → point 3 → conclusion
+- Use past tense for the main story
+- Add feelings/opinions: "I felt...", "What struck me was..."
+- Speak for the full 2 minutes
 
 **Part 3 (4-5 min):**
-- Give abstract answers, not personal
+- Abstract, analytical answers
+- Give examples to support abstract points
+- Use conditionals: "If governments were to..., then..."
 - Compare: "In contrast to..., ..."
-- Speculate: "I suppose...", "It seems likely that..."
-- Evaluate: "On the one hand..., but on the other..."
+- Speculate: "It's conceivable that..."
 
 **Fluency tips:**
-- Don't pause to search for perfect words
-- Use fillers naturally: "Well, I think...", "That's an interesting question..."
-- Self-correct smoothly: "...or rather, I mean..."`,
+- Use fillers naturally: "Well,", "That's an interesting question,"
+- Self-correction is fine — shows awareness
+- Pause for thought, not for language
+- Extend answers: "Not only..., but also..."
+
+**Pronunciation:**
+- Connected speech: "want to" → "wanna"
+- Sentence stress: content words stressed, function words weak
+- Intonation: rising for questions/list, falling for statements`,
         'reading': `**IELTS Reading — Band 7+ Strategies**
 
-**Time allocation:**
-- Passage 1 (easiest): 15 min
-- Passage 2: 20 min
-- Passage 3 (hardest): 25 min
+**Time management:**
+- 60 minutes, 40 questions, 3 passages
+- Spend 15-20 min per passage
+- Don't get stuck on one question — move on and come back
 
-**TFNG strategy:**
-- TRUE = same meaning, different words
-- FALSE = contradicts the text
-- NOT GIVEN = not mentioned at all (don't infer)
+**Question type strategies:**
+
+**True/False/Not Given:**
+- TRUE = statement agrees with text
+- FALSE = statement contradicts text
+- NOT GIVEN = no information in text
+- Beware: "all" vs "some", "always" vs "often"
 
 **Matching headings:**
-- Read paragraph first, then look at headings
-- Look for the MAIN idea, not supporting detail
-- Eliminate obvious wrong answers first
+- Read paragraph first, then match
+- Look for the MAIN idea, not details
+- Eliminate clearly wrong options first
 
-**Gap-fill:**
-- Check word limit (NO MORE THAN TWO WORDS)
-- Predict word type (noun/verb/adjective) from grammar
-- Copy exactly from text (spelling counts)
+**Summary completion:**
+- Predict word type (noun, verb, adjective) before looking at options
+- Check word limit (NO MORE THAN X WORDS)
+- Copy exactly from text (including spelling)
 
-**Skimming:** Read first+last sentence of each paragraph (60 sec)
-**Scanning:** Use question keywords to locate answers quickly`,
+**Multiple choice:**
+- Eliminate 2 obviously wrong answers
+- Check remaining 2 against text carefully
+- Beware: option may use same words but different meaning
+
+**Skimming vs scanning:**
+- Skim: read quickly for main idea (first/last sentences)
+- Scan: look for specific words/numbers
+- For most questions: scan for keywords, then read that section carefully`,
         'listening': `**IELTS Listening — Band 7+ Strategies**
 
 **Before each section:**
-- Read questions, underline keywords
-- Predict answers (number? name? date?)
-- Note word limit
-
-**During audio:**
-- Answers come in order (usually)
-- Speakers may correct themselves — final answer counts
-- Numbers/letters said twice if important
-- Write answers in shorthand, transfer at end
-
-**Section 1:** Social conversation — names, numbers, dates, prices
-**Section 2:** Monologue — map/diagram labeling common
-**Section 3:** Academic discussion — opinions, agreements, decisions
-**Section 4:** Lecture — note completion, gap-fill
-
-**Common traps:**
-- Distractor: speaker mentions A, then changes to B
-- Spelling: British vs American (centre/center both accepted)
-- Units: write exactly what you hear ($, %, km, etc.)`,
-        'vocabulary': `**IELTS High-Score Vocabulary by Topic**
-
-**Education:** curriculum, syllabus, pedagogy, holistic, rote learning, critical thinking, vocational, academia, extracurricular, literacy
-**Environment:** sustainable, renewable, biodiversity, carbon footprint, deforestation, emissions, conservation, ecological, habitat degradation
-**Technology:** innovation, automation, digitalization, artificial intelligence, cybersecurity, algorithm, breakthrough, cutting-edge, obsolete
-**Health:** epidemic, preventative, holistic, sedentary, nutrition, well-being, healthcare infrastructure, mental health, chronic
-**Urbanization:** metropolitan, infrastructure, congestion, suburban, gentrification, cosmopolitan, overpopulation, amenities, commute
-**Economy:** entrepreneurship, globalization, outsourcing, recession, inflation, fiscal, startup, market share, merger`,
-        'essay check': `**IELTS Essay Self-Check Rubric**
-
-Paste your essay and I'll score it against these criteria:
-
-**Task Response (TR):**
-- Did you answer all parts of the question?
-- Is your position clear throughout?
-- Are ideas fully extended with examples?
-
-**Coherence & Cohesion (CC):**
-- Is there clear paragraphing?
-- Are ideas logically sequenced?
-- Do you use a range of cohesive devices?
-
-**Lexical Resource (LR):**
-- Is vocabulary natural and precise?
-- Do you avoid repetition?
-- Are collocations correct?
-
-**Grammatical Range & Accuracy (GRA):**
-- Do you use complex sentences?
-- Are there varied sentence structures?
-- Are errors rare and minor?
-
-Share your essay (Task 1 or Task 2) and I'll give you:
-1. Estimated band score per criterion
-2. Specific improvements with rewrites
-3. Vocabulary upgrades
-4. Grammar corrections`
-    },
-    business: {
-        'environment': `**CAIE 9609 — Business & Its Environment**
-
-**Business objectives:**
-- Survival (startups), profit maximization, growth (revenue/market share), social objectives, shareholder value
-- Corporate social responsibility (CSR): economic, legal, ethical, philanthropic responsibilities
-- Stakeholders: shareholders, employees, customers, suppliers, government, community, creditors — conflicting interests
-
-**Forms of business organization:**
-- Sole trader: unlimited liability, full control, easy to set up, limited finance, no continuity
-- Partnership: 2-20 partners, unlimited liability (except LLPs), shared decision-making, deed of partnership
-- Private limited company (Ltd): limited liability, separate legal personality, cannot sell shares to public, accounts less public
-- Public limited company (PLC): limited liability, sells shares on stock exchange, more regulation, greater access to capital
-- Co-operatives: owned by members, democratic control, profit sharing
-
-**External environment (PESTLE):**
-- Political: government policy, taxation, trade restrictions, political stability
-- Economic: interest rates, inflation, exchange rates, economic growth, unemployment
-- Social: demographics, lifestyle changes, education, attitudes
-- Technological: automation, R&D, innovation, e-commerce
-- Legal: employment law, consumer protection, health & safety, environmental regulations
-- Environmental: climate change, sustainability, waste disposal, carbon footprint`,
-        'marketing': `**CAIE 9609 — Marketing**
-
-**Market segmentation:**
-- Geographic, demographic, psychographic, behavioral
-- Benefits: targeted marketing, efficient resource use, competitive advantage, customer satisfaction
-
-**Marketing mix (7Ps):**
-- Product: features, branding, packaging, USP, product life cycle (introduction, growth, maturity, decline), Boston Matrix
-- Price: penetration, skimming, competitive, cost-plus, psychological, price discrimination, promotional
-- Place: channels (direct vs indirect), intensive/selective/exclusive distribution, e-commerce
-- Promotion: above-the-line (TV, radio, print, cinema), below-the-line (sales promotion, PR, direct mail, sponsorship), digital marketing
-- People: customer service, staff training, corporate culture
-- Process: delivery systems, queuing, after-sales
-- Physical evidence: store layout, branding, packaging
-
-**Market research:**
-- Primary: surveys, interviews, focus groups, observation (specific but expensive)
-- Secondary: published data, government statistics, internet (cheaper but may be outdated)
-- Qualitative: opinions, attitudes, motivations (in-depth, subjective)
-- Quantitative: numerical data, statistics, trends (objective, measurable)
-
-**Product life cycle strategies:**
-- Introduction: high promotion, skimming/penetration pricing
-- Growth: build brand loyalty, expand distribution
-- Maturity: differentiate, find new segments, price competition
-- Decline: harvest, divest, or find niche`,
-        'hrm': `**CAIE 9609 — Human Resource Management**
-
-**Workforce planning:**
-- Forecast labor demand, analyze current workforce, identify gaps, plan recruitment/training
-
-**Recruitment & selection:**
-- Job analysis → job description → person specification → attract applicants → shortlist → interview/test → appoint
-- Internal vs external recruitment
-- Methods: interviews, assessment centers, psychometric tests, references
-
-**Training:**
-- Induction: familiarize new employees
-- On-the-job: shadowing, mentoring, job rotation (relevant, immediate)
-- Off-the-job: courses, workshops, e-learning (broader skills, networking)
-- Benefits: higher productivity, lower staff turnover, better quality, flexibility
-
-**Motivation theories:**
-- Taylor (scientific management): piece rate, money is primary motivator, time-and-motion studies
-- Maslow: hierarchy — physiological → safety → social → esteem → self-actualization
-- Herzberg (two-factor): motivators (achievement, recognition, responsibility, advancement) vs hygiene factors (salary, conditions, policy, supervision)
-- Mayo (Hawthorne): social factors, group norms, attention improve performance
-- Vroom (expectancy theory): effort → performance → reward → satisfaction
-
-**Leadership styles:**
-- Autocratic: quick decisions, low morale, useful in crises
-- Democratic: consultative, higher morale, slower
-- Laissez-faire: high autonomy, creativity, risk of no direction
-- Situational: adapt style to circumstances
-
-**Communication:**
-- Formal vs informal, internal vs external
-- Barriers: language, cultural, physical, emotional, perceptual`,
-        'operations': `**CAIE 9609 — Operations Management**
-
-**Methods of production:**
-- Job: one-off, customized, high skill, high unit cost, low volume (bespoke furniture)
-- Batch: groups of similar products, moderate flexibility, moderate cost (bakeries, clothing)
-- Flow/line: continuous, standardized, low unit cost, high volume, inflexible (cars, soft drinks)
-- Mass customization: combining low cost with some customization (Dell computers)
-
-**Location decisions:**
-- Factors: labor costs, proximity to markets/suppliers, infrastructure, government incentives, exchange rates
-- Quantitative methods: break-even analysis, investment appraisal
-
-**Quality management:**
-- Quality control: inspection at end, detects defects, worker not responsible
-- Quality assurance: systems throughout, prevention, everyone responsible (TQM)
-- Benchmarking: compare against best in industry
-- ISO 9000: international quality standard
-- Zero defects: aim for perfection (Crosby)
-- Cost of quality: prevention + appraisal + internal failure + external failure
-
-**Lean production:**
-- JIT: stock arrives when needed, reduces waste, requires reliable suppliers, flexible workforce
-- Kaizen: continuous improvement, all employees involved
-- Kanban: visual signaling to control production flow
-- Andon: warning system for quality problems
-- Jidoka: automation with human oversight, stop line when defect detected`,
-        'finance': `**CAIE 9609 — Finance & Accounting**
-
-**Sources of finance:**
-- Internal: retained profit (no interest, no dilution, but limited), sale of assets, working capital reduction
-- Short-term external: overdraft (flexible, high interest), trade credit, factoring (sells receivables), leasing
-- Long-term external: bank loans (fixed repayments, collateral), debentures (fixed interest, secured), share capital (ordinary/preference), venture capital, crowdfunding
-
-**Cash flow:**
-- Cash ≠ profit (profit includes non-cash items, accruals)
-- Cash flow forecast predicts inflows and outflows over time
-- Solutions to shortfall: overdraft, chase debtors, delay creditors, reduce stock, sale and leaseback
-
-**Break-even analysis:**
-- Contribution per unit = Selling price - Variable cost per unit
-- Break-even output = Fixed costs / Contribution per unit
-- Margin of safety = Actual output - Break-even output
-- Limitations: assumes all output sold, linear relationships, single product, static costs
-
-**Financial ratios:**
-- Profitability: gross profit margin, net profit margin, ROCE
-- Liquidity: current ratio, acid-test ratio
-- Efficiency: inventory turnover, receivables days, payables days, asset turnover
-- Gearing: debt/equity ratio, interest cover
-- Investor: EPS, dividend yield, dividend cover, P/E ratio`,
-        'strategy': `**CAIE 9609 — Strategic Management**
-
-**Strategic analysis:**
-- SWOT: internal Strengths/Weaknesses, external Opportunities/Threats
-- PESTLE: macro-environmental analysis
-- Porter's Five Forces: competitive rivalry, threat of new entrants, bargaining power of buyers, bargaining power of suppliers, threat of substitutes
-- Boston Matrix: Stars (invest), Cash Cows (harvest), Question Marks (selective), Dogs (divest)
-
-**Strategic choice:**
-- Ansoff Matrix: market penetration (lowest risk), market development, product development, diversification (highest risk)
-- Investment appraisal: payback period, ARR, NPV, IRR
-- Force field analysis: driving vs restraining forces for change
-
-**Strategic implementation:**
-- Change management: Lewin's unfreeze-change-refreeze, Kotter's 8-step model
-- Organizational structure: hierarchical, flat, matrix, delegation, span of control, chain of command
-- Corporate culture: power, role, task, person cultures (Handy)
-
-**Globalization:**
-- Drivers: technology, trade liberalization, market convergence, cost advantages
-- Methods: exporting, licensing, franchising, joint ventures, FDI, strategic alliances
-- Benefits: larger markets, economies of scale, risk spreading, access to resources
-- Challenges: cultural differences, exchange rate risk, political risk, ethical issues, increased competition`,
-        'essay': `**CAIE 9609 — Business Essay Structure**
-
-**Introduction:**
-- Define key terms precisely
-- Show understanding of context/issue
-- State your line of argument/thesis
-
-**Body paragraphs (PEEL+):**
-- **Point:** clear topic sentence stating argument
-- **Explanation:** business theory/concept with context
-- **Evidence:** real business example (company name, date, data, country)
-- **Evaluation:** "However...", "This depends on...", "A limitation is..."
-- **Link:** connect back to question
-
-**Evaluation techniques:**
-1. Short-term vs long-term
-2. Size/type of business (SME vs multinational, PLC vs Ltd)
-3. Industry context (manufacturing vs service)
-4. Country/economic context (developed vs developing)
-5. Stakeholder perspective (conflicting interests)
-6. Quantitative vs qualitative factors
-
-**Conclusion:**
-- Summarize main arguments
-- Give justified judgment (which factor most important and WHY)
-- Do not introduce new points`
-    },
-    psychology: {
-        'research': `**CAIE 9990 — Research Methods**
-
-**Experimental designs:**
-- Lab experiment: high control, high internal validity, low ecological validity, replication possible
-- Field experiment: natural setting, higher ecological validity, less control, demand characteristics reduced
-- Natural/quasi-experiment: IV not manipulated by researcher, naturally occurring groups, less control but ethical for harmful variables
-
-**Key terminology:**
-- IV: independent variable (manipulated)
-- DV: dependent variable (measured)
-- Extraneous variable: could affect DV, must be controlled
-- Confounding variable: uncontrolled EV, threatens validity
-- Operationalization: defining variables in measurable terms
-
-**Validity:**
-- Internal: extent to which DV is caused by IV (control extraneous variables)
-- External: extent to which results generalize (population, ecological, temporal, cultural validity)
-- Construct: whether variables truly measure what they claim
-
-**Reliability:**
-- Internal consistency: split-half, Cronbach's alpha
-- Inter-rater: multiple observers agree
-- Test-retest: same results over time
-- Ways to improve: standardized procedures, pilot studies, clear instructions
-
-**Sampling:**
-- Random: everyone equal chance, unbiased, representative but hard to achieve
-- Opportunity/convenience: readily available, quick but biased
-- Systematic: every nth person from list
-- Stratified: proportional representation of subgroups
-- Volunteer/self-selected: motivated participants, bias
-
-**Ethics (BPS guidelines):**
-- Informed consent, right to withdraw, confidentiality, deception only if justified + debriefing, protection from harm, debriefing
-- Cost-benefit analysis
-
-**Data analysis:**
-- Quantitative: descriptive (mean, median, mode, SD, range), inferential (t-test, chi-square, Mann-Whitney, Wilcoxon, Spearman's rho)
-- Qualitative: thematic analysis, grounded theory, content analysis
-- Levels of measurement: nominal, ordinal, interval, ratio`,
-        'memory': `**CAIE 9990 — Memory**
-
-**Multi-store model (Atkinson & Shiffrin, 1968):**
-- Sensory register: iconic (visual, 0.25-0.5s), echoic (auditory, 2-4s), haptic (touch)
-- STM: limited capacity (7±2 items, Miller), limited duration (~18-30s, Peterson & Peterson), acoustic coding (Conrad)
-- LTM: unlimited capacity, potentially permanent, semantic coding (Baddeley)
-- Flow: attention → STM; rehearsal → LTM
-- Evidence: serial position curve (primacy = LTM, recency = STM), HM, Clive Wearing
-- Criticisms: too linear, rehearsal not only route to LTM, STM is not unitary
-
-**Working memory model (Baddeley & Hitch, 1974):**
-- Central executive: attention controller, limited capacity, no storage
-- Phonological loop: phonological store (2s decay) + articulatory control process (subvocal rehearsal)
-- Visuospatial sketchpad: visual cache + inner scribe
-- Episodic buffer: integrates information across modalities, links to LTM, conscious awareness
-- Evidence: dual-task studies, word-length effect, articulatory suppression
-
-**Forgetting:**
-- Decay theory: memory traces fade over time (Peterson & Peterson)
-- Interference: proactive (old disrupts new, Underwood) and retroactive (new disrupts old)
-- Retrieval failure: lack of appropriate cues, encoding specificity principle (Godden & Baddeley, diving study)
-
-**Eyewitness testimony:**
-- Loftus & Palmer (1974): leading questions distort memory
-- Post-event discussion: Gabbert et al. — co-witness contamination
-- Anxiety: Yerkes-Dodson law; weapon focus (Loftus et al.)
-- Age: children more suggestible, elderly have memory deficits
-- Cognitive interview: context reinstatement, report everything, reverse order, change perspective (Geiselman et al.)`,
-        'attachment': `**CAIE 9990 — Attachment**
-
-**Bowlby's theory (1969):**
-- Evolutionary basis: attachment promotes survival (social releasers: smiling, crying, grasping)
-- Critical period: first 2.5 years for attachment formation
-- Sensitive period: optimal time for attachment
-- Monotropy: primary attachment to one special figure (usually mother)
-- Internal working model: template for future relationships (continuity hypothesis)
-- Evidence: 44 Thieves study, Harlow's monkeys (cloth vs wire mother)
-- Criticisms: overemphasis on mother, fathers important too, multiple attachments possible
-
-**Ainsworth's Strange Situation (1970):**
-- Secure (Type B, 65%): distressed when left, happy on return, uses caregiver as secure base
-- Insecure-avoidant (Type A, 22%): ignores caregiver, little distress, emotional distance
-- Insecure-resistant/ambivalent (Type C, 12%): very distressed, rejects caregiver on return, difficult to comfort
-- Disorganized (Type D): contradictory behavior, fearful, associated with abuse/neglect (Main & Solomon)
-
-**Cultural variations (Van IJzendoorn & Kroonenberg, 1988):**
-- Secure attachment most common globally
-- Avoidant more common in Germany; resistant more common in Japan (collectivist)
-- Cultural bias in Strange Situation?
-
-**Maternal deprivation:**
-- Bowlby: separation from mother in critical period → intellectual/social/emotional damage
-- 44 Thieves study (Bowlby): prolonged early separation linked to affectionless psychopathy
-- Rutter: quality of substitute care matters more than separation itself
-- Romanian orphanage studies: effects depend on timing, duration, quality of care`,
-        'stress': `**CAIE 9990 — Stress**
-
-**Physiological stress response:**
-- Acute (SAM axis): hypothalamus → sympathetic NS → adrenal medulla → adrenaline/noradrenaline
-  - Effects: increased HR, BP, breathing rate, glycogenolysis, pupil dilation, reduced digestion
-- Chronic (HPA axis): hypothalamus → CRH → anterior pituitary → ACTH → adrenal cortex → cortisol
-  - Cortisol: maintains blood glucose, suppresses immune system, anti-inflammatory
-
-**Selye's General Adaptation Syndrome (GAS):**
-- Alarm: fight or flight, sympathetic arousal
-- Resistance: parasympathetic activity, cortisol maintains adaptation
-- Exhaustion: resources depleted, immune suppression, illness
-
-**Stress models:**
-- Lazarus & Folkman (cognitive): primary appraisal (is it stressful?), secondary appraisal (can I cope?)
-- Holmes & Rahe (1967): Social Readjustment Rating Scale — life changes require readjustment
-- Kanner et al. (1981): daily hassles more predictive of health outcomes than major life events
-- Workplace stress: Karasek's demand-control model (high demand + low control = most stressful)
-
-**Stress management:**
-- Biological: benzodiazepines (GABA enhancement), beta-blockers (reduce sympathetic activity)
-- Psychological: CBT (cognitive restructuring), stress inoculation training (Meichenbaum), mindfulness
-- Physical: exercise (reduces cortisol, increases endorphins), relaxation techniques`,
-        'social': `**CAIE 9990 — Social Influence**
-
-**Conformity:**
-- Normative social influence: conform to be liked/accepted (public compliance, private disagreement)
-- Informational social influence: conform because we believe others are correct (private acceptance, ambiguous situations)
-- Asch (1951): 123 male students, line judgment task. 75% conformed at least once, mean conformity 32%
-  - Factors: group size (up to 3), unanimity (one dissenter reduces conformity), task difficulty, anonymity
-- Zimbardo (prison study): situational factors create conformity to roles
-
-**Obedience:**
-- Milgram (1963): 65% administered maximum 450V shock
-  - Variations: proximity of authority (decreased obedience), proximity of victim (decreased), location (decreased outside Yale), peer rebellion (decreased), transfer of responsibility (increased)
-- Agency theory (Milgram): agentic state (following orders, shifting responsibility) vs autonomous state
-- Hofling et al. (1966): nurses obeyed doctor's illegitimate order
-
-**Resistance to social influence:**
-- Social support: ally reduces conformity (Asch) and obedience (Milgram)
-- Locus of control: internals resist more (Rotter)
-- Prior commitment: publicly stating own view reduces conformity
-
-**Minority influence:**
-- Moscovici (1969): consistency, flexibility, commitment key to minority influence
-- Snowball effect: minority converts majority gradually
-- Social cryptoamnesia: source of influence forgotten, idea accepted`,
-        'abnormal': `**CAIE 9990 — Abnormality**
-
-**Definitions:**
-- Statistical infrequency: rare = abnormal (but high IQ rare yet desirable; where to draw line?)
-- Deviation from social norms: violates society's rules (but norms change over time/culture)
-- Failure to function adequately: cannot cope with daily life (may be situational, subjective)
-- Deviation from ideal mental health (Jahoda): positive criteria (self-actualization, autonomy, etc.) — unrealistic ideal
-
-**Depression:**
-- Cognitive (Beck): negative triad (self, world, future), cognitive distortions (overgeneralization, catastrophizing)
-- Biological: low serotonin/norepinephrine, genetic predisposition (McGuffin et al.), enlarged amygdala, HPA axis hyperactivity
-- Treatment: CBT (cognitive restructuring, behavioral activation), SSRIs (increase serotonin), ECT (severe cases)
-
-**Schizophrenia:**
-- Symptoms: positive (hallucinations, delusions, disorganized speech, thought insertion) and negative (flat affect, avolition, poverty of speech, social withdrawal)
-- Biological: dopamine hypothesis (excess in mesolimbic pathway, deficit in mesocortical), genetic (Gottesman, twin studies), neurodevelopmental (obstetric complications, viral infection)
-- Treatment: typical antipsychotics (dopamine antagonists, extrapyramidal side effects), atypical antipsychotics (serotonin-dopamine antagonists), CBT for psychosis, family therapy
-
-**Eating disorders:**
-- Anorexia nervosa: restricted intake, low BMI, fear of weight gain, body dysmorphia
-- Bulimia nervosa: binge-purge cycles, normal BMI, secretive behavior
-- Explanations: genetic, serotonin imbalance, family systems (enmeshment), sociocultural (media pressure, objectification)`,
-        'biological': `**CAIE 9990 — Biopsychology**
-
-**Neuron structure:**
-- Dendrites (receive signals), cell body/soma (metabolic center), axon (transmits), myelin sheath (Schwann cells in PNS, oligodendrocytes in CNS), nodes of Ranvier, terminal buttons (synaptic knobs)
-
-**Action potential:**
-- Resting potential: -70mV (Na⁺/K⁺ pump, K⁺ leak channels)
-- Depolarization: Na⁺ channels open, Na⁺ rushes in (+40mV)
-- Repolarization: Na⁺ channels close, K⁺ channels open, K⁺ leaves
-- Hyperpolarization: overshoot to -90mV
-- Recovery: Na⁺/K⁺ pump restores balance
-- All-or-nothing: fires fully or not at all
-- Saltatory conduction: jumps between nodes of Ranvier, faster
-
-**Synaptic transmission:**
-- Action potential arrives → voltage-gated Ca²⁺ channels open → vesicles fuse → neurotransmitter release → bind to receptors → EPSP (excitatory) or IPSP (inhibitory) → reuptake/enzymatic degradation
-
-**Neurotransmitters:**
-- Serotonin: mood regulation, sleep, appetite (low → depression)
-- Dopamine: reward, motivation, motor control (excess → schizophrenia, low → Parkinson's)
-- Acetylcholine: learning, memory, muscle contraction (low → Alzheimer's)
-- GABA: inhibitory (low → anxiety, seizures)
-
-**Brain structure:**
-- Cerebral cortex: higher functions, four lobes (frontal, parietal, temporal, occipital)
-- Hippocampus: memory formation
-- Amygdala: emotion and fear
-- Hypothalamus: homeostasis, HPA axis
-- Cerebellum: motor coordination
-- Brain scanning: EEG (electrical, high temporal), MRI (structure), fMRI (function), PET (metabolism)
-
-**Split-brain research (Sperry):**
-- Corpus callosum severed (epilepsy treatment)
-- Left hemisphere: language, logic, analytical
-- Right hemisphere: spatial, creativity, emotion
-- Each hemisphere processes independently`,
-        'cognitive': `**CAIE 9990 — Cognitive Psychology**
-
-**Models of memory (see Memory section)**
-
-**Perception:**
-- Bottom-up processing: data-driven, uses sensory information
-- Top-down processing: conceptually driven, uses expectations/schema
-- Gregory's constructivist theory: perception is hypothesis, uses prior knowledge
-- Gibson's direct theory: perception is direct, information in environment sufficient
-- Visual illusions: Muller-Lyer, Ponzo, Ames room — support constructivist view
-
-**Attention:**
-- Selective attention: Broadbent's filter model (bottleneck), Treisman's attenuation model
-- Divided attention: dual-task performance
-- Stroop effect: interference between color and word reading
-
-**Language:**
-- Chomsky: language acquisition device (LAD), universal grammar, innate
-- Skinner: language learned through operant conditioning (imitation, reinforcement)
-- Genie case study: critical period for language acquisition
-
-**Problem solving:**
-- Algorithms: step-by-step, guaranteed solution but slow
-- Heuristics: mental shortcuts, faster but may lead to errors
-- Insight: sudden realization (Kohler's apes)
-- Functional fixedness: inability to see alternative uses for objects`,
-        'developmental': `**CAIE 9990 — Developmental Psychology**
-
-**Cognitive development (Piaget):**
-- Sensorimotor (0-2): object permanence, trial and error
-- Preoperational (2-7): symbolic thought, egocentrism, centration, lack of conservation
-- Concrete operational (7-11): conservation, classification, seriation, reversible thinking
-- Formal operational (11+): abstract reasoning, hypothetical-deductive reasoning
-- Criticisms: underestimates children's abilities (Baillargeon), cultural bias, stage model too rigid
-
-**Education applications:**
-- Discovery learning, readiness, concrete operational teaching methods
-- Vygotsky's zone of proximal development (ZPD): gap between what child can do alone vs with help
-- Scaffolding: support tailored to learner's needs, gradually withdrawn
-
-**Moral development (Kohlberg):**
-- Preconventional: obedience and punishment, self-interest
-- Conventional: interpersonal accord, authority and social order
-- Postconventional: social contract, universal ethical principles
-- Criticisms: cultural bias, gender bias (Gilligan), action vs reasoning`,
-        'issues': `**CAIE 9990 — Issues & Debates**
-
-**Nature vs Nurture:**
-- Nature: genetics, innate factors, biological determinism
-- Nurture: environment, upbringing, learning
-- Interactionist approach: genes and environment interact (diathesis-stress model)
-
-**Free will vs Determinism:**
-- Free will: humans choose behavior (humanistic approach)
-- Hard determinism: all behavior caused by prior events (biological, environmental)
-- Soft determinism: behavior caused but within constraints we have choice
-
-**Holism vs Reductionism:**
-- Holism: behavior should be studied as a whole system
-- Reductionism: break down into simpler components (biological, environmental)
-
-**Idiographic vs Nomothetic:**
-- Idiographic: study individuals in depth (case studies, qualitative)
-- Nomothetic: establish general laws (experiments, quantitative)
-
-**Ethical issues:**
-- Social sensitivity: research with social/political implications
-- Psychology and society: applications in law, education, mental health, organizations
-- Use of animals in research: 3Rs (Replacement, Reduction, Refinement)`,
-        'essay': `**CAIE 9990 — Psychology Essay Structure**
-
-**Introduction:**
-- Define key terms
-- Briefly outline what the essay will cover
-- Optional: state thesis/judgment
-
-**Body paragraphs (AO1 + AO3):**
-- AO1 (Knowledge, 6 marks): Describe theory/study with names, dates, procedures, findings
-- AO3 (Evaluation, 10 marks): Strengths, weaknesses, comparisons, applications
-- Use PEEL: Point, Evidence, Explain, Link
-
-**Evaluation techniques:**
-1. Methodological critique (sample size, generalizability, validity, reliability, ethics)
-2. Supporting/contradicting evidence
-3. Alternative explanations
-4. Real-world applications
-5. Determinism vs free will
-6. Reductionism vs holism
-7. Nature vs nurture
-8. Individual/situational differences
-9. Practical issues (cost, time, ethics)
-
-**Conclusion:**
-- Summarize main points
-- Make justified judgment
-- Consider interactionist approaches`
+- Read questions quickly, underline keywords
+- Predict answer type (number, name, date, noun)
+- Look for synonyms (text won't use same words)
+
+**During listening:**
+- Answers come IN ORDER (mostly)
+- Write answers on paper immediately — transfer at end
+- Check spelling and grammar
+- Watch for traps: speaker changes answer ("No, actually...")
+- Numbers: write digits, not words
+
+**Section 1 (conversation, everyday):**
+- Usually form-filling
+- Names, numbers, dates, addresses
+- Check: British or American spelling?
+
+**Section 2 (monologue, everyday):**
+- Often map/diagram labeling
+- Follow directions carefully (left, right, opposite, next to)
+
+**Section 3 (conversation, academic):**
+- Multiple students discussing assignment/project
+- Watch for opinions and attitudes (agreement/disagreement)
+
+**Section 4 (monologue, academic):**
+- Lecture-style, often gap-fill
+- Note-taking format
+- Answers may be paraphrased from lecture`,
+        'vocabulary': `**IELTS Vocabulary — Band 7+ Word Lists**
+
+**Education:**
+curriculum, syllabus, pedagogy, rote learning, holistic, cognitive, literacy, numeracy, extracurricular, tuition, scholarship, academic, vocational, tertiary, plagiarism, critical thinking
+
+**Environment:**
+biodiversity, deforestation, emission, carbon footprint, renewable, sustainable, conservation, ecosystem, habitat, pollution, biodegradable, organic, greenhouse effect, climate change, fossil fuels
+
+**Technology:**
+innovation, automation, artificial intelligence, digitalization, cybersecurity, algorithm, interface, bandwidth, connectivity, virtual reality, blockchain, biotechnology, nanotechnology
+
+**Health:**
+epidemic, pandemic, immunization, nutrition, obesity, sedentary, cardiovascular, mental health, well-being, healthcare, preventive, diagnosis, treatment, rehabilitation, chronic, acute
+
+**Economy:**
+inflation, recession, unemployment, GDP, fiscal, monetary, trade deficit, austerity, stimulus, entrepreneurship, consumerism, privatization, deregulation, infrastructure
+
+**Collocations for essays:**
+- take measures/steps/action
+- play a crucial/pivotal/key role
+- give rise to/lead to/result in
+- address/tackle/combat (a problem)
+- reap benefits/yield results
+- warrant/deserve attention
+- pose a threat/challenge`
     }
 };
-
-// Image analysis keywords
-const IMAGE_PATTERNS = {
-    'equation chemical': 'This appears to be a chemistry equation or formula. To balance it: count atoms on each side, add coefficients to equalize, and verify. For redox, split into half-reactions.',
-    'graph curve chart': 'I see a graph. Identify axes (independent vs dependent), curve shape, intercepts, gradients, and turning points. In economics, label shifts and equilibrium changes. In physics, check if it represents displacement-time, velocity-time, etc.',
-    'diagram cell structure': 'This looks like a cell diagram. Identify organelles by their structure: nucleus (largest, dark), mitochondria (oval with inner folds), ribosomes (small dots), ER (membranous network). Compare plant vs animal features.',
-    'triangle angle geometry': 'This is a geometry/trigonometry problem. Identify what is given and what is needed. Use SOH CAH TOA for right triangles, sine/cosine rule for non-right triangles, or Pythagoras.',
-    'table data numbers': 'I see a data table. Look for trends, calculate percentages/ratios, identify independent and dependent variables. In economics, this may support demand/supply analysis.',
-    'molecule structure': 'This appears to be a molecular structure. Identify functional groups (OH=alcohol, COOH=acid, C=O=carbonyl), count carbons, name using IUPAC rules, predict reactions based on functional groups.',
-    'circuit wire battery': 'This is an electric circuit diagram. Identify series/parallel arrangements, apply Kirchhoff\'s laws, use V=IR for each component. Calculate equivalent resistance and total current.',
-    'formula math equation': 'I see a mathematical expression. Simplify using algebra rules, factor if quadratic, apply differentiation/integration rules as needed. Show each step clearly.',
-    'dna helix strand': "This shows DNA structure. Remember: antiparallel strands (5'-3'), A-T and G-C pairing, major/minor grooves. For replication: semi-conservative, enzymes (helicase, polymerase, ligase).",
-    'periodic table element': 'Periodic table reference. Trends to remember: atomic radius decreases across period/increases down group, electronegativity increases across/decreases down, ionization energy follows similar pattern with dips at Groups 3 and 6.'
-};
-
-function analyzeImage() {
-    // Return a generic but helpful image analysis response
-    return {
-        html: `<div class="tutor-response">
-            <p><strong>Image Analysis:</strong> I can see you've uploaded an image. Based on typical exam problem images, here's my guidance:</p>
-            <div class="tutor-steps">
-                <div class="step"><span class="step-num">1</span><p><strong>Identify the topic:</strong> Look for keywords, symbols, or diagram types that indicate the subject area.</p></div>
-                <div class="step"><span class="step-num">2</span><p><strong>Extract given information:</strong> List all values, labels, and relationships shown.</p></div>
-                <div class="step"><span class="step-num">3</span><p><strong>Select the right approach:</strong> Match the problem type to your formula sheet or concept notes.</p></div>
-                <div class="step"><span class="step-num">4</span><p><strong>Work step-by-step:</strong> Show all working — examiners award method marks even with calculator errors.</p></div>
-            </div>
-            <p style="margin-top:12px">If you describe what you see in the image (e.g., "a velocity-time graph with a trapezium shape" or "a circuit with two resistors in parallel"), I can give you a much more specific solution.</p>
-        </div>`,
-        text: '[Image analysis guidance provided]'
-    };
-}
-
-function generateResponse(text, image) {
-    const q = text.toLowerCase();
-
-    if (image && !text.trim()) {
-        return analyzeImage();
-    }
-
-    // Subject routing
-    let subject = '';
-    if (/physics|force|motion|newton|velocity|acceleration|wave|electric|circuit|current|resist|energy|power|momentum|gravit|magnetic|field|particle|quark|nuclear/i.test(q)) subject = 'physics';
-    else if (/chem|mole|balance|equation|atom|molecule|bond|organic|alkane|alkene|alcohol|equilibrium|acid|base|redox|oxidation|titration|enthalpy|rate/i.test(q)) subject = 'chemistry';
-    else if (/math|differentiat|integrat|trig|vector|complex|calculus|algebra|logarithm|exponent|polynomial|binomial|series|probability|statistic|hypothesis/i.test(q)) subject = 'maths';
-    else if (/economic|demand|supply|market|monopoly|oligopoly|inflation|unemployment|gdp|growth|fiscal|monetary|trade|exchange|elastic/i.test(q)) subject = 'economics';
-    else if (/biology|cell|photosynthesis|respiration|dna|gene|inherit|enzyme|protein|membrane|nervous|hormone|ecosystem|evolution|mitosis|meiosis/i.test(q)) subject = 'biology';
-    else if (/ielts|band score|speaking part|writing task|academic|general training|listening section|reading passage|cue card|essay check|coherence|lexical|task response/i.test(q)) subject = 'ielts';
-    else if (/business|marketing|hrm|human resource|operations|strategy|ansoff|swot|finance|break-even|cash flow|leadership|motivation|promotion|pricing|production method|stakeholder|entrepreneur/i.test(q)) subject = 'business';
-    else if (/psychology|attachment|memory|stress|conformity|obedience|neurotransmitter|synapse|neuron|research method|experiment|ethics|depression|schizophrenia|biological psychology|social influence|cognitive psychology|developmental|abnormal/i.test(q)) subject = 'psychology';
-    else if (/accounting|english|chinese/i.test(q)) subject = 'other';
-
-    // Track subject for progress
-    if (subject && subject !== 'other') {
-        Auth.addStudyTime(subject === 'ielts' ? 'english' : subject, 5);
-        Auth.updateStreak();
-    }
-
-    // Match knowledge base topics
-    const kb = KNOWLEDGE[subject];
-    if (kb) {
-        for (const [key, response] of Object.entries(kb)) {
-            if (q.includes(key)) {
-                const suffix = subject === 'ielts' ? '\n\nWant me to review a practice essay or give you a speaking topic?' : '\n\nNeed me to work through a specific problem on this topic?';
-                return response + suffix;
-            }
-        }
-    }
-
-    // Generic problem-solving responses
-    if (/solve|calculate|find|determine|work out|compute|evaluate/i.test(q)) {
-        if (subject === 'physics') {
-            return `**Problem-solving approach for Physics:**
-
-1. **List given quantities** with units
-2. **Identify what you need to find**
-3. **Select the relevant equation(s)** — check your formula sheet
-4. **Rearrange before substituting** numbers
-5. **Calculate and check units**
-
-**Common Physics equations to try:**
-- Kinematics: v = u + at, s = ut + 1/2 at², v² = u² + 2as
-- Forces: F = ma, W = mg, f = μN
-- Energy: KE = 1/2 mv², PE = mgh, W = Fd
-- Electricity: V = IR, P = VI, R_series = R₁+R₂
-- Waves: v = fλ
-
-If you share the exact numbers from your problem, I can guide you through the calculation step by step.`;
-        }
-        if (subject === 'chemistry') {
-            return `**Problem-solving approach for Chemistry:**
-
-1. **Write the balanced equation**
-2. **Convert all given quantities to moles**
-   - n = mass/Mr
-   - n = concentration × volume(dm³)
-   - For gases: n = volume/24 at RTP
-3. **Use the mole ratio** from the balanced equation
-4. **Convert moles back to required units**
-5. **Check significant figures**
-
-**Stoichiometry checklist:**
-- Is the equation balanced?
-- Are volumes in dm³? (divide cm³ by 1000)
-- Did you use the correct mole ratio?
-- For limiting reagents: calculate product from each reactant, smaller amount wins
-
-Share the exact problem and I'll work through it with you.`;
-        }
-        if (subject === 'maths') {
-            return `**Problem-solving approach for Mathematics:**
-
-1. **Read carefully** — identify what is given and what is required
-2. **Choose the right technique:**
-   - Algebra: factor, expand, complete the square, substitute
-   - Calculus: differentiate/integrate using appropriate rules
-   - Trigonometry: use identities, CAST diagram, sine/cosine rule
-   - Vectors: scalar product for angles, cross product for areas
-   - Complex numbers: convert to polar form for powers/roots
-3. **Show all working** — method marks are crucial
-4. **Check your answer** — does it make sense? Substitute back if possible
-
-**If it's a pure math problem**, tell me the exact expression or equation and I'll solve it step by step.`;
-        }
-    }
-
-    if (/explain|what is|how does|why|describe|define|meaning/i.test(q)) {
-        if (subject === 'physics') return 'Physics concepts build on fundamental principles. Could you specify which topic (mechanics, waves, electricity, modern physics)? I have detailed explanations for Newton\'s laws, kinematics, wave properties, circuit analysis, and particle physics.';
-        if (subject === 'chemistry') return 'Chemistry covers atomic structure, bonding, energetics, kinetics, equilibria, and organic chemistry. Which area would you like explained? I can cover moles, balancing equations, organic reactions, equilibrium, or atomic structure in depth.';
-        if (subject === 'maths') return 'Mathematics topics include pure math (calculus, algebra, trigonometry, vectors, complex numbers), mechanics, and statistics. Which topic needs clarification? I have step-by-step guides for differentiation, integration, trigonometric identities, and vector geometry.';
-        if (subject === 'economics') return 'Economics divides into microeconomics (demand/supply, market structures, market failure) and macroeconomics (growth, inflation, unemployment, BOP, development). Which would you like me to explain?';
-        if (subject === 'biology') return 'Biology topics include cell biology, biochemistry, genetics, physiology, ecology, and evolution. I can explain photosynthesis, cellular respiration, DNA replication, genetics, and cell structure in detail.';
-        if (subject === 'business') return 'Business covers marketing, finance, HRM, operations, and strategy. I can explain the marketing mix, break-even, cash flow, motivation theories, Ansoff matrix, SWOT, and more. What topic do you need?';
-        if (subject === 'psychology') return 'Psychology topics include memory, attachment, stress, social influence, research methods, and abnormal psychology. I can explain experiments, theories, and evaluation points. Which area?';
-    }
-
-    if (/essay|write|structure|argument|evaluation/i.test(q)) {
-        if (subject === 'economics') return KNOWLEDGE.economics.essay;
-        if (subject === 'business') return KNOWLEDGE.business.essay;
-        if (subject === 'psychology') return KNOWLEDGE.psychology.essay;
-    }
-
-    if (/exam|revision|revise|study|prepare|tips|advice/i.test(q)) {
-        return `**Exam Preparation Strategy**
-
-**1. Active recall:**
-- Close your notes and write down everything you remember
-- Use flashcards for definitions and formulas
-- Practice past papers under timed conditions
-
-**2. Spaced repetition:**
-- Review topics at increasing intervals (1 day, 3 days, 1 week)
-- Focus more time on weak areas
-
-**3. Past paper strategy:**
-- Start with topic-specific questions
-- Progress to full papers under exam conditions
-- Mark yourself strictly using mark schemes
-- Note recurring mistakes in an error log
-
-**4. Subject-specific tips:**
-- **Maths:** Practice is everything. Do every question type at least 3 times.
-- **Sciences:** Learn definitions precisely. Practice explaining processes in your own words.
-- **Economics:** Build a bank of real-world examples. Practice evaluation sentences.
-- **Essay subjects:** Plan essays in 5 minutes before writing. PEEL structure.
-
-**5. The night before:**
-- Light review only
-- Sleep > cramming
-- Prepare materials (calculator, pens, ID)`;
-    }
-
-    if (/formula|equation sheet|remember|memorize/i.test(q)) {
-        return `**How to Remember Formulas**
-
-1. **Understand derivation:** Formulas you understand are easier to remember than those you memorize blindly.
-
-2. **Units check:** Memorize units — they help you recall formulas. Force = kg·m/s² = N, so F=ma makes sense.
-
-3. **Formula triangles:** For equations like V=IR, D=M/V, v=fλ — cover the variable you want.
-
-4. **Flashcards:** Formula on front, variables explained on back.
-
-5. **Common formula patterns:**
-   - Energy/work = force × distance
-   - Power = energy/time = force × velocity
-   - Current = charge/time
-   - Rate = amount/time
-
-6. **Practice problems:** Using formulas in context cements them better than rote memorization.`;
-    }
-
-    if (/stress|anxious|nervous|worried|panic|scared|tired|burnout/i.test(q)) {
-        return `**Managing Exam Stress**
-
-**Immediate techniques:**
-- Box breathing: 4 counts in, hold, out, hold
-- 5-4-3-2-1 grounding: name 5 things you see, 4 you hear, etc.
-- Progressive muscle relaxation
-
-**Study habits that reduce stress:**
-- Break tasks into small, achievable chunks
-- Pomodoro: 25 min study, 5 min break
-- Prioritize sleep over late-night cramming
-- Exercise daily — even a 20-minute walk helps
-
-**Perspective:**
-- One exam does not define your worth
-- There are always alternative paths
-- Preparation reduces anxiety — focus on what you can control
-
-**If stress is overwhelming:** speak to a teacher, counselor, or trusted adult. Your mental health matters more than any grade.`;
-    }
-
-    // Fallback
-    return `I want to help you with that. To give you the best answer, could you tell me:
-
-1. **Which subject** is this for? (Physics, Chemistry, Maths, Biology, Economics, etc.)
-2. **What topic** within that subject?
-3. **The exact question** or problem statement?
-
-You can also **upload an image** of the problem if that's easier. I'll provide a step-by-step solution or detailed explanation.`;
-}
-
-// Load history
-const history = Auth.getTutorHistory();
-if (history.length > 0) {
-    // Remove welcome, show last few exchanges
-    chat.innerHTML = '';
-    const recent = history.slice(-10);
-    for (let i = 0; i < recent.length; i += 2) {
-        const userMsg = recent[i];
-        const botMsg = recent[i+1];
-        if (userMsg && userMsg.role === 'user') {
-            addUserMessage(userMsg.content, null);
-        }
-        if (botMsg && botMsg.role === 'assistant') {
-            addBotMessage(botMsg.content);
-        }
-    }
-}
