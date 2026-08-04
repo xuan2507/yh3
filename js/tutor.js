@@ -494,7 +494,133 @@ or E°cell = E°reduction + E°oxidation
 - Atomic radius increases, shielding increases, electron affinity decreases
 - Displacement reactions: Cl₂ displaces Br⁻ and I⁻; Br₂ displaces I⁻
 - Reactions with NaOH: cold dilute → halide + halate(I) (disproportionation); hot concentrated → halide + halate(V)
-- Silver halides: AgCl (white), AgBr (cream), AgI (yellow) — all insoluble in dilute HNO₃ but soluble in concentrated NH₃ (AgCl fully, AgBr partially, AgI not)`
+- Silver halides: AgCl (white), AgBr (cream), AgI (yellow) — all insoluble in dilute HNO₃ but soluble in concentrated NH₃ (AgCl fully, AgBr partially, AgI not)`,
+        'entropy': `**CAIE 9701 — Entropy and Gibbs Free Energy**
+
+**Entropy (S):** measure of disorder/randomness in a system
+- S(gas) > S(liquid) > S(solid)
+- More moles of gas → higher entropy
+- Dissolving increases entropy
+
+**Standard entropy change of reaction:**
+ΔS° = ΣS°(products) - ΣS°(reactants)
+
+**Gibbs free energy:**
+ΔG = ΔH - TΔS
+- ΔG < 0: spontaneous
+- ΔG = 0: equilibrium
+- ΔG > 0: non-spontaneous
+
+**Temperature dependence:**
+| ΔH | ΔS | Result |
+|---|---|---|
+| - | + | Spontaneous at ALL T |
+| + | - | Non-spontaneous at ALL T |
+| - | - | Spontaneous at LOW T |
+| + | + | Spontaneous at HIGH T |
+
+**Calculating feasibility temperature:**
+T = ΔH/ΔS (when ΔG = 0)
+
+**Example:** CaCO₃ → CaO + CO₂
+ΔH = +178 kJ/mol, ΔS = +161 J/K·mol
+T = 178000/161 = 1106 K. Above this T, decomposition is spontaneous.`,
+        'analytical': `**CAIE 9701 — Analytical Techniques**
+
+**Chromatography (TLC and paper):**
+- Principle: separation based on differential partitioning between stationary phase (polar silica/paper) and mobile phase (solvent)
+- Rf = distance moved by spot / distance moved by solvent front
+- More polar compounds: lower Rf (bind strongly to polar stationary phase)
+- Less polar compounds: higher Rf (travel with non-polar mobile phase)
+
+**IR Spectroscopy:**
+- Measures absorption of IR radiation by molecular vibrations
+- Key peaks: O-H (3200-3600), C-H (2850-3100), C=O (1680-1750), C-O (1000-1300), N-H (3300-3500)
+- Fingerprint region (1500-500): unique to each compound
+
+**Mass Spectrometry:**
+- M⁺ peak = molecular mass
+- Fragmentation pattern helps identify structure
+- Common fragments: m/z 15 (CH₃⁺), 29 (CHO⁺ or C₂H₅⁺), 43 (C₃H₇⁺), 77 (C₆H₅⁺)
+
+**NMR Spectroscopy (¹H NMR):**
+- Chemical shift (δ): position of peak (ppm)
+- Integration: area under peak = number of equivalent protons
+- Splitting (n+1 rule): n adjacent non-equivalent protons → n+1 peaks
+- Key δ values: CH₃ (0.9-1.5), CH₂ (1.2-1.6), CH (1.4-1.7), O-CH₃ (3.3-4.0), CHO (9.0-10.0), OH (1.0-5.0, broad), NH₂ (1.0-5.0)
+- TMS reference at δ = 0
+
+**Combined techniques:**
+- Use mass spec for molecular formula
+- Use IR for functional groups
+- Use NMR for carbon skeleton and environment`,
+        'mechanisms': `**CAIE 9701 — Organic Reaction Mechanisms**
+
+**SN2 (primary halogenoalkanes):**
+- Concerted: one step, backside attack
+- OH⁻ attacks C from opposite side to leaving group
+- Inversion of configuration at chiral center
+- Rate = k[halogenoalkane][nucleophile]
+- Favored by: primary substrate, strong nucleophile, polar aprotic solvent
+
+**SN1 (tertiary halogenoalkanes):**
+- Two steps: slow formation of carbocation + fast nucleophilic attack
+- Carbocation intermediate (planar, sp²)
+- Racemization at chiral center (both enantiomers formed)
+- Rate = k[halogenoalkane] only
+- Favored by: tertiary substrate, weak nucleophile, polar protic solvent
+- Rearrangements possible to form more stable carbocation
+
+**Electrophilic addition (alkenes):**
+- Step 1: π electrons attack electrophile (H⁺, Br⁺) → carbocation
+- Step 2: nucleophile attacks carbocation
+- Markovnikov: H adds to C with more H's already
+- Anti-Markovnikov with peroxides (HBr only, free radical)
+- Stereochemistry: syn or anti addition depending on reagent
+
+**Electrophilic substitution (benzene):**
+- Step 1: electrophile attacks π system → unstable carbocation (Wheland intermediate)
+- Step 2: loss of H⁺ restores aromaticity
+- Examples: nitration (NO₂⁺), halogenation (Cl⁺/Br⁺ with FeCl₃/AlCl₃), Friedel-Crafts (alkylation/acylation)
+- Activating groups (ortho/para directing): -OH, -NH₂, -R
+- Deactivating groups (meta directing): -NO₂, -COOH, -SO₃H, -CHO`,
+        'polymer': `**CAIE 9701 — Polymerization**
+
+**Addition polymers:**
+- Monomers contain C=C double bonds
+- No small molecule eliminated
+- Examples: poly(ethene), poly(chloroethene) [PVC], polystyrene, Teflon, Perspex
+- Repeat unit: break C=C, extend bonds to adjacent units
+- Disposal: non-biodegradable → recycling or incineration issues
+
+**Condensation polymers:**
+- Two different monomers with two functional groups each
+- Small molecule eliminated (usually H₂O)
+- Polyamides (nylons): dicarboxylic acid + diamine → amide linkage
+- Polyesters: dicarboxylic acid + diol → ester linkage
+- Examples: nylon-6,6, Terylene (PET), proteins, DNA
+- Biodegradable polyesters possible (e.g., polylactic acid)
+
+**Natural polymers:**
+- Proteins: condensation of amino acids (peptide bonds)
+- DNA/RNA: nucleotide polymers (phosphodiester bonds)
+- Starch/cellulose: condensation of glucose (glycosidic bonds)
+- Rubber: addition polymer of isoprene`,
+        'nitrogen': `**CAIE 9701 — Nitrogen and Sulfur Chemistry**
+
+**Nitrogen:**
+- Ammonia: Haber process (N₂ + 3H₂ ⇌ 2NH₃, Fe catalyst, 450°C, 200 atm)
+- Ammonia as a base: NH₃ + HCl → NH₄Cl; NH₃ + H₂O ⇌ NH₄⁺ + OH⁻
+- Nitric acid: Ostwald process (NH₃ → NO → NO₂ → HNO₃)
+- Nitrates: thermal decomposition → nitrite + O₂ (Na, K) or metal oxide + NO₂ + O₂ (others)
+- Environmental: eutrophication from nitrate runoff
+
+**Sulfur:**
+- Contact process: 2SO₂ + O₂ ⇌ 2SO₃ (V₂O₅ catalyst, 450°C, 1-2 atm)
+- SO₃ + H₂O → H₂SO₄ (oleum intermediate in industry)
+- Sulfuric acid: strong acid, dehydrating agent, oxidizing agent (hot concentrated)
+- Sulfates: BaSO₄ insoluble (used in medicine, test for sulfate)
+- Environmental: SO₂ causes acid rain (SO₂ + H₂O → H₂SO₃ → H₂SO₄)`
     },
     maths: {
         'differentiation': `**Differentiation Rules**
