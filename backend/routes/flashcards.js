@@ -4,7 +4,7 @@ const { pool } = require('../db/config');
 const { authMiddleware } = require('../middleware/auth');
 
 // Create flashcard
-router.post('/', authMiddleware,, async (req, res) => {
+router.post('/', authMiddleware, async (req, res) => {
     try {
         const { deck_name, front, back, subject } = req.body;
         const result = await pool.query(
@@ -14,8 +14,7 @@ router.post('/', authMiddleware,, async (req, res) => {
         );
         res.json({ success: true, card: result.rows[0] });
     } catch (err) {
-        console.error("Error in " + __filename + ":", err);
-        res.status(500).json({ error: "Internal server error. Please try again." });
+        res.status(500).json({ error: err.message });
     }
 });
 
@@ -33,8 +32,7 @@ router.get('/', authMiddleware, async (req, res) => {
         const result = await pool.query(query, params);
         res.json({ cards: result.rows });
     } catch (err) {
-        console.error("Error in " + __filename + ":", err);
-        res.status(500).json({ error: "Internal server error. Please try again." });
+        res.status(500).json({ error: err.message });
     }
 });
 
@@ -50,8 +48,7 @@ router.get('/decks', authMiddleware, async (req, res) => {
         );
         res.json({ decks: result.rows });
     } catch (err) {
-        console.error("Error in " + __filename + ":", err);
-        res.status(500).json({ error: "Internal server error. Please try again." });
+        res.status(500).json({ error: err.message });
     }
 });
 
@@ -85,8 +82,7 @@ router.patch('/:id', authMiddleware, async (req, res) => {
         );
         res.json({ success: true, card: result.rows[0] });
     } catch (err) {
-        console.error("Error in " + __filename + ":", err);
-        res.status(500).json({ error: "Internal server error. Please try again." });
+        res.status(500).json({ error: err.message });
     }
 });
 
@@ -99,8 +95,7 @@ router.delete('/:id', authMiddleware, async (req, res) => {
         );
         res.json({ success: true });
     } catch (err) {
-        console.error("Error in " + __filename + ":", err);
-        res.status(500).json({ error: "Internal server error. Please try again." });
+        res.status(500).json({ error: err.message });
     }
 });
 
