@@ -11,6 +11,7 @@
     <title>Upgrade to Pro - LearnAI</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/pro.css">
+    <link rel="stylesheet" href="css/enhancements.css">
     <link rel="stylesheet" href="css/mascot.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -52,14 +53,29 @@
         </aside>
 
         <main class="dash-main">
-            <section class="dash-section">
-                <h1 class="dash-title">Upgrade to Pro</h1>
-                <p class="dash-welcome">Unlock the full power of AI-powered learning.</p>
+            <!-- Pro Hero -->
+            <section class="pro-hero">
+                <div class="pro-hero-badge"><i class="fas fa-crown"></i> LearnAI Pro</div>
+                <h1>Unlock Your Full Potential</h1>
+                <p>Go from average to A* with unlimited AI tutoring, mock exams, and advanced analytics.</p>
+                <div class="pro-hero-stats">
+                    <div><strong>50K+</strong> students upgraded</div>
+                    <div><strong>95%</strong> saw grade improvement</div>
+                    <div><strong>4.9</strong> average rating</div>
+                </div>
+            </section>
+
+            <!-- Pricing -->
+            <section class="pro-pricing" id="pricing">
+                <div class="pricing-toggle">
+                    <span class="active" id="monthlyToggle">Monthly</span>
+                    <span id="yearlyToggle">Yearly <span class="save-badge">Save 35%</span></span>
+                </div>
 
                 <div class="pro-comparison">
                     <div class="pro-plan-card free">
                         <h3><i class="fas fa-user"></i> Free</h3>
-                        <div class="pro-price">RM0<span>/month</span></div>
+                        <div class="pro-price" id="freePrice">RM0<span>/month</span></div>
                         <ul class="pro-features">
                             <li><i class="fas fa-check"></i> Basic quizzes</li>
                             <li><i class="fas fa-check"></i> AI Tutor (text)</li>
@@ -69,118 +85,202 @@
                             <li class="no"><i class="fas fa-times"></i> AI Digital Twin</li>
                             <li class="no"><i class="fas fa-times"></i> Advanced analytics</li>
                             <li class="no"><i class="fas fa-times"></i> Priority support</li>
+                            <li class="no"><i class="fas fa-times"></i> Study groups</li>
+                            <li class="no"><i class="fas fa-times"></i> Export reports</li>
                         </ul>
+                        <button class="btn btn-outline btn-full" disabled>Current Plan</button>
                     </div>
 
                     <div class="pro-plan-card pro-popular">
                         <div class="popular-badge">Best Value</div>
                         <h3><i class="fas fa-crown"></i> Pro</h3>
-                        <div class="pro-price">RM19<span>/month</span></div>
+                        <div class="pro-price" id="proPrice">RM19<span>/month</span></div>
                         <ul class="pro-features">
                             <li><i class="fas fa-check"></i> Everything in Free</li>
-                            <li><i class="fas fa-check"></i> Unlimited mock exams</li>
+                            <li><i class="fas fa-check"></i> <strong>Unlimited</strong> mock exams</li>
                             <li><i class="fas fa-check"></i> AI Digital Twin</li>
                             <li><i class="fas fa-check"></i> Advanced weakness analytics</li>
                             <li><i class="fas fa-check"></i> Study group access</li>
                             <li><i class="fas fa-check"></i> Priority AI responses</li>
                             <li><i class="fas fa-check"></i> Export study reports</li>
                             <li><i class="fas fa-check"></i> Early access to new features</li>
+                            <li><i class="fas fa-check"></i> 1-on-1 exam strategy session</li>
+                            <li><i class="fas fa-check"></i> Cancel anytime</li>
                         </ul>
-                        <button class="btn btn-primary btn-lg" id="chooseProBtn">Choose Pro</button>
+                        <button class="btn btn-primary btn-lg btn-full" id="chooseProBtn">
+                            <i class="fas fa-crown"></i> Upgrade to Pro
+                        </button>
+                        <p class="guarantee"><i class="fas fa-shield-alt"></i> 7-day money-back guarantee</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Portal -->
+            <section class="payment-portal" id="paymentPortal" style="display:none">
+                <div class="payment-portal-header">
+                    <h2><i class="fas fa-credit-card"></i> Complete Your Upgrade</h2>
+                    <p class="portal-summary">Pro Plan — <span id="portalPrice">RM19.00</span>/month</p>
+                </div>
+
+                <div class="payment-methods">
+                    <div class="pay-method active" data-method="tng">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>TNG eWallet</span>
+                    </div>
+                    <div class="pay-method" data-method="bank">
+                        <i class="fas fa-university"></i>
+                        <span>Bank Transfer</span>
+                    </div>
+                    <div class="pay-method" data-method="card">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Card</span>
                     </div>
                 </div>
 
-                <div class="payment-portal" id="paymentPortal" style="display:none">
-                    <h2><i class="fas fa-credit-card"></i> Complete Payment</h2>
-
-                    <div class="payment-methods">
-                        <div class="pay-method active" data-method="tng">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Touch_%27n_Go_eWallet_logo.svg/120px-Touch_%27n_Go_eWallet_logo.svg.png" alt="TNG" onerror="this.style.display='none'">
-                            <span><i class="fas fa-mobile-alt"></i> TNG eWallet</span>
+                <!-- TNG Form -->
+                <div class="pay-form" id="tngForm">
+                    <div class="pay-instructions">
+                        <h4><i class="fas fa-qrcode"></i> Pay with TNG eWallet</h4>
+                        <ol>
+                            <li>Open your TNG eWallet app</li>
+                            <li>Scan the QR code or search merchant</li>
+                            <li>Pay <strong id="tngAmount">RM19.00</strong></li>
+                            <li>Enter the transaction reference below</li>
+                        </ol>
+                        <div class="qr-placeholder">
+                            <i class="fas fa-qrcode"></i>
+                            <span>QR code will be emailed after request</span>
                         </div>
-                        <div class="pay-method" data-method="bank">
-                            <i class="fas fa-university"></i>
-                            <span>Bank Transfer</span>
+                        <div class="form-group">
+                            <label>TNG Transaction Reference</label>
+                            <input type="text" id="tngRef" placeholder="e.g. TNG123456789">
                         </div>
-                        <div class="pay-method" data-method="card">
-                            <i class="fas fa-credit-card"></i>
-                            <span>Debit / Credit Card</span>
-                        </div>
-                    </div>
-
-                    <div class="pay-form" id="tngForm">
-                        <div class="pay-instructions">
-                            <h4><i class="fas fa-qrcode"></i> TNG eWallet Payment</h4>
-                            <div class="bank-details" style="background:#fff3cd;border:1px solid #ffc107;padding:16px;border-radius:8px;margin-bottom:16px;">
-                                <p><i class="fas fa-info-circle" style="color:#856404;"></i> <strong>TNG merchant details will be provided after you submit a request.</strong></p>
-                                <p style="font-size:14px;color:#856404;margin-top:8px;">Our team will send you the merchant name and QR code via email.</p>
-                            </div>
-                            <ol>
-                                <li>Submit your payment request below</li>
-                                <li>Receive TNG merchant details via email</li>
-                                <li>Complete payment in your TNG app</li>
-                                <li>Copy the Transaction Reference</li>
-                            </ol>
-                            <div class="form-group">
-                                <label>TNG Transaction Reference</label>
-                                <input type="text" id="tngRef" placeholder="e.g. TNG123456789">
-                            </div>
-                            <button class="btn btn-primary" id="submitTngBtn"><i class="fas fa-paper-plane"></i> Submit Payment Request</button>
-                        </div>
-                    </div>
-
-                    <div class="pay-form" id="bankForm" style="display:none">
-                        <div class="pay-instructions">
-                            <h4><i class="fas fa-university"></i> Bank Transfer</h4>
-                            <div class="bank-details" style="background:#fff3cd;border:1px solid #ffc107;padding:16px;border-radius:8px;margin-bottom:16px;">
-                                <p><i class="fas fa-info-circle" style="color:#856404;"></i> <strong>Bank details will be provided after you submit a payment request.</strong></p>
-                                <p style="font-size:14px;color:#856404;margin-top:8px;">Our team will review your request and send you the official bank account details via email within 24 hours.</p>
-                            </div>
-                            <ol>
-                                <li>Submit your payment request below</li>
-                                <li>Receive bank details via email</li>
-                                <li>Complete transfer and enter reference</li>
-                            </ol>
-                            <div class="form-group">
-                                <label>Your Email (for bank details)</label>
-                                <input type="email" id="bankEmail" placeholder="you@example.com">
-                            </div>
-                            <button class="btn btn-primary" id="submitBankBtn"><i class="fas fa-paper-plane"></i> Request Bank Details</button>
-                        </div>
-                    </div>
-
-                    <div class="pay-form" id="cardForm" style="display:none">
-                        <div class="pay-instructions">
-                            <h4><i class="fas fa-credit-card"></i> Card Payment</h4>
-                            <p class="form-hint">Secure card processing powered by Stripe (coming soon). For now, use TNG or Bank Transfer.</p>
-                            <div class="form-group">
-                                <label>Card Number</label>
-                                <input type="text" placeholder="4242 4242 4242 4242" disabled>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Expiry</label>
-                                    <input type="text" placeholder="MM/YY" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label>CVC</label>
-                                    <input type="text" placeholder="123" disabled>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary" disabled><i class="fas fa-lock"></i> Pay RM19.00</button>
-                            <p class="form-hint" style="margin-top:12px">Card payments will be available soon. Please use TNG eWallet or Bank Transfer.</p>
-                        </div>
+                        <button class="btn btn-primary btn-lg" id="submitTngBtn">
+                            <i class="fas fa-paper-plane"></i> Submit Payment
+                        </button>
                     </div>
                 </div>
 
-                <div class="payment-history" id="paymentHistory" style="display:none">
-                    <h3><i class="fas fa-history"></i> Payment History</h3>
-                    <div class="history-list" id="historyList"></div>
+                <!-- Bank Form -->
+                <div class="pay-form" id="bankForm" style="display:none">
+                    <div class="pay-instructions">
+                        <h4><i class="fas fa-university"></i> Bank Transfer</h4>
+                        <ol>
+                            <li>Transfer <strong id="bankAmount">RM19.00</strong> to our account</li>
+                            <li>Bank details will be sent to your email</li>
+                            <li>Upload or enter the transfer reference</li>
+                        </ol>
+                        <div class="form-group">
+                            <label>Your Email</label>
+                            <input type="email" id="bankEmail" placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Transfer Reference</label>
+                            <input type="text" id="bankRef" placeholder="e.g. IB12345678">
+                        </div>
+                        <button class="btn btn-primary btn-lg" id="submitBankBtn">
+                            <i class="fas fa-paper-plane"></i> Submit Payment
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card Form -->
+                <div class="pay-form" id="cardForm" style="display:none">
+                    <div class="pay-instructions">
+                        <h4><i class="fas fa-credit-card"></i> Card Payment</h4>
+                        <p class="form-hint">Secure card processing via Stripe (coming soon). Use TNG or Bank Transfer for now.</p>
+                        <div class="form-group">
+                            <label>Card Number</label>
+                            <input type="text" placeholder="4242 4242 4242 4242" disabled>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Expiry</label>
+                                <input type="text" placeholder="MM/YY" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>CVC</label>
+                                <input type="text" placeholder="123" disabled>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-lg" disabled>
+                            <i class="fas fa-lock"></i> Pay RM19.00
+                        </button>
+                        <p class="form-hint" style="margin-top:12px"><i class="fas fa-info-circle"></i> Card payments launching soon. Use TNG or Bank Transfer.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment History -->
+            <section class="payment-history" id="paymentHistory" style="display:none">
+                <h3><i class="fas fa-history"></i> Payment History</h3>
+                <div class="history-list" id="historyList"></div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="pro-testimonials">
+                <h2>Trusted by 50,000+ Students</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p>"Went from a C to A* in Chemistry within 3 months. The AI Digital Twin predicted exactly what topics I was weak in."</p>
+                        <div class="testimonial-author">
+                            <div class="t-avatar">SM</div>
+                            <div><strong>Sarah M.</strong><span>Cambridge A-Level</span></div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p>"The unlimited mock exams saved me. I sat 12 full mocks before my actual exams and walked in confident."</p>
+                        <div class="testimonial-author">
+                            <div class="t-avatar">JC</div>
+                            <div><strong>James C.</strong><span>Cambridge IGCSE</span></div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p>"Band 8.5 in IELTS writing thanks to the AI essay grading. It caught mistakes my tutor missed."</p>
+                        <div class="testimonial-author">
+                            <div class="t-avatar">EO</div>
+                            <div><strong>Elena O.</strong><span>IELTS Academic</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="pro-faq">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-list">
+                    <details>
+                        <summary>How does the 7-day money-back guarantee work?</summary>
+                        <p>If you're not satisfied within 7 days of upgrading, email us for a full refund. No questions asked.</p>
+                    </details>
+                    <details>
+                        <summary>Can I cancel anytime?</summary>
+                        <p>Yes. You can cancel your Pro subscription at any time from your Settings page. You'll keep Pro access until the end of your billing period.</p>
+                    </details>
+                    <details>
+                        <summary>What payment methods do you accept?</summary>
+                        <p>We accept TNG eWallet, online bank transfer (Maybank, CIMB, etc.), and credit/debit cards (coming soon).</p>
+                    </details>
+                    <details>
+                        <summary>How long does activation take?</summary>
+                        <p>TNG and bank transfers are typically verified within 2-4 hours during business hours. You'll receive an email confirmation once activated.</p>
+                    </details>
+                    <details>
+                        <summary>Is Pro worth it for IELTS only?</summary>
+                        <p>Absolutely. Pro unlocks the AI Digital Twin for speaking practice, unlimited writing essay grading, and band score prediction — all tailored to IELTS.</p>
+                    </details>
                 </div>
             </section>
         </main>
     </div>
 
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="js/ui-utils.js" defer></script>
     <script src="js/api-client.js" defer></script>
     <script src="js/auth.js" defer></script>
     <script src="js/theme.js" defer></script>
