@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const { pool } = require('../db/config');
-const auth = require('../middleware/auth');
+const { authMiddleware } = require('../middleware/auth');
 
 // Create flashcard
-router.post('/', auth, async (req, res) => {
+router.post('/', authMiddleware,, async (req, res) => {
     try {
         const { deck_name, front, back, subject } = req.body;
         const result = await pool.query(
             `INSERT INTO flashcards (user_id, deck_name, front, back, subject)
              VALUES ($1, $2, $3, $4, $5) RETURNING *`,
-            [req.userId, deck_name, front, back, subject || 'general']
+            [req.user.id, deck_name, front, back, subject || 'general']
         );
         res.json({ success: true, card: result.rows[0] });
     } catch (err) {
@@ -20,11 +20,11 @@ router.post('/', auth, async (req, res) => {
 });
 
 // Get my flashcards
-router.get('/', auth, async (req, res) => {
+router.get('/', authMiddleware, async (req, res) => {
     try {
         const { deck } = req.query;
         let query = `SELECT * FROM flashcards WHERE user_id = $1`;
-        let params = [req.userId];
+        let params = [req.user.id];
         if (deck) {
             query += ` AND deck_name = $2`;
             params.push(deck);
@@ -39,14 +39,14 @@ router.get('/', auth, async (req, res) => {
 });
 
 // Get deck names
-router.get('/decks', auth, async (req, res) => {
+router.get('/decks', authMiddleware, async (req, res) => {
     try {
         const result = await pool.query(
             `SELECT DISTINCT deck_name, subject, COUNT(*) as count,
              SUM(CASE WHEN mastered THEN 1 ELSE 0 END) as mastered_count
              FROM flashcards WHERE user_id = $1
              GROUP BY deck_name, subject`,
-            [req.userId]
+            [req.user.id]
         );
         res.json({ decks: result.rows });
     } catch (err) {
@@ -56,7 +56,7 @@ router.get('/decks', auth, async (req, res) => {
 });
 
 // Update flashcard (mastered, review)
-router.patch('/:id', auth, async (req, res) => {
+router.patch('/:id', authMiddleware, async (req, res) => {
     try {
         const { mastered, front, back } = req.body;
         const updates = [];
@@ -78,7 +78,7 @@ router.patch('/:id', auth, async (req, res) => {
             updates.push(`review_count = review_count + 1`);
             updates.push(`last_reviewed = CURRENT_TIMESTAMP`);
         }
-        params.push(req.params.id, req.userId);
+        params.push(req.params.id, req.user.id);
         const result = await pool.query(
             `UPDATE flashcards SET ${updates.join(', ')} WHERE id = $${idx} AND user_id = $${idx+1} RETURNING *`,
             params
@@ -91,11 +91,11 @@ router.patch('/:id', auth, async (req, res) => {
 });
 
 // Delete flashcard
-router.delete('/:id', auth, async (req, res) => {
+router.delete('/:id', authMiddleware, async (req, res) => {
     try {
         await pool.query(
             `DELETE FROM flashcards WHERE id = $1 AND user_id = $2`,
-            [req.params.id, req.userId]
+            [req.params.id, req.user.id]
         );
         res.json({ success: true });
     } catch (err) {
