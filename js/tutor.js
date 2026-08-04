@@ -2,11 +2,27 @@
  * LearnAI Tutor — Universal Question Answering
  */
 
-// Route protection
+// Route protection — show login prompt instead of silent redirect
 if (!Auth.isLoggedIn()) {
-    window.location.href = 'login.html';
+    document.addEventListener('DOMContentLoaded', () => {
+        const chat = document.getElementById('tutorChat');
+        if (chat) {
+            chat.innerHTML = `
+                <div class="tutor-welcome">
+                    <div class="tutor-avatar-large"><i class="fas fa-lock"></i></div>
+                    <h2>Sign In to Use AI Tutor</h2>
+                    <p>Access personalized AI tutoring, save your chat history, and track your progress.</p>
+                    <div style="display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap;">
+                        <a href="login.html" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                        <a href="login.html" class="btn btn-outline"><i class="fas fa-user-secret"></i> Continue as Guest</a>
+                    </div>
+                </div>
+            `;
+        }
+    });
+} else {
+    Auth.updateUserDisplay();
 }
-Auth.updateUserDisplay();
 
 // DOM refs
 const chat = document.getElementById('tutorChat');
