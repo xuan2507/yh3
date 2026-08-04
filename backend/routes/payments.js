@@ -91,4 +91,3 @@ router.get('/status', authMiddleware, async (req, res) => {
 
 module.exports = router;
 
-
