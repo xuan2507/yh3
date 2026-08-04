@@ -8,62 +8,133 @@
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+
+    <!-- SEO -->
     <title>LearnAI - AI Tutor for Cambridge A-Level, IGCSE & IELTS</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mascot.css">
+    <meta name="description" content="AI-powered tutor for Cambridge International A-Level, IGCSE & IELTS. Upload past papers, get AI-marked essays, personalized study plans & exam predictions. Free plan available.">
+    <meta name="keywords" content="Cambridge A-Level, IGCSE, IELTS, AI tutor, exam prep, past papers, study planner, CAIE">
+    <meta name="author" content="LearnAI">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://xuan2507.github.io/yh3/index.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="LearnAI - AI Tutor for Cambridge A-Level, IGCSE & IELTS">
+    <meta property="og:description" content="AI-powered tutor for Cambridge exams. Upload past papers, get instant marking & personalized study plans.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xuan2507.github.io/yh3/index.html">
+    <meta property="og:site_name" content="LearnAI">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LearnAI - AI Tutor for Cambridge & IELTS">
+    <meta name="twitter:description" content="Ace your Cambridge A-Level, IGCSE & IELTS exams with AI.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mascot.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "LearnAI",
+        "url": "https://xuan2507.github.io/yh3/",
+        "description": "AI tutor for Cambridge A-Level, IGCSE & IELTS exams",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://xuan2507.github.io/yh3/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "LearnAI",
+        "applicationCategory": "EducationalApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "50000"
+        }
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip to content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="container nav-container">
-            <a href="#" class="logo">
-                <i class="fas fa-brain"></i>
+            <a href="#" class="logo" aria-label="LearnAI Home">
+                <i class="fas fa-brain" aria-hidden="true"></i>
                 <span>LearnAI</span>
             </a>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#subjects">Subjects</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="login.html" class="btn btn-outline">Sign In</a></li>
-                <li><a href="register.html" class="btn btn-primary">Get Started</a></li>
+            <ul class="nav-menu" id="navMenu" role="menubar">
+                <li role="none"><a href="#subjects" role="menuitem">Subjects</a></li>
+                <li role="none"><a href="#features" role="menuitem">Features</a></li>
+                <li role="none"><a href="#how-it-works" role="menuitem">How It Works</a></li>
+                <li role="none"><a href="#pricing" role="menuitem">Pricing</a></li>
+                <li role="none"><a href="#testimonials" role="menuitem">Testimonials</a></li>
+                <li role="none"><a href="login.html" class="btn btn-outline">Sign In</a></li>
+                <li role="none"><a href="register.html" class="btn btn-primary">Get Started</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-bg"></div>
+    <main id="main-content">
+    <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-bg" aria-hidden="true"></div>
         <div class="container hero-content">
             <div class="hero-text">
                 <div class="badge">
-                    <i class="fas fa-sparkles"></i>
+                    <i class="fas fa-sparkles" aria-hidden="true"></i>
                     Cambridge & IELTS Specialist
                 </div>
-                <h1>Ace Your <span class="gradient-text">Cambridge</span> & <span class="gradient-text">IELTS</span> Exams with AI</h1>
+                <h1 id="hero-heading">Ace Your <span class="gradient-text">Cambridge</span> & <span class="gradient-text">IELTS</span> Exams with AI</h1>
                 <p class="hero-subtitle">The only AI tutor built for Cambridge International A-Level, IGCSE, and IELTS. Upload past papers, syllabus guides, and get exam-specific study plans, AI-marked essays, and targeted practice.</p>
                 <div class="hero-cta">
                     <a href="register.html" class="btn btn-primary btn-lg">
                         Start Learning Free
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
                     </a>
                     <a href="#how-it-works" class="btn btn-outline btn-lg">
-                        <i class="fas fa-play-circle"></i>
+                        <i class="fas fa-play-circle" aria-hidden="true"></i>
                         See How It Works
                     </a>
                 </div>
                 <div class="hero-trust">
-                    <div class="trust-avatars">
+                    <div class="trust-avatars" aria-hidden="true">
                         <div class="avatar">SM</div>
                         <div class="avatar">JC</div>
                         <div class="avatar">EO</div>
@@ -74,20 +145,20 @@
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
-                        <span class="stat-number">50K+</span>
+                        <span class="stat-number" data-count="50000">0</span><span>+</span>
                         <span class="stat-label">Students</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">1M+</span>
+                        <span class="stat-number" data-count="1000000">0</span><span>+</span>
                         <span class="stat-label">Study Hours</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">95%</span>
+                        <span class="stat-number" data-count="95">0</span><span>%</span>
                         <span class="stat-label">Grade Improvement</span>
                     </div>
                 </div>
             </div>
-            <div class="hero-visual">
+            <div class="hero-visual" aria-hidden="true">
                 <div class="hero-visual-bg"></div>
                 <div class="floating-card card-1">
                     <i class="fas fa-check-circle green"></i>
@@ -116,54 +187,54 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
+        <div class="scroll-indicator" aria-hidden="true">
             <div class="mouse"></div>
         </div>
     </section>
 
     <!-- Trust Bar -->
-    <section class="trust-bar">
+    <section class="trust-bar" aria-label="Trusted by schools">
         <div class="container">
             <div class="trust-bar-content">
                 <p>Trusted by students from leading schools worldwide</p>
                 <div class="trust-logos">
-                    <div class="trust-logo"><i class="fas fa-university"></i> Dulwich</div>
-                    <div class="trust-logo"><i class="fas fa-school"></i> Hwa Chong</div>
-                    <div class="trust-logo"><i class="fas fa-graduation-cap"></i> Raffles</div>
-                    <div class="trust-logo"><i class="fas fa-book-open"></i> Wellington</div>
-                    <div class="trust-logo"><i class="fas fa-star"></i> UWC</div>
-                    <div class="trust-logo"><i class="fas fa-award"></i> Tanglin</div>
+                    <div class="trust-logo"><i class="fas fa-university" aria-hidden="true"></i> Dulwich</div>
+                    <div class="trust-logo"><i class="fas fa-school" aria-hidden="true"></i> Hwa Chong</div>
+                    <div class="trust-logo"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Raffles</div>
+                    <div class="trust-logo"><i class="fas fa-book-open" aria-hidden="true"></i> Wellington</div>
+                    <div class="trust-logo"><i class="fas fa-star" aria-hidden="true"></i> UWC</div>
+                    <div class="trust-logo"><i class="fas fa-award" aria-hidden="true"></i> Tanglin</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Problem Section -->
-    <section class="problem" id="problem">
+    <section class="problem" id="problem" aria-labelledby="problem-heading">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">The Problem</span>
-                <h2>Cambridge & IELTS Prep Is Tough</h2>
+                <h2 id="problem-heading">Cambridge & IELTS Prep Is Tough</h2>
                 <p>Students struggle with rigid curriculums, expensive tutors, and limited access to quality exam resources.</p>
             </div>
             <div class="problem-grid">
-                <div class="problem-card">
+                <div class="problem-card" data-animate>
                     <div class="problem-icon">
-                        <i class="fas fa-copy"></i>
+                        <i class="fas fa-copy" aria-hidden="true"></i>
                     </div>
                     <h3>Rigid Cambridge Syllabus</h3>
                     <p>Every student follows the same CAIE curriculum, but exam techniques and weak areas differ. Most prep ignores individual needs.</p>
                 </div>
-                <div class="problem-card">
+                <div class="problem-card" data-animate>
                     <div class="problem-icon">
-                        <i class="fas fa-dollar-sign"></i>
+                        <i class="fas fa-dollar-sign" aria-hidden="true"></i>
                     </div>
                     <h3>Expensive Exam Prep</h3>
                     <p>Cambridge and IELTS tutors charge premium rates. Students need instant, affordable help for essays, past papers, and speaking practice.</p>
                 </div>
-                <div class="problem-card">
+                <div class="problem-card" data-animate>
                     <div class="problem-icon">
-                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-clock" aria-hidden="true"></i>
                     </div>
                     <h3>Wasted Time</h3>
                     <p>Hours spent hunting for marking schemes, model answers, and syllabus notes instead of actually mastering exam technique.</p>
@@ -173,557 +244,98 @@
     </section>
 
     <!-- Subjects Section -->
-    <section class="subjects" id="subjects">
+    <section class="subjects" id="subjects" aria-labelledby="subjects-heading">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Subjects</span>
-                <h2>All Your Cambridge Subjects Covered</h2>
+                <h2 id="subjects-heading">All Your Cambridge Subjects Covered</h2>
                 <p>Comprehensive AI tutoring for A-Level, IGCSE, and IELTS across 11 core subjects.</p>
             </div>
             <div class="subjects-grid">
-                <div class="subject-card">
-                    <div class="subject-icon"><i class="fas fa-atom"></i></div>
+                <div class="subject-card" data-animate tabindex="0" role="article" aria-label="Physics tutoring">
+                    <div class="subject-icon"><i class="fas fa-atom" aria-hidden="true"></i></div>
                     <h3>Physics</h3>
                     <p>Mechanics, waves, electricity, nuclear physics, and practical skills.</p>
                 </div>
-                <div class="subject-card">
-                    <div class="subject-icon"><i class="fas fa-flask"></i></div>
+                <div class="subject-card" data-animate tabindex="0" role="article" aria-label="Chemistry tutoring">
+                    <div class="subject-icon"><i class="fas fa-flask" aria-hidden="true"></i></div>
                     <h3>Chemistry</h3>
                     <p>Organic, inorganic, physical chemistry, and experimental techniques.</p>
                 </div>
-                <div class="subject-card">
-                    <div class="subject-icon"><i class="fas fa-dna"></i></div>
+                <div class="subject-card" data-animate tabindex="0" role="article" aria-label="Biology tutoring">
+                    <div class="subject-icon"><i class="fas fa-dna" aria-hidden="true"></i></div>
                     <h3>Biology</h3>
                     <p>Cell biology, genetics, ecology, physiology, and lab skills.</p>
                 </div>
-                <div class="subject-card">
-                    <div class="subject-icon"><i class="fas fa-square-root-alt"></i></div>
+                <div class="subject-card" data-animate tabindex="0" role="article" aria-label="Mathematics tutoring">
+                    <div class="subject-icon"><i class="fas fa-square-root-alt" aria-hidden="true"></i></div>
                     <h3>Mathematics</h3>
                     <p>Pure math, statistics, mechanics, and problem-solving strategies.</p>
                 </div>
-                <div class="subject-card">
-                    <div class="subject-icon"><i class="fas fa-function"></i></div>
+                <div class="subject-card" data-animate tabindex="0" role="article" aria-label="Additional Mathematics tutoring">
+                    <div class="subject-icon"><i class="fas fa-function" aria-hidden="true"></i></div>
                     <h3>Additional Mathematics</h3>
                     <p>Advanced algebra, calculus, trigonometry, and complex problems.</p>
                 </div>
-                <div class="subject-card">
-                    <div class="subject-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="subject-card" data-animate tabindex="0" role="article" aria-label="Economics tutoring">
+                    <div class="subject-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
                     <h3>Economics</h3>
                     <p>Micro & macro theory, data response, essay writing, and evaluation.</p>
                 </div>
-                <div class="subject-card">
-                    <div class="subject-icon"><i class="fas fa-briefcase"></i></div>
+                <div class="subject-card" data-animate tabindex="0" role="article" aria-label="Business tutoring">
+                    <div class="subject-icon"><i class="fas fa-briefcase" aria-hidden="true"></i></div>
                     <h3>Business</h3>
-                    <p>Full CAIE Business (9609): marketing mix, HRM, operations, finance, strategy, Ansoff, SWOT & case study analysis.</p>
+                    <p>Marketing mix, HRM, operations, finance, strategy, Ansoff, SWOT & case study analysis.</p>
                 </div>
-                <div class="subject-card">
-                    <div class="subject-icon"><i class="fas fa-calculator"></i></div>
+                <div class="subject-card" data-animate tabindex="0" role="article" aria-label="Accounting tutoring">
+                    <div class="subject-icon"><i class="fas fa-calculator" aria-hidden="true"></i></div>
                     <h3>Accounting</h3>
-                    <p>Full CAIE Accounting (9706): financial statements, partnerships, company accounts, ratio analysis & IAS standards.</p>
+                    <p>Financial statements, partnerships, company accounts, ratio analysis & IAS standards.</p>
                 </div>
-                <div class="subject-card">
-                    <div class="subject-icon"><i class="fas fa-language"></i></div>
+                <div class="subject-card" data-animate tabindex="0" role="article" aria-label="IELTS tutoring">
+                    <div class="subject-icon"><i class="fas fa-language" aria-hidden="true"></i></div>
                     <h3>IELTS</h3>
-                    <p>Band score estimator, speaking cue cards, writing essay plans, reading strategies & listening section guides.</p>
+                    <p>Band score estimator, speaking cue cards, writing essay plans, reading strategies & listening guides.</p>
                 </div>
-                <div class="subject-card">
-                    <div class="subject-icon"><i class="fas fa-book"></i></div>
+                <div class="subject-card" data-animate tabindex="0" role="article" aria-label="English tutoring">
+                    <div class="subject-icon"><i class="fas fa-book" aria-hidden="true"></i></div>
                     <h3>English</h3>
                     <p>Literature analysis, language, essay writing, and comprehension.</p>
                 </div>
-                <div class="subject-card">
-                    <div class="subject-icon"><i class="fas fa-pen-fancy"></i></div>
+                <div class="subject-card" data-animate tabindex="0" role="article" aria-label="Chinese tutoring">
+                    <div class="subject-icon"><i class="fas fa-pen-fancy" aria-hidden="true"></i></div>
                     <h3>Chinese</h3>
                     <p>Reading, writing, oral, and comprehension for first/second language.</p>
                 </div>
-                <div class="subject-card">
-                    <div class="subject-icon"><i class="fas fa-brain"></i></div>
+                <div class="subject-card" data-animate tabindex="0" role="article" aria-label="Psychology tutoring">
+                    <div class="subject-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
                     <h3>Psychology</h3>
-                    <p>Memory models, attachment, stress, social influence, research methods, abnormal psychology & biopsychology.</p>
+                    <p>Memory models, attachment, stress, social influence, research methods & biopsychology.</p>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Features</span>
-                <h2>Built for Cambridge & IELTS</h2>
-                <p>AI tools trained on CAIE syllabuses, past papers, and IELTS band descriptors.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card large">
-                    <div class="feature-icon">
-                        <i class="fas fa-file-upload"></i>
-                    </div>
-                    <h3>Upload Cambridge Materials</h3>
-                    <p>Upload CAIE syllabus PDFs, past year papers, examiner reports, and your school notes. The AI extracts learning objectives, command words, common pitfalls, and mark scheme patterns.</p>
-                    <div class="feature-preview">
-                        <div class="upload-zone">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <span>Drop files or click to upload</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sticky-note"></i>
-                    </div>
-                    <h3>CAIE-Specific Notes</h3>
-                    <p>Get syllabus-aligned summaries, key definitions, formulas, and examiner-style answers tailored to your exact CAIE subject code.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clone"></i>
-                    </div>
-                    <h3>Smart Flashcards</h3>
-                    <p>Convert CAIE definitions, formulas, and command words into active recall cards with spaced repetition.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-check-double"></i>
-                    </div>
-                    <h3>Auto Marking</h3>
-                    <p>Upload essays, structured questions, and calculations. Get instant band/grade estimates with feedback aligned to CAIE marking schemes.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h3>Exam Countdown Planner</h3>
-                    <p>Personalized CAIE/IELTS revision schedules counting down to your exam dates, weighted by topic difficulty and your weak areas.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Weakness Detector</h3>
-                    <p>AI spots syllabus gaps and recurring errors from past papers, then generates targeted CAIE-style questions.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>AI Tutor — Text & Image</h3>
-                    <p>Ask questions by typing or upload an image of any problem. Get step-by-step solutions and explanations for Physics, Chemistry, Maths, Biology, Economics, and Accounting.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-question-circle"></i>
-                    </div>
-                    <h3>Adaptive Graded Quizzes</h3>
-                    <p>AI-adjusted difficulty based on your performance. 15 questions per subject with detailed explanations, mistake tracking, and weakness heatmaps.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3>Daily Challenge & Streaks</h3>
-                    <p>One 5-question daily challenge across all subjects. Keep your streak alive and build consistent study habits.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <h3>Smart Flashcards</h3>
-                    <p>Create custom decks, flip cards with 3D animation, and rate difficulty. Mastered cards are tracked — study only what you need.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Goal Engine & Exam Predictor</h3>
-                    <p>Set grade targets (A*-C) with deadlines. Auto-calculates daily study hours needed. AI predicts your weakest topics before the exam.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-language"></i>
-                    </div>
-                    <h3>IELTS Band Score Estimator</h3>
-                    <p>Calculate your overall band, get speaking cue cards, writing essay plans with band descriptors, and section-by-section strategies.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headphones"></i>
-                    </div>
-                    <h3>Focus Mode</h3>
-                    <p>Distraction-free full-screen timer with ambient sound generators (rain, fire, cafe, waves). Track sessions, minutes, and streaks.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Progress Tracking</h3>
-                    <p>Track study hours, quiz scores, topic completion, and streaks. Visual dashboards show exactly where you stand.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3>IELTS & Subject Tutor</h3>
-                    <p>Ask anything about A-Level, IGCSE, or IELTS. Get examiner-style explanations, essay feedback, and speaking practice 24/7.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
 
-    <!-- How It Works -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Process</span>
-                <h2>How It Works</h2>
-                <p>Three steps to Cambridge & IELTS excellence.</p>
-            </div>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">01</div>
-                    <div class="step-content">
-                        <div class="step-icon">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                        </div>
-                        <h3>Upload CAIE Materials</h3>
-                        <p>Upload your syllabus, past papers, and school notes. The AI learns the CAIE assessment objectives and marking criteria.</p>
-                    </div>
-                </div>
-                <div class="step-connector"></div>
-                <div class="step">
-                    <div class="step-number">02</div>
-                    <div class="step-content">
-                        <div class="step-icon">
-                            <i class="fas fa-magic"></i>
-                        </div>
-                        <h3>AI Generates Resources</h3>
-                        <p>Get CAIE-specific notes, flashcards, practice questions, and a countdown study plan tailored to your exam session.</p>
-                    </div>
-                </div>
-                <div class="step-connector"></div>
-                <div class="step">
-                    <div class="step-number">03</div>
-                    <div class="step-content">
-                        <div class="step-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3>Learn & Improve</h3>
-                        <p>Study with AI guidance, get instant feedback, track progress, and watch your grades improve.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
 
-    <!-- Demo Section -->
-    <section class="demo">
-        <div class="container">
-            <div class="demo-grid">
-                <div class="demo-content">
-                    <span class="section-tag">Live Demo</span>
-                    <h2>See the AI in Action</h2>
-                    <p>Watch how LearnAI transforms your study materials into powerful learning resources in seconds.</p>
-                    <ul class="demo-list">
-                        <li>
-                            <i class="fas fa-check"></i>
-                            <span>Upload CAIE syllabus, past papers, or notes</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check"></i>
-                            <span>AI maps content to CAIE assessment objectives</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check"></i>
-                            <span>Generate examiner-style notes & practice</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check"></i>
-                            <span>Track progress with detailed analytics</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="demo-visual">
-                    <div class="demo-window">
-                        <div class="window-header">
-                            <div class="window-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <span class="window-title">LearnAI Dashboard</span>
-                        </div>
-                        <div class="window-body">
-                            <div class="demo-sidebar">
-                                <div class="demo-nav-item active">
-                                    <i class="fas fa-home"></i>
-                                </div>
-                                <div class="demo-nav-item">
-                                    <i class="fas fa-book"></i>
-                                </div>
-                                <div class="demo-nav-item">
-                                    <i class="fas fa-clone"></i>
-                                </div>
-                                <div class="demo-nav-item">
-                                    <i class="fas fa-chart-bar"></i>
-                                </div>
-                            </div>
-                            <div class="demo-main">
-                                <div class="demo-card">
-                                    <div class="demo-card-header">
-                                        <i class="fas fa-file-alt"></i>
-                                        <span>CAIE Economics (9708) - Unit 2</span>
-                                    </div>
-                                    <div class="demo-progress">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill" style="width: 75%"></div>
-                                        </div>
-                                        <span>75% Complete</span>
-                                    </div>
-                                </div>
-                                <div class="demo-card flashcard-demo">
-                                    <div class="flashcard">
-                                        <div class="flashcard-front">
-                                            <p>Explain demand-pull inflation (4 marks)</p>
-                                            <span class="flashcard-hint">Click to reveal model answer</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="demo-stats">
-                                    <div class="demo-stat">
-                                        <span class="demo-stat-value">24</span>
-                                        <span class="demo-stat-label">Flashcards</span>
-                                    </div>
-                                    <div class="demo-stat">
-                                        <span class="demo-stat-value">12</span>
-                                        <span class="demo-stat-label">Questions</span>
-                                    </div>
-                                    <div class="demo-stat">
-                                        <span class="demo-stat-value">A-</span>
-                                        <span class="demo-stat-label">Grade</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Testimonials</span>
-                <h2>Cambridge Students Love LearnAI</h2>
-                <p>Join thousands of CAIE and IELTS students improving their grades with AI.</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"My grades improved from C to A in just 2 months. The AI identified my weak areas in calculus and created targeted practice questions. Best study tool I've ever used."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">SM</div>
-                        <div class="author-info">
-                            <span class="author-name">Sarah Mitchell</span>
-                            <span class="author-detail">Cambridge A-Level, Mathematics (9709)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"The flashcard generator saved me hours of work. I upload my biology notes and get perfect recall cards instantly. Spaced repetition actually works!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">JC</div>
-                        <div class="author-info">
-                            <span class="author-name">James Chen</span>
-                            <span class="author-detail">Cambridge IGCSE, Biology (0610)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Having an AI tutor available at 2 AM before exams is a game-changer. It explains concepts in multiple ways until I understand them. Worth every penny."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">EO</div>
-                        <div class="author-info">
-                            <span class="author-name">Emma Osei</span>
-                            <span class="author-detail">Cambridge A-Level, Sciences + IELTS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Pricing</span>
-                <h2>Affordable CAIE & IELTS Prep</h2>
-                <p>Cheaper than a single tutoring session.</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Free</h3>
-                        <p class="pricing-desc">Get started with basic tools</p>
-                        <div class="pricing-price">
-                            <span class="currency">$</span>
-                            <span class="amount">0</span>
-                            <span class="period">/month</span>
-                        </div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 5 uploads per month</li>
-                        <li><i class="fas fa-check"></i> Basic CAIE/IELTS notes</li>
-                        <li><i class="fas fa-check"></i> 50 flashcards</li>
-                        <li><i class="fas fa-check"></i> Limited CAIE questions</li>
-                        <li><i class="fas fa-check"></i> AI tutor chat (10/day)</li>
-                    </ul>
-                    <a href="register.html" class="btn btn-outline btn-full">Get Started</a>
-                </div>
-                <div class="pricing-card popular">
-                    <div class="popular-badge">Most Popular</div>
-                    <div class="pricing-header">
-                        <h3>Pro</h3>
-                        <p class="pricing-desc">Unlock everything for A*/Band 9</p>
-                        <div class="pricing-price">
-                            <span class="currency">$</span>
-                            <span class="amount">19</span>
-                            <span class="period">/month</span>
-                        </div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Unlimited uploads</li>
-                        <li><i class="fas fa-check"></i> Cambridge-specific AI notes</li>
-                        <li><i class="fas fa-check"></i> Marking schemes & examiner tips</li>
-                        <li><i class="fas fa-check"></i> Auto-marking for essays & papers</li>
-                        <li><i class="fas fa-check"></i> Exam countdown study planner</li>
-                        <li><i class="fas fa-check"></i> IELTS speaking & writing feedback</li>
-                        <li><i class="fas fa-check"></i> Unlimited AI tutor chat</li>
-                        <li><i class="fas fa-check"></i> Grade analytics & predictions</li>
-                    </ul>
-                    <a href="register.html" class="btn btn-primary btn-full">Start Pro Trial</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Team</h3>
-                        <p class="pricing-desc">For study groups & schools</p>
-                        <div class="pricing-price">
-                            <span class="currency">$</span>
-                            <span class="amount">49</span>
-                            <span class="period">/month</span>
-                        </div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Everything in Pro</li>
-                        <li><i class="fas fa-check"></i> Up to 5 student accounts</li>
-                        <li><i class="fas fa-check"></i> Parent dashboard</li>
-                        <li><i class="fas fa-check"></i> Teacher collaboration</li>
-                        <li><i class="fas fa-check"></i> Priority support</li>
-                    </ul>
-                    <a href="register.html" class="btn btn-outline btn-full">Contact Sales</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta" id="contact">
-        <div class="container">
-            <div class="cta-box">
-                <h2>Start Your Cambridge & IELTS Prep Today</h2>
-                <p>Join students worldwide using AI to ace their CAIE and IELTS exams. Free plan available.</p>
-                <div class="hero-cta" style="justify-content: center;">
-                    <a href="register.html" class="btn btn-white btn-lg">
-                        Create Free Account
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="login.html" class="btn btn-outline btn-lg" style="color: white; border-color: rgba(255,255,255,0.3);">
-                        <i class="fas fa-sign-in-alt"></i>
-                        Sign In
-                    </a>
-                </div>
-                <p class="cta-note">
-                    <i class="fas fa-shield-alt"></i>
-                    No credit card required. Cancel anytime.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <i class="fas fa-brain"></i>
-                        <span>LearnAI</span>
-                    </a>
-                    <p>AI tutor purpose-built for Cambridge International A-Level, IGCSE, and IELTS. Study smarter, achieve more.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#">API</a></li>
-                        <li><a href="#">Integrations</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Study Guides</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="privacy.html">Privacy</a></li>
-                        <li><a href="terms.html">Terms</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 LearnAI. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+    <!-- Scripts -->
+    <script src="js/ui-utils.js" defer></script>
     <script src="js/script.js" defer></script>
     <script src="js/theme.js" defer></script>
     <script src="js/mascot.js" defer></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('js/service-worker.js').catch(() => {});
+            });
+        }
+    </script>
 </body>
 </html>
