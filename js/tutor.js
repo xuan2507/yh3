@@ -275,34 +275,42 @@ Use v² = u² + 2as → 0 = 400 + 2(-9.81)s → s = 20.4 m`,
 **Feynman diagrams:** represent interactions with incoming/outgoing particles and exchange bosons.`
     },
     chemistry: {
-        'balance': `**Balancing Chemical Equations**
+        'balance': `**CAIE 9701 — Balancing Chemical Equations & Redox**
 
 **Method:**
-1. Write the correct formulae for reactants and products
+1. Write correct formulae for reactants and products
 2. Count atoms on each side
 3. Add coefficients (never change subscripts!)
 4. Check atom balance again
 
-**Example:**
-Unbalanced: H₂ + O₂ → H₂O
-Balanced: 2H₂ + O₂ → 2H₂O
+**Redox balancing (ionic equations):**
+1. Split into half-reactions (oxidation and reduction)
+2. Balance atoms other than O and H
+3. Balance O with H₂O
+4. Balance H with H⁺ (acidic) or OH⁻ (alkaline)
+5. Balance charge with electrons
+6. Multiply half-reactions so electrons cancel
+7. Add and simplify
 
-**Tips:**
-- Balance elements that appear in only one compound first
-- Save O and H for last (they often appear multiple times)
-- If stuck with odd numbers, use fractions then multiply all by 2
-
-**Redox shortcut:** Balance atoms, then balance oxygen with H₂O, then hydrogen with H⁺, then charge with electrons.`,
-        'mole': `**The Mole Concept**
+**Example:** MnO₄⁻ + Fe²⁺ → Mn²⁺ + Fe³⁺
+Reduction: MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O
+Oxidation: Fe²⁺ → Fe³⁺ + e⁻
+Overall: MnO₄⁻ + 5Fe²⁺ + 8H⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O`,
+        'mole': `**CAIE 9701 — The Mole Concept & Stoichiometry**
 
 **Key equations:**
 - n = m/M (moles = mass / molar mass)
 - n = cV (moles = concentration × volume in dm³)
-- n = V/24.0 (for gases at RTP: volume in dm³)
+- n = V/24.0 (gases at RTP, 20°C, 1 atm)
+- n = PV/RT (ideal gas equation)
 
-**Concentration:**
-- mol/dm³ = (mass / Mr) / volume(dm³)
+**Concentration calculations:**
+- mol/dm³ = moles / volume(dm³)
 - g/dm³ = mass / volume(dm³)
+
+**Titration formula:**
+- For acid-base: (MₐVₐ)/nₐ = (M_bV_b)/n_b
+- For redox: use mole ratios from balanced equation
 
 **Stoichiometry steps:**
 1. Write balanced equation
@@ -310,68 +318,183 @@ Balanced: 2H₂ + O₂ → 2H₂O
 3. Use mole ratio from equation
 4. Convert to required quantity
 
-**Example:** What mass of MgO forms from 5g Mg?
-2Mg + O₂ → 2MgO
-Moles Mg = 5/24.3 = 0.206 mol
-Moles MgO = 0.206 mol
-Mass MgO = 0.206 × 40.3 = 8.30 g`,
-        'organic': `**Organic Chemistry Reactions**
+**Percentage yield** = (actual yield / theoretical yield) × 100
+**Percentage purity** = (mass of pure substance / mass of sample) × 100`,
+        'organic': `**CAIE 9701 — Organic Chemistry Reactions**
 
 **Alkanes:**
-- Combustion: C₂H₆ + 3.5O₂ → 2CO₂ + 3H₂O
-- Substitution: CH₄ + Cl₂ → CH₃Cl + HCl (UV light)
+- Free radical substitution: CH₄ + Cl₂ → CH₃Cl + HCl (UV)
+- Mechanism: initiation (homolytic fission), propagation, termination
 
 **Alkenes:**
-- Addition: C₂H₄ + Br₂ → C₂H₄Br₂ (decolorizes bromine)
-- Hydrogenation: C₂H₄ + H₂ → C₂H₆ (Ni catalyst)
-- Hydration: C₂H₄ + H₂O → C₂H₅OH (H₃PO₄ catalyst)
+- Electrophilic addition: C₂H₄ + Br₂ → C₂H₄Br₂ (orange → colorless)
+- Markovnikov's rule: H adds to C with more H's already
+- Hydration: C₂H₄ + H₂O → C₂H₅OH (H₃PO₄, 300°C, 60 atm)
+- Hydrogenation: C₂H₄ + H₂ → C₂H₆ (Ni catalyst, 150°C)
 
 **Alcohols:**
-- Oxidation: primary → aldehyde → carboxylic acid
-- Oxidation: secondary → ketone
-- Dehydration: alcohol → alkene (conc H₂SO₄, heat)
+- Primary: oxidized by acidified K₂Cr₂O₇ → aldehyde (distill) → carboxylic acid (reflux)
+- Secondary: oxidized → ketone (reflux, cannot oxidize further)
+- Tertiary: resistant to oxidation
+- Dehydration: conc H₂SO₄ or Al₂O₃ → alkene (elimination)
 
-**Test for functional groups:**
-- Alkene: bromine water (orange → colorless)
-- Aldehyde: Tollens' reagent (silver mirror)
-- Carboxylic acid: NaHCO₃ (effervescence)`,
-        'equilibrium': `**Chemical Equilibrium**
+**Carbonyl compounds:**
+- Aldehydes: Tollens' (silver mirror), Fehling's/Benedict's (brick red Cu₂O)
+- Ketones: no reaction with Tollens' or Fehling's
+- Both: 2,4-DNP (orange precipitate)
+
+**Carboxylic acids:**
+- NaHCO₃ → effervescence (CO₂)
+- Esterification: acid + alcohol → ester + H₂O (conc H₂SO₄ catalyst)
+
+**Tests summary:**
+- Alkene: Br₂ water (decolorizes)
+- Aldehyde: Tollens' (silver mirror)
+- Carboxylic acid: NaHCO₃ (fizzes)
+- Halogenoalkane: AgNO₃/ethanol (white AgCl, cream AgBr, yellow AgI)`,
+        'equilibrium': `**CAIE 9701 — Chemical Equilibrium**
 
 **Kc expression:**
 For aA + bB ⇌ cC + dD
-Kc = [C]^c [D]^d / ([A]^a [B]^b)
+Kc = [C]^c [D]^d / ([A]^a [B]^b) — exclude solids and pure liquids
+
+**Kp for gas-phase equilibria:**
+Kp = (pC)^c (pD)^d / (pA)^a (pB)^b
+Partial pressure = mole fraction × total pressure
 
 **Le Chatelier's Principle:**
 If a dynamic equilibrium is disturbed, the system adjusts to minimize the disturbance.
 
 **Changes:**
-- Concentration: increase reactant → shifts right
-- Pressure (gases): increase pressure → shifts to side with fewer moles
-- Temperature: increase T → shifts in endothermic direction
-- Catalyst: speeds up both directions equally, no shift
+- Concentration: ↑ reactant → shifts right (Kc unchanged)
+- Pressure (gases): ↑ pressure → shifts to side with fewer gas moles (Kc unchanged)
+- Temperature: ↑ T → shifts in endothermic direction (Kc changes!)
+- Catalyst: speeds up both forward and reverse equally — no shift, reaches equilibrium faster
 
-**Kp for gases:** partial pressures instead of concentrations
+**Important:** Only temperature changes Kc/Kp. Concentration/pressure changes shift position but equilibrium constant stays constant at constant T.
 
-**Exam tip:** Only temperature changes Kc. Concentration/pressure changes shift position but Kc stays constant at constant T.`,
-        'atomic': `**Atomic Structure**
+**Haber process:** N₂ + 3H₂ ⇌ 2NH₃ (exothermic)
+- High pressure (favors products, 4→2 moles)
+- Moderate temperature (compromise: yield vs rate)
+- Iron catalyst`,
+        'atomic': `**CAIE 9701 — Atomic Structure**
 
 **Subatomic particles:**
 - Proton: mass 1, charge +1, in nucleus
 - Neutron: mass 1, charge 0, in nucleus
-- Electron: mass 1/1840, charge -1, in orbitals
+- Electron: mass 1/1840, charge -1, in orbitals/shells
 
 **Isotopes:** same proton number, different neutron number.
 - Relative atomic mass = weighted average of isotope masses
+- Mass spectrometry: M⁺ peak = molecular mass, fragmentation pattern helps identify structure
 
 **Electronic configuration:**
-- Fill orbitals: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p...
-- s holds 2, p holds 6, d holds 10, f holds 14
-- Example Cr: [Ar] 3d⁵ 4s¹ (exception for half-filled stability)
+- Order: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, 4d, 5p...
+- s=2, p=6, d=10, f=14
+- Exceptions: Cr [Ar] 3d⁵ 4s¹, Cu [Ar] 3d¹⁰ 4s¹ (half-filled/full d-subshell stability)
 
-**Ionization energy:** energy to remove 1 mole of electrons from 1 mole of gaseous atoms.
-- Increases across period (nuclear charge increases)
-- Decreases down group (shielding increases)
-- Drops from Group 2 to 3 (p orbital), Group 5 to 6 (pairing)`
+**Ionization energy:**
+- Definition: energy to remove 1 mole of electrons from 1 mole of gaseous atoms
+- General trend: increases across period (nuclear charge ↑, shielding ~constant)
+- Decreases down group (shielding ↑, atomic radius ↑)
+- Exceptions:
+  - Group 2 → Group 3 drop (e.g., Mg → Al): p electron is higher energy, slightly shielded
+  - Group 5 → Group 6 drop (e.g., N → O): paired p electrons repel each other
+
+**Electronegativity:** increases across period, decreases down group. F is most electronegative.`,
+        'kinetics': `**CAIE 9701 — Reaction Kinetics**
+
+**Rate equations:**
+- rate = k[A]^m[B]^n
+- Overall order = m + n
+- Units of k depend on overall order: 1st order = s⁻¹, 2nd = dm³mol⁻¹s⁻¹, 3rd = dm⁶mol⁻²s⁻¹
+
+**Determining order from experiments:**
+- Compare experiments where one reactant concentration changes, others constant
+- If rate doubles when [A] doubles → 1st order in A
+- If rate quadruples when [A] doubles → 2nd order in A
+- If rate unchanged when [A] doubles → zero order in A
+
+**Half-life:**
+- First order: t½ = ln(2)/k (constant, independent of concentration)
+- Used to identify first-order reactions
+
+**Arrhenius equation:**
+k = A·e^(-Ea/RT)
+- Plot ln k vs 1/T gives straight line: slope = -Ea/R
+- Higher Ea → slower reaction at given T
+- Catalyst provides alternative pathway with lower activation energy
+
+**Rate-determining step:**
+- In multi-step mechanisms, the slowest step determines overall rate
+- Rate equation must be consistent with mechanism
+- If rate = k[X][Y], RDS likely involves one X and one Y`,
+        'electrochemistry': `**CAIE 9701 — Electrochemistry**
+
+**Standard electrode potentials (E°):**
+- Measured under standard conditions (1 mol/dm³, 298K, 1 atm)
+- More positive E° = stronger oxidizing agent (more likely to be reduced)
+- More negative E° = stronger reducing agent (more likely to be oxidized)
+
+**Cell EMF:**
+E°cell = E°cathode(reduction) - E°anode(reduction)
+or E°cell = E°reduction + E°oxidation
+- E°cell > 0: spontaneous reaction
+- E°cell < 0: non-spontaneous
+
+**Electrolysis:**
+- Molten compounds: cation reduced at cathode, anion oxidized at anode
+- Aqueous solutions: consider standard electrode potentials and concentration
+  - Cathode: less reactive metal ions (or H⁺ if very reactive metal like K⁺, Na⁺)
+  - Anode: halide ions (Cl⁻, Br⁻, I⁻) oxidize before OH⁻; if no halide, OH⁻ oxidizes to O₂
+- Quantitative: Q = It, moles = Q/(nF), mass = moles × Ar
+
+**Fuel cells:**
+- Hydrogen-oxygen fuel cell: 2H₂ + O₂ → 2H₂O
+- Acidic electrolyte: H₂ → 2H⁺ + 2e⁻ (anode); O₂ + 4H⁺ + 4e⁻ → 2H₂O (cathode)
+- Alkaline electrolyte: H₂ + 2OH⁻ → 2H₂O + 2e⁻ (anode); O₂ + 2H₂O + 4e⁻ → 4OH⁻ (cathode)`,
+        'transition': `**CAIE 9701 — Transition Metals**
+
+**Characteristic properties:**
+- Variable oxidation states: e.g., Fe²⁺/Fe³⁺, Cu⁺/Cu²⁺, Cr³⁺/Cr⁶⁺
+- Colored compounds: due to d-d electron transitions
+- Complex ion formation: coordinate (dative covalent) bonds with ligands
+- Catalytic activity: e.g., Fe in Haber process, V₂O₅ in Contact process, MnO₂ in H₂O₂ decomposition
+
+**Common ligands:**
+- Monodentate: H₂O, NH₃, Cl⁻, OH⁻, CN⁻
+- Bidentate: ethanedioate (C₂O₄²⁻), 1,2-diaminoethane (en)
+- Polydentate: EDTA⁴⁻ (hexadentate)
+
+**Shapes of complex ions:**
+- 6-coordinate: octahedral (e.g., [Cu(NH₃)₆]²⁺, [Fe(CN)₆]⁴⁻)
+- 4-coordinate: tetrahedral (e.g., [CuCl₄]²⁻) or square planar (e.g., [Ni(CN)₄]²⁻)
+- Coordination number = number of donor atoms bonded to metal
+
+**Color and d-d transitions:**
+- In octahedral field, d-orbitals split into lower t₂g and higher eg sets
+- Energy gap ΔE corresponds to visible light wavelength
+- Different ligands cause different splitting (spectrochemical series)
+- If d⁰ or d¹⁰: no d-d transitions → colorless (e.g., Cu⁺, Zn²⁺, Sc³⁺, Ti⁴⁺)
+
+**Redox titrations:**
+- MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O (self-indicating: purple → colorless)
+- I₂ + 2S₂O₃²⁻ → 2I⁻ + S₄O₆²⁻ (starch indicator: blue-black → colorless)`,
+        'group': `**CAIE 9701 — Group Chemistry**
+
+**Group 2 (alkaline earth metals):**
+- Reactivity increases down group (atomic radius ↑, shielding ↑, easier to lose 2e⁻)
+- Reaction with water: Mg reacts slowly with steam; Ca, Sr, Ba react increasingly vigorously with cold water
+- Oxides/hydroxides: basicity increases down group (larger cation, lower charge density, less polarization of O-H bond)
+- Thermal stability of carbonates/nitrates increases down group (larger cation polarizes CO₃²⁻/NO₃⁻ less)
+- Solubility: sulfates decrease down group (BaSO₄ insoluble); hydroxides increase down group
+
+**Group 17 (halogens):**
+- Oxidizing power decreases down group (F₂ > Cl₂ > Br₂ > I₂)
+- Atomic radius increases, shielding increases, electron affinity decreases
+- Displacement reactions: Cl₂ displaces Br⁻ and I⁻; Br₂ displaces I⁻
+- Reactions with NaOH: cold dilute → halide + halate(I) (disproportionation); hot concentrated → halide + halate(V)
+- Silver halides: AgCl (white), AgBr (cream), AgI (yellow) — all insoluble in dilute HNO₃ but soluble in concentrated NH₃ (AgCl fully, AgBr partially, AgI not)`
     },
     maths: {
         'differentiation': `**Differentiation Rules**
@@ -475,98 +598,169 @@ zⁿ = 1 has n roots equally spaced on unit circle
 **Euler's identity:** e^(iπ) + 1 = 0`
     },
     economics: {
-        'demand': `**Demand and Supply**
+        'demand': `**CAIE 9708 — Demand, Supply & Market Equilibrium**
 
-**Law of demand:** price ↑ → quantity demanded ↓ (inverse relationship)
-**Law of supply:** price ↑ → quantity supplied ↑ (direct relationship)
+**Law of demand:** price ↑ → quantity demanded ↓ (inverse relationship, downward-sloping demand curve)
+**Law of supply:** price ↑ → quantity supplied ↑ (direct relationship, upward-sloping supply curve)
 
-**Equilibrium:** where demand = supply. Market clears with no surplus/shortage.
+**Equilibrium:** where Qd = Qs. Market clears with no surplus/shortage.
+- Surplus (excess supply): price above equilibrium → downward pressure on price
+- Shortage (excess demand): price below equilibrium → upward pressure on price
 
 **Shifts in demand (non-price factors):**
-- Income (normal goods: +, inferior goods: -)
-- Prices of substitutes (+) and complements (-)
-- Tastes/preferences (+)
-- Expectations
-- Population (+)
+- Income (normal goods: direct; inferior goods: inverse)
+- Prices of related goods (substitutes: direct; complements: inverse)
+- Tastes/preferences, advertising
+- Expectations (of future prices/incomes)
+- Population/demographics
 
 **Shifts in supply:**
-- Costs of production (-)
-- Technology (+)
-- Number of firms (+)
-- Taxes (-), subsidies (+)
+- Costs of production (input prices, wages, raw materials)
+- Technology/productivity
+- Number of firms
+- Indirect taxes (-), subsidies (+)
+- Expectations of future prices
 
 **Price elasticity of demand (PED):**
 PED = (%ΔQd) / (%ΔP)
-- |PED| > 1: elastic (luxuries, many substitutes)
-- |PED| < 1: inelastic (necessities, few substitutes)
-- Revenue: elastic → price cut increases revenue`,
-        'market': `**Market Structures**
+- |PED| > 1: elastic (luxuries, many substitutes, broad definition)
+- |PED| < 1: inelastic (necessities, few substitutes, addictive, short run)
+- |PED| = 1: unitary elastic
+- Total revenue test: elastic → price cut increases TR; inelastic → price rise increases TR
 
-| Feature | Perfect Competition | Monopoly | Oligopoly | Monopolistic |
+**Cross elasticity (XED):** positive = substitutes, negative = complements, zero = unrelated
+**Income elasticity (YED):** positive = normal, negative = inferior`,
+        'market': `**CAIE 9708 — Market Structures (AS & A Level)**
+
+| Feature | Perfect Competition | Monopoly | Oligopoly | Monopolistic Competition |
 |---|---|---|---|---|
-| Firms | Many | One | Few | Many |
-| Product | Homogeneous | Unique | Differentiated | Differentiated |
-| Barriers | None | High | High | Low |
-| Price | Price taker | Price maker | Interdependent | Some control |
-| Profit | Normal only | Supernormal possible | Uncertain | Normal in LR |
+| Firms | Many | One | Few dominant | Many |
+| Product | Homogeneous | Unique, no close subs | Differentiated or homogeneous | Differentiated |
+| Barriers | None | High (legal, natural, control of resources) | High | Low |
+| Price power | Price taker | Price maker | Interdependent | Some degree |
+| LR profit | Normal only | Supernormal possible | Supernormal possible | Normal only |
 
-**Key diagrams:**
-- Perfect competition: MC = MR at minimum AC (efficient)
-- Monopoly: MC = MR, P > MC, deadweight loss
+**Efficiency analysis (CAIE favourite):**
+- Allocative efficiency: P = MC (social optimum)
+- Productive efficiency: min AC (lowest point on AC curve)
+- Dynamic efficiency: innovation/R&D over time
+- X-inefficiency: lack of competitive pressure raises costs
 
-**Oligopoly behavior:**
-- Game theory: prisoners' dilemma, Nash equilibrium
-- Kinked demand curve: price rigidity
-- Collusion (cartels) vs. non-price competition
+**Oligopoly models:**
+- Kinked demand curve: price rigidity (rivals match cuts, ignore rises)
+- Game theory: prisoners' dilemma, Nash equilibrium, dominant strategy
+- Collusion: formal cartels (OPEC) vs tacit collusion (price leadership)
+- Non-price competition: advertising, branding, after-sales service
 
-**Evaluation:** Always consider efficiency (allocative P=MC, productive min AC, dynamic innovation)`,
-        'macro': `**Macroeconomic Objectives**
+**Monopoly evaluation:**
+- Against: higher prices, lower output, deadweight loss, X-inefficiency
+- For: economies of scale, natural monopoly cases, dynamic efficiency (supernormal profits fund R&D), price discrimination can increase output`,
+        'macro': `**CAIE 9708 — Macroeconomics (AS & A Level)**
 
-**1. Economic growth:** sustained increase in real GDP
-- Causes: AD increase (C+I+G+X-M) or AS increase
-- Policies: fiscal (spending/tax), monetary (interest rates), supply-side
+**Circular flow of income:**
+- Injections (J) = Investment + Government spending + Exports
+- Withdrawals (W) = Saving + Taxation + Imports
+- Equilibrium: J = W
 
-**2. Low unemployment:**
-- Types: frictional, structural, cyclical, seasonal
-- Natural rate = frictional + structural
-- Policies: demand management, supply-side (education/training)
+**National income:**
+- GDP = C + I + G + (X-M)
+- Real vs nominal: real adjusts for inflation
+- Per capita: GDP / population
 
-**3. Low inflation:**
-- CPI/RPI measures
-- Causes: demand-pull, cost-push, monetary
-- Policies: contractionary fiscal/monetary, supply-side
+**Aggregate Demand (AD):**
+- Consumption (C): influenced by income, wealth, interest rates, consumer confidence
+- Investment (I): influenced by interest rates, business confidence, technology, expectations
+- Government spending (G): policy decision
+- Net exports (X-M): influenced by exchange rates, foreign income, trade barriers
 
-**4. Balance of payments:**
-- Current account = trade in goods + services + income + transfers
-- Surplus vs. deficit causes and consequences
+**Aggregate Supply (AS):**
+- Keynesian (upward then vertical at full employment)
+- Neo-classical (vertical at LR full employment output)
 
-**5. Fair distribution of income:**
-- Lorenz curve, Gini coefficient
-- Progressive taxation, welfare benefits, minimum wage`,
-        'essay': `**A-Level Economics Essay Structure**
+**Macro objectives & conflicts:**
+1. Economic growth — LR rise in productive capacity / real GDP
+2. Low unemployment — frictional, structural, cyclical, seasonal, seasonal
+3. Low/stable inflation — CPI, demand-pull, cost-push, monetary, imported
+4. Balance of payments equilibrium — current account sustainable
+5. Fair income distribution — Lorenz curve, Gini coefficient
+
+**Key conflicts:** growth vs inflation, growth vs BOP, growth vs environment, unemployment vs inflation (Phillips curve)`,
+        'policy': `**CAIE 9708 — Government Economic Policy**
+
+**Monetary policy (central bank):**
+- Interest rates: ↑ rates reduce C and I, cool AD, reduce inflation
+- Quantitative easing: buying bonds to inject money
+- Exchange rate policy: managed float
+- Effectiveness depends on: interest elasticity of C/I, confidence, time lags, global conditions
+
+**Fiscal policy (government):**
+- Expansionary: ↑ G, ↓ T → ↑ AD → growth but inflation risk
+- Contractionary: ↓ G, ↑ T → ↓ AD → lower inflation but unemployment risk
+- Automatic stabilizers: progressive tax, unemployment benefits (no govt discretion needed)
+- Discretionary fiscal: deliberate policy changes
+- Limitations: time lags, crowding out, political constraints, Ricardian equivalence
+
+**Supply-side policies:**
+- Market-based: privatization, deregulation, tax cuts, reducing welfare, reducing trade union power
+- Interventionist: education/training, infrastructure, R&D subsidies, industrial policy
+- Aim: shift LRAS right → growth without inflation
+
+**Exchange rate systems:**
+- Fixed: stable for trade, but loses monetary policy independence, requires reserves
+- Floating: automatic adjustment, but volatility harms trade/investment
+- Managed float: most countries use this`,
+        'international': `**CAIE 9708 — International Trade & Development**
+
+**Reasons for trade:**
+- Comparative advantage: lower opportunity cost (Ricardo)
+- Absolute advantage: higher productivity
+- Specialization → economies of scale → lower prices → consumer welfare gains
+
+**Free trade vs protectionism:**
+- Arguments for free trade: lower prices, more choice, economies of scale, competition drives efficiency, technology transfer
+- Arguments for protection: infant industries, strategic industries, dumping, revenue source, reduce unemployment, BOP improvement
+- Methods: tariffs, quotas, subsidies, embargoes, voluntary export restraints, administrative barriers
+
+**Balance of payments:**
+- Current account = trade in goods + trade in services + primary income + secondary income
+- Causes of deficit: loss of competitiveness, strong currency, high inflation, low productivity, recession abroad
+- Correction: expenditure-switching (devaluation) and expenditure-reducing (contractionary fiscal/monetary)
+
+**Marshall-Lerner condition:** depreciation improves CA if |PEDx| + |PEDm| > 1
+**J-curve effect:** short-term worsening before long-term improvement
+
+**Development economics:**
+- Indicators: GDP per capita, HDI, Gini, life expectancy, literacy
+- Barriers: debt, lack of infrastructure, political instability, climate, poor education/health, trade barriers
+- Policies: microfinance, FDI, fair trade, debt relief, education/health investment, infrastructure`,
+        'essay': `**CAIE 9708 — Economics Essay Structure (Band A*)**
 
 **Introduction (2-3 sentences):**
-- Define key terms
-- State your position/what the essay will examine
+- Define key terms precisely (use CAIE definitions)
+- Show understanding of the issue
+- State your line of argument / thesis
 
-**Body paragraphs (PEEL/EEL structure):**
-- **Point:** clear topic sentence
-- **Explanation:** theory with diagrams
-- **Evidence:** real-world examples (countries, dates, data)
-- **Evaluation:** counter-argument, limitations, "however", "depends on"
+**Body paragraphs (PEEL+):**
+- **Point:** clear topic sentence stating the argument
+- **Explanation:** economic theory with accurately labeled diagrams (AD/AS, demand/supply, market structure, Phillips curve)
+- **Evidence:** real-world examples with specific countries, dates, and data
+- **Evaluation:** counter-argument, "however", "it depends on", "this assumes"
+- **Link:** connect back to the question
 
-**Evaluation techniques:**
-1. **It depends on...** (time frame, country, elasticity)
-2. **Short run vs long run**
-3. **Magnitude/significance**
-4. **Conflicting objectives** (e.g., growth vs environment)
-5. **Alternative policies**
-6. **Ceteris paribus assumption**
+**Evaluation techniques (CAIE examiners love these):**
+1. **It depends on...** (time frame, elasticity, country context)
+2. **Short run vs long run** (e.g., depreciation: J-curve)
+3. **Magnitude/significance** (how large is the effect?)
+4. **Conflicting objectives** (growth vs inflation, unemployment vs BOP)
+5. **Alternative policies** (fiscal vs monetary vs supply-side)
+6. **Ceteris paribus** assumption
+7. **Stakeholder perspective** (consumers, producers, government, workers)
 
 **Conclusion:**
-- Summarize main arguments
-- Give a justified judgment (which factor is most important)
-- Do not introduce new points`
+- Summarize main arguments briefly
+- Give a justified judgment — which factor is MOST important and WHY
+- Do not introduce new points
+- End with a nuanced statement, not absolute certainty`
     },
     biology: {
         'cell': `**Cell Structure & Function**
