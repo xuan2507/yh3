@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xuan2507.github.io/yh3/sitemap.xml

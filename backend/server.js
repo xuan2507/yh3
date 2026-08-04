@@ -2,11 +2,24 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { securityHeaders, authLimiter, apiLimiter, sanitizeErrors } = require('./middleware/security');
+const { compress, cacheHeaders, httpsRedirect, removeFingerprint } = require('./middleware/performance');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Security headers FIRST
+// Performance: gzip compression FIRST
+app.use(compress);
+
+// Performance: cache headers for static assets
+app.use(cacheHeaders);
+
+// Security: remove server fingerprinting
+app.use(removeFingerprint);
+
+// Security: HTTPS redirect in production
+app.use(httpsRedirect);
+
+// Security headers
 app.use(securityHeaders);
 
 // CORS - restrict to known origins

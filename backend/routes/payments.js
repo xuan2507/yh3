@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const { pool } = require('../db/config');
 const { authMiddleware } = require('../middleware/auth');
+const { paymentRules, handleValidationErrors } = require('../middleware/validation');
 
 // Create payment request
-router.post('/', authMiddleware, async (req, res) => {
+router.post('/', authMiddleware, paymentRules, handleValidationErrors, async (req, res) => {
     try {
         const { plan, amount, method, reference } = req.body;
         const result = await pool.query(

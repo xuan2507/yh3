@@ -2,13 +2,11 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const { pool } = require('../db/config');
 const { generateToken } = require('../middleware/auth');
+const { registerRules, loginRules, handleValidationErrors } = require('../middleware/validation');
 
 const router = express.Router();
 
-const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-const validatePassword = (pw) => pw && pw.length >= 8;
-
-router.post('/register', async (req, res) => {
+router.post('/register', registerRules, handleValidationErrors, async (req, res) => {
     try {
         const { email, password, firstName, lastName, examType } = req.body;
         
@@ -53,7 +51,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', loginRules, handleValidationErrors, async (req, res) => {
     try {
         const { email, password } = req.body;
         if (!email || !password) {
