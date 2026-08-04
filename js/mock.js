@@ -6,14 +6,14 @@ if (!Auth.isLoggedIn()) window.location.href = 'login.html';
 Auth.updateUserDisplay();
 
 const MOCK_SYLLABUS = {
-    physics: ['Forces & Motion', 'Work & Energy', 'Thermal Physics', 'Waves', 'Electricity', 'Magnetism', 'Nuclear Physics', 'Astrophysics', 'Quantum Physics', 'Oscillations'],
+    physics: ['Physical Quantities & Units', 'Kinematics', 'Dynamics', 'Work, Energy & Power', 'Deformation of Solids', 'Waves', 'Superposition', 'Electric Fields', 'Current of Electricity', 'D.C. Circuits'],
     chemistry: ['Atomic Structure', 'Stoichiometry', 'Chemical Bonding', 'States of Matter', 'Energetics', 'Electrochemistry', 'Equilibria', 'Reaction Kinetics', 'Group 2 & Periodicity', 'Group 17 Chemistry', 'Transition Elements', 'Organic Chemistry', 'Organic Mechanisms', 'Analytical Techniques', 'Polymers'],
-    maths: ['Algebra', 'Coordinate Geometry', 'Trigonometry', 'Calculus', 'Vectors', 'Complex Numbers', 'Matrices', 'Probability', 'Statistics', 'Mechanics'],
-    biology: ['Cell Biology', 'Biochemistry', 'DNA & Genetics', 'Ecology', 'Physiology', 'Evolution', 'Biotechnology', 'Plant Biology', 'Immunology', 'Neurobiology'],
+    maths: ['Quadratics & Functions', 'Coordinate Geometry', 'Trigonometry', 'Differentiation', 'Integration', 'Vectors', 'Complex Numbers', 'Probability', 'Statistics', 'Mechanics'],
+    biology: ['Cell Structure', 'Biological Molecules', 'Enzymes', 'Membranes & Transport', 'Genetic Control', 'Cell Division', 'Transport in Plants', 'Transport in Mammals', 'Gas Exchange', 'Immunity'],
     economics: ['Basic Economic Ideas', 'Price System & Demand/Supply', 'Elasticity', 'Market Failure', 'Government Micro Intervention', 'National Income', 'Aggregate Demand & Supply', 'Economic Growth', 'Inflation', 'Unemployment', 'Balance of Payments', 'Exchange Rates', 'Monetary Policy', 'Fiscal Policy', 'Supply-Side Policy', 'International Trade', 'Development Economics'],
-    accounting: ['Financial Statements', 'Books of Original Entry', 'Depreciation', 'Inventory Valuation', 'Bank Reconciliation', 'Partnership Accounts', 'Manufacturing Accounts', 'Company Accounts', 'Ratio Analysis', 'Control Accounts'],
-    business: ['Business Organization', 'Marketing', 'Human Resource Management', 'Operations Management', 'Finance & Accounts', 'Business Strategy', 'Leadership & Management', 'Market Research', 'External Environment', 'Business Ethics'],
-    psychology: ['Research Methods', 'Biological Psychology', 'Cognitive Psychology', 'Developmental Psychology', 'Social Psychology', 'Abnormal Psychology', 'Memory', 'Attachment', 'Stress', 'Aggression']
+    accounting: ['Financial Statements', 'Books of Original Entry', 'Depreciation', 'Inventory Valuation', 'Bank Reconciliation', 'Control Accounts', 'Partnership Accounts', 'Manufacturing Accounts', 'Company Accounts', 'Ratio Analysis'],
+    business: ['Business & Environment', 'Marketing', 'Human Resource Management', 'Operations Management', 'Finance & Accounting', 'Strategic Management', 'Leadership', 'Market Research', 'External Environment', 'Globalization'],
+    psychology: ['Approaches & Research Methods', 'Biopsychology', 'Cognitive Psychology', 'Developmental Psychology', 'Social Psychology', 'Abnormality', 'Memory', 'Attachment', 'Stress', 'Aggression']
 };
 
 function assignMockTopics() {

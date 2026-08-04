@@ -184,95 +184,265 @@ function formatResponse(text) {
 
 const KNOWLEDGE = {
     physics: {
-        'newton': `**Newton's Laws of Motion**
+        'units': `**CAIE 9702 — Physical Quantities & Units**
 
-**First Law (Inertia):** An object remains at rest or in uniform motion unless acted upon by a resultant force.
-- Example: A book on a table stays still until you push it.
+**Base SI units:**
+- Mass: kilogram (kg)
+- Length: metre (m)
+- Time: second (s)
+- Electric current: ampere (A)
+- Temperature: kelvin (K)
+- Amount of substance: mole (mol)
 
-**Second Law:** F = ma. The resultant force equals mass times acceleration.
-- Example: Pushing a shopping cart harder (more F) gives more acceleration.
+**Homogeneity:** Physical equations must be dimensionally consistent.
+Example: Check v² = u² + 2as: [m²s⁻²] = [m²s⁻²] + [m·ms⁻²] = [m²s⁻²] ✓
 
-**Third Law:** For every action there is an equal and opposite reaction.
-- Example: When you jump, you push down on the ground; the ground pushes you up.
+**Prefixes:**
+- pico (p) = 10⁻¹², nano (n) = 10⁻⁹, micro (μ) = 10⁻⁶
+- milli (m) = 10⁻³, kilo (k) = 10³, mega (M) = 10⁶
+- giga (G) = 10⁹, tera (T) = 10¹²
 
-**Exam Tip:** Draw free-body diagrams. Identify all forces. The resultant force is in the direction of acceleration.`,
-        'kinematic': `**Kinematics Equations (SUVAT)**
+**Scalars vs vectors:**
+- Scalars: mass, speed, distance, energy, power, temperature
+- Vectors: displacement, velocity, acceleration, force, momentum, field strength
 
-For motion with constant acceleration:
+**Measurement uncertainties:**
+- Absolute uncertainty = ± half the smallest division (analog) or ± 1 digit (digital)
+- Percentage uncertainty = (absolute uncertainty / measured value) × 100%
+- Combining: add absolute uncertainties for addition/subtraction; add percentage uncertainties for multiplication/division`,
+        'newton': `**CAIE 9702 — Newton's Laws of Motion & Dynamics**
+
+**First Law (Inertia):** A body remains at rest or moves with constant velocity unless acted on by a resultant force.
+
+**Second Law:** F = ma (resultant force = rate of change of momentum)
+- Also: F = Δp/Δt where p = mv (momentum)
+- Impulse: FΔt = Δmv (area under F-t graph)
+
+**Third Law:** When body A exerts a force on body B, body B exerts an equal and opposite force on body A.
+- Action-reaction pairs act on DIFFERENT bodies
+
+**Free-body diagrams:**
+- Identify ALL forces acting on ONE object
+- Weight (W = mg) always acts vertically down
+- Normal reaction perpendicular to surface
+- Friction opposes motion/attempted motion
+- Tension along rope/cable
+- Drag/air resistance opposes motion
+
+**Connected particles:**
+- Draw separate FBDs for each body
+- Tension is same throughout a light inextensible string
+- Acceleration is same for both bodies
+
+**Terminal velocity:** When drag = weight, resultant force = 0, a = 0`,
+        'kinematic': `**CAIE 9702 — Kinematics (SUVAT)**
+
+For uniformly accelerated motion:
 1. v = u + at
-2. s = ut + 1/2 at²
+2. s = ut + ½at²
 3. v² = u² + 2as
-4. s = (u + v)t / 2
+4. s = ½(u + v)t
 
-Where:
-- s = displacement
-- u = initial velocity
-- v = final velocity
-- a = acceleration
-- t = time
+**Graphs:**
+- Displacement-time: gradient = velocity
+- Velocity-time: gradient = acceleration, area = displacement
+- Acceleration-time: area = change in velocity
 
-**Problem-solving strategy:**
-1. List knowns and unknowns
-2. Choose the equation that contains your target variable and the knowns
-3. Watch signs: upward/forward = positive, downward/backward = negative
+**Projectile motion:**
+- Horizontal: constant velocity (a = 0)
+- Vertical: constant acceleration (a = g = 9.81 m/s² downward)
+- Resolve initial velocity: u_x = u cos θ, u_y = u sin θ
+- Time of flight: 2u_y/g (symmetric)
+- Max height: u_y²/(2g)
+- Range: u² sin(2θ)/g
 
-**Example:** A ball thrown upward at 20 m/s. Find max height.
-u = 20, v = 0, a = -9.81, s = ?
-Use v² = u² + 2as → 0 = 400 + 2(-9.81)s → s = 20.4 m`,
-        'wave': `**Wave Properties**
+**Worked example:** Ball thrown at 25 m/s, 30° above horizontal.
+u_x = 25 cos 30° = 21.7 m/s
+u_y = 25 sin 30° = 12.5 m/s
+Time to max height: t = u_y/g = 12.5/9.81 = 1.27 s
+Max height: h = u_y²/(2g) = 12.5²/(2×9.81) = 7.96 m
+Range: R = u² sin(60°)/g = 625 × 0.866/9.81 = 55.2 m`,
+        'energy': `**CAIE 9702 — Work, Energy & Power**
 
-**Key equations:**
-- v = fλ (wave speed = frequency × wavelength)
-- f = 1/T (frequency = 1 / period)
+**Work:** W = F·s·cos θ (force × displacement × cos of angle between them)
+- If force and displacement parallel: W = Fs
+- If perpendicular: W = 0
 
-**Types:**
-- Transverse: displacement perpendicular to direction of travel (light, water waves)
-- Longitudinal: displacement parallel to direction of travel (sound)
+**Energy forms:**
+- Kinetic: E_k = ½mv²
+- Gravitational potential: E_p = mgh (near Earth)
+- Elastic potential: E_e = ½kx²
 
-**Wave phenomena:**
-- Reflection: angle of incidence = angle of reflection
-- Refraction: wave changes speed and direction at medium boundary
-- Diffraction: waves spread out after passing through a gap
-- Interference: superposition of waves (constructive/destructive)
+**Principle of conservation of energy:**
+Total energy in an isolated system is constant.
+E_k(initial) + E_p(initial) = E_k(final) + E_p(final) + work done against friction
 
-**Double-slit:** λ = ax/D where a = slit separation, x = fringe spacing, D = slit-screen distance`,
-        'electric': `**Electricity Fundamentals**
+**Power:**
+- P = W/t (work done / time)
+- P = F·v (force × velocity) — useful for vehicles
+- Efficiency = (useful power output / total power input) × 100%
 
-**Ohm's Law:** V = IR
+**Worked example:** Car of mass 1200 kg accelerates from 10 m/s to 25 m/s.
+ΔE_k = ½ × 1200 × (25² - 10²) = 600 × (625 - 100) = 600 × 525 = 315,000 J = 315 kJ`,
+        'wave': `**CAIE 9702 — Waves & Superposition**
 
-**Power equations:**
-- P = VI
-- P = I²R
-- P = V²/R
+**Progressive wave equation:**
+y = A sin(ωt - kx) where ω = 2πf, k = 2π/λ
+v = fλ = ω/k
 
-**Resistors:**
-- Series: R_total = R₁ + R₂ + R₃
-- Parallel: 1/R_total = 1/R₁ + 1/R₂ + 1/R₃
+**Intensity:** I ∝ A² (amplitude squared), I ∝ 1/r² (inverse square law for point sources)
+
+**Superposition:** When two waves meet, resultant displacement = sum of individual displacements.
+
+**Interference:**
+- Constructive: path difference = nλ (in phase)
+- Destructive: path difference = (n + ½)λ (antiphase)
+- Coherent sources: same frequency, constant phase difference
+
+**Young's double-slit:**
+λ = ax/D (fringe spacing = λD/a)
+- a = slit separation, D = slit-screen distance, x = fringe spacing
+
+**Diffraction grating:**
+d sin θ = nλ where d = 1/N (N = lines per unit length)
+- Maximum order: n_max = d/λ (must be ≤ 1)
+
+**Stationary waves:**
+- Formed by two progressive waves of same frequency traveling in opposite directions
+- Nodes: zero amplitude (separation = λ/2)
+- Antinodes: maximum amplitude (between nodes)
+- String fixed at both ends: L = nλ/2 (n = 1, 2, 3...)`,
+        'electric': `**CAIE 9702 — Electricity & D.C. Circuits**
+
+**Definitions:**
+- Current (I): rate of flow of charge, I = Q/t, unit: ampere (A)
+- Potential difference (V): energy per unit charge, V = W/Q, unit: volt (V)
+- Resistance (R): V = IR (Ohm's Law)
+
+**Resistivity:**
+R = ρL/A where ρ = resistivity, L = length, A = cross-sectional area
+
+**Power:**
+P = VI = I²R = V²/R
+
+**Resistors in series:** R_total = R₁ + R₂ + R₃
+**Resistors in parallel:** 1/R_total = 1/R₁ + 1/R₂ + 1/R₃
 
 **Kirchhoff's Laws:**
-1. Current law: ΣI_in = ΣI_out at any junction
-2. Voltage law: ΣEMF = ΣIR around any closed loop
+1. First Law (Current): ΣI_in = ΣI_out at any junction
+2. Second Law (Voltage): ΣEMF = ΣIR around any closed loop
 
-**Exam tip:** For complex circuits, label all currents and apply Kirchhoff's laws systematically.`,
-        'particle': `**Particle Physics**
+**Potential divider:**
+V_out = V_in × R₂/(R₁ + R₂)
+- Used for sensors (LDR, thermistor)
+- LDR: resistance decreases with light intensity
+- Thermistor (NTC): resistance decreases with temperature
+
+**EMF and internal resistance:**
+E = V + Ir = I(R + r)
+- Terminal p.d. V = E - Ir (decreases as current increases)
+- Short-circuit current: I = E/r
+
+**Worked example:** Cell with E = 12V, r = 2Ω connected to R = 10Ω.
+I = E/(R+r) = 12/12 = 1A
+Terminal p.d. V = IR = 1 × 10 = 10V (or V = 12 - 1×2 = 10V)`,
+        'fields': `**CAIE 9702 — Electric, Gravitational & Magnetic Fields**
+
+**Electric fields:**
+- Force: F = qE
+- Uniform field: E = V/d (between parallel plates)
+- Point charge: E = kQ/r² where k = 1/(4πε₀)
+
+**Coulomb's Law:**
+F = kQ₁Q₂/r² (force between two point charges)
+
+**Electric potential:**
+V = kQ/r (scalar, work done per unit positive charge)
+- Equipotential surfaces: spherical around point charge
+
+**Gravitational fields:**
+- Force: F = Gm₁m₂/r² (Newton's law of gravitation)
+- Field strength: g = F/m = GM/r²
+- Gravitational potential: φ = -GM/r
+- Orbital speed: v = √(GM/r)
+- Kepler's Third Law: T² ∝ r³
+
+**Magnetic fields:**
+- Force on current-carrying conductor: F = BIL sin θ
+- Force on moving charge: F = Bqv sin θ (circular motion if v ⟂ B)
+- Radius of path: r = mv/(Bq)
+
+**Electromagnetic induction:**
+- Faraday's Law: EMF = -d(NΦ)/dt (rate of change of magnetic flux linkage)
+- Lenz's Law: induced current opposes the change causing it
+- Transformer: V_s/V_p = N_s/N_p`,
+        'nuclear': `**CAIE 9702 — Particle & Nuclear Physics**
+
+**Atomic structure:**
+- Nucleon number (A) = protons + neutrons
+- Proton number (Z) = number of protons
+- Isotopes: same Z, different A
+
+**Radioactive decay:**
+- Alpha (α): He nucleus (⁴₂He), stopped by paper, ionizes strongly
+- Beta (β⁻): fast electron (⁰₋₁e), stopped by few mm Al
+- Gamma (γ): electromagnetic wave, reduced by thick lead/concrete
+
+**Decay equations:**
+- α: ᴬ_Z X → ᴬ⁻⁴_Z₋₂ Y + ⁴₂He
+- β⁻: ᴬ_Z X → ᴬ_Z₊₁ Y + ⁰₋₁e + ν̄_e
+- β⁺: ᴬ_Z X → ᴬ_Z₋₁ Y + ⁰₊₁e + ν_e
+
+**Half-life:**
+- Time for activity/number of nuclei to halve
+- A = A₀e^(-λt) or N = N₀e^(-λt)
+- λ = ln(2)/t½
+- Activity: A = λN (decays per second, Bq)
+
+**Mass-energy equivalence:**
+E = mc²
+Binding energy = (mass of separate nucleons - mass of nucleus) × c²
+Binding energy per nucleon peaks at Fe-56 (most stable)
+
+**Nuclear fission:** Heavy nucleus splits → releases energy
+**Nuclear fusion:** Light nuclei combine → releases energy (stars)
 
 **Fundamental particles:**
-- Quarks: up (u), down (d), charm, strange, top, bottom
-- Leptons: electron (e), muon (μ), tau (τ) and their neutrinos
+- Quarks: up (+2/3e), down (-1/3e), charm, strange, top, bottom
+- Leptons: electron, muon, tau and their neutrinos
+- Hadrons: baryons (3 quarks), mesons (quark + antiquark)
+- Proton = uud, neutron = udd
+- Conservation laws: charge, baryon number, lepton number, energy-momentum`,
+        'thermal': `**CAIE 9702 — Thermal Physics**
 
-**Quark charges:**
-- u = +2/3 e, d = -1/3 e
-- Proton = uud (+1e), Neutron = udd (0)
+**Kinetic theory of gases:**
+- Pressure = (1/3)ρc² = (1/3)Nm/V × c²
+- Average kinetic energy of molecule: E = (3/2)kT = (1/2)mc_rms²
+- k = Boltzmann constant = 1.38 × 10⁻²³ J/K
 
-**Particle interactions:**
-- Strong force: holds nucleus together (mediated by gluons)
-- Weak force: beta decay (mediated by W⁺, W⁻, Z⁰ bosons)
-- Electromagnetic: between charged particles (mediated by photons)
+**Ideal gas equation:**
+pV = nRT = NkT
+- R = 8.314 J/(mol·K)
+- T must be in kelvin (K = °C + 273)
 
-**Conservation laws:**
-- Charge, baryon number, lepton number, energy-momentum, strangeness (in strong interactions)
+**Internal energy:**
+U = sum of kinetic and potential energies of all molecules
+- For ideal gas: U = (3/2)nRT (all KE, no PE)
 
-**Feynman diagrams:** represent interactions with incoming/outgoing particles and exchange bosons.`
+**Specific heat capacity:**
+Q = mcΔθ (solid/liquid)
+- Energy required to raise mass m by temperature Δθ
+
+**Specific latent heat:**
+Q = mL (phase change at constant temperature)
+- L_fusion: solid → liquid
+- L_vaporization: liquid → gas
+
+**First Law of Thermodynamics:**
+ΔU = q + w (or ΔU = q - w depending on sign convention)
+- q = heat supplied to system
+- w = work done ON system
+- For ideal gas at constant temperature: ΔU = 0, so q = -w`
     },
     chemistry: {
         'balance': `**CAIE 9701 — Balancing Chemical Equations & Redox**
@@ -623,50 +793,87 @@ T = 178000/161 = 1106 K. Above this T, decomposition is spontaneous.`,
 - Environmental: SO₂ causes acid rain (SO₂ + H₂O → H₂SO₃ → H₂SO₄)`
     },
     maths: {
-        'differentiation': `**Differentiation Rules**
+        'quadratics': `**CAIE 9709 — Quadratics, Functions & Equations**
+
+**Completing the square:**
+ax² + bx + c = a(x + b/2a)² + (c - b²/4a)
+- Vertex form reveals turning point at (-b/2a, c - b²/4a)
+
+**Discriminant:** Δ = b² - 4ac
+- Δ > 0: two distinct real roots
+- Δ = 0: one repeated real root
+- Δ < 0: no real roots
+
+**Functions:**
+- Domain: set of allowed input values
+- Range: set of output values
+- One-one function: passes horizontal line test
+- Inverse function f⁻¹: reflection in y = x, domain/range swap
+- Composition: fg(x) = f(g(x))
+
+**Modulus function:**
+- |x| = x if x ≥ 0, -x if x < 0
+- |x - a| = b → x = a ± b
+- |x - a| < b → a - b < x < a + b
+- Graph: V-shape with vertex at (a, 0)
+
+**Transformations:**
+- y = f(x) + a: vertical shift up by a
+- y = f(x + a): horizontal shift left by a
+- y = af(x): vertical stretch by factor a
+- y = f(ax): horizontal stretch by factor 1/a
+- y = -f(x): reflection in x-axis
+- y = f(-x): reflection in y-axis`,
+        'differentiation': `**CAIE 9709 — Differentiation**
 
 **Basic rules:**
 - d/dx(xⁿ) = nxⁿ⁻¹
-- d/dx(sin x) = cos x
-- d/dx(cos x) = -sin x
-- d/dx(eˣ) = eˣ
-- d/dx(ln x) = 1/x
+- d/dx(sin x) = cos x, d/dx(cos x) = -sin x, d/dx(tan x) = sec²x
+- d/dx(eˣ) = eˣ, d/dx(ln x) = 1/x
+- d/dx(aˣ) = aˣ ln a
 
 **Product rule:** d/dx(uv) = u(dv/dx) + v(du/dx)
 **Quotient rule:** d/dx(u/v) = [v(du/dx) - u(dv/dx)] / v²
 **Chain rule:** dy/dx = dy/du × du/dx
 
-**Example:** Differentiate y = x² sin x
-u = x², v = sin x
-dy/dx = x²(cos x) + sin x(2x) = x² cos x + 2x sin x
+**Implicit differentiation:** differentiate term by term, remember d/dx(y²) = 2y(dy/dx)
+
+**Parametric differentiation:** dy/dx = (dy/dt)/(dx/dt)
 
 **Stationary points:** set dy/dx = 0
 - d²y/dx² > 0 → minimum
 - d²y/dx² < 0 → maximum
-- d²y/dx² = 0 → could be point of inflection`,
-        'integration': `**Integration Rules**
+- d²y/dx² = 0 → could be point of inflection (check sign change of dy/dx)
+
+**Connected rates of change:** use chain rule, e.g., dV/dt = dV/dr × dr/dt
+
+**Small increments:** δy ≈ (dy/dx) δx`,
+        'integration': `**CAIE 9709 — Integration**
 
 **Basic integrals:**
 - ∫xⁿ dx = xⁿ⁺¹/(n+1) + C (n ≠ -1)
-- ∫sin x dx = -cos x + C
-- ∫cos x dx = sin x + C
-- ∫eˣ dx = eˣ + C
-- ∫1/x dx = ln|x| + C
+- ∫sin x dx = -cos x + C, ∫cos x dx = sin x + C, ∫sec²x dx = tan x + C
+- ∫eˣ dx = eˣ + C, ∫1/x dx = ln|x| + C
+- ∫1/(ax+b) dx = (1/a) ln|ax+b| + C
+
+**Integration by substitution:** change variable to simplify
+- Common substitutions: u = ax + b, u = f(x), trigonometric substitutions
 
 **Integration by parts:** ∫u dv = uv - ∫v du
-- Choose u by LIATE: Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential
+- LIATE priority: Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential
 
-**Example:** ∫x eˣ dx
-u = x, dv = eˣ dx
-du = dx, v = eˣ
-∫x eˣ dx = x eˣ - ∫eˣ dx = x eˣ - eˣ + C = eˣ(x - 1) + C
+**Definite integrals:**
+- Area under curve: ∫[a,b] y dx
+- Area between curves: ∫[a,b] (y_top - y_bottom) dx
+- Volume of revolution: V = π∫[a,b] y² dx (about x-axis)
 
-**Definite integrals:** area under curve
-- Area between curves: ∫(top - bottom) dx
-- Volume of revolution: π∫y² dx`,
-        'trigonometry': `**Trigonometry Identities**
+**Numerical integration:**
+- Trapezium rule: ∫[a,b] y dx ≈ (h/2)[y₀ + 2(y₁ + y₂ + ... + y_{n-1}) + y_n]
+  where h = (b-a)/n
+- Accuracy increases with more strips`,
+        'trigonometry': `**CAIE 9709 — Trigonometry**
 
-**Pythagorean:**
+**Pythagorean identities:**
 - sin²θ + cos²θ = 1
 - 1 + tan²θ = sec²θ
 - 1 + cot²θ = csc²θ
@@ -674,54 +881,151 @@ du = dx, v = eˣ
 **Double angle:**
 - sin 2θ = 2 sin θ cos θ
 - cos 2θ = cos²θ - sin²θ = 2cos²θ - 1 = 1 - 2sin²θ
+- tan 2θ = 2tan θ/(1 - tan²θ)
 
 **Compound angle:**
 - sin(A±B) = sin A cos B ± cos A sin B
 - cos(A±B) = cos A cos B ∓ sin A sin B
+- tan(A±B) = (tan A ± tan B)/(1 ∓ tan A tan B)
 
 **Solving trig equations:**
-1. Use identities to get one trig function
-2. Find principal value
-3. Use CAST diagram or graph symmetry for all solutions in range
+1. Use identities to express in single trig function
+2. Find principal value using calculator
+3. Find all solutions in range using symmetry:
+   - sin: 180° - θ, cos: 360° - θ, tan: 180° + θ
+   - Or use CAST diagram
 
 **R-formula:**
-a sin θ + b cos θ = R sin(θ + α) where R = √(a²+b²), tan α = b/a`,
-        'vector': `**Vectors**
+a sin θ + b cos θ = R sin(θ + α) where R = √(a²+b²), tan α = b/a
+a sin θ + b cos θ = R cos(θ - α) where R = √(a²+b²), tan α = a/b
+
+**Reciprocal trig functions:**
+cosec θ = 1/sin θ, sec θ = 1/cos θ, cot θ = 1/tan θ`,
+        'series': `**CAIE 9709 — Series & Binomial Expansion**
+
+**Arithmetic progression:**
+- nth term: a + (n-1)d
+- Sum: S_n = n/2 [2a + (n-1)d] = n/2 (a + l)
+
+**Geometric progression:**
+- nth term: arⁿ⁻¹
+- Sum: S_n = a(1-rⁿ)/(1-r) or a(rⁿ-1)/(r-1)
+- Sum to infinity: S_∞ = a/(1-r) for |r| < 1
+
+**Binomial expansion:**
+(1 + x)ⁿ = 1 + nx + n(n-1)x²/2! + n(n-1)(n-2)x³/3! + ...
+- Valid for |x| < 1 when n is negative or fractional
+- For (a + bx)ⁿ, factor out a: aⁿ(1 + bx/a)ⁿ
+
+**Σ notation:**
+- Σr = n(n+1)/2
+- Σr² = n(n+1)(2n+1)/6
+- Σr³ = [n(n+1)/2]²
+- Method of differences: terms cancel to leave first and last few terms`,
+        'vector': `**CAIE 9709 — Vectors**
 
 **Position vector:** point P has position vector OP = pi + qj + rk
 
 **Line equation:**
-- r = a + λb (through point a, direction b)
+- Vector form: r = a + λb (through point a, direction b)
 - Cartesian: (x-a₁)/b₁ = (y-a₂)/b₂ = (z-a₃)/b₃
 
-**Scalar product:** a·b = |a||b|cos θ = a₁b₁ + a₂b₂ + a₃b₃
-- Perpendicular: a·b = 0
-- Angle: cos θ = (a·b)/(|a||b|)
-
-**Cross product:** |a×b| = |a||b|sin θ = area of parallelogram
+**Scalar (dot) product:**
+a·b = |a||b|cos θ = a₁b₁ + a₂b₂ + a₃b₃
+- Perpendicular vectors: a·b = 0
+- Angle between vectors: cos θ = (a·b)/(|a||b|)
 
 **Vector geometry:**
-- Shortest distance from point to line
-- Intersection of lines (check consistent λ)
-- Plane equation: r·n = d or ax + by + cz = d`,
-        'complex': `**Complex Numbers**
+- Shortest distance from point P to line r = a + λb:
+  d = |AP × b|/|b| where AP = p - a
+- Intersection of two lines: equate components, solve for λ and μ
+
+**Plane equation:**
+- r·n = d (n = normal vector)
+- ax + by + cz = d
+- Angle between line and plane: 90° - angle between line and normal
+- Distance from point to plane: |ax₁ + by₁ + cz₁ - d|/√(a²+b²+c²)`,
+        'complex': `**CAIE 9709 — Complex Numbers**
 
 **Forms:**
-- Cartesian: z = a + bi
-- Polar: z = r(cos θ + i sin θ) = r cis θ = r e^(iθ)
-- r = |z| = √(a²+b²), θ = arg(z) = tan⁻¹(b/a)
+- Cartesian: z = x + iy
+- Polar: z = r(cos θ + i sin θ) = r e^(iθ)
+- r = |z| = √(x²+y²), θ = arg(z) = tan⁻¹(y/x) [adjust quadrant!]
 
 **Operations:**
-- Multiply: multiply moduli, add arguments
-- Divide: divide moduli, subtract arguments
+- Addition: (a+ib) + (c+id) = (a+c) + i(b+d)
+- Multiplication: multiply moduli, add arguments
+- Division: divide moduli, subtract arguments
+- Conjugate: z* = x - iy; zz* = |z|²
 
 **De Moivre's Theorem:**
 [r(cos θ + i sin θ)]ⁿ = rⁿ(cos nθ + i sin nθ)
 
-**Roots of unity:**
-zⁿ = 1 has n roots equally spaced on unit circle
+**nth roots:**
+zⁿ = r(cos θ + i sin θ) has n roots:
+|r|^(1/n)[cos((θ + 2πk)/n) + i sin((θ + 2πk)/n)] for k = 0, 1, ..., n-1
 
-**Euler's identity:** e^(iπ) + 1 = 0`
+**Loci:**
+- |z - a| = r: circle, centre a, radius r
+- |z - a| = |z - b|: perpendicular bisector of line joining a and b
+- arg(z - a) = θ: half-line from a at angle θ to positive real axis`,
+        'mechanics': `**CAIE 9709 — Mechanics**
+
+**Forces & equilibrium:**
+- Resolve forces horizontally and vertically
+- Triangle of forces: three forces in equilibrium can be represented by a closed triangle
+- Moments: moment = force × perpendicular distance from pivot
+- Equilibrium: ΣF = 0 and Σmoments = 0
+
+**Kinematics in a straight line:**
+- SUVAT equations (constant acceleration)
+- v-t graphs: gradient = acceleration, area = displacement
+- Variable acceleration: use calculus (v = ds/dt, a = dv/dt)
+
+**Newton's laws:**
+- F = ma (resultant force = mass × acceleration)
+- Connected particles: same acceleration, tension same in light inextensible string
+- Pulleys: tension same on both sides of smooth light pulley
+
+**Work, energy & power:**
+- Work = force × distance moved in direction of force
+- KE = ½mv², GPE = mgh
+- Conservation of energy (no friction): KE_i + PE_i = KE_f + PE_f
+- Power = work/time = force × velocity
+
+**Momentum:**
+- p = mv
+- Conservation of momentum: total momentum before = total momentum after (no external forces)
+- Collisions: elastic (KE conserved) or inelastic (KE not conserved)
+- Coefficient of restitution: e = (speed of separation)/(speed of approach)
+  - e = 1: perfectly elastic, e = 0: perfectly inelastic`,
+        'statistics': `**CAIE 9709 — Probability & Statistics**
+
+**Representation of data:**
+- Mean: x̄ = Σx/n, Median: middle value, Mode: most frequent
+- Variance: s² = Σ(x-x̄)²/n = Σx²/n - x̄²
+- Standard deviation: s = √variance
+- Cumulative frequency curves: median = 50th percentile, IQR = Q₃ - Q₁
+
+**Permutations & combinations:**
+- nPr = n!/(n-r)! (order matters)
+- nCr = n!/[r!(n-r)!] (order doesn't matter)
+
+**Probability:**
+- P(A∪B) = P(A) + P(B) - P(A∩B)
+- Conditional: P(A|B) = P(A∩B)/P(B)
+- Independent: P(A∩B) = P(A) × P(B)
+
+**Distributions:**
+- Binomial: X ~ B(n,p), P(X=r) = nCr pʳ(1-p)ⁿ⁻ʳ, E(X) = np, Var(X) = np(1-p)
+- Normal: X ~ N(μ, σ²), standardize: Z = (X-μ)/σ
+  - Use standard normal tables for probabilities
+  - Normal approximation to binomial: X ≈ N(np, np(1-p)) for large n
+
+**Hypothesis testing:**
+- Null hypothesis H₀, alternative hypothesis H₁
+- Test statistic → compare to critical value or find p-value
+- Type I error: reject H₀ when true. Type II error: accept H₀ when false`
     },
     economics: {
         'demand': `**CAIE 9708 — Demand, Supply & Market Equilibrium**
@@ -889,126 +1193,352 @@ PED = (%ΔQd) / (%ΔP)
 - End with a nuanced statement, not absolute certainty`
     },
     biology: {
-        'cell': `**Cell Structure & Function**
+        'cell': `**CAIE 9700 — Cell Structure**
+
+**Light microscope:**
+- Max resolution ≈ 200 nm (limited by wavelength of light)
+- Magnification = eyepiece × objective
+- Staining: iodine (starch), methylene blue (nuclei), eosin (cytoplasm)
+
+**Electron microscope:**
+- TEM: high resolution (0.2 nm), 2D, thin sections required, no living specimens
+- SEM: 3D surface images, lower resolution than TEM, no internal detail
+
+**Prokaryotic cells:**
+- No nucleus, no membrane-bound organelles
+- Circular DNA (nucleoid), 70S ribosomes, cell wall (peptidoglycan/murein)
+- Capsule, flagella, plasmids, mesosomes
+- Examples: bacteria (Escherichia coli)
+
+**Eukaryotic cells:**
+- Nucleus with nuclear envelope and pores, linear DNA with histones
+- 80S ribosomes, membrane-bound organelles
+- Plant cells: cellulose cell wall, chloroplasts, large permanent vacuole, starch grains
+- Animal cells: centrioles, small/no vacuole, glycogen granules
 
 **Organelles:**
-- Nucleus: contains DNA, controls cell activities
-- Mitochondria: aerobic respiration, ATP production (double membrane, cristae)
-- Ribosomes: protein synthesis (80S in eukaryotes, 70S in prokaryotes)
-- ER: rough (protein synthesis), smooth (lipid synthesis, detox)
-- Golgi: modifies, packages, transports proteins
-- Lysosomes: contain hydrolytic enzymes, autophagy
-- Chloroplasts: photosynthesis (thylakoids, stroma)
-- Cell wall: cellulose in plants, peptidoglycan in bacteria, chitin in fungi
+- Nucleus: DNA storage, transcription, nuclear pores control entry/exit
+- Nucleolus: rRNA synthesis and ribosome assembly
+- Rough ER: protein synthesis (ribosomes attached), transport vesicles
+- Smooth ER: lipid/steroid synthesis, detoxification, Ca²⁺ storage
+- Golgi: modifies/packages/sorts proteins, forms lysosomes, produces vesicles
+- Mitochondria: double membrane, cristae (ETC), matrix (Krebs), ATP synthesis
+- Chloroplasts: double membrane, thylakoids (light-dependent), stroma (Calvin cycle)
+- Lysosomes: hydrolytic enzymes, autophagy, apoptosis
+- Ribosomes: protein synthesis (80S in cytosol/ER, 70S in mitochondria/chloroplasts)
+- Cytoskeleton: microtubules (support, spindle, cilia/flagella), microfilaments (movement)`,
+        'membranes': `**CAIE 9700 — Cell Membranes & Transport**
 
-**Prokaryote vs Eukaryote:**
-- Prokaryotes: no nucleus, no membrane-bound organelles, 70S ribosomes, circular DNA
-- Eukaryotes: nucleus, membrane-bound organelles, 80S ribosomes, linear DNA with histones
+**Fluid mosaic model:**
+- Phospholipid bilayer: hydrophilic heads outward, hydrophobic tails inward
+- Integral proteins: span membrane (channels, carriers, pumps)
+- Peripheral proteins: attached to surface (enzymes, support)
+- Cholesterol: stabilizes membrane, reduces fluidity at high temperatures
+- Glycoproteins/glycolipids: cell recognition, antigens, receptors
 
-**Transport across membranes:**
-- Diffusion: passive, down concentration gradient
-- Osmosis: diffusion of water through partially permeable membrane
-- Facilitated diffusion: through channel/carrier proteins
-- Active transport: against gradient, uses ATP
-- Endocytosis/exocytosis: bulk transport`,
-        'photosynthesis': `**Photosynthesis**
+**Diffusion:** passive movement down concentration gradient
+- Rate increases with: higher temperature, smaller molecular size, steeper gradient, larger surface area
+- Facilitated diffusion: through channel proteins (ions) or carrier proteins (glucose)
 
-**Equation:** 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂
+**Osmosis:** diffusion of water from high water potential (less negative) to low water potential (more negative) across partially permeable membrane
+- Pure water: Ψ = 0
+- Solute reduces water potential (makes it more negative)
+- Pressure potential can increase water potential
 
-**Light-dependent reactions (thylakoid):**
-- Photosystem II: water split, O₂ released, electrons excited
-- Electron transport chain: chemiosmosis generates ATP
-- Photosystem I: NADP reduced to NADPH
-- Products: ATP, NADPH, O₂
+**Active transport:** against concentration gradient, requires ATP and carrier proteins
+- Sodium-potassium pump: 3 Na⁺ out, 2 K⁺ in
+- Co-transport: e.g., Na⁺-glucose co-transport in ileum
 
-**Light-independent reactions (Calvin cycle, stroma):**
-- CO₂ fixation: RuBP + CO₂ → 2 × GP (catalyzed by rubisco)
-- Reduction: GP → TP (uses ATP and NADPH)
-- Regeneration: TP → RuBP (uses ATP)
+**Endocytosis/exocytosis:** bulk transport using vesicles, requires ATP
+- Phagocytosis (cell eating), pinocytosis (cell drinking)`,
+        'enzymes': `**CAIE 9700 — Enzymes**
 
-**Limiting factors:**
-- Low light: light-dependent limited
-- Low CO₂: Calvin cycle limited
-- Low temperature: enzyme rate limited
-- Remember: only light affects light-dependent; CO₂ and temp affect Calvin cycle
+**Properties:**
+- Biological catalysts, globular proteins
+- Lower activation energy, not used up in reaction
+- Specific: one enzyme → one substrate (lock and key / induced fit)
+- Intracellular (inside cells) or extracellular (e.g., digestive enzymes)
 
-**C4 plants:** minimize photorespiration by fixing CO₂ in mesophyll then moving to bundle sheath`,
-        'dna': `**DNA Replication**
+**Mechanism:**
+- Active site: specific shape complementary to substrate
+- Enzyme-substrate complex forms
+- Induced fit: enzyme slightly changes shape to fit substrate more closely
+- Products released, enzyme unchanged
 
-**Semi-conservative replication:** each new DNA molecule has one old strand and one new strand.
+**Factors affecting rate:**
+- Temperature: increases kinetic energy up to optimum; above optimum, enzyme denatures (breaks H bonds, changes active site shape)
+- pH: each enzyme has optimum pH; extreme pH denatures
+- Substrate concentration: rate increases until enzyme saturation
+- Enzyme concentration: rate proportional to [enzyme] at saturating [substrate]
 
-**Steps:**
-1. **Helicase** unwinds and unzips the double helix (breaks hydrogen bonds)
-2. **SSBP** stabilize single strands
-3. **RNA primase** adds RNA primers
-4. **DNA polymerase III** adds complementary nucleotides (5'→3')
-   - Leading strand: continuous
-   - Lagging strand: Okazaki fragments
-5. **DNA polymerase I** replaces RNA primers with DNA
-6. **DNA ligase** joins Okazaki fragments
+**Inhibition:**
+- Competitive: inhibitor similar shape to substrate, competes for active site; overcome by increasing [substrate]
+- Non-competitive: inhibitor binds to allosteric site, changes active site shape; cannot be overcome by increasing [substrate]
 
-**Enzymes summary:**
-| Enzyme | Function |
-|---|---|
-| Helicase | Unwinds DNA |
-| Primase | Adds RNA primers |
-| DNA polymerase | Adds nucleotides |
-| Ligase | Joins fragments |
+**Immobilized enzymes:**
+- Trapped in alginate beads or attached to surfaces
+- Advantages: reusable, more stable, product not contaminated, easy to separate`,
+        'dna': `**CAIE 9700 — DNA, RNA & Protein Synthesis**
 
-**Complementary base pairing:** A-T (2 H-bonds), G-C (3 H-bonds)`,
-        'respiration': `**Cellular Respiration**
+**DNA structure:**
+- Double helix: antiparallel strands (5'→3' and 3'→5')
+- Sugar-phosphate backbone (deoxyribose)
+- Base pairs: A-T (2 H-bonds), G-C (3 H-bonds)
+- Complementary base pairing allows exact replication
+
+**DNA replication (semi-conservative):**
+1. Helicase unwinds and unzips DNA (breaks H-bonds)
+2. DNA polymerase adds nucleotides in 5'→3' direction only
+3. Leading strand: continuous synthesis
+4. Lagging strand: Okazaki fragments
+5. DNA ligase joins fragments
+6. Result: two identical DNA molecules, each with one old and one new strand
+
+**Transcription:** DNA → mRNA
+- In nucleus: RNA polymerase binds to promoter, unwinds DNA
+- Complementary RNA synthesized (A→U, T→A, G↔C)
+- Introns removed by splicing; exons joined
+- mRNA exits through nuclear pore
+
+**Translation:** mRNA → protein
+- Occurs at ribosomes in cytoplasm
+- tRNA carries amino acids with anticodons
+- Codon-anticodon pairing (A-U, G-C)
+- Peptide bonds form between amino acids
+- Ribosome moves along mRNA (5'→3')
+- Stop codon releases polypeptide
+
+**Mutation types:**
+- Substitution: one base changed → may/may not change amino acid (degenerate code)
+- Deletion/insertion: frameshift → usually disastrous downstream`,
+        'respiration': `**CAIE 9700 — Respiration**
 
 **Glycolysis (cytoplasm):**
-- Glucose → 2 pyruvate
-- Net: 2 ATP, 2 NADH
+- Glucose (6C) → 2 pyruvate (3C)
+- Phosphorylation using ATP, lysis, oxidation (NAD → NADH), ATP formation
+- Net gain: 2 ATP, 2 NADH per glucose
+- Anaerobic: no further stages
 
 **Link reaction (mitochondrial matrix):**
 - Pyruvate → acetyl-CoA + CO₂
-- Produces NADH
+- Decarboxylation and dehydrogenation
+- NAD → NADH
 
 **Krebs cycle (matrix):**
-- Acetyl-CoA enters, 2 CO₂ released per glucose
-- Produces: 2 ATP, 6 NADH, 2 FADH₂
+- Acetyl-CoA (2C) + oxaloacetate (4C) → citrate (6C)
+- Series of redox reactions: 2 CO₂ released, 3 NADH, 1 FADH₂, 1 ATP (substrate-level)
+- Per glucose: 2 turns → 4 CO₂, 6 NADH, 2 FADH₂, 2 ATP
 
 **Electron transport chain (inner membrane/cristae):**
-- NADH and FADH₂ donate electrons
-- Protons pumped into intermembrane space
-- Chemiosmosis through ATP synthase
+- NADH and FADH₂ donate electrons to carriers
+- Electrons passed along chain (energy released)
+- Energy pumps H⁺ from matrix to intermembrane space
+- Electrochemical gradient drives protons through ATP synthase (chemiosmosis)
 - O₂ is final electron acceptor → H₂O
-- Produces ~28-34 ATP
+- Per glucose: ~28 ATP from ETC
+
+**Total aerobic yield:** ~32 ATP per glucose
 
 **Anaerobic respiration:**
-- Animals: pyruvate → lactate (regenerates NAD⁺)
-- Yeast: pyruvate → ethanol + CO₂
-- Much less ATP (only glycolysis)`,
-        'inheritance': `**Genetics & Inheritance**
+- In mammals: pyruvate → lactate (regenerates NAD⁺)
+- In yeast: pyruvate → ethanol + CO₂ (alcoholic fermentation)
+- Only 2 ATP from glycolysis`,
+        'photosynthesis': `**CAIE 9700 — Photosynthesis**
 
-**Key terms:**
-- Gene: unit of heredity, codes for a protein
+**Light-dependent reactions (thylakoid membranes):**
+- Photosystem II: light excites electrons; water photolysis releases O₂, H⁺, electrons
+- Electron transport chain: electrons pass through carriers, energy pumps H⁺ into thylakoid lumen
+- Chemiosmosis: H⁺ flows through ATP synthase → ATP
+- Photosystem I: electrons re-excited, reduce NADP⁺ to NADPH
+- Products: ATP, NADPH, O₂
+
+**Light-independent reactions (Calvin cycle, stroma):**
+1. Carbon fixation: CO₂ + RuBP (5C) → 2 GP (3C), catalyzed by rubisco
+2. Reduction: GP → TP (glyceraldehyde-3-phosphate) using ATP and NADPH
+3. Regeneration: most TP regenerates RuBP using ATP
+4. Some TP leaves to form glucose, starch, cellulose, lipids, amino acids
+- For every 3 CO₂: 6 TP produced, 5 TP regenerate 3 RuBP, 1 TP exits
+
+**Limiting factors:**
+- Light intensity: affects light-dependent reactions
+- CO₂ concentration: affects Calvin cycle
+- Temperature: affects enzyme rates (rubisco)
+- At low light: light is limiting
+- At high light, low CO₂: CO₂ is limiting
+- Compensation point: rate of photosynthesis = rate of respiration`,
+        'inheritance': `**CAIE 9700 — Genetics & Inheritance**
+
+**Terms:**
+- Gene: DNA sequence coding for a polypeptide
 - Allele: variant form of a gene
-- Genotype: genetic makeup (e.g., Aa)
+- Locus: position of gene on chromosome
+- Genotype: genetic constitution (e.g., Aa)
 - Phenotype: observable characteristics
-- Homozygous: identical alleles (AA or aa)
-- Heterozygous: different alleles (Aa)
+- Homozygous: AA or aa
+- Heterozygous: Aa
+- Dominant: expressed in heterozygote
+- Recessive: only expressed in homozygote
 
 **Monohybrid cross:**
-- Punnett square for one gene
-- Ratios: 3:1 (F2 dominant:recessive), 1:2:1 (genotypes)
+- Punnett square
+- F₂ phenotypic ratio: 3:1
+- F₂ genotypic ratio: 1:2:1
 
 **Dihybrid cross:**
-- 9:3:3:1 phenotypic ratio (independent assortment)
+- Independent assortment (genes on different chromosomes)
+- F₂ phenotypic ratio: 9:3:3:1
+- Test cross: unknown dominant phenotype crossed with recessive homozygote
 
 **Sex linkage:**
-- X-linked: more common in males (hemizygous)
-- Examples: color blindness, hemophilia
+- X-linked: males XY (hemizygous), females XX
+- More common in males: color blindness, hemophilia
+- Carrier females: XᴴXʰ
 
 **Autosomal linkage:**
 - Genes on same chromosome tend to be inherited together
-- Recombination frequency maps gene distance
+- Recombination (crossing over in prophase I) produces recombinants
+- Recombination frequency ∝ map distance (1% recombination = 1 map unit)
 
 **Chi-squared test:**
 χ² = Σ((O-E)²/E)
-- Compare to critical value at appropriate df and p=0.05`
+- Degrees of freedom = number of classes - 1
+- Compare to critical value at p = 0.05
+- If χ² < critical value: null hypothesis accepted (difference due to chance)`,
+        'transport': `**CAIE 9700 — Transport in Plants & Mammals**
+
+**Xylem:**
+- Dead cells with lignified walls, no cytoplasm, no end walls
+- Transpiration stream: water pulled up by transpiration pull (cohesion-tension)
+- Cohesion: H-bonds between water molecules
+- Adhesion: water adheres to xylem walls
+- Root pressure: active transport of minerals into xylem, water follows by osmosis
+- Casparian strip (suberin in endodermis) forces water through cytoplasm (selective uptake)
+
+**Phloem (translocation):**
+- Sieve tube elements (living, no nucleus) + companion cells (many mitochondria)
+- Source → sink: photosynthetic tissues → growing/storage tissues
+- Mass flow hypothesis: high pressure at source (sucrose loaded), low pressure at sink (sucrose unloaded)
+- Loading: companion cells use ATP to load sucrose → water follows by osmosis → high pressure
+- Unloading: sucrose removed at sink → water exits → low pressure
+
+**Mammalian circulatory system:**
+- Double circulation: pulmonary (heart → lungs → heart) and systemic (heart → body → heart)
+- Heart structure: atria (thin-walled), ventricles (thick-walled, left thicker than right)
+- Cardiac cycle: atrial systole → ventricular systole → diastole
+- Pacemaker (SAN): initiates heartbeat; AVN delays impulse to allow ventricular filling
+- Blood: plasma (water, proteins, ions), red blood cells (haemoglobin, no nucleus), white blood cells, platelets
+- Haemoglobin: cooperative binding, Bohr effect (CO₂ lowers pH, reduces affinity, releases O₂)
+- Oxygen dissociation curve: sigmoid shape; shifts right with higher CO₂/temperature/exercise`,
+        'immunity': `**CAIE 9700 — Infectious Disease & Immunity**
+
+**Pathogens:** bacteria, viruses, fungi, protozoa
+- Bacteria: cell wall, no nucleus, reproduce by binary fission, some produce toxins
+- Viruses: protein capsid, genetic material (DNA or RNA), host-specific, obligate parasites
+
+**Transmission:** direct contact, droplet, vector-borne, water/food-borne, airborne
+
+**Non-specific (innate) defenses:**
+- Physical barriers: skin, mucous membranes, cilia, stomach acid
+- Phagocytes (neutrophils, macrophages): engulf pathogens, digest in lysosomes
+- Natural killer cells: destroy infected/cancerous cells
+- Inflammation: histamine increases permeability, attracts phagocytes
+
+**Specific (adaptive) immunity:**
+- Lymphocytes: B cells (bone marrow) and T cells (thymus)
+- Clonal selection: lymphocyte with matching receptor proliferates
+- Primary response: slow, IgM first, then IgG, memory cells formed
+- Secondary response: faster, stronger, longer-lasting (memory cells)
+
+**Antibodies (immunoglobulins):**
+- Y-shaped: two Fab regions (antigen-binding), one Fc region
+- Specific for one antigen (lock and key)
+- Functions: neutralization, agglutination, opsonization, precipitation
+
+**Vaccination:**
+- Active artificial immunity: weakened/attenuated pathogen or subunit
+- Stimulates primary response without disease
+- Herd immunity: protects those who cannot be vaccinated`,
+        'homeostasis': `**CAIE 9700 — Homeostasis & Control**
+
+**Principles:**
+- Negative feedback: response counteracts change, restores balance
+- Positive feedback: response amplifies change (rare in homeostasis, e.g., blood clotting, childbirth)
+
+**Temperature regulation:**
+- Hypothalamus: thermoregulatory centre (receptors detect blood temperature)
+- Skin receptors detect external temperature
+- Too hot: vasodilation, sweating (evaporative cooling), flat hairs
+- Too cold: vasoconstriction, shivering (muscle contraction generates heat), erect hairs (trap air)
+
+**Blood glucose regulation:**
+- High glucose → β-cells in pancreas release insulin
+- Insulin: increases glucose uptake by cells, increases glycogen synthesis in liver/muscle, increases respiration
+- Low glucose → α-cells release glucagon
+- Glucagon: stimulates glycogenolysis (glycogen → glucose) in liver, stimulates gluconeogenesis
+- Diabetes Type I: autoimmune destruction of β-cells, no insulin produced
+- Diabetes Type II: insulin resistance, often linked to obesity
+
+**Nervous system:**
+- Neurone structure: cell body, dendrites (receive signals), axon (transmits), myelin sheath (saltatory conduction), synaptic knobs
+- Action potential: depolarization (Na⁺ influx), repolarization (K⁺ efflux), hyperpolarization, recovery
+- Synapse: neurotransmitter release (e.g., acetylcholine), diffusion across cleft, receptor binding, response
+- Refractory period: ensures one-way transmission, limits firing rate`,
+        'evolution': `**CAIE 9700 — Selection, Evolution & Biodiversity**
+
+**Natural selection:**
+1. Variation exists in population (mutation, recombination)
+2. Environmental selective pressure
+3. Individuals with advantageous alleles more likely to survive and reproduce
+4. Allele frequencies change over generations
+
+**Types of selection:**
+- Directional: one extreme favored (e.g., industrial melanism)
+- Stabilizing: intermediate favored, extremes selected against
+- Disruptive: both extremes favored, intermediate selected against
+
+**Speciation:**
+- Allopatric: geographical isolation → different selection pressures → reproductive isolation
+- Sympatric: same area, e.g., polyploidy in plants
+
+**Isolation mechanisms:**
+- Pre-zygotic: temporal, behavioral, mechanical, ecological isolation
+- Post-zygotic: hybrid inviability, hybrid sterility
+
+**Biodiversity:**
+- Genetic diversity: variety of alleles within species
+- Species diversity: number of different species
+- Ecosystem diversity: variety of habitats/communities
+
+**Conservation:**
+- In situ: within natural habitat (national parks, wildlife reserves)
+- Ex situ: outside natural habitat (zoos, seed banks, botanical gardens)
+- Advantages/disadvantages of each approach`,
+        'biotech': `**CAIE 9700 — Genetic Technology**
+
+**Recombinant DNA technology:**
+1. Isolate gene (mRNA → cDNA using reverse transcriptase, or PCR)
+2. Cut vector (plasmid) and gene with same restriction enzyme (sticky ends)
+3. Join with DNA ligase
+4. Introduce into host cells (transformation, electroporation)
+5. Identify transformed cells (marker genes, antibiotic resistance)
+6. Clone and express
+
+**PCR (Polymerase Chain Reaction):**
+- Denaturation (95°C), annealing (50-65°C), extension (72°C)
+- Exponential amplification: 2ⁿ copies after n cycles
+- Requires: DNA polymerase (Taq, thermostable), primers, dNTPs, Mg²⁺
+
+**Gel electrophoresis:**
+- DNA fragments separated by size
+- Smaller fragments move faster through gel
+- Used for DNA profiling, restriction mapping
+
+**Applications:**
+- Insulin production (bacteria/yeast)
+- GM crops (herbicide/pest resistance, improved nutrition)
+- Gene therapy (replacing defective genes)
+- DNA fingerprinting (forensics, paternity)
+- Stem cell therapy`
     },
     ielts: {
         'writing task 1': `**IELTS Academic Writing Task 1 — Report Structure (Band 7+)**
@@ -1174,289 +1704,481 @@ Share your essay (Task 1 or Task 2) and I'll give you:
 4. Grammar corrections`
     },
     business: {
-        'marketing': `**Business — Marketing Mix (7Ps)**
+        'environment': `**CAIE 9609 — Business & Its Environment**
 
-**Product:** Design, features, branding, packaging, USP, product life cycle (introduction, growth, maturity, decline).
+**Business objectives:**
+- Survival (startups), profit maximization, growth (revenue/market share), social objectives, shareholder value
+- Corporate social responsibility (CSR): economic, legal, ethical, philanthropic responsibilities
+- Stakeholders: shareholders, employees, customers, suppliers, government, community, creditors — conflicting interests
 
-**Price:** Penetration (low to gain share), skimming (high for early adopters), competitive, cost-plus, psychological, predatory, promotional.
+**Forms of business organization:**
+- Sole trader: unlimited liability, full control, easy to set up, limited finance, no continuity
+- Partnership: 2-20 partners, unlimited liability (except LLPs), shared decision-making, deed of partnership
+- Private limited company (Ltd): limited liability, separate legal personality, cannot sell shares to public, accounts less public
+- Public limited company (PLC): limited liability, sells shares on stock exchange, more regulation, greater access to capital
+- Co-operatives: owned by members, democratic control, profit sharing
 
-**Place:** Distribution channels — direct (online, own stores) vs indirect (retailers, wholesalers). Intensive (everywhere), selective (specific outlets), exclusive (luxury).
+**External environment (PESTLE):**
+- Political: government policy, taxation, trade restrictions, political stability
+- Economic: interest rates, inflation, exchange rates, economic growth, unemployment
+- Social: demographics, lifestyle changes, education, attitudes
+- Technological: automation, R&D, innovation, e-commerce
+- Legal: employment law, consumer protection, health & safety, environmental regulations
+- Environmental: climate change, sustainability, waste disposal, carbon footprint`,
+        'marketing': `**CAIE 9609 — Marketing**
 
-**Promotion:** Above-the-line (TV, radio, cinema, print — mass media). Below-the-line (sales promotion, direct mail, PR, sponsorship, personal selling). Digital (social media, SEO, influencer).
+**Market segmentation:**
+- Geographic, demographic, psychographic, behavioral
+- Benefits: targeted marketing, efficient resource use, competitive advantage, customer satisfaction
 
-**People:** Customer service, staff training, corporate culture.
+**Marketing mix (7Ps):**
+- Product: features, branding, packaging, USP, product life cycle (introduction, growth, maturity, decline), Boston Matrix
+- Price: penetration, skimming, competitive, cost-plus, psychological, price discrimination, promotional
+- Place: channels (direct vs indirect), intensive/selective/exclusive distribution, e-commerce
+- Promotion: above-the-line (TV, radio, print, cinema), below-the-line (sales promotion, PR, direct mail, sponsorship), digital marketing
+- People: customer service, staff training, corporate culture
+- Process: delivery systems, queuing, after-sales
+- Physical evidence: store layout, branding, packaging
 
-**Process:** Delivery systems, queuing, after-sales service.
+**Market research:**
+- Primary: surveys, interviews, focus groups, observation (specific but expensive)
+- Secondary: published data, government statistics, internet (cheaper but may be outdated)
+- Qualitative: opinions, attitudes, motivations (in-depth, subjective)
+- Quantitative: numerical data, statistics, trends (objective, measurable)
 
-**Physical evidence:** Store layout, website design, packaging, branding materials.`,
-        'finance': `**Business — Finance & Accounts**
+**Product life cycle strategies:**
+- Introduction: high promotion, skimming/penetration pricing
+- Growth: build brand loyalty, expand distribution
+- Maturity: differentiate, find new segments, price competition
+- Decline: harvest, divest, or find niche`,
+        'hrm': `**CAIE 9609 — Human Resource Management**
 
-**Sources of finance:**
-- Internal: retained profit, sale of assets, working capital
-- External short-term: overdraft, trade credit, factoring
-- External long-term: bank loan, debentures, share capital, venture capital, leasing
+**Workforce planning:**
+- Forecast labor demand, analyze current workforce, identify gaps, plan recruitment/training
 
-**Cash flow:**
-- Cash ≠ profit. A profitable business can fail from poor cash flow.
-- Cash flow forecast: inflows (sales, loans) minus outflows (purchases, wages, rent).
-- Solutions to cash flow problems: overdraft, chase debtors, delay payments, reduce stock, sale and leaseback.
+**Recruitment & selection:**
+- Job analysis → job description → person specification → attract applicants → shortlist → interview/test → appoint
+- Internal vs external recruitment
+- Methods: interviews, assessment centers, psychometric tests, references
 
-**Break-even:**
-- Contribution per unit = Price - Variable cost per unit
-- Break-even output = Fixed costs / Contribution per unit
-- Margin of safety = Actual output - Break-even output
-
-**Ratios:**
-- Gross profit margin = (Gross profit / Revenue) × 100
-- Net profit margin = (Net profit / Revenue) × 100
-- ROCE = (Operating profit / Capital employed) × 100
-- Current ratio = Current assets / Current liabilities`,
-        'hrm': `**Business — Human Resource Management**
-
-**Recruitment & selection:** Job analysis → job description → person specification → advertise → shortlist → interview → appoint.
-
-**Training:** Induction (new employees), on-the-job (shadowing, mentoring), off-the-job (courses, workshops). Benefits: higher productivity, lower turnover, better quality.
+**Training:**
+- Induction: familiarize new employees
+- On-the-job: shadowing, mentoring, job rotation (relevant, immediate)
+- Off-the-job: courses, workshops, e-learning (broader skills, networking)
+- Benefits: higher productivity, lower staff turnover, better quality, flexibility
 
 **Motivation theories:**
-- Taylor: scientific management, piece rate, money motivates
-- Maslow: hierarchy of needs (physiological → safety → social → esteem → self-actualization)
-- Herzberg: two-factor theory — motivators (achievement, recognition, responsibility) and hygiene factors (salary, conditions, policy)
-- Mayo: Hawthorne effect — social factors and attention improve performance
+- Taylor (scientific management): piece rate, money is primary motivator, time-and-motion studies
+- Maslow: hierarchy — physiological → safety → social → esteem → self-actualization
+- Herzberg (two-factor): motivators (achievement, recognition, responsibility, advancement) vs hygiene factors (salary, conditions, policy, supervision)
+- Mayo (Hawthorne): social factors, group norms, attention improve performance
+- Vroom (expectancy theory): effort → performance → reward → satisfaction
 
 **Leadership styles:**
-- Autocratic: dictatorial, fast decisions, low morale
-- Democratic: consultative, higher morale, slower decisions
-- Laissez-faire: hands-off, high autonomy, risk of lack of direction
-- Paternalistic: parent-child relationship, decisions for "employee good"`,
-        'operations': `**Business — Operations Management**
+- Autocratic: quick decisions, low morale, useful in crises
+- Democratic: consultative, higher morale, slower
+- Laissez-faire: high autonomy, creativity, risk of no direction
+- Situational: adapt style to circumstances
+
+**Communication:**
+- Formal vs informal, internal vs external
+- Barriers: language, cultural, physical, emotional, perceptual`,
+        'operations': `**CAIE 9609 — Operations Management**
 
 **Methods of production:**
-- Job: one-off, customized, high skilled labor, high unit cost (wedding cakes, bespoke suits)
-- Batch: groups of similar products, flexible, moderate cost (bakeries, clothing sizes)
-- Flow/line: continuous, standardized, high automation, low unit cost, inflexible (cars, soft drinks)
-- Cell: team-based, combines job and flow benefits, flexible manufacturing
+- Job: one-off, customized, high skill, high unit cost, low volume (bespoke furniture)
+- Batch: groups of similar products, moderate flexibility, moderate cost (bakeries, clothing)
+- Flow/line: continuous, standardized, low unit cost, high volume, inflexible (cars, soft drinks)
+- Mass customization: combining low cost with some customization (Dell computers)
 
-**Quality:**
-- Quality control: inspection at end (detect defects)
-- Quality assurance: systems throughout (prevent defects, e.g., ISO 9000)
-- TQM: total quality management — everyone responsible, continuous improvement, zero defects
+**Location decisions:**
+- Factors: labor costs, proximity to markets/suppliers, infrastructure, government incentives, exchange rates
+- Quantitative methods: break-even analysis, investment appraisal
+
+**Quality management:**
+- Quality control: inspection at end, detects defects, worker not responsible
+- Quality assurance: systems throughout, prevention, everyone responsible (TQM)
+- Benchmarking: compare against best in industry
+- ISO 9000: international quality standard
+- Zero defects: aim for perfection (Crosby)
+- Cost of quality: prevention + appraisal + internal failure + external failure
 
 **Lean production:**
-- Just-in-time (JIT): stock arrives when needed, reduces waste, requires reliable suppliers
-- Kaizen: continuous small improvements
-- Kanban: visual signaling system for production flow`,
-        'strategy': `**Business — Strategy & Growth**
+- JIT: stock arrives when needed, reduces waste, requires reliable suppliers, flexible workforce
+- Kaizen: continuous improvement, all employees involved
+- Kanban: visual signaling to control production flow
+- Andon: warning system for quality problems
+- Jidoka: automation with human oversight, stop line when defect detected`,
+        'finance': `**CAIE 9609 — Finance & Accounting**
 
-**Ansoff Matrix:**
-- Market penetration: existing product, existing market (lower risk)
-- Market development: existing product, new market (export, new segments)
-- Product development: new product, existing market (innovation, R&D)
-- Diversification: new product, new market (highest risk)
+**Sources of finance:**
+- Internal: retained profit (no interest, no dilution, but limited), sale of assets, working capital reduction
+- Short-term external: overdraft (flexible, high interest), trade credit, factoring (sells receivables), leasing
+- Long-term external: bank loans (fixed repayments, collateral), debentures (fixed interest, secured), share capital (ordinary/preference), venture capital, crowdfunding
 
-**SWOT Analysis:**
-- Strengths / Weaknesses = internal factors
-- Opportunities / Threats = external factors (PESTLE: Political, Economic, Social, Technological, Legal, Environmental)
+**Cash flow:**
+- Cash ≠ profit (profit includes non-cash items, accruals)
+- Cash flow forecast predicts inflows and outflows over time
+- Solutions to shortfall: overdraft, chase debtors, delay creditors, reduce stock, sale and leaseback
+
+**Break-even analysis:**
+- Contribution per unit = Selling price - Variable cost per unit
+- Break-even output = Fixed costs / Contribution per unit
+- Margin of safety = Actual output - Break-even output
+- Limitations: assumes all output sold, linear relationships, single product, static costs
+
+**Financial ratios:**
+- Profitability: gross profit margin, net profit margin, ROCE
+- Liquidity: current ratio, acid-test ratio
+- Efficiency: inventory turnover, receivables days, payables days, asset turnover
+- Gearing: debt/equity ratio, interest cover
+- Investor: EPS, dividend yield, dividend cover, P/E ratio`,
+        'strategy': `**CAIE 9609 — Strategic Management**
+
+**Strategic analysis:**
+- SWOT: internal Strengths/Weaknesses, external Opportunities/Threats
+- PESTLE: macro-environmental analysis
+- Porter's Five Forces: competitive rivalry, threat of new entrants, bargaining power of buyers, bargaining power of suppliers, threat of substitutes
+- Boston Matrix: Stars (invest), Cash Cows (harvest), Question Marks (selective), Dogs (divest)
+
+**Strategic choice:**
+- Ansoff Matrix: market penetration (lowest risk), market development, product development, diversification (highest risk)
+- Investment appraisal: payback period, ARR, NPV, IRR
+- Force field analysis: driving vs restraining forces for change
+
+**Strategic implementation:**
+- Change management: Lewin's unfreeze-change-refreeze, Kotter's 8-step model
+- Organizational structure: hierarchical, flat, matrix, delegation, span of control, chain of command
+- Corporate culture: power, role, task, person cultures (Handy)
 
 **Globalization:**
-- Methods: exporting, licensing, franchising, joint ventures, FDI
-- Benefits: larger markets, economies of scale, access to resources
-- Challenges: cultural differences, exchange rate risk, political instability, competition`,
-        'essay': `**A-Level Business Essay Structure**
+- Drivers: technology, trade liberalization, market convergence, cost advantages
+- Methods: exporting, licensing, franchising, joint ventures, FDI, strategic alliances
+- Benefits: larger markets, economies of scale, risk spreading, access to resources
+- Challenges: cultural differences, exchange rate risk, political risk, ethical issues, increased competition`,
+        'essay': `**CAIE 9609 — Business Essay Structure**
 
 **Introduction:**
-- Define key terms
-- Show understanding of the context
-- State your line of argument (thesis)
+- Define key terms precisely
+- Show understanding of context/issue
+- State your line of argument/thesis
 
-**Body paragraphs (PEEL):**
-- **Point:** Clear topic sentence
-- **Explanation:** Theory or concept with application
-- **Evidence:** Real business example (company name, date, data)
-- **Evaluation:** "However...", "This depends on...", "In contrast..."
+**Body paragraphs (PEEL+):**
+- **Point:** clear topic sentence stating argument
+- **Explanation:** business theory/concept with context
+- **Evidence:** real business example (company name, date, data, country)
+- **Evaluation:** "However...", "This depends on...", "A limitation is..."
+- **Link:** connect back to question
 
 **Evaluation techniques:**
 1. Short-term vs long-term
-2. Size of business (SME vs multinational)
-3. Industry context
-4. Stakeholder perspective
-5. Country/economic context
+2. Size/type of business (SME vs multinational, PLC vs Ltd)
+3. Industry context (manufacturing vs service)
+4. Country/economic context (developed vs developing)
+5. Stakeholder perspective (conflicting interests)
+6. Quantitative vs qualitative factors
 
 **Conclusion:**
-- Judgment based on evidence
-- Prioritize most important factor
-- Do not introduce new information`
+- Summarize main arguments
+- Give justified judgment (which factor most important and WHY)
+- Do not introduce new points`
     },
     psychology: {
-        'research methods': `**Psychology — Research Methods**
+        'research': `**CAIE 9990 — Research Methods**
 
-**Experiments:**
-- Lab: high control, high internal validity, low ecological validity
-- Field: natural setting, higher ecological validity, less control
-- Natural/quasi: IV occurs naturally, no manipulation, ethical for harmful variables
+**Experimental designs:**
+- Lab experiment: high control, high internal validity, low ecological validity, replication possible
+- Field experiment: natural setting, higher ecological validity, less control, demand characteristics reduced
+- Natural/quasi-experiment: IV not manipulated by researcher, naturally occurring groups, less control but ethical for harmful variables
 
-**Key terms:**
-- IV = manipulated; DV = measured
-- Extraneous variable = could affect DV (controlled)
-- Confounding variable = uncontrolled extraneous variable
+**Key terminology:**
+- IV: independent variable (manipulated)
+- DV: dependent variable (measured)
+- Extraneous variable: could affect DV, must be controlled
+- Confounding variable: uncontrolled EV, threatens validity
+- Operationalization: defining variables in measurable terms
+
+**Validity:**
+- Internal: extent to which DV is caused by IV (control extraneous variables)
+- External: extent to which results generalize (population, ecological, temporal, cultural validity)
+- Construct: whether variables truly measure what they claim
+
+**Reliability:**
+- Internal consistency: split-half, Cronbach's alpha
+- Inter-rater: multiple observers agree
+- Test-retest: same results over time
+- Ways to improve: standardized procedures, pilot studies, clear instructions
 
 **Sampling:**
-- Random: everyone equal chance, unbiased but hard to achieve
-- Opportunity: convenient, quick but biased
-- Systematic: every nth person
-- Stratified: proportionate to subgroups
+- Random: everyone equal chance, unbiased, representative but hard to achieve
+- Opportunity/convenience: readily available, quick but biased
+- Systematic: every nth person from list
+- Stratified: proportional representation of subgroups
+- Volunteer/self-selected: motivated participants, bias
 
-**Ethics:**
-- Informed consent, right to withdraw, confidentiality, deception only when necessary + debriefing, protection from harm
+**Ethics (BPS guidelines):**
+- Informed consent, right to withdraw, confidentiality, deception only if justified + debriefing, protection from harm, debriefing
+- Cost-benefit analysis
 
-**Data:**
-- Quantitative: numerical, objective, statistical analysis
-- Qualitative: rich, in-depth, thematic analysis, harder to generalize`,
-        'memory': `**Psychology — Memory**
+**Data analysis:**
+- Quantitative: descriptive (mean, median, mode, SD, range), inferential (t-test, chi-square, Mann-Whitney, Wilcoxon, Spearman's rho)
+- Qualitative: thematic analysis, grounded theory, content analysis
+- Levels of measurement: nominal, ordinal, interval, ratio`,
+        'memory': `**CAIE 9990 — Memory**
 
-**Multi-store model (Atkinson & Shiffrin):**
-- Sensory memory: iconic (~0.5s), echoic (~2-4s)
-- STM: limited capacity (7±2 items), limited duration (~18-30s), acoustic coding
-- LTM: unlimited capacity, potentially permanent, semantic coding
+**Multi-store model (Atkinson & Shiffrin, 1968):**
+- Sensory register: iconic (visual, 0.25-0.5s), echoic (auditory, 2-4s), haptic (touch)
+- STM: limited capacity (7±2 items, Miller), limited duration (~18-30s, Peterson & Peterson), acoustic coding (Conrad)
+- LTM: unlimited capacity, potentially permanent, semantic coding (Baddeley)
 - Flow: attention → STM; rehearsal → LTM
+- Evidence: serial position curve (primacy = LTM, recency = STM), HM, Clive Wearing
+- Criticisms: too linear, rehearsal not only route to LTM, STM is not unitary
 
-**Working memory model (Baddeley & Hitch):**
-- Central executive: attention controller, no storage
-- Phonological loop: auditory/verbal (phonological store + articulatory control)
-- Visuospatial sketchpad: visual/spatial
-- Episodic buffer: integrates information, links to LTM
+**Working memory model (Baddeley & Hitch, 1974):**
+- Central executive: attention controller, limited capacity, no storage
+- Phonological loop: phonological store (2s decay) + articulatory control process (subvocal rehearsal)
+- Visuospatial sketchpad: visual cache + inner scribe
+- Episodic buffer: integrates information across modalities, links to LTM, conscious awareness
+- Evidence: dual-task studies, word-length effect, articulatory suppression
 
 **Forgetting:**
-- Decay theory: memory traces fade over time (STM)
-- Interference: proactive (old disrupts new), retroactive (new disrupts old)
-- Retrieval failure: lack of appropriate cues (encoding specificity principle)
+- Decay theory: memory traces fade over time (Peterson & Peterson)
+- Interference: proactive (old disrupts new, Underwood) and retroactive (new disrupts old)
+- Retrieval failure: lack of appropriate cues, encoding specificity principle (Godden & Baddeley, diving study)
 
 **Eyewitness testimony:**
-- Misleading information (Loftus & Palmer), post-event discussion, anxiety, age of witness
-- Cognitive interview: context reinstatement, report everything, reverse order, change perspective`,
-        'attachment': `**Psychology — Attachment**
+- Loftus & Palmer (1974): leading questions distort memory
+- Post-event discussion: Gabbert et al. — co-witness contamination
+- Anxiety: Yerkes-Dodson law; weapon focus (Loftus et al.)
+- Age: children more suggestible, elderly have memory deficits
+- Cognitive interview: context reinstatement, report everything, reverse order, change perspective (Geiselman et al.)`,
+        'attachment': `**CAIE 9990 — Attachment**
 
-**Bowlby's theory:**
-- Evolutionary basis: attachment promotes survival
-- Critical period: ~6 months to 2.5 years for attachment formation
-- Internal working model: template for future relationships
-- Monotropy: primary attachment to one figure (usually mother)
+**Bowlby's theory (1969):**
+- Evolutionary basis: attachment promotes survival (social releasers: smiling, crying, grasping)
+- Critical period: first 2.5 years for attachment formation
+- Sensitive period: optimal time for attachment
+- Monotropy: primary attachment to one special figure (usually mother)
+- Internal working model: template for future relationships (continuity hypothesis)
+- Evidence: 44 Thieves study, Harlow's monkeys (cloth vs wire mother)
+- Criticisms: overemphasis on mother, fathers important too, multiple attachments possible
 
-**Ainsworth's Strange Situation:**
-- Secure (65%): upset when left, happy on return, uses caregiver as secure base
-- Insecure-avoidant (22%): ignores caregiver, little distress, independent
-- Insecure-resistant (12%): very distressed, rejects caregiver on return, difficult to comfort
-- Disorganized: contradictory behavior, fearful, associated with abuse/neglect
+**Ainsworth's Strange Situation (1970):**
+- Secure (Type B, 65%): distressed when left, happy on return, uses caregiver as secure base
+- Insecure-avoidant (Type A, 22%): ignores caregiver, little distress, emotional distance
+- Insecure-resistant/ambivalent (Type C, 12%): very distressed, rejects caregiver on return, difficult to comfort
+- Disorganized (Type D): contradictory behavior, fearful, associated with abuse/neglect (Main & Solomon)
 
-**Cultural variations (Van IJzendoorn & Kroonenberg):**
-- Secure attachment is most common globally
-- Avoidant more common in Germany; resistant more common in Japan (collectivist cultures)
+**Cultural variations (Van IJzendoorn & Kroonenberg, 1988):**
+- Secure attachment most common globally
+- Avoidant more common in Germany; resistant more common in Japan (collectivist)
+- Cultural bias in Strange Situation?
 
 **Maternal deprivation:**
-- Bowlby: separation from mother in critical period leads to intellectual/social/emotional damage
-- 44 Thieves study: prolonged early separation linked to affectionless psychopathy`,
-        'stress': `**Psychology — Stress**
+- Bowlby: separation from mother in critical period → intellectual/social/emotional damage
+- 44 Thieves study (Bowlby): prolonged early separation linked to affectionless psychopathy
+- Rutter: quality of substitute care matters more than separation itself
+- Romanian orphanage studies: effects depend on timing, duration, quality of care`,
+        'stress': `**CAIE 9990 — Stress**
 
-**Physiological responses:**
-- SAM axis (acute): hypothalamus → sympathetic NS → adrenal medulla → adrenaline/noradrenaline → fight or flight (heart rate ↑, BP ↑, glucose ↑, pupils dilate)
-- HPA axis (chronic): hypothalamus → CRH → pituitary → ACTH → adrenal cortex → cortisol → maintains energy, suppresses immune system
+**Physiological stress response:**
+- Acute (SAM axis): hypothalamus → sympathetic NS → adrenal medulla → adrenaline/noradrenaline
+  - Effects: increased HR, BP, breathing rate, glycogenolysis, pupil dilation, reduced digestion
+- Chronic (HPA axis): hypothalamus → CRH → anterior pituitary → ACTH → adrenal cortex → cortisol
+  - Cortisol: maintains blood glucose, suppresses immune system, anti-inflammatory
+
+**Selye's General Adaptation Syndrome (GAS):**
+- Alarm: fight or flight, sympathetic arousal
+- Resistance: parasympathetic activity, cortisol maintains adaptation
+- Exhaustion: resources depleted, immune suppression, illness
 
 **Stress models:**
-- Selye's GAS: Alarm (fight or flight), Resistance (coping sustained), Exhaustion (resources depleted, illness)
-- Lazarus & Folkman: Primary appraisal (is it stressful?), Secondary appraisal (can I cope?)
-
-**Sources of stress:**
-- Life changes (Holmes & Rahe SRRS): major events require readjustment
-- Daily hassles (Kanner): minor irritants accumulate
-- Workplace: workload, control, support, role ambiguity
+- Lazarus & Folkman (cognitive): primary appraisal (is it stressful?), secondary appraisal (can I cope?)
+- Holmes & Rahe (1967): Social Readjustment Rating Scale — life changes require readjustment
+- Kanner et al. (1981): daily hassles more predictive of health outcomes than major life events
+- Workplace stress: Karasek's demand-control model (high demand + low control = most stressful)
 
 **Stress management:**
-- Biological: drugs (benzodiazepines, beta-blockers)
-- Psychological: CBT, stress inoculation training (Meichenbaum), mindfulness
-- Physical: exercise reduces cortisol, increases endorphins`,
-        'social': `**Psychology — Social Influence**
+- Biological: benzodiazepines (GABA enhancement), beta-blockers (reduce sympathetic activity)
+- Psychological: CBT (cognitive restructuring), stress inoculation training (Meichenbaum), mindfulness
+- Physical: exercise (reduces cortisol, increases endorphins), relaxation techniques`,
+        'social': `**CAIE 9990 — Social Influence**
 
 **Conformity:**
 - Normative social influence: conform to be liked/accepted (public compliance, private disagreement)
 - Informational social influence: conform because we believe others are correct (private acceptance, ambiguous situations)
-- Asch (1951): 75% conformed at least once, 37% overall conformity rate. Factors: group size (up to 3), unanimity, task difficulty, anonymity
+- Asch (1951): 123 male students, line judgment task. 75% conformed at least once, mean conformity 32%
+  - Factors: group size (up to 3), unanimity (one dissenter reduces conformity), task difficulty, anonymity
+- Zimbardo (prison study): situational factors create conformity to roles
 
 **Obedience:**
-- Milgram (1963): 65% went to 450V. Factors: proximity of authority, proximity of victim, location (Yale), gradual commitment, buffers
-- Agency theory: agentic state (following orders) vs autonomous state (taking responsibility)
+- Milgram (1963): 65% administered maximum 450V shock
+  - Variations: proximity of authority (decreased obedience), proximity of victim (decreased), location (decreased outside Yale), peer rebellion (decreased), transfer of responsibility (increased)
+- Agency theory (Milgram): agentic state (following orders, shifting responsibility) vs autonomous state
+- Hofling et al. (1966): nurses obeyed doctor's illegitimate order
 
-**Resistance:**
-- Social support (ally reduces conformity)
-- Locus of control (internals resist more)
-- Prior commitment (publicly stating own view)
+**Resistance to social influence:**
+- Social support: ally reduces conformity (Asch) and obedience (Milgram)
+- Locus of control: internals resist more (Rotter)
+- Prior commitment: publicly stating own view reduces conformity
 
 **Minority influence:**
-- Moscovici: consistency, flexibility, commitment
-- Snowball effect: minority gradually converts majority`,
-        'abnormal': `**Psychology — Abnormal Psychology**
+- Moscovici (1969): consistency, flexibility, commitment key to minority influence
+- Snowball effect: minority converts majority gradually
+- Social cryptoamnesia: source of influence forgotten, idea accepted`,
+        'abnormal': `**CAIE 9990 — Abnormality**
 
-**Definitions of abnormality:**
-- Statistical infrequency: rare = abnormal (but high IQ is rare yet desirable)
-- Deviation from social norms: violates rules (but norms change culturally/temporally)
-- Failure to function adequately: cannot cope with daily life (but may be situational)
-- Deviation from ideal mental health (Jahoda): positive criteria (self-actualization, autonomy, etc.)
+**Definitions:**
+- Statistical infrequency: rare = abnormal (but high IQ rare yet desirable; where to draw line?)
+- Deviation from social norms: violates society's rules (but norms change over time/culture)
+- Failure to function adequately: cannot cope with daily life (may be situational, subjective)
+- Deviation from ideal mental health (Jahoda): positive criteria (self-actualization, autonomy, etc.) — unrealistic ideal
 
 **Depression:**
-- Cognitive explanation (Beck): negative triad (self, world, future), cognitive distortions
-- Biological: low serotonin/norepinephrine, genetic predisposition, enlarged amygdala
-- Treatment: CBT (challenge negative thoughts), antidepressants (SSRIs), ECT (severe cases)
+- Cognitive (Beck): negative triad (self, world, future), cognitive distortions (overgeneralization, catastrophizing)
+- Biological: low serotonin/norepinephrine, genetic predisposition (McGuffin et al.), enlarged amygdala, HPA axis hyperactivity
+- Treatment: CBT (cognitive restructuring, behavioral activation), SSRIs (increase serotonin), ECT (severe cases)
 
 **Schizophrenia:**
-- Symptoms: positive (hallucinations, delusions, disorganized speech) and negative (flat affect, avolition, poverty of speech)
-- Biological: dopamine hypothesis (excess dopamine in mesolimbic pathway), genetic (twin/adoption studies), neurodevelopmental (obstetric complications)
-- Treatment: antipsychotics (typical = dopamine antagonists, atypical = serotonin-dopamine), CBT for psychosis, family therapy`,
-        'biological': `**Psychology — Biological Psychology**
+- Symptoms: positive (hallucinations, delusions, disorganized speech, thought insertion) and negative (flat affect, avolition, poverty of speech, social withdrawal)
+- Biological: dopamine hypothesis (excess in mesolimbic pathway, deficit in mesocortical), genetic (Gottesman, twin studies), neurodevelopmental (obstetric complications, viral infection)
+- Treatment: typical antipsychotics (dopamine antagonists, extrapyramidal side effects), atypical antipsychotics (serotonin-dopamine antagonists), CBT for psychosis, family therapy
+
+**Eating disorders:**
+- Anorexia nervosa: restricted intake, low BMI, fear of weight gain, body dysmorphia
+- Bulimia nervosa: binge-purge cycles, normal BMI, secretive behavior
+- Explanations: genetic, serotonin imbalance, family systems (enmeshment), sociocultural (media pressure, objectification)`,
+        'biological': `**CAIE 9990 — Biopsychology**
 
 **Neuron structure:**
-- Dendrites (receive signals), cell body (soma), axon (transmits), myelin sheath (insulates, speeds conduction), terminal buttons (release neurotransmitters)
+- Dendrites (receive signals), cell body/soma (metabolic center), axon (transmits), myelin sheath (Schwann cells in PNS, oligodendrocytes in CNS), nodes of Ranvier, terminal buttons (synaptic knobs)
+
+**Action potential:**
+- Resting potential: -70mV (Na⁺/K⁺ pump, K⁺ leak channels)
+- Depolarization: Na⁺ channels open, Na⁺ rushes in (+40mV)
+- Repolarization: Na⁺ channels close, K⁺ channels open, K⁺ leaves
+- Hyperpolarization: overshoot to -90mV
+- Recovery: Na⁺/K⁺ pump restores balance
+- All-or-nothing: fires fully or not at all
+- Saltatory conduction: jumps between nodes of Ranvier, faster
 
 **Synaptic transmission:**
-- Action potential → Ca²⁺ enters → vesicles fuse → neurotransmitter release → bind to receptors → EPSP/IPSP → reuptake/enzymatic breakdown
+- Action potential arrives → voltage-gated Ca²⁺ channels open → vesicles fuse → neurotransmitter release → bind to receptors → EPSP (excitatory) or IPSP (inhibitory) → reuptake/enzymatic degradation
 
 **Neurotransmitters:**
-- Serotonin: mood, sleep, appetite (low = depression)
-- Dopamine: reward, motivation, motor control (excess = schizophrenia, low = Parkinson's)
-- Acetylcholine: learning, memory, muscle contraction (low = Alzheimer's)
-- GABA: inhibitory (low = anxiety, seizures)
+- Serotonin: mood regulation, sleep, appetite (low → depression)
+- Dopamine: reward, motivation, motor control (excess → schizophrenia, low → Parkinson's)
+- Acetylcholine: learning, memory, muscle contraction (low → Alzheimer's)
+- GABA: inhibitory (low → anxiety, seizures)
 
-**Brain scanning:**
-- EEG: electrical activity, high temporal resolution
-- MRI: structure, high spatial resolution
-- fMRI: function (blood flow), correlates activity with tasks
-- PET: metabolism, uses radioactive tracers
+**Brain structure:**
+- Cerebral cortex: higher functions, four lobes (frontal, parietal, temporal, occipital)
+- Hippocampus: memory formation
+- Amygdala: emotion and fear
+- Hypothalamus: homeostasis, HPA axis
+- Cerebellum: motor coordination
+- Brain scanning: EEG (electrical, high temporal), MRI (structure), fMRI (function), PET (metabolism)
 
-**Hemispheric lateralization:**
-- Left: language, logic, analytical
-- Right: spatial awareness, creativity, emotion
-- Split-brain research (Sperry): corpus callosum severed, each hemisphere processes independently`,
-        'essay': `**A-Level Psychology Essay Structure**
+**Split-brain research (Sperry):**
+- Corpus callosum severed (epilepsy treatment)
+- Left hemisphere: language, logic, analytical
+- Right hemisphere: spatial, creativity, emotion
+- Each hemisphere processes independently`,
+        'cognitive': `**CAIE 9990 — Cognitive Psychology**
+
+**Models of memory (see Memory section)**
+
+**Perception:**
+- Bottom-up processing: data-driven, uses sensory information
+- Top-down processing: conceptually driven, uses expectations/schema
+- Gregory's constructivist theory: perception is hypothesis, uses prior knowledge
+- Gibson's direct theory: perception is direct, information in environment sufficient
+- Visual illusions: Muller-Lyer, Ponzo, Ames room — support constructivist view
+
+**Attention:**
+- Selective attention: Broadbent's filter model (bottleneck), Treisman's attenuation model
+- Divided attention: dual-task performance
+- Stroop effect: interference between color and word reading
+
+**Language:**
+- Chomsky: language acquisition device (LAD), universal grammar, innate
+- Skinner: language learned through operant conditioning (imitation, reinforcement)
+- Genie case study: critical period for language acquisition
+
+**Problem solving:**
+- Algorithms: step-by-step, guaranteed solution but slow
+- Heuristics: mental shortcuts, faster but may lead to errors
+- Insight: sudden realization (Kohler's apes)
+- Functional fixedness: inability to see alternative uses for objects`,
+        'developmental': `**CAIE 9990 — Developmental Psychology**
+
+**Cognitive development (Piaget):**
+- Sensorimotor (0-2): object permanence, trial and error
+- Preoperational (2-7): symbolic thought, egocentrism, centration, lack of conservation
+- Concrete operational (7-11): conservation, classification, seriation, reversible thinking
+- Formal operational (11+): abstract reasoning, hypothetical-deductive reasoning
+- Criticisms: underestimates children's abilities (Baillargeon), cultural bias, stage model too rigid
+
+**Education applications:**
+- Discovery learning, readiness, concrete operational teaching methods
+- Vygotsky's zone of proximal development (ZPD): gap between what child can do alone vs with help
+- Scaffolding: support tailored to learner's needs, gradually withdrawn
+
+**Moral development (Kohlberg):**
+- Preconventional: obedience and punishment, self-interest
+- Conventional: interpersonal accord, authority and social order
+- Postconventional: social contract, universal ethical principles
+- Criticisms: cultural bias, gender bias (Gilligan), action vs reasoning`,
+        'issues': `**CAIE 9990 — Issues & Debates**
+
+**Nature vs Nurture:**
+- Nature: genetics, innate factors, biological determinism
+- Nurture: environment, upbringing, learning
+- Interactionist approach: genes and environment interact (diathesis-stress model)
+
+**Free will vs Determinism:**
+- Free will: humans choose behavior (humanistic approach)
+- Hard determinism: all behavior caused by prior events (biological, environmental)
+- Soft determinism: behavior caused but within constraints we have choice
+
+**Holism vs Reductionism:**
+- Holism: behavior should be studied as a whole system
+- Reductionism: break down into simpler components (biological, environmental)
+
+**Idiographic vs Nomothetic:**
+- Idiographic: study individuals in depth (case studies, qualitative)
+- Nomothetic: establish general laws (experiments, quantitative)
+
+**Ethical issues:**
+- Social sensitivity: research with social/political implications
+- Psychology and society: applications in law, education, mental health, organizations
+- Use of animals in research: 3Rs (Replacement, Reduction, Refinement)`,
+        'essay': `**CAIE 9990 — Psychology Essay Structure**
 
 **Introduction:**
 - Define key terms
 - Briefly outline what the essay will cover
-- Optional: state your thesis/judgment
+- Optional: state thesis/judgment
 
 **Body paragraphs (AO1 + AO3):**
-- AO1 (Knowledge): Describe theory/study clearly with names, dates, procedures, findings
-- AO3 (Evaluation): Strengths, weaknesses, comparisons, real-world applications
+- AO1 (Knowledge, 6 marks): Describe theory/study with names, dates, procedures, findings
+- AO3 (Evaluation, 10 marks): Strengths, weaknesses, comparisons, applications
 - Use PEEL: Point, Evidence, Explain, Link
 
 **Evaluation techniques:**
-1. Methodological critique (sample size, generalizability, ethics, validity)
-2. Comparison with alternative theory
-3. Supporting/contradicting evidence
-4. Real-world application
+1. Methodological critique (sample size, generalizability, validity, reliability, ethics)
+2. Supporting/contradicting evidence
+3. Alternative explanations
+4. Real-world applications
 5. Determinism vs free will
 6. Reductionism vs holism
 7. Nature vs nurture
+8. Individual/situational differences
+9. Practical issues (cost, time, ethics)
 
 **Conclusion:**
 - Summarize main points
-- Make a judgment (which theory/explanation is most valid/complete)
+- Make justified judgment
 - Consider interactionist approaches`
     }
 };
