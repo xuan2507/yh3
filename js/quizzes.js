@@ -13,7 +13,9 @@ const QUIZ_SUBJECTS = [
     { id: 'economics', name: 'Economics', icon: 'fa-chart-line', color: '#8b5cf6', questions: 30 },
     { id: 'accounting', name: 'Accounting', icon: 'fa-calculator', color: '#f97316', questions: 25 },
     { id: 'business', name: 'Business', icon: 'fa-briefcase', color: '#3b82f6', questions: 25 },
-    { id: 'psychology', name: 'Psychology', icon: 'fa-brain', color: '#a855f7', questions: 25 }
+    { id: 'psychology', name: 'Psychology', icon: 'fa-brain', color: '#a855f7', questions: 25 },
+    { id: 'ai', name: 'AI', icon: 'fa-robot', color: '#06b6d4', questions: 25 }
+
 ];
 
 const QUESTIONS = {
